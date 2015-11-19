@@ -2,6 +2,7 @@ import sys
 import os
 import time
 from datetime import datetime
+from urllib.parse import urljoin
 # from django.conf import settings
 # from django.contrib.auth import BACKEND_SESSION_KEY, SESSION_KEY, get_user_model
 # from django.contrib.sessions.backends.db import SessionStore
@@ -52,11 +53,30 @@ class FunctionalTest(StaticLiveServerTestCase):
         # error from the output.
         # Found solution at https://github.com/django/django/pull/1806
         #-----------------------
+        print('Refreshing the browser...')
         self.browser.refresh()
         #-----------------------
         self.browser.quit()
         super().tearDown()
 
+    def check_static_file_exists(self, url_part):
+        static_url = urljoin(self.server_url, url_part)
+        self.browser.get(static_url)
+        # Need to pause to let the url load.
+        time.sleep(0.1)
+#         print('{} source = {}'.format(static_url,self.browser.page_source))
+        self.wait_for(
+            lambda: self.assertNotIn(
+                'not found on this server',
+                self.browser.page_source,
+                msg='Invalid Static URL: {}'.format(static_url)
+            )
+        )
+        
+    def get_element_by_tag_name(self, tag_name):
+        self.wait_for_element_with_tag(tag_name)
+        return self.browser.find_element_by_tag_name(tag_name)
+    
     def wait_for_element_with_id(self, element_id):
         WebDriverWait(self.browser, timeout=30).until(
             lambda b: b.find_element_by_id(element_id),
@@ -65,10 +85,6 @@ class FunctionalTest(StaticLiveServerTestCase):
             )
         )
 
-    def get_element_by_tag_name(self, tag_name):
-        self.wait_for_element_with_tag(tag_name)
-        return self.browser.find_element_by_tag_name(tag_name)
-    
     def wait_for_element_with_tag(self, tag_name):
         WebDriverWait(self.browser, timeout=30).until(
             lambda b: b.find_element_by_id(tag_name),
@@ -111,6 +127,4 @@ class FunctionalTest(StaticLiveServerTestCase):
                 return function_with_assertion()
             except (AssertionError, WebDriverException):
                 time.sleep(0.1)
-            # One more try, which will raise any errors if they are outstanding
-            return function_with_assertion()
 

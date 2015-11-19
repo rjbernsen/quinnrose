@@ -87,6 +87,9 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+import sys
+if 'test' in sys.argv:
+    DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
 
 
 # Internationalization
@@ -108,8 +111,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_GLOBAL = os.path.join(BASE_DIR, 'static')
+# if 'test' in sys.argv:
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# else:
+#     STATICFILES_DIRS = (
+#         STATIC_GLOBAL,
+#     )
 STATICFILES_DIRS = (
-    STATIC_GLOBAL,
+        STATIC_GLOBAL,
 )
 # STATICFILES_FINDERS = (
 #     "django.contrib.staticfiles.finders.FileSystemFinder",

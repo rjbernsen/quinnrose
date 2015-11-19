@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from .menus import main_menus
 
 def home_page(request):
-    return render(request,'home.html')
+    return render(request,'home.html', {'main_menus': main_menus})
 
 # def new_list(request):
 #     form = NewListForm(data=request.POST)
