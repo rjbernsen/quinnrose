@@ -9,14 +9,23 @@ class Menu(object):
         self.is_dropdown = False
         
         self.items = []
-    
+        self.dropdown_menus = []
+        
     def addItem(self, menu_item):
         
         self.items.append(menu_item)
     
+    def addDropdownMenu(self, dropdown_menu):
+        
+        self.dropdown_menus.append(dropdown_menu)
+        
     def getItems(self):
         
         return self.items
+
+    def getDropdownMenus(self):
+        
+        return self.dropdown_menus
 
 class MenuItem(object):
     """
@@ -52,23 +61,22 @@ class MenuItem(object):
         self.url = url
         self.separator = separator
 
-main_menus = []
-
 # Main Menu Items
 # --------------------------------------
 menu = Menu()
+menu.right = True
 
-item = MenuItem(
-    label='Artists',
-    url='/artists'
-)
-menu.addItem(item)
-
-item = MenuItem(
-    label='Organizations',
-    url='/organizations'
-)
-menu.addItem(item)
+# item = MenuItem(
+#     label='Artists',
+#     url='/artists'
+# )
+# menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='Organizations',
+#     url='/organizations'
+# )
+# menu.addItem(item)
 
 item = MenuItem(
     label='About',
@@ -82,68 +90,70 @@ item = MenuItem(
 )
 menu.addItem(item)
 
-main_menus.append(menu)
-
 # Membership Dropdown
 # --------------------------------------
-menu = Menu()
-menu.label = 'Membership'
-menu.is_dropdown = True
-menu.right = True
+dropdown_menu = Menu()
+dropdown_menu.label = 'Membership'
+dropdown_menu.is_dropdown = True
+dropdown_menu.right = True
 
 item = MenuItem(
     label='Sign in',
     url='/signin'
 )
-menu.addItem(item)
+dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Register',
     url='/register'
 )
-menu.addItem(item)
+dropdown_menu.addItem(item)
 
 item = MenuItem(
     separator=True
 )
-menu.addItem(item)
+dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Subscriptions'
 )
-menu.addItem(item)
+dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Basic',
     url='/subscriptions#basic'
 )
-menu.addItem(item)
+dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Premium',
     url='/subscriptions#premium'
 )
-menu.addItem(item)
+dropdown_menu.addItem(item)
 
-main_menus.append(menu)
+menu.addDropdownMenu(dropdown_menu)
 
 # Help Dropdown
 # --------------------------------------
-menu = Menu()
-menu.label = 'Help'
-menu.is_dropdown = True
-menu.right = True
+dropdown_menu = Menu()
+dropdown_menu.label = 'Help'
+dropdown_menu.is_dropdown = True
+dropdown_menu.right = True
 
 item = MenuItem(
     label='Topics',
     url='/help#topics'
 )
-menu.addItem(item)
+dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='FAQs',
     url='/help#faqs'
 )
-menu.addItem(item)
+dropdown_menu.addItem(item)
 
-main_menus.append(menu)
+menu.addDropdownMenu(dropdown_menu)
+
+if __name__ == "__main__":
+    print(menu)
+    

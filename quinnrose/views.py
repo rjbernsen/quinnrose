@@ -1,8 +1,20 @@
+import os
+import glob
 from django.shortcuts import render
-from .menus import main_menus
+from .menus import menu
 
 def home_page(request):
-    return render(request,'home.html', {'main_menus': main_menus})
+    root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    image_path = os.path.join(root_dir, 'static', 'images') + '/carousel-*'
+    carousel_images = [
+        os.path.basename(p) for p in glob.glob(image_path)
+    ]
+    
+    context = {
+        'menu': menu,
+        'carousel_images': carousel_images,
+    }
+    return render(request,'home.html', context)
 
 # def new_list(request):
 #     form = NewListForm(data=request.POST)
@@ -25,3 +37,9 @@ def home_page(request):
 # def my_lists(request, email):
 #     owner = User.objects.get(email=email)
 #     return render(request, 'my_lists.html', {'owner': owner})
+
+if __name__ == '__main__':
+    image_path = '../static/images/carousel-*'
+    carousel_images = glob.glob(image_path)
+    print(carousel_images)
+    
