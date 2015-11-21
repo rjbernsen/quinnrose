@@ -64,7 +64,8 @@ class FunctionalTest(StaticLiveServerTestCase):
         self.browser.get(static_url)
         # Need to pause to let the url load.
         time.sleep(0.1)
-#         print('{} source = {}'.format(static_url,self.browser.page_source))
+#         if 'styles' in static_url:
+#             print('{} source = {}'.format(static_url,self.browser.page_source))
         self.wait_for(
             lambda: self.assertNotIn(
                 'not found on this server',
@@ -127,4 +128,8 @@ class FunctionalTest(StaticLiveServerTestCase):
                 return function_with_assertion()
             except (AssertionError, WebDriverException):
                 time.sleep(0.1)
+            try:
+                return function_with_assertion()
+            except:
+                pass
 

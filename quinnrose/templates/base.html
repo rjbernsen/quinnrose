@@ -11,9 +11,9 @@
 		<link rel="shortcut icon" href="{% static 'images/favicon.jpg' %}"/>
 
 		<!-- Bootstrap core CSS -->
-		<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/styles.css' %}" rel="stylesheet">
 		<!-- Bootstrap styles for fixed navbar -->
-		<!--<link href="{% static 'bootstrap/css/navbar-fixed-top.css' %}" rel="stylesheet">-->
+{#		<link href="{% static 'bootstrap/css/navbar-fixed-top.css' %}" rel="stylesheet">#}
 		<!-- Local CSS -->
 		<link href="{% static 'css/base.css' %}" rel="stylesheet">
 
@@ -28,11 +28,11 @@
 	<body>
 	
 		<!-- Fixed navbar -->
-		<nav class="navbar navbar-default navbar-fixed-top">
+		<nav class="navbar navbar-fixed-top">
 {#		{% spaceless %}#}
 			<div class="container-fluid">
 				<div class="navbar-brand navbar-brand-logo">
-					<a href="/" class="pull-left"><img class="logo" src="{% static 'images/logo.jpg' %}"></a>
+					<a href="/" class="pull-left"><img class="logo" src="{% static 'images/logo.gif' %}"></a>
 				</div>
 				<div class="navbar-header">
 					
@@ -80,11 +80,13 @@
 {#		{% endspaceless %}#}
 		</nav>
 
-{#  	    <div class="container">#}
-{#			{% for menu_item in main_menu %}#}
-{#			<p>{{ menu_item.label }}</p>#}
-{#			{% endfor %}#}
-{#		</div>#}
+		<div class="container jumbotron main-page_img">
+		</div>
+{#			<div class="widewrapper main">#}
+{#				<img src="{% static 'images/background1.jpg' %}" class="img-responsive">#}
+{#				<p>Some text</p>#}
+{#			</div>#}
+
 
 		<footer class="footer">
 			<div class="container">

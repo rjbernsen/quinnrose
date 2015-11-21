@@ -46,4 +46,12 @@ body {
   padding-right: 15px;
   padding-left: 15px;
 }
-	
+
+.main-page_img {
+  position: relative;
+  margin-bottom: 0;
+  margin-top: 15px;
+  background: url('../images/background1.jpg') no-repeat;
+  background-size: cover;
+  width:100%;
+}

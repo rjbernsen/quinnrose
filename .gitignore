@@ -1,2 +1,3 @@
 *.pyc
-quinnrose/functional_tests/screendumps/*
+functional_tests/screendumps
+.less/bootstrap/*
