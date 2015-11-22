@@ -63,7 +63,7 @@ body {
 
 /*
 --------------------------------------------------
-Main Carousel
+Main Navbar
 --------------------------------------------------
 */
 .navbar {
@@ -75,43 +75,6 @@ Main Carousel
 .navbar-default.transparent {
 	background-color: #fff;
 }
-.slide, .slide, .slide {
-	min-height: 560px; /* Must have a height or min-height set due to use of background images */
-	background-size: cover;
-	background-position: center center;
-}
-/* Carousel Fade Effect */
-.carousel.carousel-fade .item {
-	-webkit-transition: opacity 1s linear;
-	-moz-transition: opacity 1s linear;
-	-ms-transition: opacity 1s linear;
-	-o-transition: opacity 1s linear;
-	transition: opacity 1s linear;
-	opacity: .5;
-}
-.carousel.carousel-fade .active.item {
-	opacity: 1;
-}
-.carousel.carousel-fade .active.left,
-.carousel.carousel-fade .active.right {
-	left: 0;
-	z-index: 2;
-	opacity: 0;
-	filter: alpha(opacity=0);
-}
-/* Carousel Overlay */
-.carousel-overlay {
-	position: absolute;
-	bottom: 100px;
-	right: 0;
-	left: 0;
-}
-
-/****************************/
-/*                          */
-/*Styles below just for Demo*/
-/*                          */
-/****************************/
 .navbar-default .navbar-brand {
 	color:	rgba(128, 0, 0, 1);
 }
@@ -152,6 +115,43 @@ Main Carousel
     margin-bottom: 8px;
     color: rgba(128, 0, 0, 1);
 }
+
+/*
+--------------------------------------------------
+Main Carousel
+--------------------------------------------------
+*/
+.slide, .slide, .slide {
+	min-height: 560px; /* Must have a height or min-height set due to use of background images */
+	background-size: cover;
+	background-position: center center;
+}
+/* Carousel Fade Effect */
+.carousel.carousel-fade .item {
+	-webkit-transition: opacity 1s linear;
+	-moz-transition: opacity 1s linear;
+	-ms-transition: opacity 1s linear;
+	-o-transition: opacity 1s linear;
+	transition: opacity 1s linear;
+	opacity: .5;
+}
+.carousel.carousel-fade .active.item {
+	opacity: 1;
+}
+.carousel.carousel-fade .active.left,
+.carousel.carousel-fade .active.right {
+	left: 0;
+	z-index: 2;
+	opacity: 0;
+	filter: alpha(opacity=0);
+}
+/* Carousel Overlay */
+.carousel-overlay {
+	position: absolute;
+	bottom: 200px;
+	right: 0;
+	left: 0;
+}
 .carousel-overlay {
 	color: white;
 	text-shadow: 1px 1px 1px rgba(0,0,0,.75);
@@ -170,8 +170,13 @@ Main Carousel
     font-size: 1.75em;
     padding: 10px 30px;
 }
-.btn-success {
+.btn-success, .btn-success:visited {
 	background-color: rgba(97, 97, 255, 1);
+}
+.btn-success:hover {
+	color: rgba(0, 0, 128, 1);
+  	background-color: #fff;
+    border-bottom: 4px solid rgba(97, 97, 255, 1);
 }
 .circles {
 	margin-top: 20px;
@@ -186,68 +191,91 @@ Main Carousel
     display: block;
     margin: auto;
 }
-.logo-frame {
-	height: 46px;
-	/*border-radius:8px;*/
-	margin-top: 10px;
-	margin-left: 10px;
-}
 
-
-
+/*
+--------------------------------------------------
+Logo Placement
+--------------------------------------------------
+*/
 .logo img {
 	position:absolute;
 	top: -10px;
-	left: -10px;
-width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
-max-width: 100%;
+	left: -20px;
+	width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
+	max-width: 100%;
 }
+@media (max-width:1200px) and (min-width: 993px) { 
+	.logo img {
+	    width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
+	    max-width: 100% !important;
+	}
+	
+	.carousel-overlay h1 {
+		font-size: 3.1em;
+	}
 
-@media (max-width:480px) { 
-.logo img {
-    width: 70% \9; /*Force IE10 and below to size SVG images correctly*/
-    max-width: 70% !important;
+	.btn-success {
+		font-size: 1.5em !important;
+	}
 }
-}
+@media (max-width:992px) and (min-width: 769px) { 
+	.logo img {
+	    width: 95% \9; /*Force IE10 and below to size SVG images correctly*/
+	    max-width: 95% !important;
+	}
+	
+	.carousel-overlay h1 {
+		font-size: 2.7em;
+	}
 
-@media (max-width:400px) { 
-.logo img {
-    width: 75% \9; /*Force IE10 and below to size SVG images correctly*/
-    max-width: 75%;
+	.btn-success {
+		font-size: 1.4em !important;
+	}
 }
-}
+@media (max-width:768px) and (min-width: 481px) { 
+	.logo img {
+	    width: 90% \9; /*Force IE10 and below to size SVG images correctly*/
+	    max-width: 90% !important;
+	}
+	
+	.carousel-overlay h1 {
+		font-size: 2.3em;
+	}
 
-@media (max-width:385px) { 
-.logo img {
-    width: 70% \9; /*Force IE10 and below to size SVG images correctly*/
-    max-width: 70%;
+	.btn-success {
+		font-size: 1.3em !important;
+	}
 }
-}
+@media (max-width:480px) and (min-width: 321px) { 
+	.logo img {
+	    width: 80% \9; /*Force IE10 and below to size SVG images correctly*/
+	    max-width: 80% !important;
+	}
+	
+	.carousel-overlay h1 {
+		font-size: 1.9em;
+	}
 
-@media (max-width:345px) { 
-.logo img {
-    width: 65% \9; /*Force IE10 and below to size SVG images correctly*/
-    max-width: 65%;
+	.btn-success {
+		font-size: 1.2em !important;
+	}
 }
-}
+@media (max-width:320px) { 
+	.logo img {
+	    width: 50% \9; /*Force IE10 and below to size SVG images correctly*/
+	    max-width: 50%;
+	}
+	
+	.carousel-overlay h1 {
+		font-size: 1.4em;
+	}
 
-@media (max-width:335px) { 
-.logo img {
-    width: 60% \9; /*Force IE10 and below to size SVG images correctly*/
-    max-width: 60%;
+	.btn-success {
+		font-size: 1.1em !important;
+	}
 }
-}
-
-@media (max-width:325px) { 
-.logo img {
-    width: 55% \9; /*Force IE10 and below to size SVG images correctly*/
-    max-width: 55%;
-}
-}
-
-@media (max-width:315px) { 
-.logo img {
-    width: 50% \9; /*Force IE10 and below to size SVG images correctly*/
-    max-width: 50%;
-}
+.logo-frame {
+	height: 46px;
+	margin-top: 10px;
+	margin-left: 10px;
 }

@@ -8,8 +8,8 @@
 
 		<title>QuinnRose Talent Connection</title>
 
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+        <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'css/font-awesome.min.css' %}" type="text/css" rel="stylesheet">
 		<!-- Local CSS -->
 		<link href="{% static 'css/base.css' %}" rel="stylesheet">
         
@@ -19,11 +19,9 @@
 
     </head>
     
-    <!-- HTML code from Bootply.com editor -->
-    
     <body  >
         
-        <!--navigation bar-->
+        <!--Begin navbar -->
 		<nav class="navbar navbar-default transparent navbar-static-top" role="navigation" id="navbar-main">
 		    <div class="container">
 		        <div class="navbar-header">
@@ -61,11 +59,11 @@
 		        </div>
 		    </div>
 		</nav>
-		<!--end nav bar-->
+		<!-- End navbar -->
 
-		<!--begin bg-carousel-->
+		<!-- Begin carousel background -->
 		<div id="bg-fade-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-		<!-- Wrapper for slides -->
+			<!-- Begin wrapper for slides -->
 		    <div class="carousel-inner">
 		    	{% for img in carousel_images %}
 		    		{% if forloop.counter == 1 %}
@@ -76,30 +74,24 @@
 		            <div class="slide slide{{ forloop.counter }}"></div>
 		        </div>
 		        {% endfor %}
-{#		        <div class="item active">#}
-{#		            <div class="slide1"></div>#}
-{#		        </div>#}
-{#		        <div class="item">#}
-{#		            <div class="slide2"></div>#}
-{#		        </div>#}
-{#		        <div class="item">#}
-{#		            <div class="slide3"></div>#}
-{#		        </div>#}
-		    </div><!-- .carousel-inner --> 
+		    </div>
+			<!-- End wrapper for slides -->
+			<!-- Begin carousel content text -->
 		    <div class="container carousel-overlay text-center">
-		        <h1>Get Kittens Free All Week Long</h1>
-		        <p class="lead">Special orders also available upon request.  Check out our pricing.</p>
-		        <a class="btn btn-lg btn-success fp-buttons" href="#">
-		            <span class="fa fa-dollar"></span> Get Pricing
+		        <h1>Bringing talent together...</h1>
+{#		        <p class="lead">Special orders also available upon request.  Check out our pricing.</p>#}
+		        <a class="btn btn-lg btn-success" href="#">
+		            <span class="fa fa-check"></span> Artists
 		        </a>
-		        <a class="btn btn-lg btn-success fp-buttons" href="#">
-		            <span class="fa fa-check"></span> Sign Up
+		        <a class="btn btn-lg btn-success" href="#">
+		            <span class="fa fa-check"></span> Organizations
 		        </a>
 		    </div>
-		</div><!-- .carousel --> 
-		<!--end bg-carousel-->
+			<!-- End carousel content text -->
+		</div> 
+		<!-- End carousel background -->
 		
-		<!--The rest of your page content below-->
+		<!-- Begin page content -->
 		<div class="container">
 		  <!-- Example row of columns -->
 		  <div class="row text-center">
@@ -133,7 +125,7 @@
 		      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 		    </div>
 		    <div class="col-md-5 text-center">
-		      <img src="http://placehold.it/350/398439/fff&amp;text=Image+Holder" alt="placeholder" class="featurette-image img-responsive">
+		      <img src="{% static 'images/placeholder.png' %}" alt="placeholder" class="featurette-image img-responsive">
 		    </div>
 		  </div>
 		  
@@ -145,9 +137,10 @@
 		      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 		    </div>
 		    <div class="col-md-5 col-md-pull-7 text-center">
-		      <img src="http://placehold.it/350/398439/fff&amp;text=Image+Holder" alt="placeholder" class="featurette-image img-responsive">
+		      <img src="{% static 'images/placeholder.png' %}" alt="placeholder" class="featurette-image img-responsive">
 		    </div>    
 		  </div>
+		<!-- End page content -->
 		  
 		  <hr>
 		  
@@ -157,11 +150,12 @@
 		      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
 		    </div>
 		    <div class="col-md-5 text-center">
-		      <img src="http://placehold.it/350/398439/fff&amp;text=Image+Holder" alt="placeholder" class="featurette-image img-responsive">
+		      <img src="{% static 'images/placeholder.png' %}" alt="placeholder" class="featurette-image img-responsive">
 		    </div>
 		  </div>
 		  <!-- /END THE FEATURETTES -->
 		</div>
+		
 		<hr>
 		<!-- FOOTER -->
 		<footer class="container-fluid">
@@ -199,11 +193,11 @@
         
 	    <!-- Bootstrap core JavaScript -->
 	    <script src="{% static 'js/jquery.min.js' %}"></script>
-	    <script type='text/javascript' src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	    <script type='text/javascript' src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 	    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-	    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}/"></script>
+	    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
 		<!-- Local JavaScript -->
-	    <script src="{% static 'js/base.js' %}/"></script>
+	    <script src="{% static 'js/base.js' %}"></script>
 	    
 	    <script>
 	    	{% for img in carousel_images %}
