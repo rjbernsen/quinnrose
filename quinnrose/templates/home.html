@@ -1,5 +1,79 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
 
-{% block header_text%}Start a new To-Do list{% endblock %}
-
-{% block form_action %}{% url 'new_list' %}{% endblock %}
+		{% block page_content %}
+		<!-- Begin carousel background -->
+		<div id="bg-fade-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+			<!-- Begin wrapper for slides -->
+		    <div class="carousel-inner">
+		    	{% for img in carousel_images %}
+		    		{% if forloop.counter == 1 %}
+		        <div class="item active">
+		        	{% else %}
+		        <div class="item">
+		        	{% endif %}
+		            <div class="slide slide{{ forloop.counter }}"></div>
+		        </div>
+		        {% endfor %}
+		    </div>
+			<!-- End wrapper for slides -->
+			<!-- Begin carousel content -->
+		    <div class="container carousel-overlay text-center">
+		        <h1>Bringing talent together...</h1>
+		        <p>&nbsp;</p>
+{#		        <p class="lead">Special orders also available upon request.  Check out our pricing.</p>#}
+		        <a class="btn btn-lg btn-success" href="#">
+		            <span class="fa fa-check"></span> Artists
+		        </a>
+		        <a class="btn btn-lg btn-success" href="#">
+		            <span class="fa fa-check"></span> Organizations
+		        </a>
+		    </div>
+			<!-- End carousel content -->
+		</div> 
+		<!-- End carousel background -->
+		
+		<!-- Begin main content -->
+		<div class="container">
+		  	<!-- Begin home page info -->
+			<div class="row text-center">
+				{% for info_item in home_page_info %}
+				<div class="col-md-4">
+					<div class="fa fa-{{ info_item.icon }} fa-3x circles"></div>
+					<h2>{{ info_item.title }}</h2>
+					<p>{{ info_item.description }}</p>
+					<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>
+				</div>
+				{% endfor %}
+			</div>
+			<!-- End home page info -->
+		  
+		  	<!-- Begin featurettes -->
+			{% for featurette in featurettes %}
+				{% cycle 0 1 as cycle_value silent %}
+			<hr>
+			<div class="row">
+				{% if cycle_value == 0 %}
+				<div class="col-md-7">
+				{% else %}
+				<div class="col-md-7 col-md-push-5">
+				{% endif %}
+					<h2 class="featurette-heading">{{ featurette.title }}
+					<span class="text-muted">{{ featurette.sub_title }}</span></h2>
+					<p class="lead">{{ featurette.description }}</p>
+				</div>
+				{% if cycle_value == 0 %}
+				<div class="col-md-5 text-center">
+				{% else %}
+				<div class="col-md-5 col-md-pull-7 text-center">
+				{% endif %}
+					<img src="{% static 'images/' %}{{ featurette.image_file_name }}" class="featurette-image img-responsive">
+				</div>
+			</div>
+			{% endfor %}
+			
+		  <!-- End featurettes -->
+		</div>
+		<!-- End main content -->
+		{% endblock %}
+		
