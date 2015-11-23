@@ -2,6 +2,8 @@ import os
 import glob
 from django.shortcuts import render
 from .menus import menu
+from quinnrose.home_page_info import home_page_info
+from quinnrose.featurettes import featurettes
 
 def home_page(request):
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -13,6 +15,8 @@ def home_page(request):
     context = {
         'menu': menu,
         'carousel_images': carousel_images,
+        'home_page_info': home_page_info,
+        'featurettes': featurettes,
     }
     return render(request,'home.html', context)
 

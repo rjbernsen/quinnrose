@@ -76,9 +76,10 @@
 		        {% endfor %}
 		    </div>
 			<!-- End wrapper for slides -->
-			<!-- Begin carousel content text -->
+			<!-- Begin carousel content -->
 		    <div class="container carousel-overlay text-center">
 		        <h1>Bringing talent together...</h1>
+		        <p>&nbsp;</p>
 {#		        <p class="lead">Special orders also available upon request.  Check out our pricing.</p>#}
 		        <a class="btn btn-lg btn-success" href="#">
 		            <span class="fa fa-check"></span> Artists
@@ -87,71 +88,73 @@
 		            <span class="fa fa-check"></span> Organizations
 		        </a>
 		    </div>
-			<!-- End carousel content text -->
+			<!-- End carousel content -->
 		</div> 
 		<!-- End carousel background -->
 		
 		<!-- Begin page content -->
 		<div class="container">
-		  <!-- Example row of columns -->
-		  <div class="row text-center">
-		    <div class="col-md-4">
-		      <div class="fa fa-star fa-3x circles"></div>
-		      <h2>Key Point #1</h2>
-		      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		      <p><a class="btn btn-default" href="#" role="button">Full Story »</a></p>
-		    </div>
-		    <div class="col-md-4">
-		      <div class="fa fa-star fa-3x circles"></div>
-		      <h2>Key Point #2</h2>
-		      <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-		      <p><a class="btn btn-default" href="#" role="button">Full Story »</a></p>
-		    </div>
-		    <div class="col-md-4">
-		      <div class="fa fa-star fa-3x circles"></div>
-		      <h2>Key Point #3</h2>
-		      <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-		      <p><a class="btn btn-default" href="#" role="button">Full Story »</a></p>
-		    </div>
-		  </div>
+		  	<!-- Begin home page info -->
+			<div class="row text-center">
+				{% for info_item in home_page_info %}
+				<div class="col-md-4">
+					<div class="fa fa-{{ info_item.icon }} fa-3x circles"></div>
+					<h2>{{ info_item.title }}</h2>
+					<p>{{ info_item.description }}</p>
+					<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} »</a></p>
+				</div>
+				{% endfor %}
+			</div>
+			<!-- End home page info -->
 		  
-		  <!-- Begin featurettes -->
-		  <hr>
-		  
-		  <div class="row">
-		    <div class="col-md-7">
-		      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">First featurette sub-heading.</span></h2>
-		      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-		    </div>
-		    <div class="col-md-5 text-center">
-		      <img src="{% static 'images/carousel-06.jpg' %}" alt="placeholder" class="featurette-image img-responsive">
-		    </div>
-		  </div>
-		  
-		  <hr>
-		  
-		  <div class="row">
-		    <div class="col-md-7 col-md-push-5">
-		      <h2 class="featurette-heading">Second featurette heading. <span class="text-muted">Second featurette sub-heading.</span></h2>
-		      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-		    </div>
-		    <div class="col-md-5 col-md-pull-7 text-center">
-		      <img src="{% static 'images/carousel-07.jpg' %}" alt="placeholder" class="featurette-image img-responsive">
-		    </div>    
-		  </div>
-		<!-- End page content -->
-		  
-		  <hr>
-		  
-		  <div class="row">
-		    <div class="col-md-7">
-		      <h2 class="featurette-heading">Third featurette heading. <span class="text-muted">Third featurette sub-heading.</span></h2>
-		      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-		    </div>
-		    <div class="col-md-5 text-center">
-		      <img src="{% static 'images/carousel-08.jpg' %}" alt="placeholder" class="featurette-image img-responsive">
-		    </div>
-		  </div>
+		  	<!-- Begin featurettes -->
+			{% for featurette in featurettes %}
+				{% cycle 0 1 as cycle_value silent %}
+			<hr>
+			<div class="row">
+				{% if cycle_value == 0 %}
+				<div class="col-md-7">
+				{% else %}
+				<div class="col-md-7 col-md-push-5">
+				{% endif %}
+					<h2 class="featurette-heading">{{ featurette.title }}
+					<span class="text-muted">{{ featurette.sub_title }}</span></h2>
+					<p class="lead">{{ featurette.description }}</p>
+				</div>
+				{% if cycle_value == 0 %}
+				<div class="col-md-5 text-center">
+				{% else %}
+				<div class="col-md-5 col-md-pull-7 text-center">
+				{% endif %}
+					<img src="{% static 'images/' %}{{ featurette.image_file_name }}" class="featurette-image img-responsive">
+				</div>
+			</div>
+			{% endfor %}
+			
+{#			<hr>#}
+			
+{#			<div class="row">#}
+{#				<div class="col-md-7 col-md-push-5">#}
+{#					<h2 class="featurette-heading">Second featurette heading.#}
+{#					<span class="text-muted">Second featurette sub-heading.</span></h2>#}
+{#					<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>#}
+{#				</div>#}
+{#				<div class="col-md-5 col-md-pull-7 text-center">#}
+{#					<img src="{% static 'images/carousel-07.jpg' %}" alt="placeholder" class="featurette-image img-responsive">#}
+{#				</div>    #}
+{#			</div>#}
+			
+{#			<hr>#}
+			
+{#			<div class="row">#}
+{#			<div class="col-md-7">#}
+{#			<h2 class="featurette-heading">Third featurette heading. <span class="text-muted">Third featurette sub-heading.</span></h2>#}
+{#			<p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>#}
+{#			</div>#}
+{#			<div class="col-md-5 text-center">#}
+{#			<img src="{% static 'images/carousel-08.jpg' %}" alt="placeholder" class="featurette-image img-responsive">#}
+{#			</div>#}
+{#			</div>#}
 		  <!-- End featurettes -->
 		</div>
 		
