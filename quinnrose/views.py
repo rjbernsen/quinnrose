@@ -6,6 +6,7 @@ from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
 
 def home_page(request):
+    page_title = 'QuinnRose Talent Connection'
     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     image_path = os.path.join(root_dir, 'static', 'images') + '/carousel-*'
     carousel_images = [
@@ -13,6 +14,7 @@ def home_page(request):
     ]
     
     context = {
+        'page_title': page_title,
         'menu': menu,
         'carousel_images': carousel_images,
         'home_page_info': home_page_info,
@@ -41,6 +43,13 @@ def home_page(request):
 # def my_lists(request, email):
 #     owner = User.objects.get(email=email)
 #     return render(request, 'my_lists.html', {'owner': owner})
+def error404(request):
+    page_title = 'QuinnRose Talent Connection - Page Not Found!'
+
+    context = {
+        'page_title': page_title,
+    }
+    return render(request,'404.html', context)
 
 if __name__ == '__main__':
     image_path = '../static/images/carousel-*'

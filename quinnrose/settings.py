@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'copyright',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -141,3 +142,5 @@ LOGGING = {
     },
     'root': {'level': 'INFO'},
 }
+
+COPY_START_YEAR = 2015

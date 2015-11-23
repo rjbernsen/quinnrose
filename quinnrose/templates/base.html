@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load copyrighttags %}
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-		<title>QuinnRose Talent Connection</title>
+		<title>{{ page_title }}</title>
 
         <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 		<link href="{% static 'css/font-awesome.min.css' %}" type="text/css" rel="stylesheet">
@@ -70,9 +71,9 @@
 		<hr>
 	    <footer class="footer">
 			<div class=" conainer-fluid row-same-height">
-				<div class="col-md-offset-3 col-md-2 text-center">© 2015 QuinnRose</div>
-				<div class="col-md-2 text-center"><a href="#">Privacy</a></div>
-				<div class="col-md-2 text-center"><a href="#">Terms</a></div>
+				<div class="col-md-offset-3 col-md-2 text-center text-nowrap">© {% getCopyrightYears %} QuinnRose</div>
+				<div class="col-md-2 text-center text-nowrap"><a href="/privacy">Privacy</a></div>
+				<div class="col-md-2 text-center text-nowrap"><a href="/terms">Terms</a></div>
 		  	</div>
 	    </footer>
 		
@@ -83,13 +84,6 @@
 	    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
 		<!-- Local JavaScript -->
 	    <script src="{% static 'js/base.js' %}"></script>
-	    
-	    <script>
-	    	{% for img in carousel_images %}
-		    var slide{{ forloop.counter }} = document.getElementsByClassName('slide{{ forloop.counter }}')[0];
-			slide{{ forloop.counter }}.style.backgroundImage = "url('{% static 'images/' %}{{ img }}')";
-	        {% endfor %}
-	    
 	    
 	    </script>
     </body>

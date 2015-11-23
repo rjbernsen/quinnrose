@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+		{% block page_content %}
+		<input id="errorPageToken" type="hidden" value="Local Error Page">
+
+		<!-- Begin carousel background -->
+		<div class="container">
+		    <div class="row">
+		        <div class="col-md-12">
+		            <div class="error-template">
+		                <h1>Oops!</h1>
+		                <h3>Couldn't find that page...</h3>
+		               <div class="error-details">
+		                    Double check the link in the address bar above and try again, or...
+		                </div>
+		                <div class="error-actions">
+		                    <a href="/" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-home"></span>
+		                        Take Me Home </a><a href="/contact" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+		</div>
+		{% endblock %}

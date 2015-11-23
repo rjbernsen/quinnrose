@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
-
+		
 		{% block page_content %}
 		<!-- Begin carousel background -->
 		<div id="bg-fade-carousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -75,5 +75,13 @@
 		  <!-- End featurettes -->
 		</div>
 		<!-- End main content -->
+
+	    <script>
+	    	{% for img in carousel_images %}
+		    var slide{{ forloop.counter }} = document.getElementsByClassName('slide{{ forloop.counter }}')[0];
+			slide{{ forloop.counter }}.style.backgroundImage = "url('{% static 'images/' %}{{ img }}')";
+	        {% endfor %}
+	    </script>
+	    
 		{% endblock %}
-		
+	    
