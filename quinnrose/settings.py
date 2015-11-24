@@ -129,15 +129,52 @@ STATICFILES_DIRS = (
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
     'handlers': {
+        'null': {
+            'level':'DEBUG',
+            'class':'django.utils.log.NullHandler',
+        },
         'console': {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
         },
+        'file_functional_tests': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'functional_tests.log'),
+            'formatter': 'verbose',
+            'maxBytes': 1024*1024* 5, # 5 MB
+            'backupCount': 1,
+        },
+        'file_tests': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'tests.log'),
+            'formatter': 'verbose',
+            'maxBytes': 1024*1024* 5, # 5 MB
+            'backupCount': 1,
+        },
     },
     'loggers': {
         'django': {
-            'handlers': ['console'],
+            'handlers': ['null'],
+            'propagate': False, # Ignore other handlers, i.e. stdout
+        },
+        'quinnrose.functional_tests': {
+            'handlers': ['file_functional_tests'],
+            'propagate': False, # Ignore other handlers, i.e. stdout
+        },
+        'quinnrose.quinnrose.tests': {
+            'handlers': ['file_tests'],
+            'propagate': False, # Ignore other handlers, i.e. stdout
         },
     },
     'root': {'level': 'INFO'},

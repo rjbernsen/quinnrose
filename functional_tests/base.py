@@ -2,7 +2,8 @@ import sys
 import os
 import time
 from datetime import datetime
-from urllib.parse import urljoin
+from urllib.parse import urljoin, urlparse
+import logging
 # from django.conf import settings
 # from django.contrib.auth import BACKEND_SESSION_KEY, SESSION_KEY, get_user_model
 # from django.contrib.sessions.backends.db import SessionStore
@@ -19,6 +20,8 @@ SCREEN_DUMP_LOCATION = os.path.join(
 
 class FunctionalTest(StaticLiveServerTestCase):
 
+    logger = logging.getLogger('quinnrose.functional_tests')
+    
     @classmethod
     def setUpClass(cls):
         for arg in sys.argv:
@@ -64,15 +67,21 @@ class FunctionalTest(StaticLiveServerTestCase):
         self.browser.get(static_url)
         # Need to pause to let the url load.
         time.sleep(0.1)
-#         if 'styles' in static_url:
-#             print('{} source = {}'.format(static_url,self.browser.page_source))
+
+        # Check for a generic browser error message.
         self.wait_for(
-            lambda: self.assertNotIn(
-                'not found on this server',
-                self.browser.page_source,
-                msg='Invalid Static URL: {}'.format(static_url)
-            )
+            lambda: {
+                self.assertNotIn(
+                    'not found on this server',
+                    self.browser.page_source,
+                    msg='Invalid Static URL: {}'.format(static_url)
+                )
+            }
         )
+        
+        # Also check for the site error page.
+        check_bool = 'errorPageToken' in self.browser.page_source
+        self.assertFalse(check_bool,msg='Invalid Static URL: {}'.format(static_url))
         
     def get_element_by_tag_name(self, tag_name):
         self.wait_for_element_with_tag(tag_name)

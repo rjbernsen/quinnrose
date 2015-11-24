@@ -1,5 +1,5 @@
 from .base import FunctionalTest
-from unittest import skip
+# from unittest import skip
 
 class LayoutAndStylingTest(FunctionalTest):
 
@@ -28,16 +28,17 @@ class LayoutAndStylingTest(FunctionalTest):
 
         for css_url in css_list:
             if css_url != None:
-#                 print('css_url = {}'.format(css_url))
+#                 self.logger.info('css_url = {}'.format(css_url))
                 self.check_static_file_exists(css_url)
  
+#         print('js_list = {}'.format(js_list))
         for js_url in js_list:
-            if js_url != None:
-#                 print('js_url = {}'.format(js_url))
+            if js_url != None and len(js_url) > 0:
+#                 self.logger.info('js_url = {}'.format(js_url))
                 self.check_static_file_exists(js_url)
  
         for img_url in img_list:
             if img_url != None:
-#                 print('img_url = {}'.format(img_url))
+#                 self.logger.info('img_url = {}'.format(img_url))
                 self.check_static_file_exists(img_url)
  
