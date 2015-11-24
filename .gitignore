@@ -2,3 +2,4 @@
 node_modules
 functional_tests/screendumps
 .less/bootstrap/*
+/logs
