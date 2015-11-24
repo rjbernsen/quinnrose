@@ -15,12 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-from quinnrose.views import home_page
+from quinnrose.views import HomePage, Privacy, Terms
 
 handler404 ='quinnrose.views.error404'
 
 urlpatterns = [
-    url(r'^$', home_page, name='home'),
+    url(r'^$', HomePage.as_view(), name='home'),
+    url(r'^privacy$', Privacy.as_view(), name='privacy'),
+    url(r'^terms$', Terms.as_view(), name='terms'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^.+$', handler404),
 ]

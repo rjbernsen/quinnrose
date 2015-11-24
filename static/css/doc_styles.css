@@ -1,0 +1,11 @@
+ol.doc > li {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+li.doc-section {
+	font-weight: bold;
+	font-size: 130%;
+}
+ul.doc > li {
+	margin-left: 40px;
+}
