@@ -7,14 +7,15 @@ be imported into templates.
 """
 
 COMPANY_NAME = 'QuinnRose'
-SITE_NAME = 'Talent Connection'
-FULL_SITE_NAME = '{} {}'.format(COMPANY_NAME, SITE_NAME)
 COMPANY_ADDRESS1 = '11618 Corkwood Drive'
 COMPANY_ADDRESS2 = None
 COMPANY_CITY = 'Houston'
 COMPANY_STATE = 'Texas'
 COMPANY_POSTAL_CODE = '77089'
 COMPANY_COUNTRY = 'United States'
+
+SITE_NAME = 'Talent Connection'
+FULL_SITE_NAME = '{} {}'.format(COMPANY_NAME, SITE_NAME)
 
 CONFIG_CONTEXT = {
     'company_name': COMPANY_NAME,

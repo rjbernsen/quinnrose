@@ -26,7 +26,7 @@ SECRET_KEY = 'krr)oi)qtu2m)jhk!)nr&-2_hl94u=24n&1jq22x11x6g7&h&a'
 DEBUG = True
 
 DOMAIN = 'localhost'
-ALLOWED_HOSTS = [DOMAIN]
+ALLOWED_HOSTS = [DOMAIN,'127.0.0.1/']
 
 
 # Application definition

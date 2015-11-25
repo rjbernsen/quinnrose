@@ -61,6 +61,30 @@ class HomePage(BasePage):
 
         return context
 
+class About(BasePage):
+    template_name = 'about.html'
+    page_sub_title = 'About'
+
+    section = None
+    
+    sections = [
+        None,
+        'the_site',
+        'core_values',
+        'mission_statement',
+        'we_do',
+        'we_dont'
+    ]
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(self.page_sub_title, **kwargs)
+
+        section = context.get('section') or '1'
+        
+        self.template_name = 'about_{}.html'.format(self.sections[int(section)])
+        
+        return context
+    
 class Privacy(BasePage):
     template_name = 'privacy.html'
     page_sub_title = 'Privacy Policy'
@@ -68,7 +92,6 @@ class Privacy(BasePage):
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(self.page_sub_title, **kwargs)
-
         return context
     
 class Terms(BasePage):

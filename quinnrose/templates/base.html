@@ -36,7 +36,7 @@
 		        <div class="collapse navbar-collapse" id="navCollapse">
 					<ul class="nav navbar-nav navbar-right">
 						{% for item in menu.getItems %}
-						<li><a href="{{ item.url }}">{{ item.label }}</a></li>
+						<li><a id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
 						{% endfor %}
 						{% for dropdown in menu.getDropdownMenus %}
 							<ul class="nav navbar-nav navbar-right">
@@ -49,7 +49,7 @@
 											{% elif item.url == None %}
 										<li class="dropdown-header">{{ item.label }}</li>
 											{% else %}
-										<li><a href="{{ item.url }}">{{ item.label }}</a></li>
+										<li><a id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
 											{% endif %}
 										{% endfor %}
 									</ul>
@@ -73,8 +73,8 @@
 	    <footer class="footer">
 			<div class=" conainer-fluid row-same-height">
 				<div class="col-md-offset-3 col-md-2 text-center text-nowrap">© {% getCopyrightYears %} QuinnRose</div>
-				<div class="col-md-2 text-center text-nowrap"><a href="/privacy">Privacy</a></div>
-				<div class="col-md-2 text-center text-nowrap"><a href="/terms">Terms</a></div>
+				<div class="col-md-2 text-center text-nowrap"><a id="link_privacy" href="/privacy">Privacy</a></div>
+				<div class="col-md-2 text-center text-nowrap"><a id="link_terms" href="/terms">Terms</a></div>
 		  	</div>
 	    </footer>
 		

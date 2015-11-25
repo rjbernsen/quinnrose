@@ -27,5 +27,16 @@ class HomePageTest(BaseTestCase):
 class HomeSubPagesTest(BaseTestCase):
 
     def test_page_renders_correct_template(self):
+#         self.check_page_renders_correct_template('/about', 'about.html')
         self.check_page_renders_correct_template('/privacy', 'privacy.html')
+        self.check_page_renders_correct_template('/terms', 'terms.html')
 
+class AboutPageTest(BaseTestCase):
+    
+    def test_page_renders_correct_template(self):
+        self.check_page_renders_correct_template('/about',   'about_the_site.html')
+        self.check_page_renders_correct_template('/about/1', 'about_the_site.html')
+        self.check_page_renders_correct_template('/about/2', 'about_core_values.html')
+        self.check_page_renders_correct_template('/about/3', 'about_mission_statement.html')
+        self.check_page_renders_correct_template('/about/4', 'about_we_do.html')
+        self.check_page_renders_correct_template('/about/5', 'about_we_dont.html')

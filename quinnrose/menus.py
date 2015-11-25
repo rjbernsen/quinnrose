@@ -10,7 +10,7 @@ class Menu(object):
         
         self.items = []
         self.dropdown_menus = []
-        
+    
     def addItem(self, menu_item):
         
         self.items.append(menu_item)
@@ -61,6 +61,10 @@ class MenuItem(object):
         self.url = url
         self.separator = separator
 
+    def getId(self):
+        
+        return "menu_{}".format(self.label.replace(' ','_').lower())
+    
 # Main Menu Items
 # --------------------------------------
 menu = Menu()

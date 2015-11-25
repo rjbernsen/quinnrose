@@ -12,7 +12,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import WebDriverException
 
-DEFAULT_WAIT = 5
+DEFAULT_WAIT = 3
 TEST_EMAIL = 'edith@mockmyid.com'
 SCREEN_DUMP_LOCATION = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), 'screendumps'
@@ -62,27 +62,30 @@ class FunctionalTest(StaticLiveServerTestCase):
         self.browser.quit()
         super().tearDown()
 
+    def check_for_page_not_found(self, page_url, page_source):
+        
+        # Check for a generic browser error message.
+        self.wait_for(
+            lambda: {
+                self.assertNotIn(
+                    'not found on this server',
+                    page_source,
+                    msg='Invalid Static URL: {}'.format(page_url)
+                )
+            }
+        )
+        
+        # Also check for the site error page.
+        check_bool = 'errorPageToken' in page_source
+        self.assertFalse(check_bool,msg='Invalid URL: {}'.format(page_url))
+
     def check_static_file_exists(self, url_part):
         static_url = urljoin(self.server_url, url_part)
         self.browser.get(static_url)
         # Need to pause to let the url load.
         time.sleep(0.1)
 
-        # Check for a generic browser error message.
-        self.wait_for(
-            lambda: {
-                self.assertNotIn(
-                    'not found on this server',
-                    self.browser.page_source,
-                    msg='Invalid Static URL: {}'.format(static_url)
-                )
-            }
-        )
-        
-        # Also check for the site error page.
-        check_bool = 'errorPageToken' in self.browser.page_source
-        self.assertFalse(check_bool,msg='Invalid Static URL: {}'.format(static_url))
-        
+        self.check_for_page_not_found(static_url, self.browser.page_source)
     def get_element_by_tag_name(self, tag_name):
         self.wait_for_element_with_tag(tag_name)
         return self.browser.find_element_by_tag_name(tag_name)
