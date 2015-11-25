@@ -1,10 +1,12 @@
 import os
 import glob
-import logging
-from django.views.generic import TemplateView
+# import logging
+from django.core.mail import send_mail
 from django.shortcuts import render
+from django.views.generic import TemplateView, FormView
 
 from quinnrose.menus import menu
+from quinnrose.forms import ContactForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
 from quinnrose.config import CONFIG_CONTEXT
@@ -16,7 +18,6 @@ class BasePage(TemplateView):
 #         
 #         super().__init__(*args, **kwargs)
 #         
-    logging.info('line 16')
     def get_context_data(self, sub_title, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
@@ -40,11 +41,6 @@ class HomePage(BasePage):
     template_name = 'home.html'
     page_sub_title = None
     
-#     def __init__(self, *args, **kwargs):
-#         
-#         super().__init__(self.template_name, args, kwargs)
-        
-
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(self.page_sub_title, **kwargs)
@@ -84,7 +80,29 @@ class About(BasePage):
         self.template_name = 'about_{}.html'.format(self.sections[int(section)])
         
         return context
+
+class ContactFormView(FormView):
+    template_name = 'contact.html'
+    page_sub_title = 'Contact Us'
+    form_class = ContactForm
+    success_url = '/contact/thanks'
     
+    def form_valid(self, form):
+        from_email = form.cleaned_data.get('email')
+        message = form.cleaned_data.get('message')
+        send_mail(
+            subject='Subject',
+            message=message,
+            from_email=from_email,
+            recipient_list=['a@b.com'],
+        )
+        return super(ContactFormView, self).form_valid(form)
+            
+    def get_context_data(self, **kwargs):
+ 
+        context = super().get_context_data(**kwargs)
+        return context
+
 class Privacy(BasePage):
     template_name = 'privacy.html'
     page_sub_title = 'Privacy Policy'

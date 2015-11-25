@@ -40,3 +40,8 @@ class AboutPageTest(BaseTestCase):
         self.check_page_renders_correct_template('/about/3', 'about_mission_statement.html')
         self.check_page_renders_correct_template('/about/4', 'about_we_do.html')
         self.check_page_renders_correct_template('/about/5', 'about_we_dont.html')
+
+class ContactPageTest(BaseTestCase):
+    
+    def test_page_renders_correct_template(self):
+        self.check_page_renders_correct_template('/contact',   'contact.html')
