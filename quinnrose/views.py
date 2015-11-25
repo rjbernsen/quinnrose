@@ -112,6 +112,20 @@ class ContactFormView(BaseFormPage):
     form_class = ContactForm
     success_url = '/contact/thanks'
     
+    def get(self, request, *args, **kwargs):
+    
+        return super(ContactFormView, self).get(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        
+        form = self.form_class(request.POST)
+        
+        if form.is_valid():
+            # <process form cleaned data>
+            pass #return HttpResponseRedirect('/success/')
+
+        return render(request, self.success_url, {'form': form})
+    
     def form_valid(self, form):
         from_email = form.cleaned_data.get('email')
         message = form.cleaned_data.get('message')

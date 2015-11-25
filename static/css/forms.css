@@ -1,0 +1,16 @@
+select:required:invalid {
+  color: lightgray;
+}
+option[value=""] {
+  color: lightgray;
+}
+form .form-control::-moz-placeholder {
+  color: lightgray;
+  opacity: 1;
+}
+form .form-control:-ms-input-placeholder {
+  color: lightgray;
+}
+form .form-control::-webkit-input-placeholder {
+  color: lightgray;
+}

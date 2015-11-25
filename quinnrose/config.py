@@ -28,3 +28,11 @@ CONFIG_CONTEXT = {
     'company_postal_code': COMPANY_POSTAL_CODE,
     'company_country': COMPANY_COUNTRY
 }
+
+CONTACT_SUBJECT_EMAILS = [
+    ['Web site', 'webmaster@quinnrose.com'],
+    ['My artist profile', 'admin@quinnrose.com'],
+    ['My organization', 'admin@quinnrose.com'],
+    ['General question', 'info@quinnrose.com'],
+    ['Registration', 'registrar@quinnrose.com']
+]
