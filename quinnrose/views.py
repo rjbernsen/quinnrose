@@ -11,53 +11,75 @@ from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
 from quinnrose.config import CONFIG_CONTEXT
 
-class BasePage(TemplateView):
+class BasePage(object):
     default_title = CONFIG_CONTEXT['full_site_name']
     
-#     def __init__(self, template_name, *args, **kwargs):
-#         
-#         super().__init__(*args, **kwargs)
-#         
-    def get_context_data(self, sub_title, **kwargs):
+    def init(self, extra_page_context={}):
+        self.context = {
+            'page_title': self._get_title(),
+            'menu': menu,
+        }
+        
+        self.context.update(extra_page_context)
+        self.context.update(CONFIG_CONTEXT)
+        
+    def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+        context.update(self.context)
         
-        context.update(CONFIG_CONTEXT)
-        context['page_title'] = self._get_title(sub_title)
-        context['menu'] = menu
-
         return context
 
-    def _get_title(self, sub_title=None):
+    def _get_title(self):
         
-        if sub_title:
-            page_title = '{} - {}'.format(self.default_title,sub_title)
+        if self.page_sub_title:
+            page_title = '{} - {}'.format(self.default_title,self.page_sub_title)
         else:
             page_title = self.default_title
         
         return page_title
     
-class HomePage(BasePage):
+class BaseTemplatePage(BasePage, TemplateView):
+    """
+    This is simply a base class for the purpose of
+    multiple inheritance in the views.
+    """
+    pass
+
+class BaseFormPage(BasePage, FormView):
+    """
+    This is simply a base class for the purpose of
+    multiple inheritance in the views.
+    """
+    pass
+
+
+class HomePage(BaseTemplatePage):
     template_name = 'home.html'
     page_sub_title = None
     
     def get_context_data(self, **kwargs):
-
-        context = super().get_context_data(self.page_sub_title, **kwargs)
+        
 
         root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         image_path = os.path.join(root_dir, 'static', 'images') + '/carousel-*'
         carousel_images = [
             os.path.basename(p) for p in glob.glob(image_path)
         ]
+        
+        more_page_context = {
+            'carousel_images': carousel_images,
+            'home_page_info': home_page_info,
+            'featurettes': featurettes,
+        }
+
+        self.init(more_page_context)
     
-        context['carousel_images'] = carousel_images
-        context['home_page_info'] = home_page_info
-        context['featurettes'] = featurettes
+        context = super().get_context_data(**kwargs)
 
         return context
 
-class About(BasePage):
+class About(BaseTemplatePage):
     template_name = 'about.html'
     page_sub_title = 'About'
 
@@ -73,7 +95,10 @@ class About(BasePage):
     ]
     
     def get_context_data(self, **kwargs):
-        context = super().get_context_data(self.page_sub_title, **kwargs)
+        
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
 
         section = context.get('section') or '1'
         
@@ -81,7 +106,7 @@ class About(BasePage):
         
         return context
 
-class ContactFormView(FormView):
+class ContactFormView(BaseFormPage):
     template_name = 'contact.html'
     page_sub_title = 'Contact Us'
     form_class = ContactForm
@@ -100,25 +125,31 @@ class ContactFormView(FormView):
             
     def get_context_data(self, **kwargs):
  
+        self.init()
+        
         context = super().get_context_data(**kwargs)
         return context
 
-class Privacy(BasePage):
+class Privacy(BaseTemplatePage):
     template_name = 'privacy.html'
     page_sub_title = 'Privacy Policy'
 
     def get_context_data(self, **kwargs):
 
-        context = super().get_context_data(self.page_sub_title, **kwargs)
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
         return context
     
-class Terms(BasePage):
+class Terms(BaseTemplatePage):
     template_name = 'terms.html'
     page_sub_title = 'Terms and Conditions'
 
     def get_context_data(self, **kwargs):
 
-        context = super().get_context_data(self.page_sub_title, **kwargs)
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
 
         return context
     
