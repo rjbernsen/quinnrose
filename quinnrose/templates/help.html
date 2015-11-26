@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block page_specific_css %}
+		<link href="{% static 'css/help_styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+	<h3>Help</h3>
+</div>
+
+<div class="container-fluid">
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="list-group">
+					<a id="help_topics" href="/help/topics" class="list-group-item{% if section == 'topics' %} active{% endif %}">Topics</a>
+					<a id="help_faqs" href="/help/faqs" class="list-group-item{% if section == 'faqs' %} active{% endif %}">FAQs</a>
+				</div>
+			</div>
+			<div class="col-md-8 panel-text">
+				{% block help_page_content %}
+				{% endblock %}
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

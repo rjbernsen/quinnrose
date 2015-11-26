@@ -146,13 +146,13 @@ dropdown_menu.right = True
 
 item = MenuItem(
     label='Topics',
-    url='/help#topics'
+    url='/help/topics'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='FAQs',
-    url='/help#faqs'
+    url='/help/faqs'
 )
 dropdown_menu.addItem(item)
 

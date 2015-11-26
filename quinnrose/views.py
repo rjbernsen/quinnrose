@@ -141,7 +141,7 @@ class ContactFormView(BaseFormPage):
                     message=message,
                 )
 #                 raise SMTPAuthenticationError('asdf','asdf')
-                self.logger.info('sent_count = {}'.format(sent_count))
+#                 self.logger.info('sent_count = {}'.format(sent_count))
                 if sent_count != 1:
 
                     messages.error(request, 'Could not send the message. Please try again later.')
@@ -190,6 +190,23 @@ class ContactFormView(BaseFormPage):
         self.init()
         
         context = super().get_context_data(**kwargs)
+        return context
+
+class Help(BaseTemplatePage):
+    template_name = 'help.html'
+    page_sub_title = 'Help'
+
+    def get_context_data(self, **kwargs):
+        
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
+
+        section = context.get('section') or 'topics'
+        context['section'] = section
+        self.logger.info('section = {}'.format(section))
+        self.template_name = 'help_{}.html'.format(section)
+        
         return context
 
 class Privacy(BaseTemplatePage):
