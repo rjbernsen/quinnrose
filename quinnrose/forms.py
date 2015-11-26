@@ -21,7 +21,7 @@ class ContactForm(forms.Form):
                 'placeholder': 'user@example.com',
                 'class': 'form-control',
                 'required': 'required',
-                'data-error': "Don't forget to enter your email address!"
+#                 'data-error': "Don't forget to enter your email address!"
             }
         ),
         required=True
@@ -41,7 +41,7 @@ class ContactForm(forms.Form):
         choices=get_choices(),
         widget=forms.Select(
             attrs={
-                'class': 'form-control',
+                'class': 'form-control select-placeholder',
                 'required': 'required',
             }
         ),

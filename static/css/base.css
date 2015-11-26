@@ -54,7 +54,7 @@ Main Navbar
 .navbar-default .navbar-nav>li>a {
 	color: rgba(128, 0, 0, 1);
     text-transform: uppercase;
-    text-shadow: 1px 1px 1px rgba(0,0,0,.75);
+/*    text-shadow: 1px 1px 1px rgba(0,0,0,.75); */
 	border-radius: 4px;
     padding: 10px 15px;
     margin: 5px 0px;
@@ -264,6 +264,29 @@ a.list-group-item:focus,
 button.list-group-item:focus {
   text-decoration: none;
   background-color: rgba(229, 229, 255, 1);
+}
+
+/*
+--------------------------------------------------
+Message Panels (Alerts)
+--------------------------------------------------
+*/
+.alert-success {
+	color: rgba(77, 205, 77, 1);
+	background-color: rgba(229, 255, 229, 1);
+	border-color: rgba(102, 230, 102, 1);
+}
+
+/*
+--------------------------------------------------
+Buttons
+--------------------------------------------------
+*/
+/* Form Submit Standard */
+.btn-primary {
+	color: rgba(77, 77, 205, 1);
+	background-color: rgba(229, 229, 255, 1);
+	border-color: rgba(77, 77, 205, 1);
 }
 
 /*

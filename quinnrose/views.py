@@ -1,9 +1,13 @@
 import os
 import glob
+import logging
 # import logging
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response
+from django.template import RequestContext
+from django.contrib import messages
 from django.views.generic import TemplateView, FormView
+# from django.contrib.messages.views import SuccessMessageMixin
 
 from quinnrose.menus import menu
 from quinnrose.forms import ContactForm
@@ -14,6 +18,8 @@ from quinnrose.config import CONFIG_CONTEXT
 class BasePage(object):
     default_title = CONFIG_CONTEXT['full_site_name']
     
+    logger = logging.getLogger('quinnrose')
+
     def init(self, extra_page_context={}):
         self.context = {
             'page_title': self._get_title(),
@@ -110,32 +116,40 @@ class ContactFormView(BaseFormPage):
     template_name = 'contact.html'
     page_sub_title = 'Contact Us'
     form_class = ContactForm
-    success_url = '/contact/thanks'
+    success_message = "Message was sent successfully"
+#     success_url = '/contact/thanks'
     
     def get(self, request, *args, **kwargs):
     
         return super(ContactFormView, self).get(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
-        
+
         form = self.form_class(request.POST)
         
         if form.is_valid():
             # <process form cleaned data>
-            pass #return HttpResponseRedirect('/success/')
+            # return HttpResponseRedirect('/success/')
 
-        return render(request, self.success_url, {'form': form})
-    
-    def form_valid(self, form):
-        from_email = form.cleaned_data.get('email')
-        message = form.cleaned_data.get('message')
-        send_mail(
-            subject='Subject',
-            message=message,
-            from_email=from_email,
-            recipient_list=['a@b.com'],
-        )
-        return super(ContactFormView, self).form_valid(form)
+            messages.info(request, self.success_message)
+            return render_to_response(self.template_name,context_instance=RequestContext(request,self.get_context_data(form=self.form_class)))
+#             return render(request, self.template_name, {'form': self.form_class})
+        
+        return self.get(request, args, kwargs)
+
+#     def form_valid(self, form):
+#         self.logger.info('form_valid...')
+# 
+#  
+#         from_email = form.cleaned_data.get('email')
+#         message = form.cleaned_data.get('message')
+#         send_mail(
+#             subject='Subject',
+#             message=message,
+#             from_email=from_email,
+#             recipient_list=['a@b.com'],
+#         )
+#         return super(ContactFormView, self).form_valid(form)
             
     def get_context_data(self, **kwargs):
  

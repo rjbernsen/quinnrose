@@ -1,9 +1,4 @@
-select:required:invalid {
-  color: lightgray;
-}
-option[value=""] {
-  color: lightgray;
-}
+
 form .form-control::-moz-placeholder {
   color: lightgray;
   opacity: 1;
@@ -13,4 +8,13 @@ form .form-control:-ms-input-placeholder {
 }
 form .form-control::-webkit-input-placeholder {
   color: lightgray;
+}
+.select-placeholder {
+	color: lightgray;
+}
+select option:first-child {
+	color: lightgray;
+}
+select option {
+	color: #555; // bootstrap default color
 }

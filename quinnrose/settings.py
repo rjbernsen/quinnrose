@@ -162,6 +162,14 @@ LOGGING = {
             'maxBytes': 1024*1024* 5, # 5 MB
             'backupCount': 1,
         },
+        'production': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'production.log'),
+            'formatter': 'verbose',
+            'maxBytes': 1024*1024* 5, # 5 MB
+            'backupCount': 1,
+        },
     },
     'loggers': {
         'django': {
@@ -174,6 +182,10 @@ LOGGING = {
         },
         'quinnrose.quinnrose.tests': {
             'handlers': ['file_tests'],
+            'propagate': False, # Ignore other handlers, i.e. stdout
+        },
+        'quinnrose': {
+            'handlers': ['production'],
             'propagate': False, # Ignore other handlers, i.e. stdout
         },
     },
