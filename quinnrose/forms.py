@@ -53,6 +53,7 @@ class ContactForm(forms.Form):
             attrs={
                 'placeholder': 'Type your message...',
                 'class': 'form-control',
+                'rows': 4,
                 'required': 'required',
             }
         ),

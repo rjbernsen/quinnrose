@@ -1,7 +1,7 @@
 import os
 import glob
 import logging
-# import logging
+from smtplib import SMTPAuthenticationError
 from django.core.mail import send_mail
 from django.shortcuts import render, render_to_response
 from django.template import RequestContext
@@ -13,7 +13,7 @@ from quinnrose.menus import menu
 from quinnrose.forms import ContactForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
-from quinnrose.config import CONFIG_CONTEXT
+from quinnrose.config import CONFIG_CONTEXT, CONTACT_SUBJECT_EMAILS
 
 class BasePage(object):
     default_title = CONFIG_CONTEXT['full_site_name']
@@ -58,7 +58,6 @@ class BaseFormPage(BasePage, FormView):
     multiple inheritance in the views.
     """
     pass
-
 
 class HomePage(BaseTemplatePage):
     template_name = 'home.html'
@@ -128,11 +127,46 @@ class ContactFormView(BaseFormPage):
         form = self.form_class(request.POST)
         
         if form.is_valid():
-            # <process form cleaned data>
-            # return HttpResponseRedirect('/success/')
 
-            messages.info(request, self.success_message)
-            return render_to_response(self.template_name,context_instance=RequestContext(request,self.get_context_data(form=self.form_class)))
+            subject = CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][0]
+            from_email = form.cleaned_data.get('email')
+            recipient_list = ['rjbdevel@gmail.com'] #[CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][1]]
+            message = form.cleaned_data.get('message')
+            
+            try:
+                sent_count = send_mail(
+                    subject=subject,
+                    from_email=from_email,
+                    recipient_list=recipient_list,
+                    message=message,
+                )
+#                 raise SMTPAuthenticationError('asdf','asdf')
+                self.logger.info('sent_count = {}'.format(sent_count))
+                if sent_count != 1:
+
+                    messages.error(request, 'Could not send the message. Please try again later.')
+                    return render_to_response(
+                        self.template_name,
+                        context_instance=RequestContext(
+                            request,
+                            self.get_context_data(form=form)
+                        )
+                    )
+                    
+                messages.info(request, self.success_message)
+            
+            except Exception as e:
+                self.logger.info(e.__class__)
+                self.logger.info(e)
+                messages.error(request, 'Could not send the message. Please try again later.')
+            
+            return render_to_response(
+                self.template_name,
+                context_instance=RequestContext(
+                    request,
+                    self.get_context_data(form=self.form_class)
+                )
+            )
 #             return render(request, self.template_name, {'form': self.form_class})
         
         return self.get(request, args, kwargs)
