@@ -1,0 +1,95 @@
+.subscription-jumbotron {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.hero-feature {
+    margin-bottom: 30px;
+}
+.panel-body, h2 {
+	margin: 0px;
+	padding: 2px;
+	border: 0px;
+}
+.panel {
+	border: 0px;
+}
+.subscriptions-level {
+	color: rgba(128, 0, 0, 1);
+}
+.subscriptions-price-month {
+	color: rgba(0, 128, 0, 1);
+	font-size: 2em;
+	font-weight: bold;
+}
+.subscriptions-price-year {
+	font-size: 1em;
+	font-style: italic;
+}
+
+/*
+--------------------------------------------------
+Jumbotron Text
+--------------------------------------------------
+*/
+.subscription-jumbotron > h2 {
+	font-size: 1.9em;
+}
+@media (max-width:1200px) and (min-width: 993px) { 
+	.subscription-jumbotron > h2 {
+		font-size: 1.8em;
+	}
+}
+@media (max-width:992px) and (min-width: 769px) { 
+	.subscription-jumbotron > h2 {
+		font-size: 1.7em;
+	}
+}
+@media (max-width:768px) and (min-width: 481px) { 
+	.subscription-jumbotron > h2 {
+		font-size: 1.6em;
+	}
+}
+@media (max-width:480px) and (min-width: 321px) { 
+	.subscription-jumbotron > h2 {
+		font-size: 1.5em;
+	}
+}
+@media (max-width:320px) { 
+	.subscription-jumbotron > h2 {
+		font-size: 1.4em;
+	}
+}
+.subscription-jumbotron > p {
+	font-size: 1.5em;
+	margin-left: 50px;
+}
+@media (max-width:1200px) and (min-width: 993px) { 
+	.subscription-jumbotron > p {
+		font-size: 1.4em;
+		margin-left: 40px;
+	}
+}
+@media (max-width:992px) and (min-width: 769px) { 
+	.subscription-jumbotron > p {
+		font-size: 1.3em;
+		margin-left: 30px;
+	}
+}
+@media (max-width:768px) and (min-width: 481px) { 
+	.subscription-jumbotron > p {
+		font-size: 1.2em;
+		margin-left: 10px;
+	}
+}
+@media (max-width:480px) and (min-width: 321px) { 
+	.subscription-jumbotron > p {
+		font-size: 1.1em;
+		margin-left: 10px;
+	}
+}
+@media (max-width:320px) { 
+	.subscription-jumbotron > p {
+		font-size: 1.0em;
+		margin-left: 0px;
+	}
+}

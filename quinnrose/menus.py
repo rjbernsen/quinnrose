@@ -124,14 +124,14 @@ item = MenuItem(
 dropdown_menu.addItem(item)
 
 item = MenuItem(
-    label='Basic',
-    url='/subscriptions#basic'
+    label='Artists',
+    url='/subscriptions/artists'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
-    label='Premium',
-    url='/subscriptions#premium'
+    label='Organizations',
+    url='/subscriptions/organizations'
 )
 dropdown_menu.addItem(item)
 

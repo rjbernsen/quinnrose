@@ -13,7 +13,7 @@ from quinnrose.menus import menu
 from quinnrose.forms import ContactForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
-from quinnrose.temp_data import HELP_DATA
+from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS_DATA
 from quinnrose.config import CONFIG_CONTEXT, CONTACT_SUBJECT_EMAILS
 
 class BasePage(object):
@@ -196,8 +196,9 @@ class ContactFormView(BaseFormPage):
 class Help(BaseTemplatePage):
     template_name = 'help.html'
     page_sub_title = 'Help'
-
+    
     def get_context_data(self, **kwargs):
+#         self.logger.info(self.page_sub_title)
         
         self.init()
         
@@ -206,10 +207,33 @@ class Help(BaseTemplatePage):
         section = context.get('section') or 'topics'
         context['section'] = section
         context['data'] = HELP_DATA[section]
-        self.logger.info('data = {}'.format(context['data']))
+#         self.logger.info('data = {}'.format(context['data']))
         
 #         self.logger.info('section = {}'.format(section))
         self.template_name = 'help_{}.html'.format(section)
+        
+        return context
+
+class Subscriptions(BaseTemplatePage):
+    template_name = 'subscriptions.html'
+    page_sub_title = 'Subscriptions'
+
+    def get_context_data(self, **kwargs):
+#         self.logger.info(self.page_sub_title)
+        
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
+
+        subtype = context.get('subtype') or 'artists'
+        context['subtype'] = subtype
+        context['headers'] = SUBSCRIPTIONS_DATA['headers'][subtype]
+#         self.logger.info('headers = {}'.format(context['headers']))
+        context['data'] = SUBSCRIPTIONS_DATA[subtype]
+#         self.logger.info('data = {}'.format(context['data']))
+        
+#         self.logger.info('section = {}'.format(section))
+#         self.template_name = 'subscriptions_{}.html'.format(subtype)
         
         return context
 
@@ -236,49 +260,6 @@ class Terms(BaseTemplatePage):
 
         return context
     
-# def home_page(request):
-#     page_title = 'QuinnRose Talent Connection'
-#     root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#     image_path = os.path.join(root_dir, 'static', 'images') + '/carousel-*'
-#     carousel_images = [
-#         os.path.basename(p) for p in glob.glob(image_path)
-#     ]
-#     
-#     context = {
-#         'page_title': page_title,
-#         'menu': menu,
-#         'carousel_images': carousel_images,
-#         'home_page_info': home_page_info,
-#         'featurettes': featurettes,
-#     }
-#     
-#     return render(request,'home.html', context)
-# 
-# def privacy(request):
-# 
-#     return render(request,'privacy.html')
-    
-# def new_list(request):
-#     form = NewListForm(data=request.POST)
-#     if form.is_valid():
-#         list_ = form.save(owner=request.user)
-#         return redirect(list_)
-#     return render(request, 'home.html', {'form': form})
-# 
-# def view_list(request, list_id):
-#     list_ = List.objects.get(id=list_id)
-#     form = ExistingListItemForm(for_list=list_)
-# 
-#     if request.method == 'POST':
-#         form = ExistingListItemForm(for_list=list_, data=request.POST)
-#         if form.is_valid():
-#             form.save()
-#             return redirect(list_)
-#     return render(request,'list.html', {'list': list_, 'form': form})
-# 
-# def my_lists(request, email):
-#     owner = User.objects.get(email=email)
-#     return render(request, 'my_lists.html', {'owner': owner})
 def error404(request):
     page_title = 'QuinnRose Talent Connection - Page Not Found!'
 
