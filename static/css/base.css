@@ -338,9 +338,9 @@ Message Panels (Alerts)
 --------------------------------------------------
 */
 .alert-success {
-	color: rgba(77, 205, 77, 1);
+	color: rgba(0, 128, 0, 1);
 	background-color: rgba(229, 255, 229, 1);
-	border-color: rgba(102, 230, 102, 1);
+	border-color: rgba(127, 220, 127, 1);
 }
 
 /*
@@ -357,7 +357,7 @@ Buttons
 .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
-  background-color: red;
+  background-color: rgba(100, 127, 255,1);
   border-color: yellow;
 }
 .btn-primary:hover {
@@ -369,7 +369,7 @@ Buttons
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
-  background-color: red;
+  background-color: rgba(100, 127, 255,1);
   border-color: orange;
 }
 .btn-primary:active:hover,
