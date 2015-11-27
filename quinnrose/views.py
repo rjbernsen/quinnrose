@@ -260,13 +260,25 @@ class Terms(BaseTemplatePage):
 
         return context
     
-def error404(request):
-    page_title = 'QuinnRose Talent Connection - Page Not Found!'
+class Error404(BaseTemplatePage):
+    template_name = '404.html'
+    page_sub_title = 'Page Not Found'
 
-    context = {
-        'page_title': page_title,
-    }
-    return render(request,'404.html', context)
+    def get_context_data(self, **kwargs):
+
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
+        
+        return context
+
+# def error404(request):
+#     page_title = 'QuinnRose Talent Connection - Page Not Found!'
+# 
+#     context = {
+#         'page_title': page_title,
+#     }
+#     return render(request,'404.html', context)
 
 if __name__ == '__main__':
     image_path = '../static/images/carousel-*'
