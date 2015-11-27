@@ -13,6 +13,7 @@ from quinnrose.menus import menu
 from quinnrose.forms import ContactForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
+from quinnrose.temp_data import HELP_DATA
 from quinnrose.config import CONFIG_CONTEXT, CONTACT_SUBJECT_EMAILS
 
 class BasePage(object):
@@ -204,7 +205,10 @@ class Help(BaseTemplatePage):
 
         section = context.get('section') or 'topics'
         context['section'] = section
-        self.logger.info('section = {}'.format(section))
+        context['data'] = HELP_DATA[section]
+        self.logger.info('data = {}'.format(context['data']))
+        
+#         self.logger.info('section = {}'.format(section))
         self.template_name = 'help_{}.html'.format(section)
         
         return context

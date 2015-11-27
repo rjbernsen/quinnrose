@@ -4,18 +4,21 @@
 
 {% block help_page_content %}
 
-<div class="panel panel-default">
-	<div class="panel-body panel-text">
-		<p>Topic 1</p>
-		<hr>
-		<p>Topic 2</p>
-		<hr>
-		<p>Topic 3</p>
-		<hr>
-		<p>Topic 4</p>
-		<hr>
-		<p>Topic 5</p>
+<div class="panel-group" id="accordion">
+	{% for title,desc in data %}
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h4 class="panel-title">
+				<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}">{{ title }}</a>
+			</h4>
+		</div>
+		<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse ">
+			<div class="panel-body">
+				{{ desc }}
+			</div>
+		</div>
 	</div>
+	{% endfor %}
 </div>
 
 {% endblock %}

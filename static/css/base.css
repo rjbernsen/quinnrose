@@ -157,6 +157,12 @@ Main Carousel
     margin: auto;
 }
 
+
+.dropdown {
+	left: 16px;
+}
+
+
 /*
 --------------------------------------------------
 Logo Placement
