@@ -154,7 +154,7 @@ class ContactFormView(BaseFormPage):
                         )
                     )
                     
-                messages.info(request, self.success_message)
+                messages.success(request, self.success_message)
             
             except Exception as e:
                 self.logger.info(e.__class__)
@@ -227,6 +227,12 @@ class Subscriptions(BaseTemplatePage):
 
         subtype = context.get('subtype') or 'artists'
         context['subtype'] = subtype
+        if subtype == 'artists':
+            context['othersubtype'] = 'organizations'
+            context['othersubtypelabel'] = 'Organizations...'
+        else:
+            context['othersubtype'] = 'artists'
+            context['othersubtypelabel'] = 'Artists...'
         context['headers'] = SUBSCRIPTIONS_DATA['headers'][subtype]
 #         self.logger.info('headers = {}'.format(context['headers']))
         context['data'] = SUBSCRIPTIONS_DATA[subtype]

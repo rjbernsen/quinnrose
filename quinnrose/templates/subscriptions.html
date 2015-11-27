@@ -16,8 +16,10 @@
         <header class="jumbotron subscription-jumbotron">
             <h2>{{ headers.header }}</h2>
             <p>{{ headers.description }}</p>
-            <h2><a class="btn btn-primary btn-large" href="/subscribe/{{ subtype }}">Let's do it!</a>
-            </h2>
+            <h2>
+	            <a class="btn btn-primary btn-large" href="/subscribe/{{ subtype }}">Let's do it!</a>
+	            <a class="btn btn-default btn-large pull-right" href="/subscriptions/{{ othersubtype }}">{{ othersubtypelabel }}</a>
+           	</h2>
         </header>
         <!-- End header -->
 
