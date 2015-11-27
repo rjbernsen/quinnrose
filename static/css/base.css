@@ -2,20 +2,33 @@
 Main Colors:
 
 	Red
-		#800000
-		hsl(0, 100%, 50%)
 		rgba(128, 0, 0, 1)
+		rgba(255, 229, 229, 1)
 	
 	Blue
-		#000080
-		hsl(240, 100%, 50%)
 		rgba(0, 0, 128, 1)
+		rgba(100, 127, 255,1)
+		rgba(220, 229, 255, 1)
 	
 	Green
-		#008000
-		hsl(120, 100%, 50%)
 		rgba(0, 128, 0, 1)
+		rgba(229, 255, 229, 1)
 */
+
+/*
+--------------------------------------------------
+Font Colors
+--------------------------------------------------
+*/
+.font-red {
+	color: rgba(128, 0, 0, 1);
+}
+.font-blue {
+	color: rgba(0, 0, 128, 1);
+}
+.font-green {
+	color: rgba(0, 128, 0, 1);
+}
 
 /*
 --------------------------------------------------
@@ -263,9 +276,13 @@ Logo Placement
 
 /*
 --------------------------------------------------
-List Group Menus
+Sub Menus
 --------------------------------------------------
 */
+.list-group-item-danger {
+  color: rgba(0, 0, 128, 1);
+  background-color: rgba(220, 229, 255, 1);
+}
 .list-group-item.active,
 .list-group-item.active:hover,
 .list-group-item.active:focus {
@@ -278,7 +295,7 @@ button.list-group-item:hover,
 a.list-group-item:focus,
 button.list-group-item:focus {
   text-decoration: none;
-  background-color: rgba(229, 229, 255, 1);
+  background-color: rgba(220, 229, 255, 1);
 }
 
 /*
@@ -333,9 +350,70 @@ Buttons
 */
 /* Form Submit Standard */
 .btn-primary {
-	color: rgba(77, 77, 205, 1);
-	background-color: rgba(229, 229, 255, 1);
-	border-color: rgba(77, 77, 205, 1);
+  color: #fff;
+  background-color: rgba(0, 0, 128, 1);
+  border-color: rgba(0, 0, 128, 1);
+}
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: red;
+  border-color: yellow;
+}
+.btn-primary:hover {
+  color: rgba(0, 0, 128, 1);
+  background-color: rgba(220, 229, 255,1);
+  border-color: rgba(100, 127, 255,1);
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: red;
+  border-color: orange;
+}
+.btn-primary:active:hover,
+.btn-primary.active:hover,
+.open > .dropdown-toggle.btn-primary:hover,
+.btn-primary:active:focus,
+.btn-primary.active:focus,
+.open > .dropdown-toggle.btn-primary:focus,
+.btn-primary:active.focus,
+.btn-primary.active.focus,
+.open > .dropdown-toggle.btn-primary.focus {
+  color: #fff;
+  background-color: orange;
+  border-color: yellow;
+}
+.btn-primary:active,
+.btn-primary.active,
+.open > .dropdown-toggle.btn-primary {
+  background-image: none;
+}
+.btn-primary.disabled,
+.btn-primary[disabled],
+fieldset[disabled] .btn-primary,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus,
+.btn-primary.disabled:active,
+.btn-primary[disabled]:active,
+fieldset[disabled] .btn-primary:active,
+.btn-primary.disabled.active,
+.btn-primary[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  background-color: rgba(100, 127, 255,1);
+  border-color: green;
+}
+.btn-primary .badge {
+  color: rgba(0, 0, 128, 1);
+  background-color: #fff;
 }
 
 /*
@@ -375,3 +453,69 @@ Error Pages
 .error-template {padding: 40px 15px;text-align: center;}
 .error-actions {margin-top:15px;margin-bottom:15px;}
 .error-actions .btn { margin-right:10px; }
+
+/*
+--------------------------------------------------
+Modal Dialogs
+--------------------------------------------------
+*/
+.modal-header-success {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5cb85c;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-warning {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #f0ad4e;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-danger {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #d9534f;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-info {
+    color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: #5bc0de;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
+.modal-header-primary {
+	color:#fff;
+    padding:9px 15px;
+    border-bottom:1px solid #eee;
+    background-color: rgba(0, 0, 128, 1);
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+}
