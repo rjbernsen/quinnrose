@@ -69,7 +69,7 @@ SUBSCRIPTIONS_ARTIST = [
         'description': 'View artist and organization profiles - unlimited!',
         'price_per_month': 'Free',
         'price_per_year': 'Free',
-        'includes': [
+        'details': [
         ]
     },
     {
@@ -78,7 +78,7 @@ SUBSCRIPTIONS_ARTIST = [
         'description': 'Contact other artists and organizations - unlimited!',
         'price_per_month': '$1.99',
         'price_per_year': '$21.99',
-        'includes': [
+        'details': [
         ]
     },
     {
@@ -87,7 +87,7 @@ SUBSCRIPTIONS_ARTIST = [
         'description': 'Appear in search results by organizations seeking artists - unlimited!',
         'price_per_month': '$3.99',
         'price_per_year': '$43.99',
-        'includes': [
+        'details': [
         ]
     },
 ]
@@ -98,7 +98,12 @@ SUBSCRIPTIONS_ORGANIZATIONS = [
         'description': 'View artist and organization profiles - unlimited!',
         'price_per_month': 'Free',
         'price_per_year': 'Free',
-        'includes': [
+        'details': [
+            'View basic artist information',
+            'View basic organization information',
+            'Create basic profile for your organization',
+            'Search artists by zip code',
+            'Search organizations by zip code'
         ]
     },
     {
@@ -107,7 +112,13 @@ SUBSCRIPTIONS_ORGANIZATIONS = [
         'description': 'Contact other artists and organizations - unlimited!',
         'price_per_month': '$7.99',
         'price_per_year': '$91.99',
-        'includes': [
+        'details': [
+            'All "Writer" features, plus...',
+            'Search for artists using advanced criteria',
+            'Search for organizations using advance criteria',
+            'Contact artists or organizations via the web site',
+            'Register events',
+            'Announce auditions'
         ]
     },
     {
@@ -116,7 +127,10 @@ SUBSCRIPTIONS_ORGANIZATIONS = [
         'description': 'Appear in search results by organizations seeking artists - unlimited!',
         'price_per_month': '$11.99',
         'price_per_year': '$129.99',
-        'includes': [
+        'details': [
+            'All "Director" features, plus...',
+            'Upload event photos',
+            'Interface profiles and events with social media'
         ]
     },
 ]
