@@ -36,8 +36,7 @@ Body override for fixed navbar
 --------------------------------------------------
 */
 body {
-/*  min-height: 2000px; */
-/*  padding-top: 70px; */
+	padding-top: 70px;
 }
 
 /*
@@ -55,13 +54,12 @@ Main Navbar
 --------------------------------------------------
 */
 .navbar {
-	position: absolute;
+	background-color: #fff;
 	top: 0;
 	left: 0;
 	right: 0;
-}
-.navbar-default.transparent {
-	background-color: #fff;
+/*
+*/
 }
 .navbar-default .navbar-brand {
 	color:	rgba(128, 0, 0, 1);
