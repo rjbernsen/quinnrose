@@ -127,77 +127,25 @@
                                 <thead>
                                     <tr>
                                         <th class="feature-desc"></th>
-                                        <th class="feature-cell feature-one">Writer</th>
-                                        <th class="feature-cell feature-two">Director</th>
-                                        <th class="feature-cell feature-three">Producer</th>
+                                        {% for item in data %}
+                                        <th class="feature-cell feature{{ forloop.counter }}">{{ item.level }}</th>
+                                        {% endfor %}
                                     </tr>
                                 </thead>
                                 <tbody>
+                                	{% for feature, level1, level2, level3 in features %}
                                     <tr>
-                                        <td class="feature-desc">20 GB Hard Disk Included</td>
-                                        <td class="feature-cell">N/A</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
+                                        <td class="feature-desc">{{ feature }}</td>
+                                        <td class="feature-cell"><span class="fa fa-{{ level1 }} font-red"></span></td>
+                                        <td class="feature-cell"><span class="fa fa-{{ level2 }} font-blue"></span></td>
+                                        <td class="feature-cell"><span class="fa fa-{{ level3 }} font-green"></span></td>
                                     </tr>
-                                    <tr>
-                                        <td class="feature-desc">120 TB Bandwidth</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell">N/A</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="feature-desc">Dedicated Support Panel</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="feature-desc">Extra Plugin Features</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="feature-desc">E-mail Support</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="feature-desc">Chat Support Option</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="feature-desc">Dedicated Support Panel</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="feature-desc">Extra Plugin Features</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="feature-desc">E-mail Support</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                    </tr>
-                                    <tr>
-                                        <td class="feature-desc">Chat Support Option</td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-ok icon-green"></i></td>
-                                        <td class="feature-cell"><i class="glyphicon glyphicon-remove icon-red"></i></td>
-                                    </tr>
+                                    {% endfor %}
                                     <tr>
                                         <td class="feature-desc"></td>
-                                        <td class="feature-cell"><a href="#" class="btn feature-button-one">Want!</a> </td>
-                                        <td class="feature-cell"><a href="#" class="btn feature-button-two">Want!</a> </td>
-                                        <td class="feature-cell"><a href="#" class="btn feature-button-three">Want!</a> </td>
+                                        <td class="feature-cell"><a href="#" class="btn feature-button1">Want!</a> </td>
+                                        <td class="feature-cell"><a href="#" class="btn feature-button2">Want!</a> </td>
+                                        <td class="feature-cell"><a href="#" class="btn feature-button3">Want!</a> </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -215,5 +163,8 @@
   </div>
 </div>
 <!-- End comparison table -->
+
+{{ features }}
+
 
 {% endblock %}

@@ -133,65 +133,50 @@ Details Modal
 
 
 
-/*============================================================
-GENERAL STYLES
-============================================================*/
-/*============================================================
-BACKGROUND COLORS
-============================================================*/
-.feature-one {
+/*
+Feature comparison modal dialog
+*/
+.feature1 {
     background-color: rgba(128, 0, 0, 1);
+    border-radius: 8px 8px 0px 0px;
 }
-
-.feature-two {
+.feature2 {
     background-color: rgba(0, 0, 128, 1);
+    border-radius: 8px 8px 0px 0px;
 }
-
-.feature-three {
+.feature3 {
     background-color: rgba(0, 128, 0, 1);
+    border-radius: 8px 8px 0px 0px;
 }
-/*============================================================
-BUTTONS STYLES
-============================================================*/
-
-.feature-button-one {
+.feature-button1 {
     border: none;
     background-color: rgba(128, 0, 0, 1);
     color: #fff;
 }
-
-.feature-button-one:hover, .feature-button-one:focus {
+.feature-button1:hover, .feature-button1:focus {
     color: #fff;
 }
-
-.feature-button-two {
+.feature-button2 {
     border: none;
     background-color: rgba(0, 0, 128, 1);
     color: #fff;
 }
-
-.feature-button-two:hover, .feature-button-two:focus {
+.feature-button2:hover, .feature-button2:focus {
     color: #fff;
 }
-
-.feature-button-three {
+.feature-button3 {
     border: none;
     background-color: rgba(0, 128, 0, 1);
     color: #fff;
 }
-
-.feature-button-three:hover, .feature-button-three:focus {
+.feature-button3:hover, .feature-button3:focus {
     color: #fff;
 }
-/*============================
-PRICING TABLES NINE STYLES
-==============================*/
-
 .modal-body {
 	padding-bottom: 0px;
 }
 .feature-modal {
-    border: 1px solid #EDEDED;
+    border: 0px;
 }
 
 .feature-desc {
@@ -200,12 +185,14 @@ PRICING TABLES NINE STYLES
 }
 .feature-cell {
 	width: 20px;
+    border-left: 1px solid #EDEDED;
+    border-right: 1px solid #EDEDED;
+    border-bottom: 1px solid #EDEDED;
 }
 .feature-modal .table {
     text-align: center;
     margin-bottom: 0px;
 }
-
 .feature-modal thead tr th {
     font-weight: normal;
     font-weight: normal;
@@ -214,15 +201,12 @@ PRICING TABLES NINE STYLES
     text-align: center;
     color: #fff;
 }
-
 .feature-modal i.icon-red {
     color: rgb(250, 57, 57);
 }
-
 .feature-modal i.icon-green {
     color: #00E025;
 }
-
 .modal-footer {
 	border-top: 0px;
 	padding-top: 10px;

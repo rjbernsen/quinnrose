@@ -234,12 +234,38 @@ class Subscriptions(BaseTemplatePage):
             context['othersubtype'] = 'artists'
             context['othersubtypelabel'] = 'Artists'
         context['headers'] = SUBSCRIPTIONS_DATA['headers'][subtype]
-#         self.logger.info('headers = {}'.format(context['headers']))
         context['data'] = SUBSCRIPTIONS_DATA[subtype]
-#         self.logger.info('data = {}'.format(context['data']))
+
+        features = [] # To send to the template
+        all_features = [ [],[],[] ] # A holding place
+        # Get the feature list
+        feature_list = SUBSCRIPTIONS_DATA['features']
+#         # Create place holders for each level.
+#         features = [
+#             feature_list.copy(),
+#             feature_list.copy(),
+#             feature_list.copy(),
+#             feature_list.copy()
+#         ]
+        levels = SUBSCRIPTIONS_DATA[subtype]
+        # Get the features for each level. Add each
+        # level list to the next level.
+        for i in range(len(levels)):
+            cur_list = levels[i]['features']
+            for j in range(i,len(levels)):
+                all_features[j] += cur_list
         
+        for i in range(len(feature_list)):
+            cur_row = []
+            cur_row.append(feature_list[i])
+            for j in range(len(all_features)):
+                if i in all_features[j]:
+                    cur_row.append('check')
+                else:
+                    cur_row.append('')
+            features.append(cur_row)
+        context['features'] = features
 #         self.logger.info('section = {}'.format(section))
-#         self.template_name = 'subscriptions_{}.html'.format(subtype)
         
         return context
 
