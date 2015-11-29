@@ -268,7 +268,7 @@ Logo and Carousel Buttons
 		font-size: 1.9em;
 	}
 
-	.btn-primary {
+	.btn-primary.btn-lg {
 		font-size: 1.2em !important;
 	}
 }

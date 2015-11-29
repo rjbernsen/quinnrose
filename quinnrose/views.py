@@ -229,10 +229,10 @@ class Subscriptions(BaseTemplatePage):
         context['subtype'] = subtype
         if subtype == 'artists':
             context['othersubtype'] = 'organizations'
-            context['othersubtypelabel'] = 'Organizations...'
+            context['othersubtypelabel'] = 'Organizations'
         else:
             context['othersubtype'] = 'artists'
-            context['othersubtypelabel'] = 'Artists...'
+            context['othersubtypelabel'] = 'Artists'
         context['headers'] = SUBSCRIPTIONS_DATA['headers'][subtype]
 #         self.logger.info('headers = {}'.format(context['headers']))
         context['data'] = SUBSCRIPTIONS_DATA[subtype]
