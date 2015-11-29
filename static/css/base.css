@@ -12,7 +12,7 @@ Main Colors:
 	
 	Green
 		rgba(0, 128, 0, 1)
-		rgba(127, 255, 127, 1)
+		rgba(102, 230, 102, 1)
 		rgba(229, 255, 229, 1)
 */
 
@@ -400,8 +400,8 @@ Buttons
 .btn-primary.active.focus,
 .open > .dropdown-toggle.btn-primary.focus {
   color: #fff;
-  background-color: orange;
-  border-color: yellow;
+  background-color: rgba(100, 127, 255,1);
+  border-color: rgba(100, 127, 255,1);
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -442,19 +442,19 @@ fieldset[disabled] .btn-primary.active {
 .btn-success:focus,
 .btn-success.focus {
   color: #fff;
-  background-color: rgba(127, 255, 127, 1);
-  border-color: yellow;
+  background-color: rgba(102, 230, 102, 1);
+  border-color: rgba(102, 230, 102, 1);
 }
 .btn-success:hover {
   color: rgba(0, 128, 0, 1);
   background-color: rgba(229, 255, 229, 1);
-  border-color: rgba(127, 255, 127, 1);
+  border-color: rgba(102, 230, 102, 1);
 }
 .btn-success:active,
 .btn-success.active,
 .open > .dropdown-toggle.btn-success {
   color: #fff;
-  background-color: rgba(127, 255, 127, 1);
+  background-color: rgba(102, 230, 102, 1);
   border-color: orange;
 }
 .btn-success:active:hover,
@@ -467,8 +467,8 @@ fieldset[disabled] .btn-primary.active {
 .btn-success.active.focus,
 .open > .dropdown-toggle.btn-success.focus {
   color: #fff;
-  background-color: orange;
-  border-color: yellow;
+  background-color: rgba(102, 230, 102, 1);
+  border-color: rgba(102, 230, 102, 1);
 }
 .btn-success:active,
 .btn-success.active,
@@ -493,7 +493,7 @@ fieldset[disabled] .btn-success:active,
 .btn-success.disabled.active,
 .btn-success[disabled].active,
 fieldset[disabled] .btn-success.active {
-  background-color: rgba(127, 255, 127, 1);
+  background-color: rgba(102, 230, 102, 1);
   border-color: green;
 }
 .btn-success .badge {
