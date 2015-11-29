@@ -114,7 +114,6 @@ Details Modal
 --------------------------------------------------
 */
 .modal-body {
-    max-height: calc(100vh - 212px);
     overflow-y: auto;
 }
 .list-bullet:before {    
@@ -126,3 +125,116 @@ Details Modal
 .list-bullet {
 	padding-left: 30px
 }
+
+
+
+
+
+
+
+
+/*============================================================
+GENERAL STYLES
+============================================================*/
+/*============================================================
+BACKGROUND COLORS
+============================================================*/
+.feature-one {
+    background-color: rgba(128, 0, 0, 1);
+}
+
+.feature-two {
+    background-color: rgba(0, 0, 128, 1);
+}
+
+.feature-three {
+    background-color: rgba(0, 128, 0, 1);
+}
+/*============================================================
+BUTTONS STYLES
+============================================================*/
+
+.feature-button-one {
+    border: none;
+    background-color: rgba(128, 0, 0, 1);
+    color: #fff;
+}
+
+.feature-button-one:hover, .feature-button-one:focus {
+    color: #fff;
+}
+
+.feature-button-two {
+    border: none;
+    background-color: rgba(0, 0, 128, 1);
+    color: #fff;
+}
+
+.feature-button-two:hover, .feature-button-two:focus {
+    color: #fff;
+}
+
+.feature-button-three {
+    border: none;
+    background-color: rgba(0, 128, 0, 1);
+    color: #fff;
+}
+
+.feature-button-three:hover, .feature-button-three:focus {
+    color: #fff;
+}
+/*============================
+PRICING TABLES NINE STYLES
+==============================*/
+
+.modal-body {
+	padding-bottom: 0px;
+}
+.feature-modal {
+    border: 1px solid #EDEDED;
+}
+
+.feature-desc {
+    width: 200px;
+    text-align: left;
+}
+.feature-cell {
+	width: 20px;
+}
+.feature-modal .table {
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.feature-modal thead tr th {
+    font-weight: normal;
+    font-weight: normal;
+    
+    vertical-align: middle;
+    text-align: center;
+    color: #fff;
+}
+
+.feature-modal i.icon-red {
+    color: rgb(250, 57, 57);
+}
+
+.feature-modal i.icon-green {
+    color: #00E025;
+}
+
+.modal-footer {
+	border-top: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+
+
+
+
+
+
+
+
+
