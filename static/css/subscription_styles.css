@@ -3,35 +3,47 @@
 Jumbotron
 --------------------------------------------------
 */
-.subscription-jumbotron {
-	padding-top: 5px;
-	padding-bottom: 5px;
+.sub-header {
+	
+	margin-bottom: 4px;
 }
-.subscription-jumbotron > h2 {
+
+.subscription-jumbotron {
+	padding-top: 20px;
+	padding-bottom:10px;
+	margin-bottom: 20px;
+}
+.subscription-jumbotron > h2,
+.sub-header > h2 {
 	font-size: 1.9em;
 }
 @media (max-width:1200px) and (min-width: 993px) { 
-	.subscription-jumbotron > h2 {
+	.subscription-jumbotron > h2,
+	.sub-header > h2 {
 		font-size: 1.8em;
 	}
 }
 @media (max-width:992px) and (min-width: 769px) { 
-	.subscription-jumbotron > h2 {
+	.subscription-jumbotron > h2,
+	.sub-header > h2 {
 		font-size: 1.7em;
 	}
 }
 @media (max-width:768px) and (min-width: 481px) { 
-	.subscription-jumbotron > h2 {
+	.subscription-jumbotron > h2,
+	.sub-header > h2 {
 		font-size: 1.6em;
 	}
 }
 @media (max-width:480px) and (min-width: 321px) { 
-	.subscription-jumbotron > h2 {
+	.subscription-jumbotron > h2,
+	.sub-header > h2 {
 		font-size: 1.5em;
 	}
 }
 @media (max-width:320px) { 
-	.subscription-jumbotron > h2 {
+	.subscription-jumbotron > h2,
+	.sub-header > h2 {
 		font-size: 1.4em;
 	}
 }

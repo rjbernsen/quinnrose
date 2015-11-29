@@ -16,19 +16,25 @@
         <header class="jumbotron subscription-jumbotron">
             <h2>{{ headers.header }}</h2>
             <p>{{ headers.description }}</p>
-            <h2>
-	            <a class="btn btn-primary btn-large" href="/subscribe/{{ subtype }}">Let's do it!</a>
-	            <a class="btn btn-default btn-large pull-right" href="/subscriptions/{{ othersubtype }}">{{ othersubtypelabel }}</a>
-           	</h2>
+
+			<div class="row sub-header">
+			    <div class="col-xs-6 col-sm-6 col-md-6">
+			        <a class="btn btn-primary" href="/subscribe/{{ subtype }}">Let's do it!</a>
+			    </div>
+			    <div class="col-xs-6 col-sm-6 col-md-6">
+		            <a class="btn btn-default pull-right" href="/subscriptions/{{ othersubtype }}">{{ othersubtypelabel }}</a>
+			    </div>
+			</div>
         </header>
         <!-- End header -->
 
-        <hr>
-
 		<!-- Begin title -->
 		<div class="row">
-		    <div class="col-lg-12">
-		        <h3>The packages...</h3>
+		    <div class="col-xs-6 col-sm-6 col-md-6 sub-header">
+{#		        <h2>The packages...</h2>#}
+		    </div>
+		    <div class="col-xs-6 col-sm-6 col-md-6 sub-header">
+		        <a class="btn btn-success pull-right" href="#">Compare</a>
 		    </div>
 		</div>
 		<!-- End title -->

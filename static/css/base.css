@@ -12,6 +12,7 @@ Main Colors:
 	
 	Green
 		rgba(0, 128, 0, 1)
+		rgba(127, 255, 127, 1)
 		rgba(229, 255, 229, 1)
 */
 
@@ -74,6 +75,7 @@ Main Navbar
 }
 .navbar-default .navbar-nav>li>a {
 	color: rgba(128, 0, 0, 1);
+	font-weight: bold;
     text-transform: uppercase;
 /*    text-shadow: 1px 1px 1px rgba(0,0,0,.75); */
 	border-radius: 4px;
@@ -149,13 +151,15 @@ Main Carousel
 	border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 4px solid rgba(0, 0, 128, 1);
+    border-bottom: none;
     border-radius: 6px;
+    margin: 10px;
 }
 .carousel-overlay .btn-lg {
     font-size: 1.75em;
     padding: 10px 30px;
 }
+/*
 .btn-success, .btn-success:visited {
 	background-color: rgba(97, 97, 255, 1);
 }
@@ -164,6 +168,7 @@ Main Carousel
   	background-color: rgba(229, 229, 255, 1);
     border-bottom: 4px solid rgba(97, 97, 255, 1);
 }
+*/
 .circles {
 	margin-top: 20px;
     background-color: rgba(0, 0, 128, 1);
@@ -186,7 +191,7 @@ Main Carousel
 
 /*
 --------------------------------------------------
-Logo Placement
+Logo and Carousel Buttons
 --------------------------------------------------
 */
 .logo img {
@@ -195,6 +200,21 @@ Logo Placement
 	left: -20px;
 	width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
 	max-width: 100%;
+}
+
+@media (min-width:1201px) { 
+	.logo img {
+	    width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
+	    max-width: 100% !important;
+	}
+	
+	.carousel-overlay h1 {
+		font-size: 3.1em;
+	}
+
+	.btn-primary.btn-lg {
+		font-size: 1.5em !important;
+	}
 }
 @media (max-width:1200px) and (min-width: 993px) { 
 	.logo img {
@@ -206,7 +226,7 @@ Logo Placement
 		font-size: 3.1em;
 	}
 
-	.btn-success {
+	.btn-primary.btn-lg {
 		font-size: 1.5em !important;
 	}
 }
@@ -220,7 +240,7 @@ Logo Placement
 		font-size: 2.7em;
 	}
 
-	.btn-success {
+	.btn-primary.btn-lg {
 		font-size: 1.4em !important;
 	}
 }
@@ -234,7 +254,7 @@ Logo Placement
 		font-size: 2.3em;
 	}
 
-	.btn-success {
+	.btn-primary.btn-lg {
 		font-size: 1.3em !important;
 	}
 }
@@ -248,7 +268,7 @@ Logo Placement
 		font-size: 1.9em;
 	}
 
-	.btn-success {
+	.btn-primary {
 		font-size: 1.2em !important;
 	}
 }
@@ -262,7 +282,7 @@ Logo Placement
 		font-size: 1.4em;
 	}
 
-	.btn-success {
+	.btn-primary.btn-lg {
 		font-size: 1.1em !important;
 	}
 }
@@ -346,7 +366,7 @@ Message Panels (Alerts)
 Buttons
 --------------------------------------------------
 */
-/* Form Submit Standard */
+/* Primary (Form Submit Standard) */
 .btn-primary {
   color: #fff;
   background-color: rgba(0, 0, 128, 1);
@@ -411,6 +431,73 @@ fieldset[disabled] .btn-primary.active {
 }
 .btn-primary .badge {
   color: rgba(0, 0, 128, 1);
+  background-color: #fff;
+}
+/* Success (Auxiliary Links) */
+.btn-success {
+  color: #fff;
+  background-color: rgba(0, 128, 0, 1);
+  border-color: rgba(0, 128, 0, 1);
+}
+.btn-success:focus,
+.btn-success.focus {
+  color: #fff;
+  background-color: rgba(127, 255, 127, 1);
+  border-color: yellow;
+}
+.btn-success:hover {
+  color: rgba(0, 128, 0, 1);
+  background-color: rgba(229, 255, 229, 1);
+  border-color: rgba(127, 255, 127, 1);
+}
+.btn-success:active,
+.btn-success.active,
+.open > .dropdown-toggle.btn-success {
+  color: #fff;
+  background-color: rgba(127, 255, 127, 1);
+  border-color: orange;
+}
+.btn-success:active:hover,
+.btn-success.active:hover,
+.open > .dropdown-toggle.btn-success:hover,
+.btn-success:active:focus,
+.btn-success.active:focus,
+.open > .dropdown-toggle.btn-success:focus,
+.btn-success:active.focus,
+.btn-success.active.focus,
+.open > .dropdown-toggle.btn-success.focus {
+  color: #fff;
+  background-color: orange;
+  border-color: yellow;
+}
+.btn-success:active,
+.btn-success.active,
+.open > .dropdown-toggle.btn-success {
+  background-image: none;
+}
+.btn-success.disabled,
+.btn-success[disabled],
+fieldset[disabled] .btn-success,
+.btn-success.disabled:hover,
+.btn-success[disabled]:hover,
+fieldset[disabled] .btn-success:hover,
+.btn-success.disabled:focus,
+.btn-success[disabled]:focus,
+fieldset[disabled] .btn-success:focus,
+.btn-success.disabled.focus,
+.btn-success[disabled].focus,
+fieldset[disabled] .btn-success.focus,
+.btn-success.disabled:active,
+.btn-success[disabled]:active,
+fieldset[disabled] .btn-success:active,
+.btn-success.disabled.active,
+.btn-success[disabled].active,
+fieldset[disabled] .btn-success.active {
+  background-color: rgba(127, 255, 127, 1);
+  border-color: green;
+}
+.btn-success .badge {
+  color: rgba(0, 128, 0, 1);
   background-color: #fff;
 }
 
