@@ -13,8 +13,6 @@
 <div class="container-fluid">
 
 	<div class="container">
-		{% block contact_page_content %}
-		
 		<form id="contact_form" class="form-horizontal" data-toggle="validator" role="form" action="/contact" method="post">
 			{% csrf_token %}
 
@@ -32,15 +30,14 @@
 			{{ form.non_field_errors }}
 
 			{% for field in form %}
-		    {{ field.errors }}
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="{{ field.id_for_label }}">{{ field.label }}</label>
 				<div class="col-sm-10">
 					{{ field }}
 					<div class="help-block with-errors"><!--{{ field.help_text }}--></div>
 				</div>
-				
 			</div>
+		    {{ field.errors }}
 			{% endfor %}
 			
 			{# Include the hidden fields #}
@@ -55,7 +52,6 @@
 				</div>
 			</div>
 		</form>
-		{% endblock %}
 	</div>
 </div>
 

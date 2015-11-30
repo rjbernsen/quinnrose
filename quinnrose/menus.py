@@ -109,7 +109,7 @@ dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Register',
-    url='/register'
+    url='/signin/register'
 )
 dropdown_menu.addItem(item)
 

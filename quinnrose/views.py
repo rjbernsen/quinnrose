@@ -10,7 +10,7 @@ from django.views.generic import TemplateView, FormView
 # from django.contrib.messages.views import SuccessMessageMixin
 
 from quinnrose.menus import menu
-from quinnrose.forms import ContactForm
+from quinnrose.forms import SignInForm, ContactForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
 from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS_DATA
@@ -24,6 +24,7 @@ class BasePage(object):
     def init(self, extra_page_context={}):
         self.context = {
             'page_title': self._get_title(),
+            'page_header': self.page_sub_title,
             'menu': menu,
         }
         
@@ -31,9 +32,14 @@ class BasePage(object):
         self.context.update(CONFIG_CONTEXT)
         
     def get_context_data(self, **kwargs):
+#         self.logger.info('Base kwargs = {}'.format(self.kwargs))
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
+#         self.logger.info('context = {}'.format(context))
         context.update(self.context)
+#         self.logger.info('context = {}'.format(context))
+        context.update(self.kwargs)
+#         self.logger.info('context = {}'.format(context))
         
         return context
 
@@ -49,16 +55,21 @@ class BasePage(object):
 class BaseTemplatePage(BasePage, TemplateView):
     """
     This is simply a base class for the purpose of
-    multiple inheritance in the views.
+    multiple inheritance in the template views.
     """
-    pass
 
 class BaseFormPage(BasePage, FormView):
     """
     This is simply a base class for the purpose of
-    multiple inheritance in the views.
+    multiple inheritance in the form views.
     """
-    pass
+
+    def get_context_data(self, **kwargs):
+ 
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
+        return context
 
 class HomePage(BaseTemplatePage):
     template_name = 'home.html'
@@ -82,6 +93,7 @@ class HomePage(BaseTemplatePage):
         self.init(more_page_context)
     
         context = super().get_context_data(**kwargs)
+        
 
         return context
 
@@ -109,6 +121,84 @@ class About(BaseTemplatePage):
         section = context.get('section') or '1'
         
         self.template_name = 'about_{}.html'.format(self.sections[int(section)])
+        
+        return context
+
+class SignInFormView(BaseFormPage):
+    template_name = 'signin_{}.html'
+    page_sub_title = 'Sign In'
+    form_class = SignInForm
+    
+    sub_titles = {
+        'signin': 'Sign in',
+        'register': 'Register'
+    }
+#     success_message = "Message was sent successfully"
+#     success_url = '/contact/thanks'
+    
+    def get(self, request, *args, **kwargs):
+    
+        return super(SignInFormView, self).get(request, *args, **kwargs)
+    
+#     def post(self, request, *args, **kwargs):
+# 
+#         form = self.form_class(request.POST)
+#         
+#         if form.is_valid():
+# 
+#             subject = CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][0]
+#             from_email = form.cleaned_data.get('email')
+#             recipient_list = ['rjbdevel@gmail.com'] #[CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][1]]
+#             message = form.cleaned_data.get('message')
+#             
+#             try:
+#                 sent_count = send_mail(
+#                     subject=subject,
+#                     from_email=from_email,
+#                     recipient_list=recipient_list,
+#                     message=message,
+#                 )
+# #                 raise SMTPAuthenticationError('asdf','asdf')
+# #                 self.logger.info('sent_count = {}'.format(sent_count))
+#                 if sent_count != 1:
+# 
+#                     messages.error(request, 'Could not send the message. Please try again later.')
+#                     return render_to_response(
+#                         self.template_name,
+#                         context_instance=RequestContext(
+#                             request,
+#                             self.get_context_data(form=form)
+#                         )
+#                     )
+#                     
+#                 messages.success(request, self.success_message)
+#             
+#             except Exception as e:
+#                 self.logger.info(e.__class__)
+#                 self.logger.info(e)
+#                 messages.error(request, 'Could not send the message. Please try again later.')
+#             
+#             return render_to_response(
+#                 self.template_name,
+#                 context_instance=RequestContext(
+#                     request,
+#                     self.get_context_data(form=self.form_class)
+#                 )
+#             )
+#         
+#         return self.get(request, args, kwargs)
+
+    def get_context_data(self, **kwargs):
+        subtype = self.kwargs.get('subtype') or 'signin'
+ 
+        self.page_sub_title = self.sub_titles[subtype]
+        
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
+        context['subtype'] = subtype
+
+        self.template_name = self.template_name.format(subtype)
         
         return context
 
@@ -172,6 +262,13 @@ class ContactFormView(BaseFormPage):
         
         return self.get(request, args, kwargs)
 
+    def get_context_data(self, **kwargs):
+ 
+        self.init()
+        
+        context = super().get_context_data(**kwargs)
+        return context
+
 #     def form_valid(self, form):
 #         self.logger.info('form_valid...')
 # 
@@ -186,13 +283,6 @@ class ContactFormView(BaseFormPage):
 #         )
 #         return super(ContactFormView, self).form_valid(form)
             
-    def get_context_data(self, **kwargs):
- 
-        self.init()
-        
-        context = super().get_context_data(**kwargs)
-        return context
-
 class Help(BaseTemplatePage):
     template_name = 'help.html'
     page_sub_title = 'Help'
@@ -303,14 +393,6 @@ class Error404(BaseTemplatePage):
         context = super().get_context_data(**kwargs)
         
         return context
-
-# def error404(request):
-#     page_title = 'QuinnRose Talent Connection - Page Not Found!'
-# 
-#     context = {
-#         'page_title': page_title,
-#     }
-#     return render(request,'404.html', context)
 
 if __name__ == '__main__':
     image_path = '../static/images/carousel-*'

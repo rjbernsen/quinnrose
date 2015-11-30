@@ -119,41 +119,34 @@
     <div class="modal-dialog">
         <div class="modal-content">
 		    <div class="modal-body">
-
-
-
-                    <div class="feature-modal">
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th class="feature-desc"></th>
-                                        {% for item in data %}
-                                        <th class="feature-cell feature{{ forloop.counter }}">{{ item.level }}</th>
-                                        {% endfor %}
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                	{% for feature, level1, level2, level3 in features %}
-                                    <tr>
-                                        <td class="feature-desc">{{ feature }}</td>
-                                        <td class="feature-cell"><span class="fa fa-{{ level1 }} font-red"></span></td>
-                                        <td class="feature-cell"><span class="fa fa-{{ level2 }} font-blue"></span></td>
-                                        <td class="feature-cell"><span class="fa fa-{{ level3 }} font-green"></span></td>
-                                    </tr>
-                                    {% endfor %}
-                                    <tr>
-                                        <td class="feature-desc"></td>
-                                        <td class="feature-cell"><a href="#" class="btn feature-button1">Want!</a> </td>
-                                        <td class="feature-cell"><a href="#" class="btn feature-button2">Want!</a> </td>
-                                        <td class="feature-cell"><a href="#" class="btn feature-button3">Want!</a> </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                    </div>
-
-
-
-
+                <div class="feature-modal">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="feature-desc"></th>
+                                {% for item in data %}
+                                <th class="feature-cell feature{{ forloop.counter }}">{{ item.level }}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                        	{% for feature, level1, level2, level3 in features %}
+                            <tr>
+                                <td class="feature-desc">{{ feature }}</td>
+                                <td class="feature-cell"><span class="fa fa-{{ level1 }} font-red"></span></td>
+                                <td class="feature-cell"><span class="fa fa-{{ level2 }} font-blue"></span></td>
+                                <td class="feature-cell"><span class="fa fa-{{ level3 }} font-green"></span></td>
+                            </tr>
+                            {% endfor %}
+                            <tr>
+                                <td class="feature-desc"></td>
+                                <td class="feature-cell"><a href="#" class="btn feature-button1">Want!</a> </td>
+                                <td class="feature-cell"><a href="#" class="btn feature-button2">Want!</a> </td>
+                                <td class="feature-cell"><a href="#" class="btn feature-button3">Want!</a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 			</div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -163,8 +156,5 @@
   </div>
 </div>
 <!-- End comparison table -->
-
-{{ features }}
-
 
 {% endblock %}
