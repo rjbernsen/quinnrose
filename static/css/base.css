@@ -376,12 +376,12 @@ Buttons
 .btn-primary.focus {
   color: #fff;
   background-color: rgba(100, 127, 255,1);
-  border-color: yellow;
+  border-color: rgba(100, 127, 255,1);
 }
 .btn-primary:hover {
   color: rgba(0, 0, 128, 1);
   background-color: rgba(220, 229, 255,1);
-  border-color: rgba(100, 127, 255,1);
+  border-color: rgba(220, 229, 255,1);
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -427,7 +427,7 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
   background-color: rgba(100, 127, 255,1);
-  border-color: green;
+  border-color: rgba(100, 127, 255,1); 
 }
 .btn-primary .badge {
   color: rgba(0, 0, 128, 1);
@@ -494,7 +494,7 @@ fieldset[disabled] .btn-success:active,
 .btn-success[disabled].active,
 fieldset[disabled] .btn-success.active {
   background-color: rgba(102, 230, 102, 1);
-  border-color: green;
+  border-color: rgba(102, 230, 102, 1);
 }
 .btn-success .badge {
   color: rgba(0, 128, 0, 1);
