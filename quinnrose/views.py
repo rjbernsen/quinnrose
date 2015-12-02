@@ -1,9 +1,8 @@
 import os
 import glob
 import logging
-from smtplib import SMTPAuthenticationError
 from django.core.mail import send_mail
-from django.shortcuts import render, render_to_response
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
 from django.views.generic import TemplateView, FormView
@@ -32,14 +31,10 @@ class BasePage(object):
         self.context.update(CONFIG_CONTEXT)
         
     def get_context_data(self, **kwargs):
-#         self.logger.info('Base kwargs = {}'.format(self.kwargs))
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
-#         self.logger.info('context = {}'.format(context))
         context.update(self.context)
-#         self.logger.info('context = {}'.format(context))
         context.update(self.kwargs)
-#         self.logger.info('context = {}'.format(context))
         
         return context
 
@@ -69,6 +64,7 @@ class BaseFormPage(BasePage, FormView):
         self.init()
         
         context = super().get_context_data(**kwargs)
+
         return context
 
 class HomePage(BaseTemplatePage):
@@ -231,8 +227,7 @@ class ContactFormView(BaseFormPage):
                     recipient_list=recipient_list,
                     message=message,
                 )
-#                 raise SMTPAuthenticationError('asdf','asdf')
-#                 self.logger.info('sent_count = {}'.format(sent_count))
+
                 if sent_count != 1:
 
                     messages.error(request, 'Could not send the message. Please try again later.')
@@ -258,7 +253,6 @@ class ContactFormView(BaseFormPage):
                     self.get_context_data(form=self.form_class)
                 )
             )
-#             return render(request, self.template_name, {'form': self.form_class})
         
         return self.get(request, args, kwargs)
 
@@ -330,13 +324,6 @@ class Subscriptions(BaseTemplatePage):
         all_features = [ [],[],[] ] # A holding place
         # Get the feature list
         feature_list = SUBSCRIPTIONS_DATA['features']
-#         # Create place holders for each level.
-#         features = [
-#             feature_list.copy(),
-#             feature_list.copy(),
-#             feature_list.copy(),
-#             feature_list.copy()
-#         ]
         levels = SUBSCRIPTIONS_DATA[subtype]
         # Get the features for each level. Add each
         # level list to the next level.
@@ -355,7 +342,6 @@ class Subscriptions(BaseTemplatePage):
                     cur_row.append('')
             features.append(cur_row)
         context['features'] = features
-#         self.logger.info('section = {}'.format(section))
         
         return context
 
