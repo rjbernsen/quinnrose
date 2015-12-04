@@ -1,5 +1,6 @@
 *.pyc
 node_modules
+quinnrose/secrets.py
 functional_tests/screendumps
 .less/bootstrap/*
 /logs

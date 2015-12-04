@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import sys
 from django.contrib import messages
+from quinnrose.secrets import Secrets
 # from django.contrib.messages import constants as message_constants
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -32,7 +33,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'krr)oi)qtu2m)jhk!)nr&-2_hl94u=24n&1jq22x11x6g7&h&a'
+SECRET_KEY = Secrets.SECRET_KEY
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -93,11 +94,11 @@ WSGI_APPLICATION = 'quinnrose.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'quinnrose',
-        'USER': 'quinnrose',
-        'PASSWORD': 'quinnrose',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
-        'PORT': '3306',
+        'NAME': Secrets.DATABASE_NAME,
+        'USER': Secrets.DATABASE_USER,
+        'PASSWORD': Secrets.DATABASE_PASSWORD,
+        'HOST': Secrets.DATABASE_HOST,   # Or an IP Address that your DB is hosted on
+        'PORT': Secrets.DATABASE_PORT,
     }
 }
 if 'test' in sys.argv:
@@ -156,11 +157,11 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'  # For bootstrap class names
 }
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'rjbdevel@gmail.com'
-EMAIL_HOST_PASSWORD = 'QuinnRose81$gm'
-EMAIL_PORT = 587
+EMAIL_USE_TLS       = True
+EMAIL_HOST          = Secrets.EMAIL_HOST
+EMAIL_HOST_USER     = Secrets.EMAIL_HOST_USER
+EMAIL_HOST_PASSWORD = Secrets.EMAIL_HOST_PASSWORD
+EMAIL_PORT          = Secrets.EMAIL_PORT
 
 LOGGING = {
     'version': 1,
