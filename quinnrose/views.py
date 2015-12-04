@@ -2,6 +2,7 @@ import os
 import glob
 import logging
 from django.core.mail import send_mail
+from django.conf import settings
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib import messages
@@ -74,11 +75,16 @@ class HomePage(BaseTemplatePage):
     def get_context_data(self, **kwargs):
         
 
-        root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-        image_path = os.path.join(root_dir, 'static', 'images') + '/carousel-*'
+#         root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        image_path = ''
+        if settings.IN_PRODUCTION:
+            image_path = os.path.join(settings.STATIC_ROOT, 'images') + '/carousel-*'
+        else:
+            image_path = os.path.join(settings.STATIC_MAIN_APP, 'images') + '/carousel-*'
         carousel_images = [
             os.path.basename(p) for p in glob.glob(image_path)
         ]
+        carousel_images.sort()
         
         more_page_context = {
             'carousel_images': carousel_images,

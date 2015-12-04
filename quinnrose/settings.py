@@ -12,11 +12,21 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
 from django.contrib import messages
 # from django.contrib.messages import constants as message_constants
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
+IN_PRODUCTION = True
+# print('sys.argv = {}'.format(sys.argv))
+if 'manage.py' in sys.argv[0]:
+    IN_PRODUCTION = False
+# print('IN_PRODUCTION = {}'.format(IN_PRODUCTION))
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# print('BASE_DIR = {}'.format(BASE_DIR))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -24,12 +34,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'krr)oi)qtu2m)jhk!)nr&-2_hl94u=24n&1jq22x11x6g7&h&a'
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-DOMAIN = 'localhost'
-ALLOWED_HOSTS = [DOMAIN,'127.0.0.1/']
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'quinnrose.elasticbeanstalk.com'
+]
+# ALLOWED_HOSTS = ['localhost']
 
 # Application definition
 
@@ -90,7 +100,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-import sys
 if 'test' in sys.argv:
     DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}
 
@@ -100,7 +109,7 @@ if 'test' in sys.argv:
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -113,20 +122,31 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_GLOBAL = os.path.join(BASE_DIR, 'static')
-# if 'test' in sys.argv:
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# if DEBUG: 
+#     STATIC_ROOT = os.path.join(BASE_DIR, '/static')
 # else:
-#     STATICFILES_DIRS = (
-#         STATIC_GLOBAL,
-#     )
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# print('STATIC_ROOT = {}'.format(STATIC_ROOT))
+STATIC_MAIN_APP = os.path.join(BASE_DIR,'quinnrose', 'static','quinnrose')
+# print('STATIC_MAIN_APP = {}'.format(STATIC_MAIN_APP))
+
 STATICFILES_DIRS = (
-        STATIC_GLOBAL,
+        STATIC_MAIN_APP,
+#         STATIC_ROOT,
 )
+# print('STATICFILES_DIRS = {}'.format(STATICFILES_DIRS))
+
+
+# # List of finder classes that know how to find static files in
+# # various locations.
 # STATICFILES_FINDERS = (
-#     "django.contrib.staticfiles.finders.FileSystemFinder",
-#     "django.contrib.staticfiles.finders.AppDirectoriesFinder"
+#     'django.contrib.staticfiles.finders.FileSystemFinder',
+#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+# #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 # )
+
+
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'debug',

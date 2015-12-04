@@ -13,6 +13,7 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
+# from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
 from quinnrose.views import HomePage, ContactFormView, About, Help, SignInFormView, Subscriptions, Privacy, Terms, Error404
@@ -30,5 +31,6 @@ urlpatterns = [
     url(r'^terms$', Terms.as_view(), name='terms'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^.+$', Error404.as_view(), name='404'),
+#     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': settings.DEBUG}),
 ]
 
