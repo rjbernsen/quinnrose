@@ -9,7 +9,6 @@
 
 		<title>{{ page_title }}</title>
 
-{#        <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">#}
         <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 		<link href="{% static 'css/font-awesome.min.css' %}" type="text/css" rel="stylesheet">
 		<!-- Local CSS -->
@@ -79,7 +78,7 @@
 			<div class="footer-left">
 				<p class="footer-links">
 					<a id="link_privacy" href="/privacy">Privacy Policy</a>
-					·
+					&bull;
 					<a id="link_terms" href="/terms">Terms and Conditions</a>
 				</p>
 				<p>{{ company_name }} &copy; {% getCopyrightYears %}</p>
