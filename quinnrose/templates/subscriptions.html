@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends '__base.html' %}
 {% load staticfiles %}
 
-{% block page_specific_css %}
-		<link href="{% static 'css/subscription_styles.css' %}" rel="stylesheet">
+{% block styles %}
+	{{ block.super }}
+	<link href="{% static 'css/subscription_styles.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block page_content %}

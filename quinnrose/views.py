@@ -378,6 +378,12 @@ class Error404(BaseTemplatePage):
     template_name = '404.html'
     page_sub_title = 'Page Not Found'
 
+    def get(self, request, *args, **kwargs):
+    
+#         print('request = {}'.format(request.META))
+
+        return super(Error404, self).get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
 
         self.init()

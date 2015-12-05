@@ -1,0 +1,17 @@
+{% load staticfiles %}
+{% load copyrighttags %}
+
+<footer class="footer footer-distributed">
+	<div class="footer-right">
+		<a href="#"><img src="{% static 'images/facebook.png' %}"></a>
+		<a href="#"><img src="{% static 'images/twitter.png' %}"></a>
+	</div>
+	<div class="footer-left">
+		<p class="footer-links">
+			<a id="link_privacy" href="/privacy">Privacy Policy</a>
+			&bull;
+			<a id="link_terms" href="/terms">Terms and Conditions</a>
+		</p>
+		<p>{{ company_name }} &copy; {% getCopyrightYears %}</p>
+	</div>
+</footer>

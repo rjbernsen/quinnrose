@@ -77,12 +77,12 @@ TEMPLATES = [
         ],
 #         'APP_DIRS': True,
         'OPTIONS': {
-            'loaders': [
-                ('django.template.loaders.cached.Loader', [
-                    'django.template.loaders.filesystem.Loader',
-                    'django.template.loaders.app_directories.Loader',
-                ]),
-            ],
+#             'loaders': [
+#                 ('django.template.loaders.cached.Loader', [
+#                     'django.template.loaders.filesystem.Loader',
+#                     'django.template.loaders.app_directories.Loader',
+#                 ]),
+#             ],
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
