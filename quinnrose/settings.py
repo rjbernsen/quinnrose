@@ -230,3 +230,9 @@ LOGGING = {
 }
 
 COPY_START_YEAR = 2015
+
+if IN_PRODUCTION:
+    import quinnrose.settings_prod
+else:
+    import quinnrose.settings_dev
+
