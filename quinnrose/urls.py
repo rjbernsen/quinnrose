@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^privacy$', Privacy.as_view(), name='privacy'),
     url(r'^terms$', Terms.as_view(), name='terms'),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^artists', include('artists.urls')),
     url(r'^.+$', Error404.as_view(), name='404'),
-#     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT, 'show_indexes': settings.DEBUG}),
 ]
 
