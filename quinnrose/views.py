@@ -109,7 +109,7 @@ class ContactFormView(BasePage, FormView):
     
     def get(self, request, *args, **kwargs):
     
-        return super(ContactFormView, self).get(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
 
@@ -191,7 +191,7 @@ class SignInFormView(BasePage, FormView):
     
     def get(self, request, *args, **kwargs):
     
-        return super(SignInFormView, self).get(request, *args, **kwargs)
+        return super().get(request, *args, **kwargs)
     
 #     def post(self, request, *args, **kwargs):
 # 
@@ -311,7 +311,7 @@ class Help(BasePage, TemplateView):
         context = super().get_context_data(**kwargs)
 
         section = context.get('section') or 'topics'
-        self.template_name = 'help_{}.html'.format(section)
+#         self.template_name = 'help_{}.html'.format(section)
 
         context['section'] = section
         context['data'] = HELP_DATA[section]

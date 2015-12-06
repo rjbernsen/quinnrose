@@ -22,8 +22,18 @@
 				</div>
 			</div>
 			<div class="col-md-8 panel-text">
-				{% block help_page_content %}
-				{% endblock %}
+<div class="panel-group" id="accordion">
+	{% for title,desc in data %}
+	<div class="panel panel-default">
+		<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}" class="list-group-item">{{ title }}</a>
+		<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse ">
+			<div class="panel-body">
+				{{ desc }}
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+</div>
 			</div>
 		</div>
 	</div>
