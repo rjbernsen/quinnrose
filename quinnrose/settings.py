@@ -93,6 +93,15 @@ TEMPLATES = [
     },
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': 'quinnrose1.nlxj5i.0001.usw2.cache.amazonaws.com',
+    }
+}
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
 WSGI_APPLICATION = 'quinnrose.wsgi.application'
 
 
