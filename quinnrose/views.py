@@ -22,7 +22,24 @@ class BasePage(object):
     
     logger = logging.getLogger('quinnrose')
 
+#     def get(self, request, *args, **kwargs):
+# #         print('BasePage.get')
+#     
+# #         self.request = request
+# #         print('session = {}'.format(request.session.__dict__))
+# 
+# #         self.last_good_url = request.session.get('last_good_url')
+# 
+# #         print('BasePage.request.session.last_good_url = {}'.format(request.session.get('last_good_url')))
+# #         print('BasePage.request.build_absolute_uri = {}'.format(request.build_absolute_uri()))
+#         
+# #         self.request.session['last_good_url'] = request.build_absolute_uri()
+# #         
+#         
+#         return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
+#         print('BasePage.get_context_data')
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         context.update(
@@ -51,6 +68,7 @@ class HomePage(BasePage, TemplateView):
     page_sub_title = None
     
     def get_context_data(self, **kwargs):
+#         print('HomePage.get_context_data')
         
         context = super().get_context_data(**kwargs)
 
@@ -90,7 +108,15 @@ class About(BasePage, TemplateView):
         'we_dont'
     ]
     
+#     def get(self, request, *args, **kwargs):
+# #         print('About.get')
+#     
+# #         self.request = request
+#         
+#         return super().get(request, *args, **kwargs)
+    
     def get_context_data(self, **kwargs):
+#         print('About.get_context_data')
         
         context = super().get_context_data(**kwargs)
 
@@ -107,9 +133,11 @@ class ContactFormView(BasePage, FormView):
     success_message = "Message was sent successfully"
 #     success_url = '/contact/thanks'
     
-    def get(self, request, *args, **kwargs):
-    
-        return super().get(request, *args, **kwargs)
+#     def get(self, request, *args, **kwargs):
+#     
+# #         self.request = request
+#         
+#         return super().get(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
 
@@ -189,9 +217,11 @@ class SignInFormView(BasePage, FormView):
 #     success_message = "Message was sent successfully"
 #     success_url = '/contact/thanks'
     
-    def get(self, request, *args, **kwargs):
-    
-        return super().get(request, *args, **kwargs)
+#     def get(self, request, *args, **kwargs):
+#     
+# #         self.request = request
+#         
+#         return super().get(request, *args, **kwargs)
     
 #     def post(self, request, *args, **kwargs):
 # 
@@ -257,6 +287,12 @@ class Subscriptions(BasePage, TemplateView):
     template_name = 'subscriptions.html'
     page_sub_title = 'Subscriptions'
 
+#     def get(self, request, *args, **kwargs):
+#     
+# #         self.request = request
+#         
+#         return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         
         context = super().get_context_data(**kwargs)
@@ -305,13 +341,18 @@ class Help(BasePage, TemplateView):
     template_name = 'help.html'
     page_sub_title = 'Help'
     
+#     def get(self, request, *args, **kwargs):
+#     
+# #         self.request = request
+#         
+#         return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
 #         self.logger.info(self.page_sub_title)
         
         context = super().get_context_data(**kwargs)
 
         section = context.get('section') or 'topics'
-#         self.template_name = 'help_{}.html'.format(section)
 
         context['section'] = section
         context['data'] = HELP_DATA[section]
@@ -322,6 +363,12 @@ class Privacy(BasePage, TemplateView):
     template_name = 'privacy.html'
     page_sub_title = 'Privacy Policy'
 
+#     def get(self, request, *args, **kwargs):
+#     
+# #         self.request = request
+#         
+#         return super().get(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
@@ -330,6 +377,10 @@ class Privacy(BasePage, TemplateView):
 class Terms(BasePage, TemplateView):
     template_name = 'terms.html'
     page_sub_title = 'Terms and Conditions'
+
+    def get(self, request, *args, **kwargs):
+    
+        return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
 
@@ -340,15 +391,22 @@ class Error404(BasePage, TemplateView):
     template_name = '404.html'
     page_sub_title = 'Page Not Found'
 
-    def get(self, request, *args, **kwargs):
-    
-#         print('request = {}'.format(request.META))
-
-        return super(Error404, self).get(request, *args, **kwargs)
+#     def get(self, request, *args, **kwargs):
+# #         print('Error404.get')
+# #         print('Error404.request.session.get.last_good_url = {}'.format(request.session.get('last_good_url')))
+# #         self.request = request
+#         
+#         return super().get(request, *args, **kwargs)
+# #         print('Error404.self.last_good_url = {}'.format(self.last_good_url))
+#         
+# #         return request
 
     def get_context_data(self, **kwargs):
+#         print('Error404.get_context_data')
 
         context = super().get_context_data(**kwargs)
+        context['last_good_url'] = self.request.session.get('last_good_url')
+        
         return context
 
 if __name__ == '__main__':
