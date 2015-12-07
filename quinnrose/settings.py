@@ -64,6 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'quinnrose.middleware.MySessionProcessingMiddleware',
 )
 
 ROOT_URLCONF = 'quinnrose.urls'
@@ -92,13 +93,6 @@ TEMPLATES = [
         },
     },
 ]
-
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': 'quinnrose1.nlxj5i.0001.usw2.cache.amazonaws.com',
-    }
-}
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
