@@ -11,6 +11,8 @@ Jumbotron
 .subscription-jumbotron {
 	padding-top: 20px;
 	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:10px;
 	margin-bottom: 20px;
 }
 .subscription-jumbotron > h2,
@@ -68,17 +70,38 @@ Jumbotron
 		font-size: 1.2em;
 		margin-left: 10px;
 	}
+	.col-xs-12 {
+		text-align: center;
+		padding-bottom: 10px;
+	}
+	.pull-right {
+		float: none !important;
+	}
 }
 @media (max-width:480px) and (min-width: 321px) { 
 	.subscription-jumbotron > p {
 		font-size: 1.1em;
 		margin-left: 10px;
 	}
+	.col-xs-12 {
+		text-align: center;
+		padding-bottom: 10px;
+	}
+	.pull-right {
+		float: none !important;
+	}
 }
 @media (max-width:320px) { 
 	.subscription-jumbotron > p {
 		font-size: 1.0em;
 		margin-left: 0px;
+	}
+	.col-xs-12 {
+		text-align: center;
+		padding-bottom: 10px;
+	}
+	.pull-right {
+		float: none !important;
 	}
 }
 

@@ -18,34 +18,33 @@
             <h2>{{ headers.header }}</h2>
             <p>{{ headers.description }}</p>
 
-			<div class="row sub-header">
-			    <div class="col-xs-6 col-sm-6 col-md-6">
-			        <a class="btn btn-primary" href="/subscribe/{{ subtype }}">Let's do it!</a>
-			    </div>
-			    <div class="col-xs-6 col-sm-6 col-md-6">
-		            <a class="btn btn-default pull-right" href="/subscriptions/{{ othersubtype }}">{{ othersubtypelabel }}&nbsp;&nbsp;<span class="fa fa-caret-right"  aria-hidden="true"></span></a>
-			    </div>
+			<div class="container">
+				<div class="row sub-header">
+				    <div class="col-xs-12 col-sm-6 col-md-6">
+				        <a class="btn btn-primary" href="/subscribe/{{ subtype }}">Let's do it!</a>
+				    </div>
+				    <div class="col-xs-12 col-sm-6 col-md-6">
+			            <a class="btn btn-default pull-right" href="/subscriptions/{{ othersubtype }}">{{ othersubtypelabel }}&nbsp;&nbsp;<span class="fa fa-caret-right"  aria-hidden="true"></span></a>
+				    </div>
+				</div>
 			</div>
         </header>
         <!-- End header -->
 
 		<!-- Begin title -->
 		<div class="row">
-		    <div class="col-xs-6 col-sm-6 col-md-6 sub-header">
-{#		        <h2>The packages...</h2>#}
-		    </div>
-		    <div class="col-xs-6 col-sm-6 col-md-6 sub-header">
-		        <a class="btn btn-success pull-right" href="#" data-toggle="modal" data-target="#comparisonDetails">Compare</a>
+		    <div class="col-xs-12 col-sm-12 col-md-12 sub-header text-center">
+		        <a class="btn btn-success" href="#" data-toggle="modal" data-target="#comparisonDetails">Compare</a>
 		    </div>
 		</div>
 		<!-- End title -->
 		
 		<!-- Begin body content -->
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row text-center">
 			
 				{% for item in data %}
-			    <div class="col-md-4 col-sm-6">
+			    <div class="col-md-4">
 			        <div class="thumbnail">
 			            <img src="{% static 'images' %}/{{ item.image }}" alt="">
 			            <div class="caption">
