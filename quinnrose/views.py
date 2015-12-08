@@ -9,7 +9,8 @@ from django.contrib import messages
 from django.views.generic import TemplateView, FormView
 # from django.contrib.messages.views import SuccessMessageMixin
 
-from quinnrose.menus import menu
+from quinnrose.menu import menu as main_menu
+from artists.menu import menu as artists_menu
 from quinnrose.forms import SignInForm, ContactForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
@@ -22,31 +23,25 @@ class BasePage(object):
     
     logger = logging.getLogger('quinnrose')
 
-#     def get(self, request, *args, **kwargs):
-# #         print('BasePage.get')
-#     
-# #         self.request = request
-# #         print('session = {}'.format(request.session.__dict__))
-# 
-# #         self.last_good_url = request.session.get('last_good_url')
-# 
-# #         print('BasePage.request.session.last_good_url = {}'.format(request.session.get('last_good_url')))
-# #         print('BasePage.request.build_absolute_uri = {}'.format(request.build_absolute_uri()))
-#         
-# #         self.request.session['last_good_url'] = request.build_absolute_uri()
-# #         
-#         
-#         return super().get(request, *args, **kwargs)
-
+    menus = {
+        'quinnrose':    main_menu,
+        'artists':      artists_menu
+    }
+    
+    current_menu = None
+    
     def get_context_data(self, **kwargs):
-#         print('BasePage.get_context_data')
+
+        current_app = self.request.session.get('current_app', 'quinnrose')
+        print('current_app = {}'.format(current_app))
+
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         context.update(
             {
                 'page_title': self._get_title(),
                 'page_header': self.page_sub_title,
-                'menu': menu,
+                'menu': self.menus[current_app],
             }
         )
         context.update(self.kwargs)
@@ -68,11 +63,10 @@ class HomePage(BasePage, TemplateView):
     page_sub_title = None
     
     def get_context_data(self, **kwargs):
-#         print('HomePage.get_context_data')
-        
+        self.request.session['current_app'] = 'quinnrose'
+
         context = super().get_context_data(**kwargs)
 
-#         root_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         image_path = ''
         if settings.IN_PRODUCTION:
             image_path = os.path.join(settings.STATIC_ROOT, 'images') + '/carousel-*'
@@ -108,15 +102,7 @@ class About(BasePage, TemplateView):
         'we_dont'
     ]
     
-#     def get(self, request, *args, **kwargs):
-# #         print('About.get')
-#     
-# #         self.request = request
-#         
-#         return super().get(request, *args, **kwargs)
-    
     def get_context_data(self, **kwargs):
-#         print('About.get_context_data')
         
         context = super().get_context_data(**kwargs)
 
@@ -131,13 +117,6 @@ class ContactFormView(BasePage, FormView):
     page_sub_title = 'Contact Us'
     form_class = ContactForm
     success_message = "Message was sent successfully"
-#     success_url = '/contact/thanks'
-    
-#     def get(self, request, *args, **kwargs):
-#     
-# #         self.request = request
-#         
-#         return super().get(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):
 
@@ -287,12 +266,6 @@ class Subscriptions(BasePage, TemplateView):
     template_name = 'subscriptions.html'
     page_sub_title = 'Subscriptions'
 
-#     def get(self, request, *args, **kwargs):
-#     
-# #         self.request = request
-#         
-#         return super().get(request, *args, **kwargs)
-
     def get_context_data(self, **kwargs):
         
         context = super().get_context_data(**kwargs)
@@ -341,14 +314,7 @@ class Help(BasePage, TemplateView):
     template_name = 'help.html'
     page_sub_title = 'Help'
     
-#     def get(self, request, *args, **kwargs):
-#     
-# #         self.request = request
-#         
-#         return super().get(request, *args, **kwargs)
-
     def get_context_data(self, **kwargs):
-#         self.logger.info(self.page_sub_title)
         
         context = super().get_context_data(**kwargs)
 
@@ -362,12 +328,6 @@ class Help(BasePage, TemplateView):
 class Privacy(BasePage, TemplateView):
     template_name = 'privacy.html'
     page_sub_title = 'Privacy Policy'
-
-#     def get(self, request, *args, **kwargs):
-#     
-# #         self.request = request
-#         
-#         return super().get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
 
@@ -391,18 +351,7 @@ class Error404(BasePage, TemplateView):
     template_name = '404.html'
     page_sub_title = 'Page Not Found'
 
-#     def get(self, request, *args, **kwargs):
-# #         print('Error404.get')
-# #         print('Error404.request.session.get.last_good_url = {}'.format(request.session.get('last_good_url')))
-# #         self.request = request
-#         
-#         return super().get(request, *args, **kwargs)
-# #         print('Error404.self.last_good_url = {}'.format(self.last_good_url))
-#         
-# #         return request
-
     def get_context_data(self, **kwargs):
-#         print('Error404.get_context_data')
 
         context = super().get_context_data(**kwargs)
         context['last_good_url'] = self.request.session.get('last_good_url')

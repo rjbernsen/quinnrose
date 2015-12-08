@@ -12,10 +12,11 @@ class MySessionProcessingMiddleware(object):
 #         print('MySessionProcessingMiddleware.process_response')
 #         print('response.status_code = {}'.format(response.status_code))
 #         print('response.keys() = {}'.format(response.keys()))
-        if response.template_name:
-            if not '404.html' in response.template_name:
+        if hasattr(response, 'template_name'):
+            if response.template_name:
+                if not '404.html' in response.template_name:
                 
-                request.session['last_good_url'] = request.build_absolute_uri()
+                    request.session['last_good_url'] = request.build_absolute_uri()
 #         print('request.session.last_good_url = {}'.format(request.session['last_good_url']))
 #         print('response = {}'.format(response.template_name))
 
