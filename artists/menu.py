@@ -20,7 +20,7 @@ menu.addItem(item)
 # Membership Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
-dropdown_menu.label = 'Joey Bernsen'
+dropdown_menu.label = 'Shannon'
 dropdown_menu.is_dropdown = True
 dropdown_menu.right = True
 

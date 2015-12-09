@@ -3,33 +3,118 @@
 
 {% block styles %}
 	{{ block.super }}
-{#		<link href="{% static 'css/artists_styles.css' %}" rel="stylesheet">#}
+		<link href="{% static 'css/artists_styles.css' %}" rel="stylesheet">
+{#		<link href="{% static 'css/star-rating.min.css' %}" media="all" rel="stylesheet" type="text/css" />#}
 {% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-	<h3>About Us</h3>
-</div>
 
 <div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <canvas class="header-bg" height="70" id="header-blur"></canvas>
+                <div class="avatar">
+                    <img src="" alt="" />
+                </div>
+                <div class="content">
+                    <h3>{{ artist_profile.professional_name }}</h3>
+{#                     <p> I love Bootstrap. Work for Themeforest</p>#}
+{#                    <p><a class="btn btn-link" href="/info/1" role="button">Full story <span class="fa fa-location-arrow"></span></a></p>#}
+                </div>
+            </div>
+        </div>
+    </div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="list-group">
-					<a id="about_the_site" href="/about" class="list-group-item {% if section == None or section == '1' %}active{% endif %}">About {{ full_site_name }}</a>
-					<a id="about_core_values" href="/about/2" class="list-group-item {% if section == '2' %}active{% endif %}">Core values</a>
-					<a id="about_mission_statement" href="/about/3" class="list-group-item {% if section == '3' %}active{% endif %}">Mission statement</a>
-					<a id="about_we_do" href="/about/4" class="list-group-item {% if section == '4' %}active{% endif %}">What we do</a>
-					<a id="about_we_dont" href="/about/5" class="list-group-item {% if section == '5' %}active{% endif %}">What we don't do</a>
+    <div class="row profile-details">
+	    <div class="col-sm-12 col-md-12 col-lg-3 profile-details-container">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<div class="col-md-12 profile-details-header">
+						Skills
+					</div>
+				</div>
+				<div class="row text-center profile-details-detail">
+				    <div class="col-sm-12 col-md-12 col-lg-12 profile-details-detail-row">
+						<div class="container-fluid">
+						{% for skill in artist_profile.skills %}
+						<div class="row">
+						    <div class="col-sm-8 col-md-8 col-lg-8 pull-left text-left">
+								{{ skill.skill }}
+					        </div>
+						    <div class="col-sm-4 col-md-4 col-lg-4 pull-right text-right text-nowrap">
+						    	<span name="rating" data-star-count="5" data-rating="{{ skill.rating }}"></span>
+					        </div>
+						</div>
+						{% endfor %}
+						</div>
+			        </div>
 				</div>
 			</div>
-			<div class="col-md-8 panel-text">
-				{% block about_page_content %}
-				{% endblock %}
+		</div>
+	    <div class="col-sm-12 col-md-12 col-lg-6 profile-details-container">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<div class="col-md-12 profile-details-header">
+						Experience
+					</div>
+				</div>
+				<div class="row text-center profile-details-detail">
+				    <div class="col-sm-12 col-md-12 col-lg-12 profile-details-detail-row">
+						<div class="container-fluid">
+						{% for exp in artist_profile.experience %}
+						<div class="row experience-row">
+						    <div class="col-sm-6 col-md-6 col-lg-6 pull-left text-left">
+								{{ exp.experience }}
+					        </div>
+						    <div class="col-sm-6 col-md-6 col-lg-6 pull-right text-right text-nowrap">
+						    	{{ exp.role }}
+					        </div>
+						</div>
+						{% endfor %}
+						</div>
+			        </div>
+				</div>
 			</div>
 		</div>
+	    <div class="col-sm-12 col-md-12 col-lg-3 profile-details-container">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<div class="col-md-12 profile-details-header">
+						Characteristics
+					</div>
+				</div>
+				<div class="row text-center profile-details-detail">
+				    <div class="col-sm-12 col-md-12 col-lg-12 profile-details-detail-row">
+						<div class="container-fluid">
+						{% for charact in artist_profile.characteristics %}
+						<div class="row">
+						    <div class="col-sm-8 col-md-8 col-lg-8 pull-left text-left">
+								{{ charact.characteristic }}
+					        </div>
+						    <div class="col-sm-4 col-md-4 col-lg-4 pull-right text-right text-nowrap">
+						    	{{ charact.value }}
+					        </div>
+						</div>
+						{% endfor %}
+						</div>
+			        </div>
+				</div>
+			</div>
+	    </div>
 	</div>
+
 </div>
 
+<img class="src-image" src="{% static 'images/users/shannon/profile_000.jpg' %}"/>
+<img class="gold-star-image" id="goldstar" src="{% static 'images/gold-star.jpg' %}"/>
+<img class="gray-star-image" id="graystar" src="{% static 'images/gray-star.jpg' %}"/>
+
+
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="{% static 'js/stack-blur.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/artists.js' %}" type='text/javascript'></script>
 {% endblock %}
