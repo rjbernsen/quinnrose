@@ -144,4 +144,5 @@ div.profile-details {
     height: 100%;
     opacity: 0.8;
     background-color: rgba(255, 255, 255, .8);
-    filter:alpha(opacity=80);}
+    filter:alpha(opacity=80);
+}

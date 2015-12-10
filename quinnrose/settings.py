@@ -157,9 +157,7 @@ STATICFILES_DIRS = (
 #     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 # #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 # )
-
-
-
+ 
 MESSAGE_TAGS = {
     messages.DEBUG: 'debug',
     messages.INFO: 'info',
@@ -246,4 +244,3 @@ if IN_PRODUCTION:
     import quinnrose.settings_prod
 else:
     import quinnrose.settings_dev
-
