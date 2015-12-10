@@ -50,8 +50,6 @@
 	border-radius: 50%;
 	border: 5px solid rgba(237, 237, 237, 0.6);
 }
-
-
 div.profile-details {
 	margin-top: 10px;
 }
@@ -87,7 +85,63 @@ div.profile-details {
 	display: inline;
 	width: 14px;
 }
-
 .experience-row {
 	border-top: 1px solid #ccc;
 }
+#headshot:hover {
+	cursor: hand;
+	cursor: pointer;
+}
+.headshot-container {
+	position: absolute;
+	display:block;
+	top: 0px;
+}
+.headshot-header {
+	position: absolute;
+	z-index: 999;
+	height: 22px;
+	text-align: center;
+	border: 1px solid rgba(200, 200, 200, 1);;
+	border-radius: 10px 10px 0px 0px;
+	background-color: rgba(200, 200, 200, .5);
+	visibility: hidden;
+}
+.headshot-header:hover {
+	cursor: hand;
+	cursor: pointer;
+}
+.headshot-header-caption {
+	font-weight: bold;
+	color: rgba(128, 128, 128, 1);
+}
+.headshot-header-caption:hover {
+	color: black;
+}
+.headshot-frame {
+	position: absolute;
+	z-index: 998;
+	visibility: hidden;
+}
+.headshot-photo {
+	position: absolute;
+	z-index: 997;
+	visibility: hidden;
+}
+.headshot-frame-img {
+	visibility: hidden;
+}
+.headshot-photo-img {
+	visibility: hidden;
+}
+#headshot-background {
+	visibility: hidden;
+    position: fixed;
+    z-index: 990;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    background-color: rgba(255, 255, 255, .8);
+    filter:alpha(opacity=80);}

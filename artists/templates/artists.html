@@ -9,13 +9,36 @@
 
 {% block page_content %}
 
+{#<div id="headshot-popup" class="container headshot-popup">#}
+{#	<div class="row">#}
+{#		<div class="col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 text-center">#}
+<div id="headshot-container" class="headshot-container">
+	<div id="headshot-background"></div>
+	<div id="headshot-header" class="headshot-header">
+		<span id="headshot-close" class="headshot-header-caption">Close</span>
+	</div>
+	<canvas id="headshot-frame-canvas" class="headshot-frame"></canvas>
+	<canvas id="headshot-photo-canvas" class="headshot-photo"></canvas>
+</div>
+{#		</div>#}
+{#	</div>#}
+{#</div>#}
+{#<img id="frame-img" class="frame img-responsive" src="{% static 'images/frames/frame_01.png' %}">#}
+{#<img id="frame-photo-img" class="frame-photo img-responsive" src="{% static 'images/users/shannon/profile_000.jpg' %}">#}
+
+{#<div id="frame-div" class="frame">#}
+{#	<img class="img-responsive" src="{% static 'images/frames/frame_01.png' %}">#}
+{#</div>#}
+{#<div id="frame-photo-div" class="frame-photo">#}
+{#	<img class="img-responsive" src="{% static 'images/users/shannon/profile_000.jpg' %}">#}
+{#</div>#}
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <canvas class="header-bg" height="70" id="header-blur"></canvas>
                 <div class="avatar">
-                    <img src="" alt="" />
+                    <img id="headshot" data-toggle="modal" data-target="#headshot-popup" src="" alt="" />
                 </div>
                 <div class="content">
                     <h3>{{ artist_profile.professional_name }}</h3>
@@ -106,7 +129,35 @@
 
 </div>
 
+
+
+
+{#<div class="modal fade" id="headshot-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">#}
+{#  <div class="modal-dialog" role="document">#}
+{#    <div class="modal-content headshot-content">#}
+{#      <div class="modal-header">#}
+{#        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>#}
+{#        <h4 class="modal-title" id="myModalLabel">asdf</h4>#}
+{#      </div>#}
+{#      <div id="asdf" class="modal-body">#}
+{#		<canvas id="headshot-frame-canvas" class="headshot-frame"></canvas>#}
+{#		<canvas id="headshot-photo-canvas" class="headshot-photo"></canvas>#}
+{#      </div>#}
+{#      <div class="modal-footer">#}
+{#        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>#}
+{#        <button type="button" class="btn btn-primary">Save changes</button>#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+
+
+
+
+
 <img class="src-image" src="{% static 'images/users/shannon/profile_000.jpg' %}"/>
+<img id="headshot-frame-img" class="headshot-frame-img" src="{% static 'images/frames/frame_006.png' %}">
+<img id="headshot-photo-img" class="headshot-photo-img" src="{% static 'images/users/shannon/profile_002.jpg' %}">
 <img class="gold-star-image" id="goldstar" src="{% static 'images/gold-star.jpg' %}"/>
 <img class="gray-star-image" id="graystar" src="{% static 'images/gray-star.jpg' %}"/>
 
