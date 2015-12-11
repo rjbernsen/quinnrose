@@ -157,7 +157,9 @@ STATICFILES_DIRS = (
 #     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 # #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 # )
- 
+
+
+
 MESSAGE_TAGS = {
     messages.DEBUG: 'debug',
     messages.INFO: 'info',
@@ -244,3 +246,24 @@ if IN_PRODUCTION:
     import quinnrose.settings_prod
 else:
     import quinnrose.settings_dev
+
+# if IN_PRODUCTION:
+#     from quinnrose.settings_prod import (
+#         DEBUG as DEBUG_prod, 
+#         STATICFILES_STORAGE as STATICFILES_STORAGE_prod,
+#         CACHES as CACHES_prod
+#     )
+# 
+#     DEBUG = DEBUG_prod
+#     STATICFILES_STORAGE = STATICFILES_STORAGE_prod
+#     CACHES = CACHES_prod
+# 
+# else:
+#     from quinnrose.settings_dev import (
+#         DEBUG as DEBUG_dev, 
+#         CACHES as CACHES_dev
+#     )
+# 
+#     DEBUG = DEBUG_dev
+#     CACHES = CACHES_dev
+
