@@ -170,20 +170,6 @@ class ContactFormView(BasePage, FormView):
         context = super().get_context_data(**kwargs)
         return context
 
-#     def form_valid(self, form):
-#         self.logger.info('form_valid...')
-# 
-#  
-#         from_email = form.cleaned_data.get('email')
-#         message = form.cleaned_data.get('message')
-#         send_mail(
-#             subject='Subject',
-#             message=message,
-#             from_email=from_email,
-#             recipient_list=['a@b.com'],
-#         )
-#         return super(ContactFormView, self).form_valid(form)
-            
 class SignInFormView(BasePage, FormView):
     template_name = 'signin_{}.html'
     page_sub_title = 'Sign In'
@@ -193,62 +179,6 @@ class SignInFormView(BasePage, FormView):
         'signin': 'Sign in',
         'register': 'Register'
     }
-#     success_message = "Message was sent successfully"
-#     success_url = '/contact/thanks'
-    
-#     def get(self, request, *args, **kwargs):
-#     
-# #         self.request = request
-#         
-#         return super().get(request, *args, **kwargs)
-    
-#     def post(self, request, *args, **kwargs):
-# 
-#         form = self.form_class(request.POST)
-#         
-#         if form.is_valid():
-# 
-#             subject = CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][0]
-#             from_email = form.cleaned_data.get('email')
-#             recipient_list = ['rjbdevel@gmail.com'] #[CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][1]]
-#             message = form.cleaned_data.get('message')
-#             
-#             try:
-#                 sent_count = send_mail(
-#                     subject=subject,
-#                     from_email=from_email,
-#                     recipient_list=recipient_list,
-#                     message=message,
-#                 )
-# #                 raise SMTPAuthenticationError('asdf','asdf')
-# #                 self.logger.info('sent_count = {}'.format(sent_count))
-#                 if sent_count != 1:
-# 
-#                     messages.error(request, 'Could not send the message. Please try again later.')
-#                     return render_to_response(
-#                         self.template_name,
-#                         context_instance=RequestContext(
-#                             request,
-#                             self.get_context_data(form=form)
-#                         )
-#                     )
-#                     
-#                 messages.success(request, self.success_message)
-#             
-#             except Exception as e:
-#                 self.logger.info(e.__class__)
-#                 self.logger.info(e)
-#                 messages.error(request, 'Could not send the message. Please try again later.')
-#             
-#             return render_to_response(
-#                 self.template_name,
-#                 context_instance=RequestContext(
-#                     request,
-#                     self.get_context_data(form=self.form_class)
-#                 )
-#             )
-#         
-#         return self.get(request, args, kwargs)
 
     def get_context_data(self, **kwargs):
         subtype = self.kwargs.get('subtype') or 'signin'
