@@ -4,3 +4,7 @@ quinnrose/secrets.py
 functional_tests/screendumps
 .less/bootstrap/*
 /logs
+*.jpg
+*.png
+*.gif
+*.bmp

@@ -99,24 +99,29 @@ div.profile-details {
 }
 .headshot-header {
 	position: absolute;
+	display: table-cell;
+	vertical-align: middle;
 	z-index: 999;
-	height: 22px;
+	height: 40px;
+	width: 60px;
 	text-align: center;
+	font-weight: bold;
 	border: 1px solid rgba(200, 200, 200, 1);;
-	border-radius: 10px 10px 0px 0px;
+	border-radius: 20px 20px 20px 20px;
+	color: rgba(128, 128, 128, 1);
 	background-color: rgba(200, 200, 200, .5);
 	visibility: hidden;
 }
 .headshot-header:hover {
 	cursor: hand;
 	cursor: pointer;
+	color: black;
+	background-color: rgba(128, 128, 128, .5);
 }
 .headshot-header-caption {
-	font-weight: bold;
-	color: rgba(128, 128, 128, 1);
+	line-height: 38px;
 }
 .headshot-header-caption:hover {
-	color: black;
 }
 .headshot-frame {
 	position: absolute;

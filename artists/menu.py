@@ -88,6 +88,17 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
+item = MenuItem(
+    separator=True
+)
+dropdown_menu.addItem(item)
+
+item = MenuItem(
+    label='Preferences',
+    url='/artists/preferences'
+)
+dropdown_menu.addItem(item)
+
 menu.addDropdownMenu(dropdown_menu)
 
 # Help Dropdown
