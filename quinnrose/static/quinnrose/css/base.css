@@ -42,6 +42,25 @@ body {
 
 /*
 --------------------------------------------------
+Logo
+--------------------------------------------------
+*/
+.logo img {
+	position:absolute;
+	top: -10px;
+	left: -20px;
+	width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
+	max-width: 100%;
+}
+
+.logo-frame {
+	height: 46px;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+
+/*
+--------------------------------------------------
 Header
 --------------------------------------------------
 */
@@ -109,93 +128,46 @@ Main Navbar
 Main Carousel
 --------------------------------------------------
 */
-.slide {
-	min-height: 560px; /* Must have a height or min-height set due to use of background images */
-	background-size: cover;
-	background-position: center center;
-}
-/* Carousel Fade Effect */
-.carousel.carousel-fade .item {
-	-webkit-transition: opacity 1s linear;
-	-moz-transition: opacity 1s linear;
-	-ms-transition: opacity 1s linear;
-	-o-transition: opacity 1s linear;
-	transition: opacity 1s linear;
-	opacity: .5;
-}
-.carousel.carousel-fade .active.item {
-	opacity: 1;
-}
-.carousel.carousel-fade .active.left,
-.carousel.carousel-fade .active.right {
-	left: 0;
-	z-index: 2;
-	opacity: 0;
-	filter: alpha(opacity=0);
-}
-/* Carousel Overlay */
-.carousel-overlay {
-	position: absolute;
-	top: 0px;
-	right: 0;
-	left: 0;
-	
-	color: white;
-	text-shadow: 1px 1px 1px rgba(0,0,0,.75);
+.carousel-img {
+	margin: auto;
 }
 
-/* Custom class for the overlay content */
 
-.carousel-centered-content {
+
+
+.carousel-header
+{
     position: absolute;
-    top: 0;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-align: center;
-    -moz-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-    height: 100%;
+    top: 50px;
+    width: 96%;
+    color: #FFF;
+}
+.carousel-caption {
+/*	padding: 0px */
 }
 
-.carousel-overlay h1 {
-    font-size: 3.5em;
+.carousel-header-one {
+	font-size: 4em;
+	font-style: italic;
+	font-family: Garamond, Georgia, serif;
 }
-.carousel-overlay .btn {
-	border-top: none;
-    border-left: none;
-    border-right: none;
-    border-bottom: none;
-    border-radius: 6px;
-    margin: 10px;
+.carousel-header-two {
+	font-size: 5em;
+	font-weight: bold;
+	font-family: Garamond, Georgia, serif;
 }
-.carousel-overlay .btn-lg {
-    font-size: 1.75em;
-    padding: 10px 30px;
+.carousel-header-shadow {
+	text-shadow: .1em .1em .4em rgba(0, 0, 0, 1);
 }
-/*
-.btn-success, .btn-success:visited {
-	background-color: rgba(97, 97, 255, 1);
-}
-.btn-success:hover {
-	color: rgba(0, 0, 128, 1);
-  	background-color: rgba(229, 229, 255, 1);
-    border-bottom: 4px solid rgba(97, 97, 255, 1);
-}
-*/
 
 /*
 --------------------------------------------------
-Logo and Carousel Buttons
+Featurette styles
 --------------------------------------------------
 */
 .circles {
 	margin-top: 20px;
-    background-color: rgba(128, 0, 0, 1);
+    background-color: rgba(0, 0, 128, 1);
     color: #fff;
     border-radius: 50%;
     line-height: 3em;
@@ -207,30 +179,11 @@ Logo and Carousel Buttons
     margin: auto;
 }
 
-
-.dropdown {
-	left: 16px;
-}
-.dropdown-header {
-	margin-left: -10px;
-	font-size: 16px;
-	color: black;
-	font-weight: bold;
-}
-
 /*
 --------------------------------------------------
 Media overrides
 --------------------------------------------------
 */
-.logo img {
-	position:absolute;
-	top: -10px;
-	left: -20px;
-	width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
-	max-width: 100%;
-}
-
 @media (min-width:1201px) { 
 	.logo img {
 	    width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
@@ -251,6 +204,16 @@ Media overrides
 	    width: 100% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 100% !important;
 	}
+	.carousel-header
+	{
+	    top: 45px;
+	}
+	.carousel-header-one {
+		font-size: 3.5em;
+	}
+	.carousel-header-two {
+		font-size: 4.5em;
+	}
 	.carousel-overlay h1 {
 		font-size: 3.1em;
 	}
@@ -265,6 +228,18 @@ Media overrides
 	.logo img {
 	    width: 95% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 95% !important;
+	}
+	.carousel-header
+	{
+	    top: 40px;
+	}
+	.carousel-header-one {
+		font-size: 3em;
+		line-height: 110%;
+	}
+	.carousel-header-two {
+		font-size: 4em;
+		line-height: 110%;
 	}
 	.carousel-overlay h1 {
 		font-size: 2.7em;
@@ -281,8 +256,20 @@ Media overrides
 	    width: 90% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 90% !important;
 	}
+	.carousel-header
+	{
+	    top: 35px;
+	}
+	.carousel-header-one {
+		font-size: 2.5em;
+		line-height: 100%;
+	}
+	.carousel-header-two {
+		font-size: 3em;
+	}
 	.carousel-overlay h1 {
 		font-size: 2.3em;
+		line-height: 100%;
 	}
 	.slide {
 		min-height: 320px; /* Must have a height or min-height set due to use of background images */
@@ -295,6 +282,18 @@ Media overrides
 	.logo img {
 	    width: 80% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 80% !important;
+	}
+	.carousel-header
+	{
+	    top: 30px;
+	}
+	.carousel-header-one {
+		font-size: 2em;
+		line-height: 85%;
+	}
+	.carousel-header-two {
+		font-size: 2.5em;
+		line-height: 85%;
 	}
 	.carousel-overlay h1 {
 		font-size: 1.9em;
@@ -311,8 +310,20 @@ Media overrides
 	    width: 50% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 50%;
 	}
+	.carousel-header
+	{
+	    top: 25px;
+	}
+	.carousel-header-one {
+		font-size: 1.5em;
+		line-height: 80%;
+	}
+	.carousel-header-two {
+		font-size: 2em;
+	}
 	.carousel-overlay h1 {
 		font-size: 1.4em;
+		line-height: 80%;
 	}
 	.slide {
 		min-height: 160px; /* Must have a height or min-height set due to use of background images */
@@ -320,11 +331,6 @@ Media overrides
 	.btn-primary.btn-lg {
 		font-size: 1.1em !important;
 	}
-}
-.logo-frame {
-	height: 46px;
-	margin-top: 10px;
-	margin-left: 30px;
 }
 
 /*
