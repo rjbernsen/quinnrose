@@ -17,18 +17,18 @@ item = MenuItem(
 )
 menu.addItem(item)
 
+# Sign in Dropdown
+# --------------------------------------
+dropdown_menu = Menu()
+dropdown_menu.label = 'Sign in'
+dropdown_menu.is_dropdown = True
+dropdown_menu.right = True
+
 item = MenuItem(
     label='Sign in',
     url='/signin'
 )
-menu.addItem(item)
-
-# Membership Dropdown
-# --------------------------------------
-dropdown_menu = Menu()
-dropdown_menu.label = 'Membership'
-dropdown_menu.is_dropdown = True
-dropdown_menu.right = True
+dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Register',
@@ -36,15 +36,14 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
-item = MenuItem(
-    separator=True
-)
-dropdown_menu.addItem(item)
+menu.addDropdownMenu(dropdown_menu)
 
-item = MenuItem(
-    label='Subscriptions'
-)
-dropdown_menu.addItem(item)
+# Subscription Dropdown
+# --------------------------------------
+dropdown_menu = Menu()
+dropdown_menu.label = 'Subscription'
+dropdown_menu.is_dropdown = True
+dropdown_menu.right = True
 
 item = MenuItem(
     label='Artists',

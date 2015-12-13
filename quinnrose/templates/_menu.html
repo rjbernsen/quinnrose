@@ -25,7 +25,7 @@
 									{% elif item.url == None %}
 								<li class="dropdown-header">{{ item.label }}</li>
 									{% else %}
-								<li><a id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
+								<li><a class="dropdown-option" id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
 									{% endif %}
 								{% endfor %}
 							</ul>
