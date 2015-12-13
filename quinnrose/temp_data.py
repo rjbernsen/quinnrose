@@ -62,7 +62,7 @@ SUBSCRIPTIONS_HEADERS = {
         'description': '...we have three different subscription packages, all designed to provide any organization with tools connect with artists and share their events.'
     }
 }
-SUBSCRIPTIONS_ARTIST = [
+SUBSCRIPTIONS_ARTISTS = [
     {
         'level': 'Viewer',
         'image': '1.jpg',
@@ -72,7 +72,7 @@ SUBSCRIPTIONS_ARTIST = [
         'details': [
             'View basic artist information',
             'View basic organization information',
-            'Create basic artist profile for',
+            'Create basic artist profile',
             'Search other artists by zip code',
             'Search organizations by zip code'
         ],
@@ -173,7 +173,7 @@ SUBSCRIPTION_FEATURES = [
 ]
 SUBSCRIPTIONS_DATA = {
     'headers': SUBSCRIPTIONS_HEADERS,
-    'artists': SUBSCRIPTIONS_ARTIST,
+    'artists': SUBSCRIPTIONS_ARTISTS,
     'organizations': SUBSCRIPTIONS_ORGANIZATIONS,
     'features': SUBSCRIPTION_FEATURES
 }

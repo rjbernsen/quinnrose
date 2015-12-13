@@ -7,13 +7,13 @@ menu.right = True
 
 item = MenuItem(
     label='Profile',
-    url='/artists/profile'
+    url='/artist/profile'
 )
 menu.addItem(item)
 
 item = MenuItem(
     label='Auditions',
-    url='/artists/auditions'
+    url='/artist/auditions'
 )
 menu.addItem(item)
 
@@ -48,43 +48,43 @@ dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Basic info',
-    url='/artists/basicinfo'
+    url='/artist/basicinfo'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Photos',
-    url='/artists/photos'
+    url='/artist/photos'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Skills',
-    url='/artists/skills'
+    url='/artist/skills'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Experience',
-    url='/artists/experience'
+    url='/artist/experience'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Training',
-    url='/artists/training'
+    url='/artist/training'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Portfolio',
-    url='/artists/portfolio'
+    url='/artist/portfolio'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Biography',
-    url='/artists/biiography'
+    url='/artist/biiography'
 )
 dropdown_menu.addItem(item)
 
@@ -95,7 +95,7 @@ dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Preferences',
-    url='/artists/preferences'
+    url='/artist/preferences'
 )
 dropdown_menu.addItem(item)
 

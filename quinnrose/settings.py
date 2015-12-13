@@ -51,7 +51,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'artists',
+    'artist',
     'copyright',
 )
 
@@ -74,7 +74,7 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR,'quinnrose/templates'),
-            os.path.join(BASE_DIR,'artists/templates')
+            os.path.join(BASE_DIR,'artist/templates')
         ],
 #         'APP_DIRS': True,
         'OPTIONS': {

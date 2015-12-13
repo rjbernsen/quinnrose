@@ -17,18 +17,18 @@ item = MenuItem(
 )
 menu.addItem(item)
 
+item = MenuItem(
+    label='Sign in',
+    url='/signin'
+)
+menu.addItem(item)
+
 # Membership Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
 dropdown_menu.label = 'Membership'
 dropdown_menu.is_dropdown = True
 dropdown_menu.right = True
-
-item = MenuItem(
-    label='Sign in',
-    url='/signin'
-)
-dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Register',

@@ -122,6 +122,15 @@ Main Navbar
     margin-bottom: 8px;
     color: rgba(128, 0, 0, 1);
 }
+.dropdown {
+ 	left: 16px;
+}
+.dropdown-header {
+	margin-left: -10px;
+	font-size: 16px;
+	color: black;
+	font-weight: bold;
+}
 
 /*
 --------------------------------------------------

@@ -1,9 +1,9 @@
 from django.conf.urls import include, url
 
-from artists.views import ArtistsPage
+from artist.views import ArtistPage
 
 urlpatterns = [
-    url(r'^$', ArtistsPage.as_view(), name='artists'),
+    url(r'^$', ArtistPage.as_view(), name='artist'),
 #     url(r'^about/?(?P<section>.+)?$', About.as_view(), name='about'),
 #     url(r'^contact$', ContactFormView.as_view(), name='contact'),
 #     url(r'^signin/?(?P<subtype>.+)?$', SignInFormView.as_view(), name='signin'),

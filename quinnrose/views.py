@@ -10,7 +10,7 @@ from django.views.generic import TemplateView, FormView
 # from django.contrib.messages.views import SuccessMessageMixin
 
 from quinnrose.menu import menu as main_menu
-from artists.menu import menu as artists_menu
+from artist.menu import menu as artist_menu
 from quinnrose.forms import SignInForm, ContactForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
@@ -25,7 +25,7 @@ class BasePage(object):
 
     menus = {
         'quinnrose':    main_menu,
-        'artists':      artists_menu
+        'artist':       artist_menu
     }
     
     current_menu = None
