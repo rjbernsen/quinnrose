@@ -17,29 +17,35 @@
 
 				<ul class="nav navbar-nav navbar-left">
 					<li class="dropdown">
-						<a href="/asdf" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search navbar-search-icon"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search navbar-search-icon"></span></a>
 						<ul class="dropdown-menu navbar-search-option">
 							<li>
 								<div class="row">
 									<div class="col-md-12">
-										<form class="form" role="form" method="post" action="/artist/search" accept-charset="UTF-8" id="search_form">
+										<form class="form" role="form" method="post" action="/search" data-toggle="validator" id="search_form">
 											{% csrf_token %}
-											<input type="text" class="form-control navbar-search-text" name="search_words" placeholder="Search keywords..." required>
-											<div class="btn-group btn-group-vertical" data-toggle="buttons">
-												<label class="btn active">
-													<input type="radio" name='search_what' value="artists" checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span>Artists</span>
-												</label>
-												<label class="btn">
-													<input type="radio" name='search_what' value="organizaitons"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span>Organizations</span>
-												</label>
-												<label class="btn">
-													<input type="submit" value="Search" class="btn btn-success">
-												</label>
+											<div class="form-group">
+												<input type="text" class="form-control navbar-search-text" id="id_search_words" name="search_words" placeholder="Search keywords..." required="required" />
+												<div class="help-block with-errors"><!--{{ field.help_text }}--></div>
 											</div>
+											<div class="form-group">
+												<div class="btn-group btn-group-vertical" data-toggle="buttons">
+													<label class="btn active">
+														<input class="form-control" type="radio" id="id_search_what" name="search_what" value="artists" required="required" checked /><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span>Artists</span>
+													</label>
+													<label class="btn">
+														<input class="form-control" type="radio" id="id_search_what" name="search_what" value="organizaitons" required="required" /><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span>Organizations</span>
+													</label>
+												</div>
+											</div>
+											<label class="btn">
+												<input type="submit" value="Search" class="btn btn-primary" data-disable="true"/>
+											</label>
 										</form>
 									</div>
 								</div>
 							</li>
+							<li><a class="dropdown-option" href="/search/advanced">Advanced search...</a></li>
 						</ul>
 					</li>
 				</ul>
