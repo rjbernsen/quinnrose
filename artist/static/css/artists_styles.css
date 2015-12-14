@@ -134,9 +134,11 @@ div.profile-details {
 	visibility: hidden;
 }
 .headshot-frame-img {
+	display: none;
 	visibility: hidden;
 }
 .headshot-photo-img {
+	display: none;
 	visibility: hidden;
 }
 #headshot-background {
