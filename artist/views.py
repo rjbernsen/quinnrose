@@ -2,7 +2,7 @@
 from django.views.generic import TemplateView #, FormView
 
 from quinnrose.views import BasePage
-from artist.temp_data import artist_profile
+from artist.temp_data import artist_profiles
 
 class ArtistPage(BasePage, TemplateView):
     template_name = 'artist.html'
@@ -16,6 +16,8 @@ class ArtistPage(BasePage, TemplateView):
                 
         context = super().get_context_data(**kwargs)
         
-        context['artist_profile'] = artist_profile
+        artist_id = context.get('artist_id') or '1'
+        print(artist_id)
+        context['artist_profile'] = artist_profiles[artist_id]
 
         return context

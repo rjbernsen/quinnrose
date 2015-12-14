@@ -1,5 +1,6 @@
+artist_profiles = {}
 
-artist_profile = {
+artist_profiles['1'] = {
     'first_name': 'Shannon',
     'professional_name': 'Shannon Lynette Nichols',
     'skills': [
