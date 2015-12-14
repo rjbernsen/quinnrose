@@ -9,27 +9,19 @@ class Menu(object):
         self.label = label
 
         self.left = True
-        self.right = False
+#         self.right = False
         self.is_dropdown = False
         
         self.items = []
-        self.dropdown_menus = []
+#         self.dropdown_menus = []
     
     def addItem(self, menu_item):
         
         self.items.append(menu_item)
     
-    def addDropdownMenu(self, dropdown_menu):
-        
-        self.dropdown_menus.append(dropdown_menu)
-        
     def getItems(self):
         
         return self.items
-
-    def getDropdownMenus(self):
-        
-        return self.dropdown_menus
 
 class MenuItem(object):
     """
@@ -64,6 +56,7 @@ class MenuItem(object):
         self.label = label
         self.url = url
         self.separator = separator
+        self.is_dropdown = False
 
     def getId(self):
         

@@ -6,23 +6,54 @@ menu = Menu()
 menu.right = True
 
 item = MenuItem(
-    label='Profile',
-    url='/artist/profile'
+    label='About',
+    url='/organization/profile'
+)
+menu.addItem(item)
+
+dropdown_menu = Menu()
+dropdown_menu.label = 'Upcoming'
+dropdown_menu.is_dropdown = True
+# dropdown_menu.right = False
+
+item = MenuItem(
+    label='Rocky Horror Show',
+    url='/organization/rocky'
+)
+dropdown_menu.addItem(item)
+
+item = MenuItem(
+    label='EDGES a song cycle',
+    url='/organization/edges'
+)
+dropdown_menu.addItem(item)
+
+menu.addItem(dropdown_menu)
+
+item = MenuItem(
+    label='Auditions',
+    url='/organization/auditions'
 )
 menu.addItem(item)
 
 item = MenuItem(
-    label='Auditions',
-    url='/artist/auditions'
+    label='Tickets',
+    url='/organization/tickets'
 )
 menu.addItem(item)
 
-# Membership Dropdown
+item = MenuItem(
+    label='Contact',
+    url='/organization/contact'
+)
+menu.addItem(item)
+
+# Account Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
-dropdown_menu.label = 'Shannon'
+dropdown_menu.label = 'My Org'
 dropdown_menu.is_dropdown = True
-dropdown_menu.right = True
+# dropdown_menu.right = True
 
 item = MenuItem(
     label='Sign in',
@@ -48,43 +79,43 @@ dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Basic info',
-    url='/artist/basicinfo'
+    url='/organization/basicinfo'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Photos',
-    url='/artist/photos'
+    url='/organization/photos'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
-    label='Skills',
-    url='/artist/skills'
+    label='Events',
+    url='/organization/events'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Experience',
-    url='/artist/experience'
+    url='/organization/experience'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Training',
-    url='/artist/training'
+    url='/organization/training'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Portfolio',
-    url='/artist/portfolio'
+    url='/organization/portfolio'
 )
 dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Biography',
-    url='/artist/biiography'
+    url='/organization/biography'
 )
 dropdown_menu.addItem(item)
 
@@ -95,18 +126,18 @@ dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Preferences',
-    url='/artist/preferences'
+    url='/organization/preferences'
 )
 dropdown_menu.addItem(item)
 
-menu.addDropdownMenu(dropdown_menu)
+menu.addItem(dropdown_menu)
 
 # Help Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
 dropdown_menu.label = 'Help'
 dropdown_menu.is_dropdown = True
-dropdown_menu.right = True
+# dropdown_menu.right = True
 
 item = MenuItem(
     label='Topics',
@@ -120,7 +151,7 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
-menu.addDropdownMenu(dropdown_menu)
+menu.addItem(dropdown_menu)
 
 if __name__ == "__main__":
     print(menu)

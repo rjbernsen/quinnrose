@@ -12,10 +12,32 @@
 		<div class="collapse navbar-collapse" id="navCollapse">
 			<ul class="nav navbar-nav navbar-right">
 				{% for item in menu.getItems %}
+					{% if item.is_dropdown %}
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ item.label }}<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{% for dd in item.getItems %}
+								{% if dd.separator %}
+							<li role="separator" class="divider"></li>
+								{% elif dd.url == None %}
+							<li class="dropdown-header">{{ dd.label }}</li>
+								{% else %}
+							<li><a class="dropdown-option" id="{{ dd.getId }}" href="{{ dd.url }}">{{ dd.label }}</a></li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+
+					{% else %}
+
 				<li><a id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
+
+					{% endif %}
 				{% endfor %}
 
-				<ul class="nav navbar-nav navbar-left">
+				<ul class="nav navbar-nav">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search navbar-search-icon"></span></a>
 						<ul class="dropdown-menu navbar-search-option">
@@ -50,24 +72,6 @@
 					</li>
 				</ul>
 
-				{% for dropdown in menu.getDropdownMenus %}
-				<ul class="nav navbar-nav navbar-left">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ dropdown.label }}<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							{% for item in dropdown.getItems %}
-								{% if item.separator %}
-							<li role="separator" class="divider"></li>
-								{% elif item.url == None %}
-							<li class="dropdown-header">{{ item.label }}</li>
-								{% else %}
-							<li><a class="dropdown-option" id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
-								{% endif %}
-							{% endfor %}
-						</ul>
-					</li>
-				</ul>
-				{% endfor %}
 			</ul>
 		</div>
 	</div>

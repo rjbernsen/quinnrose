@@ -22,7 +22,7 @@ menu.addItem(item)
 dropdown_menu = Menu()
 dropdown_menu.label = 'Sign in'
 dropdown_menu.is_dropdown = True
-dropdown_menu.right = True
+# dropdown_menu.right = True
 
 item = MenuItem(
     label='Sign in',
@@ -36,14 +36,14 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
-menu.addDropdownMenu(dropdown_menu)
+menu.addItem(dropdown_menu)
 
 # Subscription Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
 dropdown_menu.label = 'Subscription'
 dropdown_menu.is_dropdown = True
-dropdown_menu.right = True
+# dropdown_menu.right = True
 
 item = MenuItem(
     label='Artists',
@@ -74,14 +74,14 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
-menu.addDropdownMenu(dropdown_menu)
+menu.addItem(dropdown_menu)
 
 # Help Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
 dropdown_menu.label = 'Help'
 dropdown_menu.is_dropdown = True
-dropdown_menu.right = True
+# dropdown_menu.right = True
 
 item = MenuItem(
     label='Topics',
@@ -95,7 +95,7 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
-menu.addDropdownMenu(dropdown_menu)
+menu.addItem(dropdown_menu)
 
 if __name__ == "__main__":
     print(menu)

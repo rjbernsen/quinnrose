@@ -122,9 +122,6 @@ Main Navbar
     margin-bottom: 8px;
     color: rgba(128, 0, 0, 1);
 }
-.dropdown {
- 	left: 16px;
-}
 .dropdown-header {
 	margin-left: -10px;
 	font-size: 16px;
@@ -476,6 +473,9 @@ Media overrides
 	    width: 90% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 90% !important;
 	}
+	.dropdown {
+	 	left: 16px;
+	}
 	.carousel-header
 	{
 	    top: 35px;
@@ -503,6 +503,9 @@ Media overrides
 	    width: 80% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 80% !important;
 	}
+	.dropdown {
+	 	left: 16px;
+	}
 	.carousel-header
 	{
 	    top: 30px;
@@ -529,6 +532,9 @@ Media overrides
 	.logo img {
 	    width: 50% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 50%;
+	}
+	.dropdown {
+	 	left: 16px;
 	}
 	.carousel-header
 	{

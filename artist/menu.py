@@ -17,12 +17,18 @@ item = MenuItem(
 )
 menu.addItem(item)
 
+item = MenuItem(
+    label='Contact',
+    url='/artist/contact'
+)
+menu.addItem(item)
+
 # Membership Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
 dropdown_menu.label = 'Shannon'
 dropdown_menu.is_dropdown = True
-dropdown_menu.right = True
+# dropdown_menu.right = True
 
 item = MenuItem(
     label='Sign in',
@@ -84,7 +90,7 @@ dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='Biography',
-    url='/artist/biiography'
+    url='/artist/biography'
 )
 dropdown_menu.addItem(item)
 
@@ -99,14 +105,14 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
-menu.addDropdownMenu(dropdown_menu)
+menu.addItem(dropdown_menu)
 
 # Help Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
 dropdown_menu.label = 'Help'
 dropdown_menu.is_dropdown = True
-dropdown_menu.right = True
+# dropdown_menu.right = True
 
 item = MenuItem(
     label='Topics',
@@ -120,7 +126,7 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
-menu.addDropdownMenu(dropdown_menu)
+menu.addItem(dropdown_menu)
 
 if __name__ == "__main__":
     print(menu)
