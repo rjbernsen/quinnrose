@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^terms$', Terms.as_view(), name='terms'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^artist', include('artist.urls')),
+    url(r'^organization', include('organization.urls')),
     url(r'^.+$', Error404.as_view(), name='404'),
 ]
 
