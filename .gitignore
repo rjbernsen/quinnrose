@@ -5,6 +5,7 @@ functional_tests/screendumps
 .less/bootstrap/*
 /logs
 *.jpg
+*.jpeg
 *.png
 *.gif
 *.bmp

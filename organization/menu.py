@@ -7,7 +7,7 @@ menu.right = True
 
 item = MenuItem(
     label='About',
-    url='/organization/profile'
+    url='/organization/about'
 )
 menu.addItem(item)
 
