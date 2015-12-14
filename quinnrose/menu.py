@@ -57,6 +57,23 @@ item = MenuItem(
 )
 dropdown_menu.addItem(item)
 
+item = MenuItem(
+    label='Samples (Temporary)'
+)
+dropdown_menu.addItem(item)
+
+item = MenuItem(
+    label='Shannon',
+    url='/artist/1'
+)
+dropdown_menu.addItem(item)
+
+item = MenuItem(
+    label='PMT',
+    url='/organization/1'
+)
+dropdown_menu.addItem(item)
+
 menu.addDropdownMenu(dropdown_menu)
 
 # Help Dropdown

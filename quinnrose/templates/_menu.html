@@ -1,38 +1,68 @@
 {% load staticfiles %}
 
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar-main">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navCollapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="fa fa-chevron-down"></span> Menu
-            </button>
-            <a href="/"><img class="logo" src="{% static 'images/favicon/favicon-96x96.png' %}"></a>
-        </div>
-        <div class="collapse navbar-collapse" id="navCollapse">
+	<div class="container-fluid custom-navbar-container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navCollapse">
+				<span class="sr-only">Toggle Navigation</span>
+				<span class="fa fa-chevron-down"></span> Menu
+			</button>
+			<a href="/"><img class="logo" src="{% static 'images/favicon/favicon-96x96.png' %}"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navCollapse">
 			<ul class="nav navbar-nav navbar-right">
 				{% for item in menu.getItems %}
 				<li><a id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
 				{% endfor %}
+
+				<ul class="nav navbar-nav navbar-left">
+					<li class="dropdown">
+						<a href="/asdf" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search navbar-search-icon"></span></a>
+						<ul class="dropdown-menu navbar-search-option">
+							<li>
+								<div class="row">
+									<div class="col-md-12">
+										<form class="form" role="form" method="post" action="/artist/search" accept-charset="UTF-8" id="search_form">
+											{% csrf_token %}
+											<input type="text" class="form-control navbar-search-text" name="search_words" placeholder="Search keywords..." required>
+											<div class="btn-group btn-group-vertical" data-toggle="buttons">
+												<label class="btn active">
+													<input type="radio" name='search_what' value="artists" checked><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span>Artists</span>
+												</label>
+												<label class="btn">
+													<input type="radio" name='search_what' value="organizaitons"><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span>Organizations</span>
+												</label>
+												<label class="btn">
+													<input type="submit" value="Search" class="btn btn-success">
+												</label>
+											</div>
+										</form>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
 				{% for dropdown in menu.getDropdownMenus %}
-					<ul class="nav navbar-nav navbar-left">
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ dropdown.label }}<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								{% for item in dropdown.getItems %}
-									{% if item.separator %}
-								<li role="separator" class="divider"></li>
-									{% elif item.url == None %}
-								<li class="dropdown-header">{{ item.label }}</li>
-									{% else %}
-								<li><a class="dropdown-option" id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
-									{% endif %}
-								{% endfor %}
-							</ul>
-						</li>
-					</ul>
+				<ul class="nav navbar-nav navbar-left">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ dropdown.label }}<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{% for item in dropdown.getItems %}
+								{% if item.separator %}
+							<li role="separator" class="divider"></li>
+								{% elif item.url == None %}
+							<li class="dropdown-header">{{ item.label }}</li>
+								{% else %}
+							<li><a class="dropdown-option" id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
 				{% endfor %}
 			</ul>
-        </div>
-    </div>
+		</div>
+	</div>
 </nav>
