@@ -2,6 +2,9 @@
 .error-img {
 	width: 200px;
 }
+.error-img-nudge-right {
+	margin-left: 28px;
+}
 .error-template {
 	padding-top: 0px;
 	padding-bottom: 0px;

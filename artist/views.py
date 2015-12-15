@@ -17,7 +17,12 @@ class ArtistPage(BasePage, TemplateView):
         context = super().get_context_data(**kwargs)
         
         artist_id = context.get('artist_id') or '1'
-        print(artist_id)
-        context['artist_profile'] = artist_profiles[artist_id]
+
+        try:
+            context['artist_profile'] = artist_profiles[artist_id]
+        except KeyError:
+            context['what'] = 'artist'
+            context['last_good_url'] = self.request.session.get('last_good_url')
+            self.template_name = 'record_not_found.html'
 
         return context

@@ -14,7 +14,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="error-template">
-            	<img class="error-img" src="{% static 'images/404.png' %}">
+            	<img class="error-img error-img-nudge-right" src="{% static 'images/record_not_found.png' %}">
             </div>
         </div>
     </div>
@@ -22,9 +22,9 @@
         <div class="col-md-12">
             <div class="error-template">
                 <h1>Oops!</h1>
-                <h3>Couldn't find that page...</h3>
+                <h3>Couldn't find that {{ what }}...</h3>
                <div class="error-details">
-                    Double check the link in the address bar above and try again, or...
+                    Try searching (in the menu bar), or...
                 </div>
             </div>
         </div>

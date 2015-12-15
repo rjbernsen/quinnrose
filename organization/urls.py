@@ -1,8 +1,10 @@
 from django.conf.urls import url
 
+from quinnrose.views import Error404
 from organization.views import OrganizationPage
 
 urlpatterns = [
+    url(r'^/about$', Error404.as_view(), name='about'),
     url(r'^/(?P<organization_id>.+)?$', OrganizationPage.as_view(), name='organization'),
 #     url(r'^about/?(?P<section>.+)?$', About.as_view(), name='about'),
 #     url(r'^contact$', ContactFormView.as_view(), name='contact'),

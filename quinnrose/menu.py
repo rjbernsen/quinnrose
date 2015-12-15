@@ -70,7 +70,7 @@ dropdown_menu.addItem(item)
 
 item = MenuItem(
     label='PMT',
-    url='/organization/1'
+    url='/organization/pmt'
 )
 dropdown_menu.addItem(item)
 

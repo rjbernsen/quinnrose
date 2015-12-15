@@ -71,9 +71,9 @@ class HomePage(BasePage, TemplateView):
 
         image_path = ''
         if settings.IN_PRODUCTION:
-            image_path = os.path.join(settings.STATIC_ROOT, 'images') + '/carousel-*'
+            image_path = os.path.join(settings.STATIC_ROOT, 'images', 'carousel') + '-*'
         else:
-            image_path = os.path.join(settings.STATIC_MAIN_APP, 'images') + '/carousel-*'
+            image_path = os.path.join(settings.STATIC_MAIN_APP, 'images', 'carousel') + '-*'
         carousel_images = [
             os.path.basename(p) for p in glob.glob(image_path)
         ]
