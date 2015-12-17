@@ -1,26 +1,23 @@
 {% extends '__base.html' %}
 {% load staticfiles %}
 
+{% block styles %}
+	{{ block.super }}
+	<link href="{% static 'css/home_styles.css' %}" rel="stylesheet">
+{% endblock %}
+
 {% block page_content %}
 
-<div class="container-fluid">
+<div class="container-fluid home-banner">
     <div class="row">
         <div class="col-md-12">
             <div class="carousel">
                 <div class="carousel-inner">
                     <div class="item active">
-                        <img class="carousel-img" src="{% static 'images/home_01.jpg' %}">
+                        <img class="carousel-img" src="{% static 'images/home_02.png' %}">
                     </div>
                 </div>
             </div>
-            <div class="container carousel-header">
-			    <div class="row">
-	                <div class="col-md-12 text-center">
-	                    <p class="carousel-header-one carousel-header-shadow">QuinnRose</p>
-	                    <p class="carousel-header-two carousel-header-shadow">Talent Connection</p>
-	                </div>
-	            </div>
-	        </div
 		</div>
     </div>
 </div>
@@ -32,7 +29,17 @@
 		{% for info_item in home_page_info %}
 		<div class="col-md-4">
 			<div class="fa fa-{{ info_item.icon }} fa-2x circles"></div>
-			<h2>{{ info_item.title }}</h2>
+			<h2 class="info-header">
+				<a 	href="{{ info_item.link }}"
+					class="info-link"
+					data-toggle="popover"
+					data-trigger="hover focus"
+					data-placement="auto top"
+					data-html=true data-content="{{ info_item.description }}"
+				>
+				{{ info_item.title }}
+				</a>
+			</h2>
 			<p class="info-description">{{ info_item.description }}</p>
 {#			<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>#}
 		</div>
@@ -41,28 +48,28 @@
 	<!-- End home page info -->
   
   	<!-- Begin featurettes -->
-	{% for featurette in featurettes %}
-		{% cycle 0 1 as cycle_value silent %}
-	<hr>
-	<div class="row">
-		{% if cycle_value == 0 %}
-		<div class="col-md-7">
-		{% else %}
-		<div class="col-md-7 col-md-push-5">
-		{% endif %}
-			<h2 class="featurette-heading">{{ featurette.title }}<br>
-			<span class="text-muted">{{ featurette.sub_title }}</span></h2>
-			<p class="lead">{{ featurette.description }}</p>
-		</div>
-		{% if cycle_value == 0 %}
-		<div class="col-md-5">
-		{% else %}
-		<div class="col-md-5 col-md-pull-7">
-		{% endif %}
-			<img src="{% static 'images/' %}{{ featurette.image_file_name }}" class="img-responsive">
-		</div>
-	</div>
-	{% endfor %}
+{#	{% for featurette in featurettes %}#}
+{#		{% cycle 0 1 as cycle_value silent %}#}
+{#	<hr>#}
+{#	<div class="row">#}
+{#		{% if cycle_value == 0 %}#}
+{#		<div class="col-md-7">#}
+{#		{% else %}#}
+{#		<div class="col-md-7 col-md-push-5">#}
+{#		{% endif %}#}
+{#			<h2 class="featurette-heading">{{ featurette.title }}<br>#}
+{#			<span class="text-muted">{{ featurette.sub_title }}</span></h2>#}
+{#			<p class="lead">{{ featurette.description }}</p>#}
+{#		</div>#}
+{#		{% if cycle_value == 0 %}#}
+{#		<div class="col-md-5">#}
+{#		{% else %}#}
+{#		<div class="col-md-5 col-md-pull-7">#}
+{#		{% endif %}#}
+{#			<img src="{% static 'images/' %}{{ featurette.image_file_name }}" class="img-responsive">#}
+{#		</div>#}
+{#	</div>#}
+{#	{% endfor %}#}
 	
   <!-- End featurettes -->
 </div>

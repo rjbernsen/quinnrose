@@ -243,6 +243,7 @@ Main Carousel
 */
 .carousel-img {
 	margin: auto;
+	border-radius: 20px;
 }
 
 
@@ -272,37 +273,6 @@ Main Carousel
 }
 .carousel-header-shadow {
 	text-shadow: .1em .1em .4em rgba(0, 0, 0, 1);
-}
-
-/*
---------------------------------------------------
-Info styles
---------------------------------------------------
-*/
-.info-description {
-	font-size: 20px;
-}
-
-/*
---------------------------------------------------
-Featurette styles
---------------------------------------------------
-*/
-.circles {
-	margin-top: 20px;
-	background-color: rgba(0, 0, 128, 1);
-	color: #fff;
-	border-radius: 50%;
-	line-height: 3em;
-	width: 3em;
-	height: 3em;
-}
-.featurette-heading {
-	margin-top: 0px;
-}
-.featurette-image {
-	display: block;
-	margin: auto;
 }
 
 /*

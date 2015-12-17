@@ -1,0 +1,124 @@
+/*
+--------------------------------------------------
+Banner styles
+--------------------------------------------------
+*/
+.home-banner {
+	margin-top: 20px;
+}
+
+/*
+--------------------------------------------------
+Info styles
+--------------------------------------------------
+*/
+.circles {
+	margin-top: 20px;
+	background-color: rgba(0, 0, 128, 1);
+	color: #fff;
+	border-radius: 50%;
+	line-height: 3em;
+	width: 3em;
+	height: 3em;
+}
+.info-header {
+	margin-top: 20px;
+}
+.info-link {
+	font-size: 1em;
+	display: initial;
+}
+.info-description {
+	display: none;
+}
+
+/*
+--------------------------------------------------
+Featurette styles
+--------------------------------------------------
+*/
+/*
+.featurette-heading {
+	margin-top: 0px;
+}
+.featurette-image {
+	display: block;
+	margin: auto;
+}
+*/
+
+/*
+--------------------------------------------------
+Media overrides
+--------------------------------------------------
+*/
+@media (min-width:1201px) { 
+}
+@media (max-width:1200px) and (min-width: 993px) { 
+}
+@media (max-width:992px) and (min-width: 769px) { 
+	.circles {
+		margin-top: 20px;
+		font-size: 2em;
+	}
+	.info-header {
+		margin-top: 18px;
+	}
+	.info-link {
+		font-size: 1em;
+	}
+	.info-description {
+		font-size: 1.5em;
+		display: initial;
+	}
+}
+@media (max-width:768px) and (min-width: 481px) { 
+	.circles {
+		margin-top: 18px;
+		font-size: 1.8em;
+	}
+	.info-header {
+		margin-top: 16px;
+	}
+	.info-link {
+		font-size: .9em;
+	}
+	.info-description {
+		font-size: 1.3em;
+		display: initial;
+	}
+}
+@media (max-width:480px) and (min-width: 321px) { 
+	.circles {
+		margin-top: 16px;
+		font-size: 1.6em;
+	}
+	.info-header {
+		margin-top: 14px;
+	}
+	.info-link {
+		font-size: .8em;
+	}
+	.info-description {
+		font-size: 1.1em;
+		display: initial;
+	}
+}
+@media (max-width:320px) { 
+	.circles {
+		margin-top: 14px;
+		font-size: 1.4em;
+	}
+	.info-header {
+		margin-top: 12px;
+	}
+	.info-link {
+		font-size: .7em;
+	}
+	.info-description {
+		font-size: 1em;
+		display: initial;
+	}
+}
+
+

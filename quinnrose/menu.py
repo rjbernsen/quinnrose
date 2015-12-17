@@ -41,24 +41,12 @@ menu.addItem(dropdown_menu)
 # Subscription Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
-dropdown_menu.label = 'Subscription'
+dropdown_menu.label = 'Temporary'
 dropdown_menu.is_dropdown = True
 # dropdown_menu.right = True
 
 item = MenuItem(
-    label='Artists',
-    url='/subscriptions/artists'
-)
-dropdown_menu.addItem(item)
-
-item = MenuItem(
-    label='Organizations',
-    url='/subscriptions/organizations'
-)
-dropdown_menu.addItem(item)
-
-item = MenuItem(
-    label='Samples (Temporary)'
+    label='Samples'
 )
 dropdown_menu.addItem(item)
 
@@ -75,6 +63,45 @@ item = MenuItem(
 dropdown_menu.addItem(item)
 
 menu.addItem(dropdown_menu)
+
+
+# # Subscription Dropdown
+# # --------------------------------------
+# dropdown_menu = Menu()
+# dropdown_menu.label = 'Subscription'
+# dropdown_menu.is_dropdown = True
+# # dropdown_menu.right = True
+# 
+# item = MenuItem(
+#     label='Artists',
+#     url='/subscriptions/artists'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='Organizations',
+#     url='/subscriptions/organizations'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='Samples (Temporary)'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='Shannon',
+#     url='/artist/1'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='PMT',
+#     url='/organization/pmt'
+# )
+# dropdown_menu.addItem(item)
+# 
+# menu.addItem(dropdown_menu)
 
 # Help Dropdown
 # --------------------------------------
