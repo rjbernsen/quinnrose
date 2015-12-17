@@ -1,0 +1,17 @@
+{% extends '__base.html' %}
+{% load staticfiles %}
+
+{% block styles %}
+	{{ block.super }}
+	<link href="{% static 'css/community_styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+
+
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="{% static 'js/community.js' %}" type='text/javascript'></script>
+{% endblock %}

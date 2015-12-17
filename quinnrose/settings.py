@@ -53,6 +53,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'artist',
     'organization',
+    'community',
     'copyright',
 )
 
@@ -76,7 +77,8 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR,'quinnrose/templates'),
             os.path.join(BASE_DIR,'artist/templates'),
-            os.path.join(BASE_DIR,'organization/templates')
+            os.path.join(BASE_DIR,'organization/templates'),
+            os.path.join(BASE_DIR,'community/templates')
         ],
 #         'APP_DIRS': True,
         'OPTIONS': {

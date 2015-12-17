@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^artist', include('artist.urls')),
     url(r'^organization', include('organization.urls')),
+    url(r'^community', include('community.urls')),
     url(r'^.+$', Error404.as_view(), name='404'),
 ]
 

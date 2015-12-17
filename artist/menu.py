@@ -6,7 +6,7 @@ menu = Menu()
 menu.right = True
 
 item = MenuItem(
-    label='Profile',
+    label='My Profile',
     url='/artist/profile'
 )
 menu.addItem(item)
@@ -100,8 +100,8 @@ item = MenuItem(
 dropdown_menu.addItem(item)
 
 item = MenuItem(
-    label='Preferences',
-    url='/artist/preferences'
+    label='Settings',
+    url='/artist/settings'
 )
 dropdown_menu.addItem(item)
 
