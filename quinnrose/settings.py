@@ -145,10 +145,16 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # print('STATIC_ROOT = {}'.format(STATIC_ROOT))
 STATIC_MAIN_APP = os.path.join(BASE_DIR,'quinnrose', 'static','quinnrose')
+STATIC_ARTIST_APP = os.path.join(BASE_DIR,'artist', 'static')
+STATIC_ORGANIZATION_APP = os.path.join(BASE_DIR,'organization', 'static')
+STATIC_COMMUNITY_APP = os.path.join(BASE_DIR,'community', 'static')
 # print('STATIC_MAIN_APP = {}'.format(STATIC_MAIN_APP))
 
 STATICFILES_DIRS = (
-        STATIC_MAIN_APP,
+    STATIC_MAIN_APP,
+    STATIC_ARTIST_APP,
+    STATIC_ORGANIZATION_APP,
+    STATIC_COMMUNITY_APP
 #         STATIC_ROOT,
 )
 # print('STATICFILES_DIRS = {}'.format(STATICFILES_DIRS))

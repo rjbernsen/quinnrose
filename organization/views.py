@@ -36,9 +36,9 @@ class OrganizationPage(BasePage, TemplateView):
 
         image_path = ''
         if settings.IN_PRODUCTION:
-            image_path = os.path.join(settings.STATIC_ROOT, 'images', 'carousel') + '_*'
+            image_path = os.path.join(settings.STATIC_ROOT, 'organization', 'images', 'organizations', organization_id, 'carousel', 'main') + '_*'
         else:
-            image_path = os.path.join(app_path, 'static', 'images', 'organizations', organization_id, 'carousel', 'main') + '_*'
+            image_path = os.path.join(app_path, 'static', 'organization', 'images', 'organizations', organization_id, 'carousel', 'main') + '_*'
         print('image_path = {}'.format(image_path))
 
         carousel_images = [

@@ -3,7 +3,7 @@
 
 {% block styles %}
 	{{ block.super }}
-		<link href="{% static 'css/artist_styles.css' %}" rel="stylesheet">
+		<link href="{% static 'artist/css/artist_styles.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block page_content %}
@@ -114,16 +114,16 @@
 
 </div>
 
-<img class="src-image" src="{% static 'images/users/shannon/profile_000.jpg' %}"/>
-<img id="headshot-frame-img" class="headshot-frame-img" src="{% static 'images/frames/frame_006.png' %}">
-<img id="headshot-photo-img" class="headshot-photo-img" src="{% static 'images/users/shannon/profile_002.jpg' %}">
-<img class="gold-star-image" id="goldstar" src="{% static 'images/gold-star.jpg' %}"/>
-<img class="gray-star-image" id="graystar" src="{% static 'images/gray-star.jpg' %}"/>
+<img class="src-image" src="{% static 'artist/images/users/shannon/profile_000.jpg' %}"/>
+<img id="headshot-frame-img" class="headshot-frame-img" src="{% static 'artist/images/frames/frame_006.png' %}">
+<img id="headshot-photo-img" class="headshot-photo-img" src="{% static 'artist/images/users/shannon/profile_002.jpg' %}">
+<img class="gold-star-image" id="goldstar" src="{% static 'artist/images/gold-star.jpg' %}"/>
+<img class="gray-star-image" id="graystar" src="{% static 'artist/images/gray-star.jpg' %}"/>
 
 {% endblock %}
 
 {% block js %}
 {{ block.super }}
-<script src="{% static 'js/stack-blur.js' %}" type="text/javascript"></script>
-<script src="{% static 'js/artist.js' %}" type='text/javascript'></script>
+<script src="{% static 'artist/js/stack-blur.js' %}" type="text/javascript"></script>
+<script src="{% static 'artist/js/artist.js' %}" type='text/javascript'></script>
 {% endblock %}
