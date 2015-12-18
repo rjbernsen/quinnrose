@@ -25,8 +25,8 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background: url('/static/images/a17.png') no-repeat;
-    overflow: hidden;
+    background: url('/static/organization/images/a17.png') no-repeat;
+    /* overflow: hidden; */
 }
 .jssora05l { background-position: -10px -40px; }
 .jssora05r { background-position: -70px -40px; }
@@ -75,7 +75,7 @@
     height: 68px;
     border: #000 2px solid;
     box-sizing: content-box;
-    background: url('/static/images/t01.png') -800px -800px no-repeat;
+    background: url('/static/organization/images/t01.png') -800px -800px no-repeat;
     _background: none;
 }
 .jssort01 .pav .c {
