@@ -1,0 +1,16 @@
+@media (min-width: 768px) { /* tablets and up */
+    .group2 {
+        text-align: right;
+    }
+}
+.header-divider {
+	margin-top: 10px;
+}
+#comments, #comments li {
+    margin: 0;
+    padding: 0;
+}
+ 
+#comments li {
+    list-style: none;
+}

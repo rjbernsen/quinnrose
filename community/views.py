@@ -2,9 +2,10 @@
 from django.views.generic import TemplateView #, FormView
 
 from quinnrose.views import BasePage
+from .temp_data import blog_entries, blog_entries_dict, categories, latest_comments, tags
 
-class CommunityPage(BasePage, TemplateView):
-    template_name = 'community.html'
+class ListPage(BasePage, TemplateView):
+    template_name = 'list.html'
     page_sub_title = None
     
 #     star_count = 5
@@ -14,5 +15,30 @@ class CommunityPage(BasePage, TemplateView):
         self.request.session['current_app'] = 'community'
                 
         context = super().get_context_data(**kwargs)
+        
+        context['entries'] = blog_entries
+        context['categories'] = categories
+        context['tags'] = tags
+        context['comments'] = latest_comments
+        
+        return context
+
+class PostPage(BasePage, TemplateView):
+    template_name = 'post.html'
+    page_sub_title = None
+    
+#     star_count = 5
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+        
+        entry_id = context.get('entry_id') or '0'
+
+        context['entry'] = blog_entries_dict[entry_id]
+        context['entries'] = blog_entries
+        context['categories'] = categories
+        context['tags'] = tags
+        context['comments'] = latest_comments
         
         return context
