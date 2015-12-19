@@ -534,21 +534,38 @@ Media overrides
 Sub Menus
 --------------------------------------------------
 */
+/*
 .list-group-item-danger {
   color: rgba(0, 0, 128, 1);
   background-color: rgba(220, 229, 255, 1);
 }
-.list-group-item.active,
-.list-group-item.active:hover,
-.list-group-item.active:focus {
+*/
+.sub-menu.active,
+.sub-menu.active:hover,
+.sub-menu.active:focus {
+  background-color: rgba(128, 0, 0, 1);
+  border-color: rgba(128, 0, 0, 1);
+}
+
+a.sub-menu:hover,
+button.sub-menu:hover,
+a.sub-menu:focus,
+button.sub-menu:focus {
+  text-decoration: none;
+  background-color: rgba(255, 229, 229, 1)
+}
+
+.sub-sub-menu.active,
+.sub-sub-menu.active:hover,
+.sub-sub-menu.active:focus {
   background-color: rgba(0, 0, 128, 1);
   border-color: rgba(0, 0, 128, 1);
 }
 
-a.list-group-item:hover,
-button.list-group-item:hover,
-a.list-group-item:focus,
-button.list-group-item:focus {
+a.sub-sub-menu:hover,
+button.sub-sub-menu:hover,
+a.sub-sub-menu:focus,
+button.sub-sub-menu:focus {
   text-decoration: none;
   background-color: rgba(220, 229, 255, 1);
 }
