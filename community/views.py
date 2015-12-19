@@ -2,6 +2,7 @@
 from django.views.generic import TemplateView, FormView
 
 from quinnrose.views import BasePage
+from .menu import menu
 from .forms import BlogEntryForm
 from .temp_data import blog_entries, blog_entries_dict, categories, latest_comments, tags
 
@@ -15,6 +16,8 @@ class BaseCommunityPage(BasePage):
                 
         context = super().get_context_data(**kwargs)
         
+        context['menu'] = menu
+
         context['entries'] = blog_entries
         context['categories'] = categories
         context['tags'] = tags

@@ -2,9 +2,10 @@
 from django.views.generic import TemplateView #, FormView
 
 from quinnrose.views import BasePage
-from artist.temp_data import artist_profiles
+from .menu import menu
+from .temp_data import artist_profiles
 
-class ArtistPage(BasePage, TemplateView):
+class BaseArtistPage(BasePage):
     template_name = 'artist.html'
     page_sub_title = None
     
@@ -15,6 +16,8 @@ class ArtistPage(BasePage, TemplateView):
         self.request.session['current_app'] = 'artist'
                 
         context = super().get_context_data(**kwargs)
+
+        context['menu'] = menu
         
         artist_id = context.get('artist_id') or '1'
 
@@ -25,4 +28,16 @@ class ArtistPage(BasePage, TemplateView):
             context['last_good_url'] = self.request.session.get('last_good_url')
             self.template_name = 'record_not_found.html'
 
+        return context
+    
+class ArtistPage(BaseArtistPage, TemplateView):
+    template_name = 'artist.html'
+    page_sub_title = None
+    
+#     star_count = 5
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+        
         return context
