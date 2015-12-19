@@ -6,14 +6,14 @@ menu = Menu()
 menu.right = True
 
 item = MenuItem(
-    label='Home',
-    url='/'
+    label='Posts',
+    url='/community'
 )
 menu.addItem(item)
 
 item = MenuItem(
-    label='Post',
-    url='/community/post'
+    label='New Post',
+    url='/community/new'
 )
 menu.addItem(item)
 

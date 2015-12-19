@@ -1,10 +1,11 @@
 from django.conf.urls import url
 
 from quinnrose.views import Error404
-from community.views import ListPage, PostPage
+from community.views import ListPage, PostPage, NewPostPage
 
 urlpatterns = [
     url(r'^$', ListPage.as_view(), name='community'),
+    url(r'^/new$', NewPostPage.as_view(), name='new'),
     url(r'^/post/(?P<entry_id>.+)$', PostPage.as_view(), name='post'),
     url(r'^/about$', Error404.as_view(), name='about'),
 #     url(r'^about/?(?P<section>.+)?$', About.as_view(), name='about'),

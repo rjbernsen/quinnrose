@@ -1,5 +1,13 @@
 from datetime import datetime
 
+CATEGORIES = [
+    ['1', 'Cabaret'],
+    ['2', 'Concert'],
+    ['3', 'Fabulous'],
+    ['4', 'Milestone'],
+    ['5', 'Theater']
+]
+
 class BlogEntry(object):
     title = ''
     leader = ''
