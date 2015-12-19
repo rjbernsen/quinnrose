@@ -25,11 +25,10 @@
 
 	<p class="lead">{{ entry.leader }}</p>
 
+	{% if page_type == 'list' %}
+	<p>{{ entry.get_short_article }}...</p>
+	{% else %}
 	<p>{{ entry.article }}</p>
+	{% endif %}
 
-	<p class="text-right">
-		<a href="/community/post/{{ entry.id }}" class="text-right">continue reading...</a>
-	</p>
-
-	<hr>
 </article>

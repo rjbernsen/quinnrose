@@ -44,6 +44,9 @@ class BlogEntry(object):
     def get_comments(self):
         return self.comments
     
+    def get_short_article(self):
+        return ' '.join(self.article.split()[:10])
+        
     def get_date(self):
         return self.entry_date.strftime(self.DATE_FORMAT).replace('X0','').replace('X','')
 

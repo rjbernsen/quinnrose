@@ -5,9 +5,7 @@ from quinnrose.views import BasePage
 from .forms import BlogEntryForm
 from .temp_data import blog_entries, blog_entries_dict, categories, latest_comments, tags
 
-class ListPage(BasePage, TemplateView):
-    template_name = 'list.html'
-    page_sub_title = None
+class BaseCommunityPage(BasePage):
     
 #     star_count = 5
     
@@ -24,7 +22,21 @@ class ListPage(BasePage, TemplateView):
         
         return context
 
-class PostPage(BasePage, TemplateView):
+class ListPage(BaseCommunityPage, TemplateView):
+    template_name = 'list.html'
+    page_sub_title = None
+    
+#     star_count = 5
+    
+    def get_context_data(self, **kwargs):
+        
+        context = super().get_context_data(**kwargs)
+
+        context['page_type'] = 'list'
+        
+        return context
+
+class PostPage(BaseCommunityPage, TemplateView):
     template_name = 'post.html'
     page_sub_title = None
     
@@ -37,14 +49,11 @@ class PostPage(BasePage, TemplateView):
         entry_id = context.get('entry_id') or '0'
 
         context['entry'] = blog_entries_dict[entry_id]
-        context['entries'] = blog_entries
-        context['categories'] = categories
-        context['tags'] = tags
-        context['comments'] = latest_comments
+        context['page_type'] = 'post'
         
         return context
 
-class NewPostPage(BasePage, FormView):
+class NewPostPage(BaseCommunityPage, FormView):
     template_name = 'new.html'
     page_sub_title = None
     form_class = BlogEntryForm
@@ -53,10 +62,5 @@ class NewPostPage(BasePage, FormView):
     def get_context_data(self, **kwargs):
         
         context = super().get_context_data(**kwargs)
-        
-        context['entries'] = blog_entries
-        context['categories'] = categories
-        context['tags'] = tags
-        context['comments'] = latest_comments
         
         return context

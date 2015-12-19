@@ -5,6 +5,11 @@
 
 {% for entry in entries %}
 {% include 'article.html' %}
+	<p class="text-right">
+		<a href="/community/post/{{ entry.id }}" class="text-right">continue reading...</a>
+	</p>
+
+	<hr>
 {% endfor %}
 
 <!-- pager -->
