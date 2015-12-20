@@ -6,7 +6,14 @@
 <div class="well text-center">
 	<span class="lead">New Blog Entry</span>
 </div>
-<form id="contact_form" class="form-horizontal" data-toggle="validator" role="form" action="/community/new" method="post">
+<form id="contact_form" 
+	class="form-horizontal" 
+	data-toggle="validator" 
+	role="form"
+	action="/community/new" 
+	method="post" 
+	enctype="multipart/form-data"
+>
 	{% csrf_token %}
 
 	{% if messages %}

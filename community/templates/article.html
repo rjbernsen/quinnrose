@@ -3,9 +3,7 @@
 
 	<div class="row">
 		<div class="group1 col-sm-6 col-md-6">
-{#			<span class="glyphicon glyphicon-folder-open"></span>#}
-{#			<a href="#">Signs</a>#}
-{#			<span class="glyphicon glyphicon-tags"></span>#}
+
 			{% for tag in entry.tags %}
 			<a class="label label-success" href="#">{{ tag }}</a>
 			{% endfor %}
@@ -19,9 +17,21 @@
 
 	<hr class="header-divider">
 
-{#	<img src="http://placehold.it/900x300" class="img-responsive">#}
 
-{#	<br/>#}
+	{% if entry.image %}
+	<div class="container-fluid">
+		<img src="{{ MEDIA_URL }}{{ entry.image }}" class="img-responsive post-image">
+	</div>
+	{% endif %}
+	
+	{% if entry.video %}
+	<div align="center" class="embed-responsive embed-responsive-16by9">
+	    <video class="embed-responsive-item" controls>
+	        <source src={{ MEDIA_URL }}{{ entry.video }} type=video/mp4>
+	        Your browser does not support the video tag.
+	    </video>
+	</div>
+	{% endif %}
 
 	<p class="lead">{{ entry.leader }}</p>
 

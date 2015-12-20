@@ -27,7 +27,7 @@ if 'manage.py' in sys.argv[0]:
 # print('IN_PRODUCTION = {}'.format(IN_PRODUCTION))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-# print('BASE_DIR = {}'.format(BASE_DIR))
+print('BASE_DIR = {}'.format(BASE_DIR))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -91,8 +91,10 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.media',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -133,6 +135,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
@@ -154,7 +158,8 @@ STATICFILES_DIRS = (
     STATIC_MAIN_APP,
     STATIC_ARTIST_APP,
     STATIC_ORGANIZATION_APP,
-    STATIC_COMMUNITY_APP
+    STATIC_COMMUNITY_APP,
+    MEDIA_ROOT
 #         STATIC_ROOT,
 )
 # print('STATICFILES_DIRS = {}'.format(STATICFILES_DIRS))
@@ -167,8 +172,6 @@ STATICFILES_DIRS = (
 #     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 # #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 # )
-
-
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'debug',

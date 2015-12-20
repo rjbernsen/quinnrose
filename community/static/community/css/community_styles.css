@@ -6,6 +6,9 @@
 .header-divider {
 	margin-top: 10px;
 }
+.post-image {
+	margin: auto;
+}
 #comments, #comments li {
     margin: 0;
     padding: 0;
@@ -15,6 +18,5 @@
     list-style: none;
 }
 .comment-form {
-	margin-bottom: 0px;
 	padding-bottom: 0px;
 }

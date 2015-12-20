@@ -70,7 +70,7 @@ class BlogEntryForm(forms.Form):
         ),
         required=True
     )
-    subject = forms.ChoiceField(
+    category = forms.ChoiceField(
         label='Category',
         choices=get_category_choices(),
         widget=forms.Select(
@@ -81,7 +81,7 @@ class BlogEntryForm(forms.Form):
         ),
         required=False
     )
-    name = forms.CharField(
+    tags = forms.CharField(
         label='Tags',
         widget=forms.TextInput(
             attrs={
@@ -91,7 +91,8 @@ class BlogEntryForm(forms.Form):
         ),
         required=False
     )
-
+    file = forms.FileField()
+    
 class CommentsForm(forms.Form):
 
     name = forms.CharField(
@@ -132,4 +133,3 @@ class CommentsForm(forms.Form):
 
 if __name__ == "__main__":
     f = BlogEntryForm()
-    

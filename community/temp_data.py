@@ -15,6 +15,8 @@ class BlogEntry(object):
     entry_date = datetime.now()
     categories = []
     tags = []
+    image = ''
+    video = ''
     
     DATE_FORMAT = '%B X%d, %Y X%I:%M %p'
     
@@ -24,6 +26,8 @@ class BlogEntry(object):
         article,
         categories=[],
         tags=[],
+        image='',
+        video='',
         entry_date=datetime.now()
     ):
         self.id = None
@@ -33,6 +37,9 @@ class BlogEntry(object):
         self.categories = categories
         self.tags = tags
         self.entry_date = entry_date
+        self.image = image
+        self.video = video
+
         self.comments = []
     
     def add_comment(self, comment):
@@ -76,7 +83,8 @@ entry = BlogEntry(
     'After a very short period in existence, QuinnRose Talent Connection has already reached 1000+ artists registered for the game-changing website.',
     'The artist known as "Fabulous Shannon" was the 1000th person to register with the us. She marks an important achievement for the website and we are thankful that she has the distinction of pushing us over this milestone. She will receive a lifetime full subscription as a gift!',
     ['Milestone', 'Fabulous'],
-    ['Company News', 'Artists', 'New Members', 'Free Stuff', 'Milestones']
+    ['Company News', 'Artists', 'New Members', 'Free Stuff', 'Milestones'],
+    image='profile_019.jpg'
 )
 entry.add_comment(
     BlogComment(
@@ -103,7 +111,8 @@ entry = BlogEntry(
     'Greetings to the latest addition to the community: PMT Productions - otherwise known as Pitch Me This Productions! Founder and Artistic Director Eduardo Guzman has brought a new and unique facet to the Houston performing arts community.',
     'PMT has been active in the Houston entertainment scene for two years and already has a solid fan base that has come to expect nothing but the very best from this young company. Look for their performance events to be announced very soon, and don\'t miss a single one of them! You\'ll enjoy every minute of their endeavors, be it theater, cabaret, or seasonal concerts.',
     ['Theater', 'Cabaret', 'Concert'],
-    ['Company News', 'Organizations', 'New Members']
+    ['Company News', 'Organizations', 'New Members'],
+    image='cover_photo.jpg'
 )
 entry.add_comment(
     BlogComment(
@@ -121,6 +130,40 @@ entry.add_comment(
     BlogComment(
         'Jesus',
         'Damn I missed Rocky! Will it be an annual thing?'
+    )
+)
+blog_entries.append(entry)
+
+entry = BlogEntry(
+    'Announcement: Midtown Live 2015',
+    'PMT Productions  will be touring with their annual favorite - Midtown Live - starting March 14, 2015.',
+    'Every year this young company gathers together some of their most talented performers and creates a truly spectacular evening of music. There is a variety of songs and styles that always satisfies the huge audiences that have quickly come to expect the very best from PMT. See the attached video for an interview with one of the performers.',
+    ['Tour', 'Cabaret', 'Annual Event', 'Concert'],
+    ['Organizations', 'Artist Highlights'],
+    video='shannon_mtl.mp4'
+)
+entry.add_comment(
+    BlogComment(
+        'Fred',
+        'Don\'t miss this!!!'
+    )
+)
+entry.add_comment(
+    BlogComment(
+        'Barney',
+        'That Shannon is... well... hubba hubba...'
+    )
+)
+entry.add_comment(
+    BlogComment(
+        'Wilma',
+        'I went last year and I hope I get to see that guy that plays the piano again. He\'s amazing! (I think his name is Ed or something.)'
+    )
+)
+entry.add_comment(
+    BlogComment(
+        'Betty',
+        'I\'m gonna clobber you Barney!!!!!'
     )
 )
 blog_entries.append(entry)

@@ -10,3 +10,6 @@ functional_tests/screendumps
 *.gif
 *.bmp
 *.ico
+*.mp4
+*.avi
+*.wav

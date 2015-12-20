@@ -1,7 +1,10 @@
 
 from django.views.generic import TemplateView, FormView
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
 from quinnrose.views import BasePage
+from quinnrose.file_upload import handle_uploaded_file
 from .menu import menu
 from .forms import BlogEntryForm, CommentsForm
 from .temp_data import blog_entries, blog_entries_dict, categories, latest_comments, tags
@@ -64,6 +67,25 @@ class NewPostPage(BaseCommunityPage, FormView):
     form_class = BlogEntryForm
     success_message = "Blog entry posted successfully"
     
+    def post(self, request, *args, **kwargs):
+
+        print("request.FILES['file'] = {}".format(request.FILES['file'].name))
+        print("request.FILES['file'] = {}".format(request.FILES['file'].size))
+        
+        form = self.form_class(request.POST, request.FILES)
+
+        if form.is_valid():
+#             form.save()
+            handle_uploaded_file(request.FILES['file'])
+            
+            return render_to_response(
+                self.template_name,
+                context_instance=RequestContext(
+                    request,
+                    self.get_context_data(form=self.form_class)
+                )
+            )
+        
     def get_context_data(self, **kwargs):
         
         context = super().get_context_data(**kwargs)
