@@ -92,6 +92,43 @@ class BlogEntryForm(forms.Form):
         required=False
     )
 
+class CommentsForm(forms.Form):
+
+    name = forms.CharField(
+        label='Name',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'John',
+                'class': 'form-control',
+                'required': 'required',
+            }
+        ),
+        required=True
+    )
+    email = forms.EmailField(
+        label='Email',
+        help_text="An email address is required",
+        widget=forms.EmailInput(
+            attrs={
+                'placeholder': 'user@example.com',
+                'class': 'form-control',
+                'required': 'required',
+            }
+        ),
+        required=True
+    )
+    comments = forms.CharField(
+        label='Comments',
+        widget=forms.Textarea(
+            attrs={
+                'placeholder': 'Comments...',
+                'class': 'form-control',
+                'rows': 4,
+                'required': 'required',
+            }
+        ),
+        required=True
+    )
 
 if __name__ == "__main__":
     f = BlogEntryForm()

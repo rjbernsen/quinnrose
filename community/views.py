@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, FormView
 
 from quinnrose.views import BasePage
 from .menu import menu
-from .forms import BlogEntryForm
+from .forms import BlogEntryForm, CommentsForm
 from .temp_data import blog_entries, blog_entries_dict, categories, latest_comments, tags
 
 class BaseCommunityPage(BasePage):
@@ -39,9 +39,11 @@ class ListPage(BaseCommunityPage, TemplateView):
         
         return context
 
-class PostPage(BaseCommunityPage, TemplateView):
+class PostPage(BaseCommunityPage, FormView):
     template_name = 'post.html'
     page_sub_title = None
+    form_class = CommentsForm
+    success_message = "Comment posted successfully"
     
 #     star_count = 5
     
