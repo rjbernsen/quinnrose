@@ -358,6 +358,12 @@ body {
 General styles
 --------------------------------------------------
 */
+a {
+	color: rgba(0, 0, 128, 1);
+}
+a:hover {
+	color: rgba(100, 127, 255,1);
+}
 .hot-region {
 	display: inline-block;
 	height: 50px;

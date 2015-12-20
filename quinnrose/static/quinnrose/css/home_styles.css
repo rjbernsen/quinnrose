@@ -27,6 +27,10 @@ Info styles
 .info-link {
 	font-size: 1em;
 	display: initial;
+	color: rgba(0, 0, 128, 1);
+}
+.info-link:hover {
+	color: rgba(100, 127, 255,1);
 }
 .info-description {
 	display: none;
