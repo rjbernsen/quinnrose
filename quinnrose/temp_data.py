@@ -290,16 +290,16 @@ HELP_DATA.append(h)
 
 
 SUBSCRIPTIONS_HEADERS = {
-    'artists': {
+    'artist': {
         'header': 'For our artists...',
         'description': '...we have three different subscription packages, all designed to provide the talented individual with exactly the right tools for sharing his/her skills.'
     },
-    'organizations': {
+    'organization': {
         'header': 'For our organizations...',
         'description': '...we have three different subscription packages, all designed to provide any organization with tools connect with artists and share their events.'
     }
 }
-SUBSCRIPTIONS_ARTISTS = [
+SUBSCRIPTIONS_ARTIST = [
     {
         'level': 'Viewer',
         'image': '1.jpg',
@@ -344,7 +344,7 @@ SUBSCRIPTIONS_ARTISTS = [
         'features': [12,13,14,15]
     },
 ]
-SUBSCRIPTIONS_ORGANIZATIONS = [
+SUBSCRIPTIONS_ORGANIZATION = [
     {
         'level': 'Writer',
         'image': 'writer.jpg',
@@ -410,7 +410,7 @@ SUBSCRIPTION_FEATURES = [
 ]
 SUBSCRIPTIONS_DATA = {
     'headers': SUBSCRIPTIONS_HEADERS,
-    'artists': SUBSCRIPTIONS_ARTISTS,
-    'organizations': SUBSCRIPTIONS_ORGANIZATIONS,
+    'artist': SUBSCRIPTIONS_ARTIST,
+    'organization': SUBSCRIPTIONS_ORGANIZATION,
     'features': SUBSCRIPTION_FEATURES
 }

@@ -205,13 +205,13 @@ class Subscriptions(BasePage, TemplateView):
         
         context = super().get_context_data(**kwargs)
 
-        subtype = context.get('subtype') or 'artists'
+        subtype = context.get('subtype') or 'artist'
         context['subtype'] = subtype
-        if subtype == 'artists':
-            context['othersubtype'] = 'organizations'
+        if subtype == 'artist':
+            context['othersubtype'] = 'organization'
             context['othersubtypelabel'] = 'Organizations'
         else:
-            context['othersubtype'] = 'artists'
+            context['othersubtype'] = 'artist'
             context['othersubtypelabel'] = 'Artists'
         context['headers'] = SUBSCRIPTIONS_DATA['headers'][subtype]
         context['data'] = SUBSCRIPTIONS_DATA[subtype]
