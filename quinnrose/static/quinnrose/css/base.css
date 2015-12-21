@@ -371,7 +371,11 @@ a:hover {
 } 
 .hot-region:hover {
 	background-color: #f5f5f5;
-} 
+}
+hr {
+	border-width: 2px;
+}
+
 /*
 --------------------------------------------------
 Media overrides

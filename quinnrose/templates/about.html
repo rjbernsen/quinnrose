@@ -17,11 +17,11 @@
 		<div class="row">
 			<div class="col-md-4">
 				<div class="list-group">
-					<a id="about_the_site" href="/about" class="list-group-item {% if section == None or section == '1' %}active{% endif %}">About {{ full_site_name }}</a>
-					<a id="about_core_values" href="/about/2" class="list-group-item {% if section == '2' %}active{% endif %}">Core values</a>
-					<a id="about_mission_statement" href="/about/3" class="list-group-item {% if section == '3' %}active{% endif %}">Mission statement</a>
-					<a id="about_we_do" href="/about/4" class="list-group-item {% if section == '4' %}active{% endif %}">What we do</a>
-					<a id="about_we_dont" href="/about/5" class="list-group-item {% if section == '5' %}active{% endif %}">What we don't do</a>
+					<a id="about_the_site" href="/about" class="list-group-item sub-sub-menu{% if section == None or section == '1' %} active{% endif %}">About {{ full_site_name }}</a>
+					<a id="about_core_values" href="/about/2" class="list-group-item sub-sub-menu{% if section == '2' %} active{% endif %}">Core values</a>
+					<a id="about_mission_statement" href="/about/3" class="list-group-item sub-sub-menu{% if section == '3' %} active{% endif %}">Mission statement</a>
+					<a id="about_we_do" href="/about/4" class="list-group-item sub-sub-menu{% if section == '4' %} active{% endif %}">What we do</a>
+					<a id="about_we_dont" href="/about/5" class="list-group-item sub-sub-menu{% if section == '5' %} active{% endif %}">What we don't do</a>
 				</div>
 			</div>
 			<div class="col-md-8 panel-text">
