@@ -266,7 +266,23 @@ class Help(BasePage, TemplateView):
         context['menu'] = self.menus[current_app]
         context['help_app'] = help_app or self.APP
         context['section'] = section
-        context['data'] = HELP_DATA[section]
+        
+        categories = []
+        items = []
+        
+        for help_category in HELP_DATA:
+            categories.append({
+                'category': help_category.category,
+                'label': help_category.label
+            })
+            if help_category.category == help_app:
+                if section == 'topics':
+                    items = help_category.get_topics()
+                else:
+                    items = help_category.get_faqs()
+            
+        context['categories'] = categories
+        context['items'] = items
 
         return context
 

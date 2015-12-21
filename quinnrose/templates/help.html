@@ -15,17 +15,18 @@
 
 	<div class="container">
 		<div class="row">
-
-	        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-	            <div class="list-group list-group-horizontal">
-	                <a href="/help/topics/quinnrose" class="list-group-item sub-menu{% if help_app == 'quinnrose' %} active{% endif %}">General</a>
-	                <a href="/help/topics/artist" class="list-group-item sub-menu{% if help_app == 'artist' %} active{% endif %}">Artists</a>
-	                <a href="/help/topics/organization" class="list-group-item sub-menu{% if help_app == 'organization' %} active{% endif %}">Organizations</a>
-	                <a href="/help/topics/community" class="list-group-item sub-menu{% if help_app == 'community' %} active{% endif %}">Community</a>
-	            </div>
-	
+	        <div class="col-md-12">
+				<div class="dropdown sub-menu category-button">
+				  <button class="btn btn-error dropdown-toggle sub-menu" type="button" id="help-category-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"></button>
+				  <ul class="dropdown-menu" aria-labelledby="help-category-menu">
+				  	{% for category in categories %}
+				    <li><a class="sub-menu" id="{{ category.category }}_category" href="/help/topics/{{ category.category }}">{{ category.label }}</a></li>
+				    {% endfor %}
+				  </ul>
+				</div>
 	        </div>
-		</div>
+	    </div>
+
 		<div class="row">
 			<div class="col-md-4">
 				<div class="list-group">
@@ -35,12 +36,12 @@
 			</div>
 			<div class="col-md-8 panel-text">
 				<div class="panel-group" id="accordion">
-					{% for title,desc in data %}
+					{% for item in items %}
 					<div class="panel panel-default">
-						<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}" class="list-group-item">{{ title }}</a>
+						<a data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.counter }}" class="list-group-item">{{ item.header }}</a>
 						<div id="collapse{{ forloop.counter }}" class="panel-collapse collapse ">
 							<div class="panel-body">
-								{{ desc }}
+								{{ item.content }}
 							</div>
 						</div>
 					</div>
@@ -51,4 +52,13 @@
 	</div>
 </div>
 
+<script>
+var cur_category = '{{ help_app }}' || 'quinnrose';
+</script>
+
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="{% static 'js/help.js' %}" type='text/javascript'></script>
 {% endblock %}
