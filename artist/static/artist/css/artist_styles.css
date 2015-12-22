@@ -21,8 +21,14 @@
 	color: #fff;
 	margin-top: 0px;
 }
-.content .btn {
-	color: #fff;
+.btn-profile-contact {
+	position: relative;
+	top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	z-index: 999;
+}
+.btn-profile-contact:hover {
 }
 .card .header-bg {
 	/* This stretches the canvas across the entire hero unit */
@@ -51,6 +57,9 @@
 	border: 5px solid rgba(237, 237, 237, 0.6);
 }
 div.profile-details {
+	margin-top: 10px;
+}
+.profile-characteristics-container {
 	margin-top: 10px;
 }
 .profile-details-container {

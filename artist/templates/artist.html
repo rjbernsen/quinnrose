@@ -20,8 +20,10 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-md-8">
             <div class="card">
+	            <a class="btn btn-primary btn-profile-contact pull-left" href="/artist/contact">Contact</a>
+	            <a class="btn btn-primary btn-profile-contact pull-right" href="/artist/resume">Resume</a>
                 <canvas class="header-bg" height="70" id="header-blur"></canvas>
                 <div class="avatar">
                     <img id="headshot" data-toggle="modal" data-target="#headshot-popup" src="" alt="" />
@@ -33,60 +35,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row profile-details">
-	    <div class="col-sm-12 col-md-12 col-lg-3 profile-details-container">
-			<div class="container-fluid">
-				<div class="row text-center">
-					<div class="col-md-12 profile-details-header">
-						Skills
-					</div>
-				</div>
-				<div class="row text-center profile-details-detail">
-				    <div class="col-sm-12 col-md-12 col-lg-12 profile-details-detail-row">
-						<div class="container-fluid">
-						{% for skill in artist_profile.skills %}
-						<div class="row">
-						    <div class="col-sm-8 col-md-8 col-lg-8 pull-left text-left">
-								{{ skill.skill }}
-					        </div>
-						    <div class="col-sm-4 col-md-4 col-lg-4 pull-right text-right text-nowrap">
-						    	<span name="rating" data-star-count="5" data-rating="{{ skill.rating }}"></span>
-					        </div>
-						</div>
-						{% endfor %}
-						</div>
-			        </div>
-				</div>
-			</div>
-		</div>
-	    <div class="col-sm-12 col-md-12 col-lg-6 profile-details-container">
-			<div class="container-fluid">
-				<div class="row text-center">
-					<div class="col-md-12 profile-details-header">
-						Experience
-					</div>
-				</div>
-				<div class="row text-center profile-details-detail">
-				    <div class="col-sm-12 col-md-12 col-lg-12 profile-details-detail-row">
-						<div class="container-fluid">
-						{% for exp in artist_profile.experience %}
-						<div class="row experience-row">
-						    <div class="col-sm-6 col-md-6 col-lg-6 pull-left text-left">
-								{{ exp.experience }}
-					        </div>
-						    <div class="col-sm-6 col-md-6 col-lg-6 pull-right text-right text-nowrap">
-						    	{{ exp.role }}
-					        </div>
-						</div>
-						{% endfor %}
-						</div>
-			        </div>
-				</div>
-			</div>
-		</div>
-	    <div class="col-sm-12 col-md-12 col-lg-3 profile-details-container">
+	    <div class="col-md-4 profile-characteristics-container">
 			<div class="container-fluid">
 				<div class="row text-center">
 					<div class="col-md-12 profile-details-header">
@@ -111,6 +60,59 @@
 				</div>
 			</div>
 	    </div>
+    </div>
+
+    <div class="row profile-details">
+	    <div class="col-sm-12 col-md-4 profile-details-container">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<div class="col-md-12 profile-details-header">
+						Skills
+					</div>
+				</div>
+				<div class="row text-center profile-details-detail">
+				    <div class="col-sm-12 col-md-12 col-lg-12 profile-details-detail-row">
+						<div class="container-fluid">
+						{% for skill in artist_profile.skills %}
+						<div class="row">
+						    <div class="col-sm-8 col-md-8 col-lg-8 pull-left text-left">
+								{{ skill.skill }}
+					        </div>
+						    <div class="col-sm-4 col-md-4 col-lg-4 pull-right text-right text-nowrap">
+						    	<span name="rating" data-star-count="5" data-rating="{{ skill.rating }}"></span>
+					        </div>
+						</div>
+						{% endfor %}
+						</div>
+			        </div>
+				</div>
+			</div>
+		</div>
+	    <div class="col-sm-12 col-md-8 profile-details-container">
+			<div class="container-fluid">
+				<div class="row text-center">
+					<div class="col-md-12 profile-details-header">
+						Experience
+					</div>
+				</div>
+				<div class="row text-center profile-details-detail">
+				    <div class="col-sm-12 col-md-12 col-lg-12 profile-details-detail-row">
+						<div class="container-fluid">
+						{% for exp in artist_profile.experience %}
+						<div class="row experience-row">
+						    <div class="col-sm-6 col-md-6 col-lg-6 pull-left text-left">
+								{{ exp.experience }}
+					        </div>
+						    <div class="col-sm-6 col-md-6 col-lg-6 pull-right text-right text-nowrap">
+						    	{{ exp.role }}
+					        </div>
+						</div>
+						{% endfor %}
+						</div>
+			        </div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="row">

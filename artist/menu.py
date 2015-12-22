@@ -17,12 +17,6 @@ item = MenuItem(
 )
 menu.addItem(item)
 
-item = MenuItem(
-    label='Contact',
-    url='/artist/contact'
-)
-menu.addItem(item)
-
 # Membership Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
