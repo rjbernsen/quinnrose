@@ -3,7 +3,8 @@
 
 {% block styles %}
 	{{ block.super }}
-		<link href="{% static 'artist/css/artist_styles.css' %}" rel="stylesheet">
+	<link href="{% static 'artist/css/artist_styles.css' %}" rel="stylesheet">
+	<link href="{% static 'css/jssor_carousel.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block page_content %}
@@ -112,11 +113,48 @@
 	    </div>
 	</div>
 
+	<div class="row">
+	  	<!-- thumb navigation carousel -->
+		<div class="col-md-12">
+
+		    <div id="jssor_1" class="jssor_main_init">
+		        <!-- Loading Screen -->
+		        <div data-u="loading" class="jssor_loading_init">
+		            <div class="jssor_loading_div1_init"></div>
+		            <div class="jssor_loading_div2_init"></div>
+		        </div>
+		        <div data-u="slides" class="jssor_slides_div">
+		        	{% for image in carousel_images %}
+		            <div data-p="144.50" style="display: none;"> <!-- Leave this style attribute right here!!! -->
+		                <img data-u="image" src="{% static 'artist/images/artists/' %}{{ user_id }}/carousel/{{ image.image }}" />
+		                <img data-u="thumb" src="{% static 'artist/images/artists/' %}{{ user_id }}/carousel/{{ image.thumb }}" />
+		            </div>
+		            {% endfor %}
+		        </div>
+		        <!-- Thumbnail Navigator -->
+		        <div data-u="thumbnavigator" class="jssort01 jssor_thumbnavigator" data-autocenter="1">
+		            <!-- Thumbnail Item Skin Begin -->
+		            <div data-u="slides" class="jssor_thumbnavigator_slides">
+		                <div data-u="prototype" class="p">
+		                    <div class="w">
+		                        <div data-u="thumbnailtemplate" class="t"></div>
+		                    </div>
+		                    <div class="c"></div>
+		                </div>
+		            </div>
+		            <!-- Thumbnail Item Skin End -->
+		        </div>
+		        <!-- Arrow Navigator -->
+		        <span data-u="arrowleft" class="jssora05l jssor_arrow_left"></span>
+		        <span data-u="arrowright" class="jssora05r jssor_arrow_right"></span>
+		    </div>
+		</div>
+	</div>
 </div>
 
-<img class="src-image" src="{% static 'artist/images/users/shannon/profile_000.jpg' %}"/>
+<img class="src-image" src="{% static 'artist/images/artists/1/profile_000.jpg' %}"/>
 <img id="headshot-frame-img" class="headshot-frame-img" src="{% static 'artist/images/frames/frame_006.png' %}">
-<img id="headshot-photo-img" class="headshot-photo-img" src="{% static 'artist/images/users/shannon/profile_002.jpg' %}">
+<img id="headshot-photo-img" class="headshot-photo-img" src="{% static 'artist/images/artists/1/profile_002.jpg' %}">
 <img class="gold-star-image" id="goldstar" src="{% static 'artist/images/gold-star.jpg' %}"/>
 <img class="gray-star-image" id="graystar" src="{% static 'artist/images/gray-star.jpg' %}"/>
 
@@ -124,6 +162,8 @@
 
 {% block js %}
 {{ block.super }}
+<script src="{% static 'js/jssor.slider.min.js' %}" type='text/javascript'></script>
+<script src="{% static 'js/jssor_carousel.js' %}" type='text/javascript'></script>
 <script src="{% static 'artist/js/stack-blur.js' %}" type="text/javascript"></script>
 <script src="{% static 'artist/js/artist.js' %}" type='text/javascript'></script>
 {% endblock %}
