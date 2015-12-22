@@ -2,7 +2,9 @@ artist_profiles = {}
 
 artist_profiles['1'] = {
     'first_name': 'Shannon',
+    'last_name': 'Nichols',
     'professional_name': 'Shannon Lynette Nichols',
+    'email': 'shannon@gmail.com',
     'skills': [
         {
             'skill': 'Singing',

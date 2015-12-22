@@ -11,13 +11,16 @@ from django.views.generic import TemplateView, FormView
 
 from quinnrose.menu import menu as main_menu
 from artist.menu import menu as artist_menu
+from artist.temp_data import artist_profiles
 from organization.menu import menu as organization_menu
 from community.menu import menu as community_menu
-from quinnrose.forms import SignInForm, ContactForm
+from quinnrose.forms import SignInForm, ContactForm, SubscribeForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
 from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS_DATA
 from quinnrose.config import CONFIG_CONTEXT, CONTACT_SUBJECT_EMAILS
+
+mock_user = artist_profiles['1']
 
 class BasePage(object):
     default_title = CONFIG_CONTEXT['full_site_name']
@@ -245,6 +248,79 @@ class Subscriptions(BasePage, TemplateView):
 
         return features
     
+class Subscribe(BasePage, FormView):
+    template_name = 'subscribe.html'
+    page_sub_title = 'Subscribe'
+    form_class = SubscribeForm
+    success_message = "Subscribed successfully"
+    subtype = None
+    
+    def post(self, request, *args, **kwargs):
+
+        form = self.form_class(request.POST)
+        
+#         if form.is_valid():
+# 
+#             subject = CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][0]
+#             from_email = form.cleaned_data.get('email')
+#             recipient_list = ['rjbdevel@gmail.com'] #[CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][1]]
+#             message = form.cleaned_data.get('message')
+#             
+#             try:
+#                 sent_count = send_mail(
+#                     subject=subject,
+#                     from_email=from_email,
+#                     recipient_list=recipient_list,
+#                     message=message,
+#                 )
+# 
+#                 if sent_count != 1:
+# 
+#                     messages.error(request, 'Could not send the message. Please try again later.')
+#                     return render_to_response(
+#                         self.template_name,
+#                         context_instance=RequestContext(
+#                             request,
+#                             self.get_context_data(form=form)
+#                         )
+#                     )
+#                     
+#                 messages.success(request, self.success_message)
+#             
+#             except Exception as e:
+#                 self.logger.info(e.__class__)
+#                 self.logger.info(e)
+#                 messages.error(request, 'Could not send the message. Please try again later.')
+#             
+#             return render_to_response(
+#                 self.template_name,
+#                 context_instance=RequestContext(
+#                     request,
+#                     self.get_context_data(form=self.form_class)
+#                 )
+#             )
+#         
+#         return self.get(request, args, kwargs)
+
+    def get_context_data(self, **kwargs):
+ 
+        context = super().get_context_data(**kwargs)
+        
+        context['user'] = mock_user
+#         self.subtype = context.get('subtype')
+#         print('context self.subtype = {}'.format(self.subtype))
+        
+        return context
+    
+    def get_form_kwargs(self):
+        print('self.kwargs = {}'.format(self.kwargs))
+        kwargs = super().get_form_kwargs()
+#         print('kwargs self.request.GET[subtype] = {}'.format(self.request.GET.get('subtype', 'shit')))
+#         kwargs['subtype'] = self.subtype
+        kwargs.update(self.kwargs)
+        
+        return kwargs
+
 class Help(BasePage, TemplateView):
     template_name = 'help.html'
     page_sub_title = 'Help'

@@ -408,9 +408,20 @@ SUBSCRIPTION_FEATURES = [
     'Upload event photos',          # 14
     'Social media interface'        # 15
 ]
+
+SUBSCRIPTION_CHOICES = {
+    'artist': [],
+    'organization': []
+}
+for item in SUBSCRIPTIONS_ARTIST:
+    SUBSCRIPTION_CHOICES['artist'].append(item['level'])
+for item in SUBSCRIPTIONS_ORGANIZATION:
+    SUBSCRIPTION_CHOICES['organization'].append(item['level'])
+
 SUBSCRIPTIONS_DATA = {
     'headers': SUBSCRIPTIONS_HEADERS,
     'artist': SUBSCRIPTIONS_ARTIST,
     'organization': SUBSCRIPTIONS_ORGANIZATION,
-    'features': SUBSCRIPTION_FEATURES
+    'features': SUBSCRIPTION_FEATURES,
+    'choices': SUBSCRIPTION_CHOICES
 }

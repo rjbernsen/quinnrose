@@ -27,7 +27,7 @@ if 'manage.py' in sys.argv[0]:
 # print('IN_PRODUCTION = {}'.format(IN_PRODUCTION))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print('BASE_DIR = {}'.format(BASE_DIR))
+# print('BASE_DIR = {}'.format(BASE_DIR))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/

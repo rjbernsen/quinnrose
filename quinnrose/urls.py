@@ -18,10 +18,10 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from quinnrose.views import HomePage, ContactFormView, About, Help, SignInFormView, Subscriptions, Privacy, Terms, Error404
+from quinnrose.views import HomePage, ContactFormView, About, Help, SignInFormView, Subscriptions, Subscribe, Privacy, Terms, Error404
 
 handler404 ='quinnrose.views.error404'
-print(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
+# print(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
 
 urlpatterns = [
     url(r'^$', HomePage.as_view(), name='home'),
@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^contact$', ContactFormView.as_view(), name='contact'),
     url(r'^signin/?(?P<subtype>.+)?$', SignInFormView.as_view(), name='signin'),
     url(r'^subscriptions/?(?P<subtype>.+)?$', Subscriptions.as_view(), name='subscriptions'),
+    url(r'^subscribe/?(?P<subtype>.+)?$', Subscribe.as_view(), name='subscribe'),
     url(r'^help/?(?P<section>.+)/(?P<help_app>.+)?$', Help.as_view(), name='help'),
     url(r'^help/?(?P<section>.+)?$', Help.as_view(), {'help_app': None}, name='help'),
     url(r'^privacy$', Privacy.as_view(), name='privacy'),
