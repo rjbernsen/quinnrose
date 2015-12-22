@@ -352,6 +352,12 @@ body {
 		line-height: 1.8;
 	}
 }
+.social-icon {
+	opacity: .3;
+}
+.social-icon:hover {
+	opacity: 1;
+}
 
 /*
 --------------------------------------------------
