@@ -28,7 +28,9 @@
 	<div class="row text-center">
 		{% for info_item in home_page_info %}
 		<div class="col-md-4">
-			<div class="fa fa-{{ info_item.icon }} fa-2x circles"></div>
+			<a href="{{ info_item.link }}">
+				<div class="fa fa-{{ info_item.icon }} fa-2x circles"></div>
+			</a>
 			<h2 class="info-header">
 				<a 	href="{{ info_item.link }}"
 					class="info-link"
