@@ -335,7 +335,29 @@ class Subscribe(BasePage, FormView):
         context['user'] = mock_user
 #         self.subtype = context.get('subtype')
 #         print('context self.subtype = {}'.format(self.subtype))
+
+        # Get the data for building the javascript dict.
+        # This is for dynamic building of the subscription
+        # message as the user clicks on the choices.
+        SUBSCRIPTIONS.current_subtype = context.get('subtype')
+        js_dict = []
+
+        for s in SUBSCRIPTIONS:
+            for key in s.frequency_info:
+                cur_row = {}
+
+                freq_info = s.frequency_info[key]
+                cur_row['level_id'] = s.sub_id            
+                cur_row['freq_id'] = freq_info['freq_id']            
+                cur_row['label'] = freq_info['label'].lower()            
+                cur_row['price'] = freq_info['price']            
+                cur_row['savings'] = freq_info['savings']            
+            
+                js_dict.append(cur_row)
+            
         
+        context['js_dict'] = js_dict
+        print(js_dict)
         return context
     
     def get_form_kwargs(self):

@@ -1,0 +1,21 @@
+.list-group-item.check-subscriptions-panel {
+	background-color: rgba(220, 229, 255, 1);
+}
+.list-group-item.check-subscriptions-panel:hover,
+.list-group-item.check-subscriptions-panel:focus {
+	background-color: rgba(0, 0, 128, 1);
+	color: #fff;
+}
+.plan-panel {
+	margin-top: -15px;
+	margin-bottom: 10px;
+	background-color: rgba(229, 255, 229, 1);
+}
+#plan-level {
+	font-weight: bold;
+	color: rgba(0, 128, 0, 1);
+}
+#plan-price {
+	font-weight: bold;
+	color: rgba(0, 128, 0, 1);
+}

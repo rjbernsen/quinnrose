@@ -30,7 +30,7 @@ def get_subscription_choices(subtype):
 
 def get_subscription_billing_frequency_choices():
 
-    choices = []
+    choices = [('', 'Select...')]
 
 #     print('SUBSCRIPTION_CHOICES[subtype] = {}'.format(SUBSCRIPTION_CHOICES[subtype]))
     for frequency in SUBSCRIPTIONS.frequencies:

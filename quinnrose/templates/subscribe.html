@@ -4,6 +4,7 @@
 {% block styles %}
 	{{ block.super }}
 	<link href="{% static 'css/forms.css' %}" rel="stylesheet">
+	<link href="{% static 'css/subscribe_styles.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block page_content %}
@@ -27,7 +28,7 @@
 								{% endif %}
 							</div>
 							<div class="list-group">
-								<a href="/subscriptions/{{ subtype }}" class="list-group-item sub-sub-menu">Check out the available subscription options here...</a>
+								<a href="/subscriptions/{{ subtype }}" class="list-group-item check-subscriptions-panel">Check out the available subscription options here...</a>
 							</div>
 
 							<form id="contact_form" class="form-horizontal" data-toggle="validator" role="form" action="/contact" method="post">
@@ -48,8 +49,8 @@
 					
 								{% if subtype == 'organization' %}
 								<div class="form-group">
-									<label class="control-label col-sm-2" for="{{ form.organization.id_for_label }}">{{ form.organization.label }}</label>
-									<div class="col-sm-10">
+									<label class="control-label col-md-3" for="{{ form.organization.id_for_label }}">{{ form.organization.label }}</label>
+									<div class="col-md-9">
 										{{ form.organization }}
 										<div class="help-block with-errors"></div>
 									</div>
@@ -58,8 +59,8 @@
 								{% endif %}
 								
 								<div class="form-group">
-									<label class="control-label col-sm-2" for="{{ form.level.id_for_label }}">{{ form.level.label }}</label>
-									<div class="col-sm-10">
+									<label class="control-label col-md-3" for="{{ form.level.id_for_label }}">{{ form.level.label }}</label>
+									<div class="col-md-9">
 										{{ form.level }}
 										<div class="help-block with-errors"></div>
 									</div>
@@ -67,8 +68,28 @@
 							    {{ form.level.errors }}
 
 								<div class="form-group">
-									<label class="control-label col-sm-2" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
-									<div class="col-sm-10">
+									<label class="control-label col-md-3" for="{{ form.billing_frequency.id_for_label }}">{{ form.billing_frequency.label }}</label>
+									<div class="col-md-9">
+										{{ form.billing_frequency }}
+										<div class="help-block with-errors"></div>
+									</div>
+								</div>
+							    {{ form.billing_frequency.errors }}
+
+								<div class="form-group">
+									<div class="col-md-9 col-md-offset-3">
+										<div class="panel panel-default plan-panel">
+											<div id="plan-div" class="panel-body">
+												You've chosen the <span id="plan-level"></span> level, 
+												which is <span id="plan-price"></span>
+												<span id="plan-label"></span><span id="plan-savings-text"> (a yearly savings of <i><span id="plan-savings"></span></i>!)</span>.
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-md-3" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+									<div class="col-md-9">
 										{{ form.email }}
 										<div class="help-block with-errors"></div>
 									</div>
@@ -76,8 +97,8 @@
 							    {{ form.email.errors }}
 
 								<div class="form-group">
-									<label class="control-label col-sm-2" for="{{ form.name_on_card.id_for_label }}">{{ form.name_on_card.label }}</label>
-									<div class="col-sm-10">
+									<label class="control-label col-md-3" for="{{ form.name_on_card.id_for_label }}">{{ form.name_on_card.label }}</label>
+									<div class="col-md-9">
 										{{ form.name_on_card }}
 										<div class="help-block with-errors"></div>
 									</div>
@@ -85,8 +106,8 @@
 							    {{ form.name_on_card.errors }}
 
 								<div class="form-group">
-									<label class="control-label col-sm-2" for="{{ form.card_number.id_for_label }}">{{ form.card_number.label }}</label>
-									<div class="col-sm-10">
+									<label class="control-label col-md-3" for="{{ form.card_number.id_for_label }}">{{ form.card_number.label }}</label>
+									<div class="col-md-9">
 										{{ form.card_number }}
 										<div class="help-block with-errors"></div>
 									</div>
@@ -95,8 +116,8 @@
 								
 
 								<div class="form-group">
-									<label class="control-label col-sm-2" for="{{ form.expiration_date.id_for_label }}">{{ form.expiration_date.label }}</label>
-									<div class="col-sm-10">
+									<label class="control-label col-md-3" for="{{ form.expiration_date.id_for_label }}">{{ form.expiration_date.label }}</label>
+									<div class="col-md-9">
 										{{ form.expiration_date }}
 										<div class="help-block with-errors"></div>
 									</div>
@@ -104,8 +125,8 @@
 							    {{ form.expiration_date.errors }}
 
 								<div class="form-group">
-									<label class="control-label col-sm-2" for="{{ form.card_code.id_for_label }}">{{ form.card_code.label }}</label>
-									<div class="col-sm-10">
+									<label class="control-label col-md-3" for="{{ form.card_code.id_for_label }}">{{ form.card_code.label }}</label>
+									<div class="col-md-9">
 										{{ form.card_code }}
 										<div class="help-block with-errors"></div>
 									</div>
@@ -119,9 +140,9 @@
 								{% endfor %}
 					
 								<div class="form-group">
-									<label class="control-label col-sm-2"></label>
-									<div class="col-sm-10">
-									    <input type="submit" class="btn btn-primary" value="Send" />
+									<label class="control-label col-md-3"></label>
+									<div class="col-md-9">
+									    <input type="submit" class="btn btn-primary" value="Subscribe" />
 									</div>
 								</div>
 							</form>
@@ -134,9 +155,20 @@
 	</div>
 </div>
 
+<script>
+	var level = '{{ level }}';
+	var billing_info = {
+		{% for row in js_dict %}
+		'{{ row.level_id }}_{{ row.freq_id }}': { 'label': '{{ row.label }}', 'price': '{{ row.price }}', 'savings': '{{ row.savings }}' },
+		{% endfor %}
+	};
+	
+</script>
+
 {% endblock %}
 
 {% block js %}
 {{ block.super }}
 <script src="{% static 'js/forms.js' %}" type='text/javascript'></script>
+<script src="{% static 'js/subscribe.js' %}" type='text/javascript'></script>
 {% endblock %}
