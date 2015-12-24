@@ -1,5 +1,5 @@
-import os
-import glob
+# import os
+# import glob
 import logging
 from django.core.mail import send_mail
 from django.conf import settings
@@ -16,7 +16,7 @@ from organization.menu import menu as organization_menu
 from community.menu import menu as community_menu
 from quinnrose.forms import SignInForm, ContactForm, SubscribeForm
 from quinnrose.home_page_info import home_page_info
-from quinnrose.featurettes import featurettes
+# from quinnrose.featurettes import featurettes
 from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS
 from quinnrose.config import CONFIG_CONTEXT, CONTACT_SUBJECT_EMAILS
 
@@ -78,21 +78,24 @@ class HomePage(BasePage, TemplateView):
 
         context = super().get_context_data(**kwargs)
 
-        image_path = ''
-        if settings.IN_PRODUCTION:
-            image_path = os.path.join(settings.STATIC_ROOT, 'images', 'carousel') + '-*'
-        else:
-            image_path = os.path.join(settings.STATIC_MAIN_APP, 'images', 'carousel') + '-*'
-        carousel_images = [
-            os.path.basename(p) for p in glob.glob(image_path)
-        ]
-        carousel_images.sort()
+#         image_path = ''
+#         if settings.IN_PRODUCTION:
+#             image_path = os.path.join(settings.STATIC_ROOT, 'images', 'carousel') + '-*'
+#         else:
+#             image_path = os.path.join(settings.STATIC_MAIN_APP, 'quinnrose', 'images', 'carousel') + '-*'
+#             print(settings.STATIC_MAIN_APP)
+#             print(image_path)
+#         carousel_images = [
+#             os.path.basename(p) for p in glob.glob(image_path)
+#         ]
+#         print(carousel_images)
+#         carousel_images.sort()
         
         context.update(
             {
-                'carousel_images': carousel_images,
+#                 'carousel_images': carousel_images,
                 'home_page_info': home_page_info,
-                'featurettes': featurettes,
+#                 'featurettes': featurettes,
             }
         )
 
@@ -357,7 +360,7 @@ class Subscribe(BasePage, FormView):
             
         
         context['js_dict'] = js_dict
-        print(js_dict)
+#         print(js_dict)
         return context
     
     def get_form_kwargs(self):
@@ -443,8 +446,8 @@ class Error404(BasePage, TemplateView):
         
         return context
 
-if __name__ == '__main__':
-    image_path = '../static/images/carousel-*'
-    carousel_images = glob.glob(image_path)
-    print(carousel_images)
+# if __name__ == '__main__':
+#     image_path = '../static/images/carousel-*'
+#     carousel_images = glob.glob(image_path)
+#     print(carousel_images)
     

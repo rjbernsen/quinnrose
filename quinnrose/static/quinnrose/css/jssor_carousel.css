@@ -27,7 +27,7 @@
 .jssor_loading_div2_init {
 	position:absolute;
 	display:block;
-	background:url('/static/images/loading.gif') no-repeat center center;
+	background:url('/static/quinnrose/images/loading.gif') no-repeat center center;
 	top:0px;
 	left:0px;
 	width:100%;
@@ -83,7 +83,7 @@
     width: 40px;
     height: 40px;
     cursor: pointer;
-    background: url('/static/images/a17.png') no-repeat;
+    background: url('/static/quinnrose/images/a17.png') no-repeat;
     /* overflow: hidden; */
 }
 .jssora05l { background-position: -10px -40px; }
@@ -133,7 +133,7 @@
     height: 68px;
     border: #000 2px solid;
     box-sizing: content-box;
-    background: url('/static/images/t01.png') -800px -800px no-repeat;
+    background: url('/static/quinnrose/images/t01.png') -800px -800px no-repeat;
     _background: none;
 }
 .jssort01 .pav .c {

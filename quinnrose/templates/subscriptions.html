@@ -3,7 +3,7 @@
 
 {% block styles %}
 	{{ block.super }}
-	<link href="{% static 'css/subscription_styles.css' %}" rel="stylesheet">
+	<link href="{% static 'quinnrose/css/subscription_styles.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block page_content %}
@@ -46,7 +46,7 @@
 				{% for item in data %}
 			    <div class="col-md-4">
 			        <div class="thumbnail">
-			            <img src="{% static 'images' %}/{{ item.get_image_name }}" alt="">
+			            <img src="{% static 'quinnrose/images' %}/{{ item.get_image_name }}" alt="">
 			            <div class="caption">
 			                <div class="panel-group">
 				                <div class="panel-default">

@@ -135,7 +135,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media', 'media')
 MEDIA_URL = '/media/'
 
 # Static files (CSS, JavaScript, Images)
@@ -148,10 +148,10 @@ STATIC_URL = '/static/'
 #     STATIC_ROOT = os.path.join(BASE_DIR, 'static') 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # print('STATIC_ROOT = {}'.format(STATIC_ROOT))
-STATIC_MAIN_APP = os.path.join(BASE_DIR,'quinnrose', 'static','quinnrose')
-STATIC_ARTIST_APP = os.path.join(BASE_DIR,'artist', 'static', 'artist')
-STATIC_ORGANIZATION_APP = os.path.join(BASE_DIR,'organization', 'static', 'organization')
-STATIC_COMMUNITY_APP = os.path.join(BASE_DIR,'community', 'static', 'community')
+STATIC_MAIN_APP = os.path.join(BASE_DIR,'quinnrose', 'static')
+STATIC_ARTIST_APP = os.path.join(BASE_DIR,'artist', 'static')
+STATIC_ORGANIZATION_APP = os.path.join(BASE_DIR,'organization', 'static')
+STATIC_COMMUNITY_APP = os.path.join(BASE_DIR,'community', 'static')
 # print('STATIC_MAIN_APP = {}'.format(STATIC_MAIN_APP))
 
 STATICFILES_DIRS = (

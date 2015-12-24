@@ -3,7 +3,7 @@
 
 {% block styles %}
 	{{ block.super }}
-	<link href="{% static 'css/help_styles.css' %}" rel="stylesheet">
+	<link href="{% static 'quinnrose/css/help_styles.css' %}" rel="stylesheet">
 {% endblock %}
 
 {% block page_content %}
@@ -60,5 +60,5 @@ var cur_category = '{{ help_app }}' || 'quinnrose';
 
 {% block js %}
 {{ block.super }}
-<script src="{% static 'js/help.js' %}" type='text/javascript'></script>
+<script src="{% static 'quinnrose/js/help.js' %}" type='text/javascript'></script>
 {% endblock %}
