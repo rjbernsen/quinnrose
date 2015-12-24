@@ -1,7 +1,7 @@
 from django import forms
 
 from quinnrose.config import CONTACT_SUBJECT_EMAILS
-from quinnrose.temp_data import SUBSCRIPTION_CHOICES
+from quinnrose.temp_data import SUBSCRIPTIONS
 from artist.temp_data import artist_profiles
 from organization.temp_data import organization_profiles
 from quinnrose.fields import CreditCardField, ExpiryDateField, VerificationValueField
@@ -22,8 +22,19 @@ def get_subscription_choices(subtype):
     choices = [('', 'Select...')]
 
 #     print('SUBSCRIPTION_CHOICES[subtype] = {}'.format(SUBSCRIPTION_CHOICES[subtype]))
-    for i in range(len(SUBSCRIPTION_CHOICES[subtype])):
-        choices.append((i,SUBSCRIPTION_CHOICES[subtype][i]))
+#     print(SUBSCRIPTIONS.get_choices(subtype))
+    for choice in SUBSCRIPTIONS.get_choices(subtype):
+        choices.append((choice[0],choice[1]))
+            
+    return (choices)
+
+def get_subscription_billing_frequency_choices():
+
+    choices = []
+
+#     print('SUBSCRIPTION_CHOICES[subtype] = {}'.format(SUBSCRIPTION_CHOICES[subtype]))
+    for frequency in SUBSCRIPTIONS.frequencies:
+        choices.append((frequency.freq_id, frequency.billing_frequency))
             
     return (choices)
 
@@ -162,8 +173,8 @@ class SubscribeForm(forms.Form):
 
 #         self.subtype = kwargs.pop('subtype', None)
         super().__init__(*args, **kwargs)
-        print('subtype')
-        print(subtype)
+#         print('subtype')
+#         print(subtype)
         self.fields['level'].choices = get_subscription_choices(subtype)
         self.fields['organization'].choices = get_organization_choices('dummy')
         
@@ -184,6 +195,17 @@ class SubscribeForm(forms.Form):
         widget=forms.Select(
             attrs={
                 'class': 'form-control select-placeholder',
+                'required': 'required',
+            }
+        ),
+        required=True
+    )
+    billing_frequency = forms.ChoiceField(
+        label='Billing Frequency',
+        choices=get_subscription_billing_frequency_choices(),
+        widget=forms.Select(
+            attrs={
+                'class': 'form-control',
                 'required': 'required',
             }
         ),

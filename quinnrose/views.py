@@ -17,7 +17,7 @@ from community.menu import menu as community_menu
 from quinnrose.forms import SignInForm, ContactForm, SubscribeForm
 from quinnrose.home_page_info import home_page_info
 from quinnrose.featurettes import featurettes
-from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS_DATA
+from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS
 from quinnrose.config import CONFIG_CONTEXT, CONTACT_SUBJECT_EMAILS
 
 mock_user = artist_profiles['1']
@@ -38,6 +38,9 @@ class BasePage(object):
     
     current_menu = None
     
+
+    print('settings.DEBUG = {}'.format(settings.DEBUG))
+
     def get_context_data(self, **kwargs):
 
 #         current_app = self.request.session.get('current_app', 'quinnrose')
@@ -210,14 +213,20 @@ class Subscriptions(BasePage, TemplateView):
 
         subtype = context.get('subtype') or 'artist'
         context['subtype'] = subtype
+        SUBSCRIPTIONS.current_subtype = subtype
+
         if subtype == 'artist':
             context['othersubtype'] = 'organization'
             context['othersubtypelabel'] = 'Organizations'
         else:
             context['othersubtype'] = 'artist'
             context['othersubtypelabel'] = 'Artists'
-        context['headers'] = SUBSCRIPTIONS_DATA['headers'][subtype]
-        context['data'] = SUBSCRIPTIONS_DATA[subtype]
+        context['headers'] = SUBSCRIPTIONS.headers[subtype]
+
+        data = []
+        for s in SUBSCRIPTIONS:
+            data.append(s)
+        context['data'] = data
 
         context['features'] = self._get_features(subtype)
         
@@ -225,27 +234,43 @@ class Subscriptions(BasePage, TemplateView):
 
     def _get_features(self, subtype):
         features = [] # To send to the template
-        all_features = [ [],[],[] ] # A holding place
+        all_features = [] # A holding place
+
+        for s in SUBSCRIPTIONS:
+            all_features.append([])
+        
         # Get the feature list
-        feature_list = SUBSCRIPTIONS_DATA['features']
-        levels = SUBSCRIPTIONS_DATA[subtype]
+        feature_list = SUBSCRIPTIONS.features
+#         print(feature_list)
+        
         # Get the features for each level. Add each
         # level list to the next level.
-        for i in range(len(levels)):
-            cur_list = levels[i]['features']
-            for j in range(i,len(levels)):
-                all_features[j] += cur_list
-        
-        for i in range(len(feature_list)):
-            cur_row = []
-            cur_row.append(feature_list[i])
-            for j in range(len(all_features)):
-                if i in all_features[j]:
-                    cur_row.append('check')
-                else:
-                    cur_row.append('')
-            features.append(cur_row)
+        i = -1
+        SUBSCRIPTIONS.current_subtype = subtype
+#         print('Getting features')
+        for s in SUBSCRIPTIONS:
 
+            i += 1
+            cur_list = s.features
+            
+            for j in range(i,SUBSCRIPTIONS.count()):
+                all_features[j] += cur_list
+#         print(all_features)
+
+        # Add check marks for the compare feature list.
+        for i in range(len(feature_list)):
+            cur_row = {}
+            cur_row['feature'] = feature_list[i]
+            
+            cur_row['checks'] = []
+            
+            for j in range(len(all_features)):
+                if feature_list[i] in all_features[j]:
+                    cur_row['checks'].append('check')
+                else:
+                    cur_row['checks'].append('')
+            features.append(cur_row)
+#         print(features)
         return features
     
 class Subscribe(BasePage, FormView):
@@ -306,6 +331,7 @@ class Subscribe(BasePage, FormView):
  
         context = super().get_context_data(**kwargs)
         
+        context['level'] = self.request.GET.get('level', '1')
         context['user'] = mock_user
 #         self.subtype = context.get('subtype')
 #         print('context self.subtype = {}'.format(self.subtype))
@@ -313,7 +339,7 @@ class Subscribe(BasePage, FormView):
         return context
     
     def get_form_kwargs(self):
-        print('self.kwargs = {}'.format(self.kwargs))
+#         print('self.kwargs = {}'.format(self.kwargs))
         kwargs = super().get_form_kwargs()
 #         print('kwargs self.request.GET[subtype] = {}'.format(self.request.GET.get('subtype', 'shit')))
 #         kwargs['subtype'] = self.subtype
@@ -329,14 +355,14 @@ class Help(BasePage, TemplateView):
         
         context = super().get_context_data(**kwargs)
 
-        print("context.get('section') = {}".format(context.get('section')))
-        print("context.get('help_app') = {}".format(context.get('help_app')))
+#         print("context.get('section') = {}".format(context.get('section')))
+#         print("context.get('help_app') = {}".format(context.get('help_app')))
 
         section = context.get('section') or 'topics'
         current_app = self.request.session.get('current_app', self.APP)
         help_app = context.get('help_app') or current_app
-        print('current_app = {}'.format(current_app))
-        print('help_app = {}'.format(help_app))
+#         print('current_app = {}'.format(current_app))
+#         print('help_app = {}'.format(help_app))
 
 
         context['menu'] = self.menus[current_app]

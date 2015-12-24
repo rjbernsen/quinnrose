@@ -3,6 +3,8 @@ Temporary data to be used until the database
 models have been created.
 """
 
+from quinnrose.utils import isfloat
+
 HELP_DATA = []
 
 class Help(object):
@@ -289,6 +291,10 @@ h.add_faq(
 HELP_DATA.append(h)
 
 
+
+
+
+
 SUBSCRIPTIONS_HEADERS = {
     'artist': {
         'header': 'For our artists...',
@@ -299,97 +305,7 @@ SUBSCRIPTIONS_HEADERS = {
         'description': '...we have three different subscription packages, all designed to provide any organization with tools connect with artists and share their events.'
     }
 }
-SUBSCRIPTIONS_ARTIST = [
-    {
-        'level': 'Viewer',
-        'image': '1.jpg',
-        'description': 'View artist and organization profiles - unlimited!',
-        'price_per_month': 'Free',
-        'price_per_year': 'Free',
-        'details': [
-            'View basic artist information',
-            'View basic organization information',
-            'Create basic artist profile',
-            'Search other artists by zip code',
-            'Search organizations by zip code'
-        ],
-        'features': [0,1,2,3,4,5]
-    },
-    {
-        'level': 'Seeker',
-        'image': '2.jpg',
-        'description': 'Contact other artists and organizations - unlimited!',
-        'price_per_month': '$1.99',
-        'price_per_year': '$21.99',
-        'details': [
-            'All "Viewer" features, plus...',
-            'Search for other artists using advanced criteria',
-            'Search for organizations using advance criteria',
-            'Contact other artists or organizations via the web site',
-            'Search auditions'
-        ],
-        'features': [6,7,8,9,10,11]
-    },
-    {
-        'level': 'Doer',
-        'image': '3.jpg',
-        'description': 'Appear in search results by organizations seeking artists - unlimited!',
-        'price_per_month': '$3.99',
-        'price_per_year': '$43.99',
-        'details': [
-            'All "Seeker" features, plus...',
-            'Show up in organization searches',
-            'Build your online resume/portfolio'
-        ],
-        'features': [12,13,14,15]
-    },
-]
-SUBSCRIPTIONS_ORGANIZATION = [
-    {
-        'level': 'Writer',
-        'image': 'writer.jpg',
-        'description': 'View artist and organization profiles - unlimited!',
-        'price_per_month': 'Free',
-        'price_per_year': 'Free',
-        'details': [
-            'View basic artist information',
-            'View basic organization information',
-            'Create basic profile for your organization',
-            'Search artists by zip code',
-            'Search organizations by zip code'
-        ],
-        'features': [0,1,2,3,4,5]
-    },
-    {
-        'level': 'Director',
-        'image': 'director.jpg',
-        'description': 'Contact other artists and organizations - unlimited!',
-        'price_per_month': '$7.99',
-        'price_per_year': '$91.99',
-        'details': [
-            'All "Writer" features, plus...',
-            'Search for artists using advanced criteria',
-            'Search for organizations using advance criteria',
-            'Contact artists or organizations via the web site',
-            'Register events',
-            'Announce auditions'
-        ],
-        'features': [6,7,8,9,10,11]
-    },
-    {
-        'level': 'Producer',
-        'image': 'producer.jpg',
-        'description': 'Appear in search results by organizations seeking artists - unlimited!',
-        'price_per_month': '$11.99',
-        'price_per_year': '$129.99',
-        'details': [
-            'All "Director" features, plus...',
-            'Upload event photos',
-            'Interface profiles and events with social media'
-        ],
-        'features': [12,13,14,15]
-    },
-]
+
 SUBSCRIPTION_FEATURES = [
     'Create profile',               #  0
     'Upload profile photo',         #  1
@@ -409,19 +325,296 @@ SUBSCRIPTION_FEATURES = [
     'Social media interface'        # 15
 ]
 
-SUBSCRIPTION_CHOICES = {
-    'artist': [],
-    'organization': []
-}
-for item in SUBSCRIPTIONS_ARTIST:
-    SUBSCRIPTION_CHOICES['artist'].append(item['level'])
-for item in SUBSCRIPTIONS_ORGANIZATION:
-    SUBSCRIPTION_CHOICES['organization'].append(item['level'])
+# DO NOT CHANGE THESE VALUES!!!!!!
+SUBSCRIPTION_BILLING_FREQUENCY = [
+    [1, 'Monthly'],
+    [2, 'Yearly']
+]
 
-SUBSCRIPTIONS_DATA = {
-    'headers': SUBSCRIPTIONS_HEADERS,
-    'artist': SUBSCRIPTIONS_ARTIST,
-    'organization': SUBSCRIPTIONS_ORGANIZATION,
-    'features': SUBSCRIPTION_FEATURES,
-    'choices': SUBSCRIPTION_CHOICES
-}
+class SubscriptionHeader(object):
+    
+    def __init__(self, header, description):
+        self.header = header
+        self.description = description
+
+class SubscriptionFeature(object):
+    
+    def __init__(self, feat_id, feature):
+        self.feat_id = feat_id
+        self.feature = feature
+
+class SubscriptionBillingFrequency(object):
+    
+    def __init__(self, freq_id, billing_frequency):
+        self.freq_id = freq_id
+        self.billing_frequency = billing_frequency
+        
+class SubscriptionBillingFrequencies(object):
+    
+    frequencies = []
+    
+    def __init__(self):
+        for freq in SUBSCRIPTION_BILLING_FREQUENCY:
+            sbf = SubscriptionBillingFrequency(
+                freq[0],
+                freq[1]
+            )
+            self.frequencies.append(sbf)
+
+    def __iter__(self):
+        self.cur_sub_idx = -1
+        return self
+    
+    def __next__(self):
+        self.cur_sub_idx += 1
+        
+        try:
+            return self.frequencies[self.cur_sub_idx]
+        except:
+            
+            raise StopIteration
+    
+    def count(self):
+        return len(self.frequencies)
+    
+class Subscriptions(object):
+
+    subtypes = ['artist', 'organization']
+    
+    frequencies = SubscriptionBillingFrequencies()
+
+    headers = {}
+    features = []
+    subscriptions = {}
+    
+    current_subtype = None # For the iterator!
+    
+    def __init__(self):
+        for key in SUBSCRIPTIONS_HEADERS:
+            self._add_header(
+                key,
+                SUBSCRIPTIONS_HEADERS[key]['header'],
+                SUBSCRIPTIONS_HEADERS[key]['description']
+            )
+
+        self.features = SUBSCRIPTION_FEATURES
+
+        for subtype in self.subtypes:
+            self.subscriptions[subtype] = []
+            
+    def __iter__(self):
+        self.cur_sub_idx = -1
+        return self
+    
+    def __next__(self):
+        self.cur_sub_idx += 1
+        
+        try:
+            s = self.subscriptions[self.current_subtype][self.cur_sub_idx]
+            
+            if not s.already_generated:
+                s.frequency_info = {}
+                
+                for freq in self.frequencies:
+                    s.frequency_info[freq.billing_frequency.lower()] = {}
+                    symbol = '$'
+                    if s.prices[freq.freq_id - 1] == 'Free':
+                        symbol = ''
+                    s.frequency_info[freq.billing_frequency.lower()]['freq_id'] = freq.freq_id
+                    s.frequency_info[freq.billing_frequency.lower()]['label'] = freq.billing_frequency
+                    s.frequency_info[freq.billing_frequency.lower()]['price'] = symbol + s.prices[freq.freq_id - 1]
+                    symbol = ''
+                    print(s.yearly_savings)
+                    if s.yearly_savings:
+                        symbol = '$'
+                        s.frequency_info[freq.billing_frequency.lower()]['savings'] = symbol + s.yearly_savings
+                    else:
+                        s.frequency_info[freq.billing_frequency.lower()]['savings'] = None
+                    
+                for i in range(len(s.features)):
+                    s.features[i] = self.features[s.features[i]]
+                s.already_generated = True
+
+            return s
+        except:
+            
+            raise StopIteration
+    
+    def count(self, subtype=None):
+        if not subtype:
+            subtype = self.current_subtype
+        
+        return len(self.subscriptions[subtype])
+    
+    def get_choices(self, subtype=None):
+        retval = []
+
+        if not subtype:
+            subtype = self.current_subtype
+
+        for s in self.subscriptions[subtype]:
+            retval.append([s.sub_id, s.level])
+
+        return retval
+    
+    def add_subscription(self, subscription):
+        self.subscriptions[subscription.subtype].append(subscription)
+
+    def _add_header(self, subtype, header, description):
+        sh = SubscriptionHeader(header, description)
+        self.headers[subtype] = sh
+
+class Subscription(object):
+
+    def __init__(self,
+        subtype,
+        sub_id,
+        level,
+        description,
+        prices,
+        benefits,
+        features
+    ):
+    
+        self.subtype = subtype
+        self.sub_id = sub_id
+        self.level = level
+        self.description = description
+        self.prices = prices
+        self.details = benefits
+        self.features = features
+        if isfloat(prices[0]):
+            self.yearly_savings = str(round((float(prices[0]) * 12) - float(prices[1]),2))
+        else:
+            self.yearly_savings = None
+        
+        self.already_generated = False
+
+    def get_image_name(self):
+        return "{}_{}.jpg".format(self.subtype, self.sub_id)
+
+SUBSCRIPTIONS = Subscriptions()
+
+s = Subscription(
+    'artist',
+    1,
+    'Viewer',
+    'View artist and organization profiles - unlimited!',
+    ['Free', 'Free'],
+    [
+        'View basic artist information',
+        'View basic organization information',
+        'Create basic artist profile',
+        'Search other artists by zip code',
+        'Search organizations by zip code'
+    ],
+    [0,1,2,3,4,5]
+)
+SUBSCRIPTIONS.add_subscription(s)
+
+s = Subscription(
+    'artist',
+    '2',
+    'Seeker',
+    'Contact other artists and organizations - unlimited!',
+    ['1.99', '21.99'],
+    [
+        'All "Viewer" features, plus...',
+        'Search for other artists using advanced criteria',
+        'Search for organizations using advance criteria',
+        'Contact other artists or organizations via the web site',
+        'Search auditions'
+    ],
+    [6,7,8,9,10,11]
+)
+SUBSCRIPTIONS.add_subscription(s)
+
+s = Subscription(
+    'artist',
+    3,
+    'Doer',
+    'Appear in search results by organizations seeking artists - unlimited!',
+    ['3.99',  '43.99'],
+    [
+        'All "Seeker" features, plus...',
+        'Show up in organization searches',
+        'Build your online resume/portfolio'
+    ],
+    [12,13,14,15]
+)
+SUBSCRIPTIONS.add_subscription(s)
+
+s = Subscription(
+    'organization',
+    1,
+    'Writer',
+    'View artist and organization profiles - unlimited!',
+    ['Free',  'Free'],
+    [
+        'View basic artist information',
+        'View basic organization information',
+        'Create basic profile for your organization',
+        'Search artists by zip code',
+        'Search organizations by zip code'
+    ],
+    [0,1,2,3,4,5]
+)
+SUBSCRIPTIONS.add_subscription(s)
+
+s = Subscription(
+    'organization',
+    2,
+    'Director',
+    'Contact other artists and organizations - unlimited!',
+    ['7.99', '91.99'],
+    [
+        'All "Writer" features, plus...',
+        'Search for artists using advanced criteria',
+        'Search for organizations using advance criteria',
+        'Contact artists or organizations via the web site',
+        'Register events',
+        'Announce auditions'
+    ],
+    [6,7,8,9,10,11]
+)
+SUBSCRIPTIONS.add_subscription(s)
+
+s = Subscription(
+    'organization',
+    3,
+    'Producer',
+    'Appear in search results by organizations seeking artists - unlimited!',
+    ['11.99', '129.99'],
+    [
+        'All "Director" features, plus...',
+        'Upload event photos',
+        'Interface profiles and events with social media'
+    ],
+    [12,13,14,15]
+)
+SUBSCRIPTIONS.add_subscription(s)
+
+# SUBSCRIPTION_CHOICES = {
+#     'artist': [],
+#     'organization': []
+# }
+# for item in SUBSCRIPTIONS_ARTIST:
+#     SUBSCRIPTION_CHOICES['artist'].append([item['id'], item['level']])
+# for item in SUBSCRIPTIONS_ORGANIZATION:
+#     SUBSCRIPTION_CHOICES['organization'].append([item['id'], item['level']])
+# 
+# SUBSCRIPTIONS_DATA = {
+#     'headers': SUBSCRIPTIONS_HEADERS,
+#     'artist': SUBSCRIPTIONS_ARTIST,
+#     'organization': SUBSCRIPTIONS_ORGANIZATION,
+#     'features': SUBSCRIPTION_FEATURES,
+#     'choices': SUBSCRIPTION_CHOICES,
+#     'billing_frequency': SUBSCRIPTION_BILLING_FREQUENCY
+# }
+
+if __name__ == "__main__":
+    
+    SUBSCRIPTIONS.current_subtype = 'artist'
+    
+    for s in SUBSCRIPTIONS:
+        print('{} {}'.format(s.subtype, s.level))

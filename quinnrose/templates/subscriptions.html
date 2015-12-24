@@ -42,11 +42,11 @@
 		<!-- Begin body content -->
 		<div class="container-fluid">
 			<div class="row text-center">
-			
+				{{ data.current_subtype }}
 				{% for item in data %}
 			    <div class="col-md-4">
 			        <div class="thumbnail">
-			            <img src="{% static 'images' %}/{{ item.image }}" alt="">
+			            <img src="{% static 'images' %}/{{ item.get_image_name }}" alt="">
 			            <div class="caption">
 			                <div class="panel-group">
 				                <div class="panel-default">
@@ -61,19 +61,19 @@
 						        </div>
 				                <div class="panel-default">
 					                <div class="panel-body">
-					                	<span class="subscriptions-price-month">{{ item.price_per_month }}{% if item.price_per_month != 'Free' %} per month{% endif %}</span>
+					                	<span class="subscriptions-price-month">{{ item.frequency_info.monthly.price }}{% if item.frequency_info.monthly.price != 'Free' %} {{ item.frequency_info.monthly.label }}{% endif %}</span>
 					                </div>
 						        </div>
-						        {% if item.price_per_month != 'Free' %}
+						        {% if item.frequency_info.monthly.price != 'Free' %}
 				                <div class="panel-default">
 					                <div class="panel-body">
-					                	<span class="subscriptions-price-year">Special Savings:<br>{{ item.price_per_year }} per year</span>
+					                	<span class="subscriptions-price-year">Special Savings:<br>{{ item.frequency_info.yearly.price }} {{ item.frequency_info.yearly.label }}</span>
 					                </div>
 						        </div>
 						        {% endif %}
 				                <div class="panel-default">
 					                <div class="panel-body">
-					                    <a href="/subscribe/{{ subtype }}" class="btn btn-primary">Subscribe</a>
+					                    <a href="/subscribe/{{ subtype }}?level={{ item.sub_id }}" class="btn btn-primary">Subscribe</a>
 					                    <a href="#" class="btn btn-default" data-toggle="modal" data-target="#details{{ forloop.counter }}">Details</a>
 						            </div>
 						        </div>
@@ -130,19 +130,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                        	{% for feature, level1, level2, level3 in features %}
+                        	{% for feature in features %}
                             <tr>
-                                <td class="feature-desc">{{ feature }}</td>
-                                <td class="feature-cell"><span class="fa fa-{{ level1 }} font-red"></span></td>
-                                <td class="feature-cell"><span class="fa fa-{{ level2 }} font-blue"></span></td>
-                                <td class="feature-cell"><span class="fa fa-{{ level3 }} font-green"></span></td>
+                                <td class="feature-desc">{{ feature.feature }}</td>
+                                {% for check in feature.checks %}
+                                <td class="feature-cell"><span class="fa fa-{{ check }} font-red"></span></td>
+								{% endfor %}
                             </tr>
                             {% endfor %}
                             <tr>
                                 <td class="feature-desc"></td>
-                                <td class="feature-cell"><a href="#" class="btn feature-button1">Want!</a> </td>
-                                <td class="feature-cell"><a href="#" class="btn feature-button2">Want!</a> </td>
-                                <td class="feature-cell"><a href="#" class="btn feature-button3">Want!</a> </td>
+                                {% for item in data %}
+                                <td class="feature-cell"><a href="/subscribe/{{ subtype }}?level={{ item.sub_id }}" class="btn feature-button{{ forloop.counter }}">Want!</a> </td>
+								{% endfor %}
                             </tr>
                         </tbody>
                     </table>
