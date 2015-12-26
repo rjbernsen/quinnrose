@@ -4,7 +4,7 @@
 
 {% block signin_page_content %}
 
-<form id="signin-form" action="#" method="post" data-toggle="validator" role="form" style="display: block;">
+<form id="signin-form" class="form-horizontal" action="#" method="post" data-toggle="validator" role="form">
 	{% csrf_token %}
 
 	{% if messages %}
@@ -21,27 +21,19 @@
 	{{ form.non_field_errors }}
 
 	<div class="form-group">
-		<div class="row">
-			<div class="col-sm-3">
-				<label class="control-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
-			</div>
-			<div class="col-sm-9">
-				{{ form.email }}
-				<div class="help-block with-errors"></div>
-			    {{ form.email.errors }}
-			</div>
+		<label class="control-label col-sm-3" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+		<div class="col-sm-9">
+			{{ form.email }}
+			<div class="help-block with-errors"></div>
+		    {{ form.email.errors }}
 		</div>
 	</div>
 	<div class="form-group">
-		<div class="row">
-			<div class="col-sm-3">
-				<label class="control-label" for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
-			</div>
-			<div class="col-sm-9">
-				{{ form.password }}
-				<div class="help-block with-errors"></div>
-			    {{ form.password.errors }}
-			</div>
+		<label class="control-label col-sm-3" for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+		<div class="col-sm-9">
+			{{ form.password }}
+			<div class="help-block with-errors"></div>
+		    {{ form.password.errors }}
 		</div>
 	</div>
 
@@ -50,10 +42,8 @@
 		{{ hidden }}
 	{% endfor %}
 	<div class="form-group">
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
-				<input type="submit" name="signin-submit" id="signin-submit" tabindex="4" class="form-control btn btn-primary" value="Sign in">
-			</div>
+		<div class="col-sm-6 col-sm-offset-3">
+			<input type="submit" name="signin-submit" id="signin-submit" tabindex="4" class="form-control btn btn-primary" value="Sign in">
 		</div>
 	</div>
 	<div class="row">

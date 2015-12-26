@@ -39,16 +39,16 @@
 
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search navbar-search-icon"></span></a>
+						<a id="help-dropdown-link" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search navbar-search-icon"></span></a>
 						<ul class="dropdown-menu navbar-search-option">
 							<li>
 								<div class="row">
 									<div class="col-md-12">
-										<form class="form" role="form" method="post" action="/search" data-toggle="validator" id="search_form">
+										<form class="form" data-toggle="validator" role="form" method="post" action="/search" id="search_form">
 											{% csrf_token %}
 											<div class="form-group">
 												<input type="text" class="form-control navbar-search-text" id="id_search_words" name="search_words" placeholder="Search keywords..." required="required" />
-												<div class="help-block with-errors"><!--{{ field.help_text }}--></div>
+												<div class="help-block with-errors"></div>
 											</div>
 											<div class="form-group">
 												<div class="btn-group btn-group-vertical" data-toggle="buttons">
@@ -62,6 +62,7 @@
 														<input class="form-control" type="radio" id="id_search_what" name="search_what" value="community" required="required"{% if request.session.current_app == 'community' %} checked{% endif %} /><i class="fa fa-circle-o fa-2x"></i><i class="fa fa-check-circle-o fa-2x"></i><span>Community</span>
 													</label>
 												</div>
+												<div class="help-block with-errors"></div>
 											</div>
 											<label class="btn">
 												<input type="submit" value="Search" class="btn btn-primary" data-disable="true"/>

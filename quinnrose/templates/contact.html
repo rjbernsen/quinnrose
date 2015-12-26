@@ -27,7 +27,7 @@
 								    <div class="col-sm-offset-2 text-center alert alert-{{ message.tags }}">
 								    	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 								        <ul class="list-unstyled">
-								                <li>{{ message }}</li>
+											<li>{{ message }}</li>
 								        </ul>
 								    </div>
 						            {% endfor %}
@@ -40,10 +40,10 @@
 									<label class="control-label col-sm-2" for="{{ field.id_for_label }}">{{ field.label }}</label>
 									<div class="col-sm-10">
 										{{ field }}
-										<div class="help-block with-errors"><!--{{ field.help_text }}--></div>
+										<div class="help-block with-errors"></div>
 									</div>
+								    {{ field.errors }}
 								</div>
-							    {{ field.errors }}
 								{% endfor %}
 								
 								{# Include the hidden fields #}
