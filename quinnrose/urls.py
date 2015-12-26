@@ -18,7 +18,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from quinnrose.views import HomePage, ContactFormView, About, Help, SignInFormView, Subscriptions, Subscribe, Privacy, Terms, Error404
+from quinnrose.views import HomePage, ContactFormView, About, Help, SignInFormView, Subscriptions, Subscribe, Privacy, Terms, Error404, session_handler
 
 handler404 ='quinnrose.views.error404'
 # print(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
@@ -38,6 +38,9 @@ urlpatterns = [
     url(r'^artist', include('artist.urls')),
     url(r'^organization', include('organization.urls')),
     url(r'^community', include('community.urls')),
+
+    url(r'^session_post', session_handler, name="session_handler"),
+
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)[0],
     url(r'^.+$', Error404.as_view(), name='404')
 ]
