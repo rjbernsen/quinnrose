@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo src="/quinnrose/static/imagse/mstile-70x70.jpg"/>
+      <square150x150logo src="/quinnrose/static/imagse/mstile-150x150.jpg"/>
+      <square310x310logo src="/quinnrose/static/imagse/mstile-310x310.jpg"/>
+      <wide310x150logo src="/quinnrose/static/imagse/mstile-310x150.jpg"/>
+      <TileColor>#da532c</TileColor>
+    </tile>
+  </msapplication>
+</browserconfig>
