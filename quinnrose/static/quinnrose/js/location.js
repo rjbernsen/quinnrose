@@ -3,10 +3,13 @@ var options = {
   timeout: 10000,
   maximumAge: 0
 };
+function get_message(lat, lon) {
+	return "Latitude: " + lat + "<br>Longitude: " + lon;
+}
 function success(position) {
 	lat = position.coords.latitude;
 	lon = position.coords.longitude;
-	var msg = "Latitude: " + lat + "<br>Longitude: " + lon;
+	var msg = get_message(lat, lon);
 //	showAlert(msg, 5000);
 
 	if (locationChanged(lat, lon)) {
@@ -28,7 +31,9 @@ function success(position) {
 	
 }
 function error(err) {
-	var msg = 'ERROR(' + err.code + '): ' + err.message;
+//	var msg = 'ERROR(' + err.code + '): ' + err.message;
+	var lat_lon_msg = get_message(current_coords['lat'], current_coords['lon']);
+	var msg = 'Could not connect to the location service. Using previous location:<br>' + lat_lon_msg;
 	showAlert(msg, 10000, 'danger');
 }
 

@@ -69,7 +69,7 @@ function showAlert(message, closeDelay, type) {
     }
 
     // create the alert div
-    var alert = $('<div class="alert alert-' + type + ' alert-popup-box fade in">')
+    var alert_html = $('<div class="alert alert-' + type + ' fade in">')
         .append(
             $('<button type="button" class="close" data-dismiss="alert">')
             .append("&times;")
@@ -77,10 +77,10 @@ function showAlert(message, closeDelay, type) {
         .append(message);
 
     // add the alert div to top of alerts-container, use append() to add to bottom
-    $("#alerts-container").prepend(alert);
+    $("#alerts-container").prepend(alert_html);
 
     // if closeDelay was passed - set a timeout to close the alert
     if (closeDelay)
-        window.setTimeout(function() { alert.alert("close") }, closeDelay);     
+        window.setTimeout(function() { alert_html.alert("close") }, closeDelay);     
 }
 
