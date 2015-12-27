@@ -23,10 +23,21 @@ function success(position) {
 			data_request,
 			function(data_response) {
 				if (data_response == 'ok') {
-					showAlert(msg);
+					data_request['command'] = 'get_postal_code';
+					
+					$.get('/geonames', 
+						data_request,
+						function(data_response) {
+							if (data_response) {
+								msg += '<br>Postal Code: ' + data_response;
+								showAlert(msg);
+							}
+						}
+					);
 				}
 			}
 		);
+		
 	}
 	
 }

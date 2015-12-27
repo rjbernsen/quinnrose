@@ -74,7 +74,6 @@ class GeonamesClient(object):
         except Exception:
             raise GeonamesError('Some strange exception.')
         else:
-            print(json_response)
             msg = 'Geonames Error:'
             if 'status' in json_response:
                 msg += ' Code: ' + str(json_response['status']['value'])
