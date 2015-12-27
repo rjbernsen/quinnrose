@@ -4,7 +4,6 @@ import logging
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseNotAllowed
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic import TemplateView, FormView
@@ -60,6 +59,7 @@ class BasePage(object):
 
         context['current_lat'] = self.request.session.get('current_lat', '')
         context['current_lon'] = self.request.session.get('current_lon', '')
+        context['current_postal_code'] = self.request.session.get('current_postal_code', '')
 
         context.update(self.kwargs)
         context.update(CONFIG_CONTEXT)
@@ -452,20 +452,6 @@ class Error404(BasePage, TemplateView):
         context['last_good_url'] = self.request.session.get('last_good_url')
         
         return context
-
-# This is used to set session data from an AJAX request.
-def session_handler(request):
-    data = request.POST
-#     print(data)
-    if not request.is_ajax() or (request.POST and not request.method=='POST'):
-        return HttpResponseNotAllowed(['POST'])
- 
-    for key in data.keys():
-#         print(data[key])
-        request.session[key] = data[key]
-#     print()
-#     print('current_lat = {}'.format(request.session['current_lat']))
-    return HttpResponse('ok')
 
 # if __name__ == '__main__':
 #     image_path = '../static/images/carousel-*'
