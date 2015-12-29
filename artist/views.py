@@ -45,13 +45,14 @@ class ArtistPage(BaseArtistPage, TemplateView):
         
         context = super().get_context_data(**kwargs)
         
-        app_path = os.path.dirname(os.path.realpath(__file__))
+#         app_path = os.path.dirname(os.path.realpath(__file__))
 
-        image_path = ''
-        if settings.IN_PRODUCTION:
-            image_path = os.path.join(settings.STATIC_ROOT, 'artist', 'images', 'artists', self.artist_id, 'carousel', 'main') + '_*'
-        else:
-            image_path = os.path.join(app_path, 'static', 'artist', 'images', 'artists', self.artist_id, 'carousel', 'main') + '_*'
+#         image_path = ''
+#         if settings.IN_PRODUCTION:
+#             image_path = os.path.join(settings.STATIC_ROOT, 'artist', 'images', 'artists', self.artist_id, 'carousel', '*carousel*')
+#         else:
+#             image_path = os.path.join(app_path, 'static', 'artist', 'images', 'artists', self.artist_id, 'carousel', '*carousel*')
+        image_path = os.path.join(settings.MEDIA_ROOT, 'artists', self.artist_id, 'carousel', '*carousel*')
 
         carousel_images = [
             os.path.basename(p) for p in glob.glob(image_path)
@@ -61,7 +62,7 @@ class ArtistPage(BaseArtistPage, TemplateView):
         for i in range(len(carousel_images)):
             carousel_images[i] = {
                 'image' : carousel_images[i],
-                'thumb' : carousel_images[i].replace('main', 'thumb')
+                'thumb' : carousel_images[i].replace('carousel', 'thumb')
             }
 
         context['carousel_images'] = carousel_images

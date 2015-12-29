@@ -128,8 +128,8 @@
 		        <div data-u="slides" class="jssor_slides_div">
 		        	{% for image in carousel_images %}
 		            <div data-p="144.50" style="display: none;"> <!-- Leave this style attribute right here!!! -->
-		                <img data-u="image" src="{% static 'artist/images/artists/' %}{{ user_id }}/carousel/{{ image.image }}" />
-		                <img data-u="thumb" src="{% static 'artist/images/artists/' %}{{ user_id }}/carousel/{{ image.thumb }}" />
+		                <img data-u="image" src="{{ MEDIA_URL }}artists/{{ user_id }}/carousel/{{ image.image }}" />
+		                <img data-u="thumb" src="{{ MEDIA_URL }}artists/{{ user_id }}/thumbs/{{ image.thumb }}" />
 		            </div>
 		            {% endfor %}
 		        </div>
@@ -153,10 +153,10 @@
 		</div>
 	</div>
 </div>
-
-<img class="src-image" src="{% static 'artist/images/artists/1/profile_000.jpg' %}"/>
+{{ MEDIA_URL }}
+<img class="src-image" src="{{ MEDIA_URL }}artists/1/orig/20151228_203502_522070_083b3a147eff46a4abdfb820b25451c6.jpg"/>
 <img id="headshot-frame-img" class="headshot-frame-img" src="{% static 'artist/images/frames/frame_006.png' %}">
-<img id="headshot-photo-img" class="headshot-photo-img" src="{% static 'artist/images/artists/1/profile_002.jpg' %}">
+<img id="headshot-photo-img" class="headshot-photo-img" src="{{ MEDIA_URL }}artists/{{ user_id }}/orig/20151228_203502_693202_3042a316c33e4aa3a8e94d5287685d8a.jpg">
 <img class="gold-star-image" id="goldstar" src="{% static 'artist/images/gold-star.jpg' %}"/>
 <img class="gray-star-image" id="graystar" src="{% static 'artist/images/gray-star.jpg' %}"/>
 

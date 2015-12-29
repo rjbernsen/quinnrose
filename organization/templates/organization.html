@@ -13,12 +13,12 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			<img class="img-responsive center-block organization-logo" src="{% static 'organization/images/organizations/' %}{{ org_id }}/logo.jpg">
+			<img class="img-responsive center-block organization-logo" src="{{ MEDIA_URL }}organizations/{{ org_id }}/logo.jpg">
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-12">
-			<img class="img-responsive center-block" src="{% static 'organization/images/organizations/' %}{{ org_id }}/cover_photo.jpg">
+			<img class="img-responsive center-block" src="{{ MEDIA_URL }}organizations/{{ org_id }}/cover_photo.jpg">
 		</div>
 	</div>
 
@@ -40,8 +40,8 @@
 		        <div data-u="slides" class="jssor_slides_div">
 		        	{% for image in carousel_images %}
 		            <div data-p="144.50" style="display: none;"> <!-- Leave this style attribute right here!!! -->
-		                <img data-u="image" src="{% static 'organization/images/organizations/' %}{{ org_id }}/carousel/{{ image.image }}" />
-		                <img data-u="thumb" src="{% static 'organization/images/organizations/' %}{{ org_id }}/carousel/{{ image.thumb }}" />
+		                <img data-u="image" src="{{ MEDIA_URL }}organizations/{{ org_id }}/carousel/{{ image.image }}" />
+		                <img data-u="thumb" src="{{ MEDIA_URL }}organizations/{{ org_id }}/thumbs/{{ image.thumb }}" />
 		            </div>
 		            {% endfor %}
 		        </div>
