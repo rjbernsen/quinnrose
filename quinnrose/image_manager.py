@@ -203,6 +203,15 @@ class ImageManager(object):
         
         return img
 
+    def resize_all_in_folder(self, folder_path, file_name_pattern, new_width=None, new_height=None, antialias=False):
+        
+        folder_pattern = os.path.join(folder_path, file_name_pattern)
+        file_list = glob.glob(folder_pattern)
+        
+        for full_file_path in file_list:
+
+            self.resize_image(full_file_path, new_width, new_height, antialias)
+    
     def convert_image(self, full_file_path, new_format, delete_orig=False):
         
         img = ImageWrapper(full_file_path)
@@ -211,7 +220,7 @@ class ImageManager(object):
             print('==== Before Convert ====')
             print(img.get_image_info())
         
-        img = img.convert(full_file_path, new_format)
+        img = img.convert(new_format)
         if self.verbose:
             print('==== After Convert ====')
             print(img.get_image_info())
@@ -367,7 +376,7 @@ if __name__ == '__main__':
 #     full_file_path = os.path.join(file_folder, file_name)
 #     im.convert_image(full_file_path, ImageWrapper.FORMAT_JPEG, delete_orig=True)
     
-#     file_folder = 'C:\\Users\\rjbde\\Google Drive\\development\\quinnrose\\organization\\static\\organization\\images\\organizations\\pmt'
+#     file_folder = 'C:\\Users\\rjbde\\Google Drive\\development\\quinnrose\\quinnrose\\static\\quinnrose\\images\\cc_icons'
 #     file_name_pattern = '*.png'
 #     im.convert_all_in_folder(file_folder, file_name_pattern, ImageWrapper.FORMAT_JPEG, delete_orig=True)
 
@@ -376,8 +385,12 @@ if __name__ == '__main__':
 #     full_file_path = os.path.join(file_folder, file_name)
 #     im.resize_image(full_file_path, 40, antialias=True)
 
-    file_folder = 'C:\\Temp\\temp'
-    im.process_all_images_in_folder(file_folder, create_thumbnail=True, create_carousel=True)
+    file_folder = 'C:\\Users\\rjbde\\Google Drive\\development\\quinnrose\\quinnrose\\static\\quinnrose\\images\\cc_icons'
+    file_name_pattern = '*.png'
+    im.resize_all_in_folder(file_folder, file_name_pattern, new_width=40, antialias=False)
+
+#     file_folder = 'C:\\Temp\\temp'
+#     im.process_all_images_in_folder(file_folder, create_thumbnail=True, create_carousel=True)
     
 #     file_name = '77533_orig.jpg'
 #     full_file_path = os.path.join(file_folder, file_name)
