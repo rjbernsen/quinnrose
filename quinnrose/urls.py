@@ -13,7 +13,6 @@ Including another URLconf
     1. Add an import:  from blog import urls as blog_urls
     2. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-# from django.conf import settings
 from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
@@ -21,8 +20,9 @@ from django.contrib import admin
 from quinnrose.views import HomePage, ContactFormView, About, Help, SignInFormView, Subscriptions, Subscribe, Privacy, Terms, Error404
 from quinnrose.ajax_handlers import session_handler, geonames_handler
 
+admin.autodiscover()
+
 handler404 ='quinnrose.views.error404'
-# print(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
 
 urlpatterns = [
     url(r'^$', HomePage.as_view(), name='home'),
@@ -35,11 +35,11 @@ urlpatterns = [
     url(r'^help/?(?P<section>.+)?$', Help.as_view(), {'help_app': None}, name='help'),
     url(r'^privacy$', Privacy.as_view(), name='privacy'),
     url(r'^terms$', Terms.as_view(), name='terms'),
-    url(r'^admin/', include(admin.site.urls)),
     url(r'^artist', include('artist.urls')),
     url(r'^organization', include('organization.urls')),
     url(r'^community', include('community.urls')),
-
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^session_post', session_handler, name="session_handler"),
     url(r'^geonames', geonames_handler, name="geonames_handler"),
 

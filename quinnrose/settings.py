@@ -24,7 +24,7 @@ IN_PRODUCTION = True
 # print('sys.argv = {}'.format(sys.argv))
 if 'manage.py' in sys.argv[0]:
     IN_PRODUCTION = False
-# print('IN_PRODUCTION = {}'.format(IN_PRODUCTION))
+print('IN_PRODUCTION = {}'.format(IN_PRODUCTION))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # print('BASE_DIR = {}'.format(BASE_DIR))
@@ -46,6 +46,7 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = (
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -63,6 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -80,7 +82,7 @@ TEMPLATES = [
             os.path.join(BASE_DIR,'organization/templates'),
             os.path.join(BASE_DIR,'community/templates')
         ],
-#         'APP_DIRS': True,
+        'APP_DIRS': True,
         'OPTIONS': {
 #             'loaders': [
 #                 ('django.template.loaders.cached.Loader', [
@@ -259,6 +261,7 @@ if IN_PRODUCTION:
     import quinnrose.settings_prod
 else:
     import quinnrose.settings_dev
+print('DEBUG = {}'.format(DEBUG))
 
 # if IN_PRODUCTION:
 #     from quinnrose.settings_prod import (

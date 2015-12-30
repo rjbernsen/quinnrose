@@ -424,7 +424,8 @@ class Subscriptions(object):
                     s.frequency_info[freq.billing_frequency.lower()]['label'] = freq.billing_frequency
                     s.frequency_info[freq.billing_frequency.lower()]['price'] = symbol + s.prices[freq.freq_id - 1]
                     symbol = ''
-                    print(s.yearly_savings)
+#                     print(s.yearly_savings)
+
                     if s.yearly_savings:
                         symbol = '$'
                         s.frequency_info[freq.billing_frequency.lower()]['savings'] = symbol + s.yearly_savings
