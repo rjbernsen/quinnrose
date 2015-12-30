@@ -1,7 +1,7 @@
 from django import forms
 
 from quinnrose.config import CONTACT_SUBJECT_EMAILS
-from quinnrose.temp_data import SUBSCRIPTIONS
+from quinnrose.temp_data import SUBSCRIPTIONS, CREDIT_CARD_TYPES
 from artist.temp_data import artist_profiles
 from organization.temp_data import organization_profiles
 from quinnrose.fields import CreditCardField, ExpiryDateField, VerificationValueField
@@ -47,6 +47,14 @@ def get_organization_choices(user_id):
         choices.append((org_id,organization_profiles[org_id]['name']))
             
     return (choices)
+
+def get_credit_card_type_choices():
+    choices = [('', 'Select...')]
+    
+    for cc_type in CREDIT_CARD_TYPES:
+        choices.append(cc_type)
+    
+    return choices
 
 class SignInForm(forms.Form):
 
@@ -224,12 +232,11 @@ class SubscribeForm(forms.Form):
         ),
         required=True
     )
-    name_on_card = forms.CharField(
-        label='Name on Card',
-        initial=mock_user['first_name'] + ' ' + mock_user['last_name'],
-        widget=forms.TextInput(
+    card_type = forms.ChoiceField(
+        label='Card Type',
+        choices=get_credit_card_type_choices(),
+        widget=forms.Select(
             attrs={
-                'placeholder': 'John Smith',
                 'class': 'form-control',
                 'required': 'required',
             }
@@ -241,6 +248,18 @@ class SubscribeForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'XXXXXXXXXXXXXXXX',
+                'class': 'form-control',
+                'required': 'required',
+            }
+        ),
+        required=True
+    )
+    name_on_card = forms.CharField(
+        label='Name on Card',
+        initial=mock_user['first_name'] + ' ' + mock_user['last_name'],
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'John Smith',
                 'class': 'form-control',
                 'required': 'required',
             }

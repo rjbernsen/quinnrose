@@ -595,24 +595,16 @@ s = Subscription(
 )
 SUBSCRIPTIONS.add_subscription(s)
 
-# SUBSCRIPTION_CHOICES = {
-#     'artist': [],
-#     'organization': []
-# }
-# for item in SUBSCRIPTIONS_ARTIST:
-#     SUBSCRIPTION_CHOICES['artist'].append([item['id'], item['level']])
-# for item in SUBSCRIPTIONS_ORGANIZATION:
-#     SUBSCRIPTION_CHOICES['organization'].append([item['id'], item['level']])
-# 
-# SUBSCRIPTIONS_DATA = {
-#     'headers': SUBSCRIPTIONS_HEADERS,
-#     'artist': SUBSCRIPTIONS_ARTIST,
-#     'organization': SUBSCRIPTIONS_ORGANIZATION,
-#     'features': SUBSCRIPTION_FEATURES,
-#     'choices': SUBSCRIPTION_CHOICES,
-#     'billing_frequency': SUBSCRIPTION_BILLING_FREQUENCY
-# }
-
+CREDIT_CARD_TYPES = [
+    ('visa', 'Visa'),
+    ('mastercard', 'MasterCard'),
+    ('amex', 'American Express'),
+    ('discover', 'Discover'),
+    ('diners', 'Diners'),
+    ('paypal', 'PayPal'),
+    ('google', 'Google Checkout'),
+    ('amazon', 'Amazon Pay')
+]
 if __name__ == "__main__":
     
     SUBSCRIPTIONS.current_subtype = 'artist'
