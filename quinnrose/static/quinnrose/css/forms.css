@@ -1,11 +1,5 @@
 /*
 --------------------------------------------------
-
---------------------------------------------------
-*/
-
-/*
---------------------------------------------------
 Placeholders
 --------------------------------------------------
 */
@@ -29,18 +23,11 @@ select option {
 	color: #555; // bootstrap default color
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+--------------------------------------------------
+Modifications of Bootstrap styles
+--------------------------------------------------
+*/
 .custom-form {
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
@@ -92,4 +79,20 @@ select option {
 	-moz-box-shadow: none;
 	box-shadow: none;
 	border-color: #ccc;
+}
+
+/*
+--------------------------------------------------
+DynamicDropdown modifications
+--------------------------------------------------
+*/
+.dd.ddcommon,
+.ddTitle,
+.ddTitleText,
+.ddcommon .ddChild li {
+	height: 45px;
+	line-height: 32px;
+}
+.ddcommon .divider {
+	height: 96%;
 }
