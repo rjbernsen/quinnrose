@@ -8,3 +8,11 @@ $(document).ready( function() {
 		 }
 	});
 });
+
+$(document).ready(function(e) {
+	try {
+		$("select").msDropDown();
+	} catch(e) {
+		alert(e.message);
+	}
+});
