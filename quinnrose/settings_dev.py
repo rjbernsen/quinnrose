@@ -6,3 +6,4 @@ CACHES = {
         'LOCATION': '127.0.0.1:11211',
     }
 }
+print('DEBUG (in settings_dev) = {}'.format(DEBUG))

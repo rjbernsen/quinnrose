@@ -13,3 +13,4 @@ CACHES = {
         'LOCATION': 'staticfiles-filehashes'
     }
 }
+print('DEBUG (in settings_prod) = {}'.format(DEBUG))
