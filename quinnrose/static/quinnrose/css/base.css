@@ -60,6 +60,19 @@ Logo
 
 /*
 --------------------------------------------------
+Download styles
+--------------------------------------------------
+*/
+.download-button {
+	display: block;
+	margin: auto;
+	text-align: center;
+	margin-top: -16px;
+	margin-bottom: 16px;
+}
+
+/*
+--------------------------------------------------
 Header
 --------------------------------------------------
 */
@@ -180,51 +193,31 @@ label input[type="radio"]:checked ~ i.fa.fa-check-circle-o{
 label:hover input[type="radio"] ~ i.fa {
 	color: color: rgba(0, 128, 0, 1);
 }
-/*
-label input[type="checkbox"] ~ i.fa.fa-square-o{
-    color: #c8c8c8;
-    display: inline;
-}
-label input[type="checkbox"] ~ i.fa.fa-check-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-square-o{
-    display: none;
-}
-label input[type="checkbox"]:checked ~ i.fa.fa-check-square-o{
-    color: color: rgba(0, 128, 0, 1);
-    display: inline;
-}
-label:hover input[type="checkbox"] ~ i.fa {
-	color: color: rgba(0, 128, 0, 1);
-}
-*/
 
 div[data-toggle="buttons"] label.active{
     color: color: rgba(0, 128, 0, 1);
 }
 
 div[data-toggle="buttons"] label {
-display: inline-block;
-padding: 6px 12px;
-margin-bottom: 0;
-font-size: 14px;
-font-weight: normal;
-line-height: 2em;
-text-align: left;
-white-space: nowrap;
-vertical-align: top;
-cursor: pointer;
-background-color: none;
-border: 0px solid 
-#c8c8c8;
-border-radius: 3px;
-color: #c8c8c8;
--webkit-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
--o-user-select: none;
-user-select: none;
+	display: inline-block;
+	padding: 6px 12px;
+	margin-bottom: 0;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 2em;
+	text-align: left;
+	white-space: nowrap;
+	vertical-align: top;
+	cursor: pointer;
+	background-color: none;
+	border: 0px solid #c8c8c8;
+	border-radius: 3px;
+	color: #c8c8c8;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 }
 
 div[data-toggle="buttons"] label:hover {
@@ -302,6 +295,16 @@ body {
 	padding-right: 10px;
 	padding-left: 5px;
 	
+}
+.footer-bare {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	height: 26px;
+	color: rgba(200,200,200,1);
+	font-size: 12px;
+	background-color: #fff;
+	text-align: center;
 }
 /* Footer links */
 .footer-distributed p.footer-links a{
@@ -547,12 +550,6 @@ Media overrides
 Sub Menus
 --------------------------------------------------
 */
-/*
-.list-group-item-danger {
-  color: rgba(0, 0, 128, 1);
-  background-color: rgba(220, 229, 255, 1);
-}
-*/
 div.dropdown.sub-menu {
 	margin-bottom: 20px;
 }
@@ -680,7 +677,7 @@ Buttons
 .open > .dropdown-toggle.btn-primary {
   color: #fff;
   background-color: rgba(100, 127, 255,1);
-  border-color: orange;
+  border-color: rgba(100, 127, 255,1);
 }
 .btn-primary:active:hover,
 .btn-primary.active:hover,
@@ -726,28 +723,33 @@ fieldset[disabled] .btn-primary.active {
   background-color: #fff;
 }
 /* Success (Auxiliary Links) */
-.btn-success {
+.btn-success,
+.btn-success:visited {
   color: #fff;
   background-color: rgba(0, 128, 0, 1);
   border-color: rgba(0, 128, 0, 1);
+  outline: 0px;
 }
 .btn-success:focus,
 .btn-success.focus {
   color: #fff;
   background-color: rgba(102, 230, 102, 1);
   border-color: rgba(102, 230, 102, 1);
+  outline: 0px;
 }
 .btn-success:hover {
   color: rgba(0, 128, 0, 1);
   background-color: rgba(229, 255, 229, 1);
-  border-color: rgba(102, 230, 102, 1);
+  border-color: rgba(229, 255, 229, 1);
+  outline: 0px;
 }
 .btn-success:active,
 .btn-success.active,
 .open > .dropdown-toggle.btn-success {
   color: #fff;
   background-color: rgba(102, 230, 102, 1);
-  border-color: orange;
+  border-color: rgba(102, 230, 102, 1);
+  outline: 0px;
 }
 .btn-success:active:hover,
 .btn-success.active:hover,
@@ -761,6 +763,7 @@ fieldset[disabled] .btn-primary.active {
   color: #fff;
   background-color: rgba(102, 230, 102, 1);
   border-color: rgba(102, 230, 102, 1);
+  outline: 0px;
 }
 .btn-success:active,
 .btn-success.active,
