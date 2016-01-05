@@ -17,9 +17,10 @@ Info styles
 	background-color: rgba(0, 0, 128, 1);
 	color: #fff;
 	border-radius: 50%;
-	line-height: 3em;
-	width: 3em;
-	height: 3em;
+	font-size: 4em;
+	line-height: 2em;
+	width: 2em;
+	height: 2em;
 }
 .info-header {
 	margin-top: 20px;
@@ -57,13 +58,19 @@ Media overrides
 --------------------------------------------------
 */
 @media (min-width:1201px) { 
+	.circles {
+		font-size: 4em;
+	}
 }
 @media (max-width:1200px) and (min-width: 993px) { 
+	.circles {
+		font-size: 3em;
+	}
 }
 @media (max-width:992px) and (min-width: 769px) { 
 	.circles {
+		font-size: 3em;
 		margin-top: 20px;
-		font-size: 2em;
 	}
 	.info-header {
 		margin-top: 18px;
@@ -78,8 +85,8 @@ Media overrides
 }
 @media (max-width:768px) and (min-width: 481px) { 
 	.circles {
+		font-size: 2.6em;
 		margin-top: 18px;
-		font-size: 1.8em;
 	}
 	.info-header {
 		margin-top: 16px;
@@ -94,8 +101,8 @@ Media overrides
 }
 @media (max-width:480px) and (min-width: 321px) { 
 	.circles {
+		font-size: 2.2em;
 		margin-top: 16px;
-		font-size: 1.6em;
 	}
 	.info-header {
 		margin-top: 14px;
@@ -111,7 +118,7 @@ Media overrides
 @media (max-width:320px) { 
 	.circles {
 		margin-top: 14px;
-		font-size: 1.4em;
+		font-size: 1.8em;
 	}
 	.info-header {
 		margin-top: 12px;
