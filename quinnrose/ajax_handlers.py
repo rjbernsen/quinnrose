@@ -1,6 +1,8 @@
+from urllib.parse import urlparse
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.utils.datastructures import MultiValueDictKeyError
 from quinnrose.geonames import GeonamesClient
+from quinnrose.pdf_manager import PDFGenerator
 
 # This is used to set session data from an AJAX request.
 def session_handler(request):
@@ -43,3 +45,43 @@ def geonames_handler(request):
                     print(e.__class__)
         
     return HttpResponse(retval)
+
+def pdf_handler(request):
+    data = request.GET
+    print('data = {}'.format(data))
+#     print('request.is_ajax() = {}'.format(request.is_ajax()))
+    print('request.method = {}'.format(request.method))
+
+    if request.GET and not request.method == 'GET':
+        return HttpResponseNotAllowed(['GET'])
+
+    if not 'from_url' in data:
+        response = 'URL not found!'
+    else:
+
+        from_url = data['from_url']
+        
+        delim = '?'
+        if delim in from_url:
+            delim = '&'
+        
+        from_url += '{}bare=True'.format(delim)
+        print('from_url = {}'.format(from_url))
+        
+        pg = PDFGenerator()
+        
+        pdf = pg.get_pdf(from_url)
+        print('pdf[0:10] = {}'.format(pdf[0:10]))
+        
+        file_name = urlparse(from_url).path[1:]
+        if file_name == '/':
+            file_name = 'quinnrose'
+        file_name = '{}.pdf'.format(file_name.replace('/','_'))
+        print('file_name = {}'.format(file_name))
+        
+#         response = HttpResponse(pdf, content_type='application/pdf')
+        response = HttpResponse(pdf)
+        response['Content-Disposition'] = 'attachment; filename="{}"'.format(file_name)
+        response.set_cookie('fileDownload', 'true', path='/')
+
+    return response

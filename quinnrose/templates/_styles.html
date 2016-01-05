@@ -4,6 +4,10 @@
 		<link href="{% static 'quinnrose/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 		<link href="{% static 'quinnrose/css/font-awesome.min.css' %}" type="text/css" rel="stylesheet">
 		<link href="{% static 'quinnrose/css/msdropdown/dd.css' %}" rel="stylesheet">
+		{% if has_pdf_download %}
+		<link href="{% static 'quinnrose/css/jquery-ui.min.css' %}" rel="stylesheet">
+		<link href="{% static 'quinnrose/css/jquery-ui.theme.min.css' %}" rel="stylesheet">
+		{% endif %}
 		<!-- Local CSS -->
 		<link href="{% static 'quinnrose/css/base.css' %}" rel="stylesheet">
 		

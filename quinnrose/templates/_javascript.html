@@ -15,5 +15,12 @@
 		<script src="{% static 'quinnrose/js/base.js' %}"></script>
 		<script src="{% static 'quinnrose/js/forms.js' %}"></script>
 		<script src="{% static 'quinnrose/js/respond.min.js' %}"></script>
+		{% if not is_bare %}
 		<script src="{% static 'quinnrose/js/location.js' %}"></script>
+		{% endif %}
+		{% if has_pdf_download %}
+		<script src="{% static 'quinnrose/js/jquery-ui.min.js' %}" type='text/javascript'></script>
+		<script src="{% static 'quinnrose/js/jquery.fileDownload.js' %}"></script>
+		<script src="{% static 'quinnrose/js/pdf.js' %}"></script>
+		{% endif %}
 		

@@ -1,14 +1,13 @@
 # import os
 # import glob
 import logging
+from distutils import util as dis_util
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic import TemplateView, FormView
-
-# from django.contrib.messages.views import SuccessMessageMixin
 
 from quinnrose.menu import menu as main_menu
 from artist.menu import menu as artist_menu
@@ -17,7 +16,6 @@ from organization.menu import menu as organization_menu
 from community.menu import menu as community_menu
 from quinnrose.forms import SignInForm, ContactForm, SubscribeForm
 from quinnrose.home_page_info import home_page_info
-# from quinnrose.featurettes import featurettes
 from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS
 from quinnrose.config import CONFIG_CONTEXT, CONTACT_SUBJECT_EMAILS
 
@@ -44,9 +42,6 @@ class BasePage(object):
 
     def get_context_data(self, **kwargs):
 
-#         current_app = self.request.session.get('current_app', 'quinnrose')
-#         print('current_app = {}'.format(current_app))
-
         # Call the base implementation first to get a context
         context = super().get_context_data(**kwargs)
         context.update(
@@ -61,6 +56,10 @@ class BasePage(object):
         context['current_lon'] = self.request.session.get('current_lon', '')
         context['current_postal_code'] = self.request.session.get('current_postal_code', '')
 
+        # Must be y, yes, t, true, on, 1 or n, no, f, false, off, 0
+        is_bare = dis_util.strtobool(self.request.GET.get('bare', 'false').lower()) == 1
+        context['is_bare'] = is_bare
+        
         context.update(self.kwargs)
         context.update(CONFIG_CONTEXT)
         
@@ -427,6 +426,8 @@ class Privacy(BasePage, TemplateView):
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
+        context['has_pdf_download'] = True
+        
         return context
     
 class Terms(BasePage, TemplateView):
@@ -440,6 +441,8 @@ class Terms(BasePage, TemplateView):
     def get_context_data(self, **kwargs):
 
         context = super().get_context_data(**kwargs)
+        context['has_pdf_download'] = True
+
         return context
     
 class Error404(BasePage, TemplateView):

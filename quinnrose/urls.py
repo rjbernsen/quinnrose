@@ -18,7 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from quinnrose.views import HomePage, ContactFormView, About, Help, SignInFormView, Subscriptions, Subscribe, Privacy, Terms, Error404
-from quinnrose.ajax_handlers import session_handler, geonames_handler
+from quinnrose.ajax_handlers import session_handler, geonames_handler, pdf_handler
 
 admin.autodiscover()
 
@@ -42,6 +42,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^session_post', session_handler, name="session_handler"),
     url(r'^geonames', geonames_handler, name="geonames_handler"),
+    url(r'^get_pdf', pdf_handler, name="pdf_handler"),
 
     static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)[0],
     url(r'^.+$', Error404.as_view(), name='404')
