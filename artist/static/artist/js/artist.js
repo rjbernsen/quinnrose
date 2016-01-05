@@ -35,9 +35,9 @@ var headshotContainerJQ;
 var headshotHeaderJQ;
 var frameCanvasJQ;
 var headshotCanvasJQ;
-var popupTop = 80;
-var headerHeight = 40
-var headerWidth = 60;
+var popupTop = 100;
+var headerHeight = 40;
+var headerWidth = 40;
 var frameEdgeSize = 64;
 var preferredWidth = 300;
 
@@ -80,7 +80,7 @@ $('#headshot').click(function(){
 	var newFrameTopSize = (frameEdgeSize * newHeadshotHeight / frameHeight) - 1;
 	var newFrameWidth = newHeadshotWidth + (newFrameLeftSize * 2);
 	var newFrameHeight = newHeadshotHeight + (newFrameTopSize * 2);
-	var headerLeftPos = (newFrameWidth - headerWidth) / 2;
+	var headerLeftPos = (newFrameWidth - headerWidth);
 	
 	frameCanvas.width = newFrameWidth;
 	frameCanvas.height = newFrameHeight;
