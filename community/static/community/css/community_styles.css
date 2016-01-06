@@ -1,7 +1,8 @@
-@media (min-width: 768px) { /* tablets and up */
-    .group2 {
-        text-align: right;
-    }
+.tag-icon {
+	vertical-align: top;
+}
+.tag-list {
+	vertical-align: top;
 }
 .header-divider {
 	margin-top: 10px;
@@ -13,10 +14,14 @@
     margin: 0;
     padding: 0;
 }
- 
 #comments li {
     list-style: none;
 }
 .comment-form {
 	padding-bottom: 0px;
+}
+@media (min-width: 768px) { /* tablets and up */
+    .group2 {
+        text-align: right;
+    }
 }
