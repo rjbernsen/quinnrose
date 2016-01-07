@@ -296,15 +296,17 @@ body {
 	padding-left: 5px;
 	
 }
-.footer-bare {
-	position: absolute;
-	left: 0;
-	bottom: 0;
+.footer-bare {	
+	margin-top: 8px;
 	height: 26px;
+	width: 100%;
 	color: rgba(200,200,200,1);
 	font-size: 12px;
 	background-color: #fff;
 	text-align: center;
+}
+footer > hr {
+	margin: 0px;
 }
 /* Footer links */
 .footer-distributed p.footer-links a{
