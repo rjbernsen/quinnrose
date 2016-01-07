@@ -70,6 +70,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'quinnrose.middleware.MySessionProcessingMiddleware',
+    'quinnrose.middleware.PDFRenderingMiddleware',
 )
 
 ROOT_URLCONF = 'quinnrose.urls'

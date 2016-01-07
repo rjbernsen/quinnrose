@@ -74,7 +74,7 @@ def pdf_handler(request):
         print('pdf[0:10] = {}'.format(pdf[0:10]))
         
         file_name = urlparse(from_url).path[1:]
-        if file_name == '/':
+        if file_name == '/' or not file_name:
             file_name = 'quinnrose'
         file_name = '{}.pdf'.format(file_name.replace('/','_'))
         print('file_name = {}'.format(file_name))

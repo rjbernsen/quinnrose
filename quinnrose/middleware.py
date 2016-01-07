@@ -21,3 +21,21 @@ class MySessionProcessingMiddleware(object):
 #         print('response = {}'.format(response.template_name))
 
         return response
+
+
+class PDFRenderingMiddleware(object):
+
+    def process_response(self, request, response):
+        if hasattr(response, 'context_data'):
+            if 'is_bare' in response.context_data:
+                is_bare = response.context_data['is_bare']
+#                 print('is_bare = {}'.format(is_bare))
+                
+                if is_bare:
+                    content = response.content
+#                     print('content = {}'.format(content))
+                    replaced_content = content.replace(bytes('col-md', 'utf-8'), bytes('col-xs', 'utf-8'))
+#                     print('replaced_content = {}'.format(replaced_content))
+                    response.content = replaced_content
+
+        return response
