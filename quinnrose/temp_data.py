@@ -5,8 +5,6 @@ models have been created.
 
 from quinnrose.utils import isfloat
 
-HELP_DATA = []
-
 class Help(object):
     
     def __init__(self, category, label):
@@ -37,6 +35,8 @@ class HelpItem(object):
     ):
         self.header = header
         self.content = content
+
+HELP_DATA = []
 
 h = Help('quinnrose', 'General')
 h.add_topic(
@@ -289,10 +289,6 @@ h.add_faq(
     )
 )
 HELP_DATA.append(h)
-
-
-
-
 
 
 SUBSCRIPTIONS_HEADERS = {
@@ -595,6 +591,63 @@ s = Subscription(
 )
 SUBSCRIPTIONS.add_subscription(s)
 
+class Shares(object):
+    
+    def __init__(self):
+
+        self.items = []
+    
+    def add_item(self, si):
+        
+        self.items.append(si)
+        
+    def get_items(self):
+
+        return self.items
+    
+class ShareItem(object):
+    
+    def __init__(self,
+        
+        label,
+        url,
+        image
+    ):
+        self.label = label
+        self.url = url
+        self.image = image
+
+SHARES = Shares()
+
+SHARES.add_item(
+    ShareItem(
+        'Facebook',
+        'http://www.facebook.com',
+        'facebook.jpg'
+    )
+)
+SHARES.add_item(
+    ShareItem(
+        'Twitter',
+        'http://twitter.com',
+        'twitter.jpg'
+    )
+)
+SHARES.add_item(
+    ShareItem(
+        'Google+',
+        'http://plus.google.com',
+        'google_plus.jpg'
+    )
+)
+SHARES.add_item(
+    ShareItem(
+        'Pinterest',
+        'http://www.pinterest.com',
+        'pinterest.jpg'
+    )
+)
+
 CREDIT_CARD_TYPES = [
     ('visa', 'Visa'),
     ('mastercard', 'MasterCard'),
@@ -605,6 +658,8 @@ CREDIT_CARD_TYPES = [
     ('google', 'Google Checkout'),
     ('amazon', 'Amazon Pay')
 ]
+
+
 if __name__ == "__main__":
     
     SUBSCRIPTIONS.current_subtype = 'artist'

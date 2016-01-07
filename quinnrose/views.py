@@ -16,7 +16,7 @@ from organization.menu import menu as organization_menu
 from community.menu import menu as community_menu
 from quinnrose.forms import SignInForm, ContactForm, SubscribeForm
 from quinnrose.home_page_info import home_page_info
-from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS
+from quinnrose.temp_data import HELP_DATA, SUBSCRIPTIONS, SHARES
 from quinnrose.config import CONFIG_CONTEXT, CONTACT_SUBJECT_EMAILS
 
 mock_user = artist_profiles['1']
@@ -52,6 +52,8 @@ class BasePage(object):
             }
         )
 
+        context['shares'] = SHARES
+        
         context['current_lat'] = self.request.session.get('current_lat', '')
         context['current_lon'] = self.request.session.get('current_lon', '')
         context['current_postal_code'] = self.request.session.get('current_postal_code', '')
