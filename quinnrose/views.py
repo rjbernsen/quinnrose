@@ -202,12 +202,41 @@ class SignInFormView(BasePage, FormView):
     template_name = 'signin_{}.html'
     page_header = 'Sign In'
     page_header_byline = None
+
     form_class = SignInForm
+    password_reset_success_message = "If you entered a valid email address, you will shortly receive instructions on how to reset your password."
     
     sub_titles = {
         'signin': 'Sign in',
-        'register': 'Register'
+        'register': 'Register',
+        'password_reset': 'Password Reset'
     }
+
+    def post(self, request, *args, **kwargs):
+
+        form = self.form_class(request.POST)
+        subtype = self.kwargs.get('subtype') or 'signin'
+        self.template_name = self.template_name.format(subtype)
+        
+        if subtype == 'password_reset':
+            # Look up the user and reset the password to some
+            # short random value. Then email it to them.
+            
+                
+            messages.success(request, self.password_reset_success_message)
+            
+            return render_to_response(
+                self.template_name,
+                context_instance=RequestContext(
+                    request,
+                    self.get_context_data(form=self.form_class)
+                )
+            )
+        else:
+            if form.is_valid():
+                pass
+        
+        return self.get(request, args, kwargs)
 
     def get_context_data(self, **kwargs):
         subtype = self.kwargs.get('subtype') or 'signin'
@@ -304,9 +333,9 @@ class Subscribe(BasePage, FormView):
     subtype = None
     
     def post(self, request, *args, **kwargs):
-
-        form = self.form_class(request.POST)
-        
+        pass
+#         form = self.form_class(request.POST)
+#         
 #         if form.is_valid():
 # 
 #             subject = CONTACT_SUBJECT_EMAILS[int(form.cleaned_data.get('subject'))][0]
