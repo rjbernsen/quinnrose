@@ -10,7 +10,8 @@ from .temp_data import artist_profiles
 
 class BaseArtistPage(BasePage):
     template_name = 'artist.html'
-    page_sub_title = None
+    page_header = None
+    page_header_byline = None
     
 #     star_count = 5
     
@@ -37,8 +38,9 @@ class BaseArtistPage(BasePage):
     
 class ArtistPage(BaseArtistPage, TemplateView):
     template_name = 'artist.html'
-    page_sub_title = None
-    
+    page_header = None
+    page_header_byline = None
+
 #     star_count = 5
     
     def get_context_data(self, **kwargs):

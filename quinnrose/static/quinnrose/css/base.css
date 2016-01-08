@@ -78,7 +78,27 @@ Header
 */
 .page-header {
 	text-align: center;
+	color: #fff;
 	margin-top: 0px;
+	padding-top: 20px;
+	padding-bottom: 0px;
+	background: url('/static/quinnrose/images/page_header_background.jpg') center center;
+}
+.page-header > h3 {
+	font-weight: bold;
+	margin: 0px;
+}
+.page-header-byline {
+	text-align: right;
+	color: #fff;
+	font-style: italic;
+	margin-right: 10px;
+}
+.page-header-byline-pdf {
+	text-align: right;
+	margin-right: 10px;
+	color: #fff;
+	font-style: italic;
 }
 /*
 --------------------------------------------------
@@ -471,6 +491,10 @@ Media overrides
 	    width: 90% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 90% !important;
 	}
+	.page-header-byline {
+		text-align: center;
+		margin-right: 0px;
+	}
 	.dropdown {
 	 	left: 16px;
 	}
@@ -501,6 +525,10 @@ Media overrides
 	    width: 80% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 80% !important;
 	}
+	.page-header-byline {
+		text-align: center;
+		margin-right: 0px;
+	}
 	.dropdown {
 	 	left: 16px;
 	}
@@ -530,6 +558,10 @@ Media overrides
 	.logo img {
 	    width: 50% \9; /*Force IE10 and below to size SVG images correctly*/
 	    max-width: 50%;
+	}
+	.page-header-byline {
+		text-align: center;
+		margin-right: 0px;
 	}
 	.dropdown {
 	 	left: 16px;

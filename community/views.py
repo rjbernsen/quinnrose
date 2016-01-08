@@ -1,4 +1,3 @@
-
 from django.views.generic import TemplateView, FormView
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -12,8 +11,9 @@ from .temp_data import blog_entries, blog_entries_dict, categories, latest_comme
 
 class BaseCommunityPage(BasePage):
     
-    page_sub_title = '{} Community Blog'.format(CONFIG_CONTEXT['company_name'])
-    
+    page_header = '{} Community Blog'.format(CONFIG_CONTEXT['company_name'])
+    page_header_byline = None
+
     def get_context_data(self, **kwargs):
         
         self.request.session['current_app'] = 'community'
@@ -31,8 +31,8 @@ class BaseCommunityPage(BasePage):
 
 class ListPage(BaseCommunityPage, TemplateView):
     template_name = 'list.html'
-    page_sub_title = '{} Community Blog'.format(CONFIG_CONTEXT['company_name'])
-    
+    page_header_byline = 'Keep up with what\'s going on...'
+
 #     star_count = 5
     
     def get_context_data(self, **kwargs):
@@ -45,6 +45,8 @@ class ListPage(BaseCommunityPage, TemplateView):
 
 class PostPage(BaseCommunityPage, FormView):
     template_name = 'post.html'
+    page_header_byline = 'He said she said...'
+    
     form_class = CommentsForm
     success_message = "Comment posted successfully"
     
@@ -63,6 +65,8 @@ class PostPage(BaseCommunityPage, FormView):
 
 class NewPostPage(BaseCommunityPage, FormView):
     template_name = 'new.html'
+    page_header_byline = 'Share your news with the community...'
+
     form_class = BlogEntryForm
     success_message = "Blog entry posted successfully"
     

@@ -10,7 +10,7 @@ from .temp_data import organization_profiles
 
 class BaseOrganizationPage(BasePage):
     template_name = 'organization.html'
-    page_sub_title = None
+    page_header = None
     
 #     star_count = 5
     
@@ -38,7 +38,6 @@ class BaseOrganizationPage(BasePage):
     
 class OrganizationPage(BaseOrganizationPage, TemplateView):
     template_name = 'organization.html'
-    page_sub_title = None
     
     def get_context_data(self, **kwargs):
         

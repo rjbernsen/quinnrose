@@ -23,6 +23,8 @@ mock_user = artist_profiles['1']
 
 class BasePage(object):
     default_title = CONFIG_CONTEXT['full_site_name']
+    page_header = None
+    page_header_byline = None
     
     logger = logging.getLogger('quinnrose')
     APP = 'quinnrose'
@@ -46,7 +48,8 @@ class BasePage(object):
         context.update(
             {
                 'page_title': self._get_title(),
-                'page_header': self.page_sub_title,
+                'page_header': self.page_header,
+                'page_header_byline': self.page_header_byline,
                 'menu': main_menu,
             }
         )
@@ -68,8 +71,8 @@ class BasePage(object):
 
     def _get_title(self):
         
-        if self.page_sub_title:
-            page_title = '{} - {}'.format(self.default_title,self.page_sub_title)
+        if self.page_header:
+            page_title = '{} - {}'.format(self.default_title,self.page_header)
         else:
             page_title = self.default_title
         
@@ -77,7 +80,8 @@ class BasePage(object):
     
 class HomePage(BasePage, TemplateView):
     template_name = 'home.html'
-    page_sub_title = None
+    page_header = None
+    page_header_byline = None
     
     def get_context_data(self, **kwargs):
         self.request.session['current_app'] = self.APP
@@ -110,7 +114,8 @@ class HomePage(BasePage, TemplateView):
 
 class About(BasePage, TemplateView):
     template_name = 'about.html'
-    page_sub_title = 'About Us'
+    page_header = 'About Us'
+    page_header_byline = 'What we do and why we do it...'
 
     section = None
     
@@ -135,7 +140,9 @@ class About(BasePage, TemplateView):
 
 class ContactFormView(BasePage, FormView):
     template_name = 'contact.html'
-    page_sub_title = 'Contact Us'
+    page_header = 'Contact Us'
+    page_header_byline = 'Need to get ahold of a human? Use this form...'
+
     form_class = ContactForm
     success_message = "Message was sent successfully"
     
@@ -193,7 +200,8 @@ class ContactFormView(BasePage, FormView):
 
 class SignInFormView(BasePage, FormView):
     template_name = 'signin_{}.html'
-    page_sub_title = 'Sign In'
+    page_header = 'Sign In'
+    page_header_byline = None
     form_class = SignInForm
     
     sub_titles = {
@@ -204,7 +212,9 @@ class SignInFormView(BasePage, FormView):
     def get_context_data(self, **kwargs):
         subtype = self.kwargs.get('subtype') or 'signin'
  
-        self.page_sub_title = self.sub_titles[subtype]
+        self.page_header = self.sub_titles[subtype]
+        if subtype == 'register':
+            self.page_header_byline = 'The first step to getting connected...'
         
         context = super().get_context_data(**kwargs)
         context['subtype'] = subtype
@@ -215,7 +225,8 @@ class SignInFormView(BasePage, FormView):
 
 class Subscriptions(BasePage, TemplateView):
     template_name = 'subscriptions.html'
-    page_sub_title = 'Subscriptions'
+    page_header = 'Subscriptions'
+    page_header_byline = 'Browse through the available subscription plans...'
 
     def get_context_data(self, **kwargs):
         
@@ -285,7 +296,9 @@ class Subscriptions(BasePage, TemplateView):
     
 class Subscribe(BasePage, FormView):
     template_name = 'subscribe.html'
-    page_sub_title = 'Subscribe'
+    page_header = 'Subscribe'
+    page_header_byline = 'Get connected with the right plan for you...'
+
     form_class = SubscribeForm
     success_message = "Subscribed successfully"
     subtype = None
@@ -381,8 +394,9 @@ class Subscribe(BasePage, FormView):
 
 class Help(BasePage, TemplateView):
     template_name = 'help.html'
-    page_sub_title = 'Help'
-    
+    page_header = 'Help'
+    page_header_byline = 'Get assistance for most questions...'
+
     def get_context_data(self, **kwargs):
         
         context = super().get_context_data(**kwargs)
@@ -422,7 +436,8 @@ class Help(BasePage, TemplateView):
 
 class Privacy(BasePage, TemplateView):
     template_name = 'privacy.html'
-    page_sub_title = 'Privacy Policy'
+    page_header = 'Privacy Policy'
+    page_header_byline = 'Get acquainted with our commitment to privacy...'
 
     def get_context_data(self, **kwargs):
 
@@ -433,7 +448,8 @@ class Privacy(BasePage, TemplateView):
     
 class Terms(BasePage, TemplateView):
     template_name = 'terms.html'
-    page_sub_title = 'Terms and Conditions'
+    page_header = 'Terms and Conditions'
+    page_header_byline = 'A few rules to know...'
 
     def get(self, request, *args, **kwargs):
     
@@ -448,7 +464,8 @@ class Terms(BasePage, TemplateView):
     
 class Error404(BasePage, TemplateView):
     template_name = '404.html'
-    page_sub_title = 'Page Not Found'
+    page_header = None
+    page_header_byline = None
 
     def get_context_data(self, **kwargs):
 
