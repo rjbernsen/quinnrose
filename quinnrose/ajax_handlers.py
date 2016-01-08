@@ -48,9 +48,9 @@ def geonames_handler(request):
 
 def pdf_handler(request):
     data = request.GET
-    print('data = {}'.format(data))
+#     print('data = {}'.format(data))
 #     print('request.is_ajax() = {}'.format(request.is_ajax()))
-    print('request.method = {}'.format(request.method))
+#     print('request.method = {}'.format(request.method))
 
     if request.GET and not request.method == 'GET':
         return HttpResponseNotAllowed(['GET'])
@@ -66,18 +66,18 @@ def pdf_handler(request):
             delim = '&'
         
         from_url += '{}bare=True'.format(delim)
-        print('from_url = {}'.format(from_url))
+#         print('from_url = {}'.format(from_url))
         
         pg = PDFGenerator()
         
         pdf = pg.get_pdf(from_url)
-        print('pdf[0:10] = {}'.format(pdf[0:10]))
+#         print('pdf[0:10] = {}'.format(pdf[0:10]))
         
         file_name = urlparse(from_url).path[1:]
         if file_name == '/' or not file_name:
             file_name = 'quinnrose'
         file_name = '{}.pdf'.format(file_name.replace('/','_'))
-        print('file_name = {}'.format(file_name))
+#         print('file_name = {}'.format(file_name))
         
 #         response = HttpResponse(pdf, content_type='application/pdf')
         response = HttpResponse(pdf)

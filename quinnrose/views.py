@@ -23,7 +23,6 @@ mock_user = artist_profiles['1']
 
 class BasePage(object):
     default_title = CONFIG_CONTEXT['full_site_name']
-    page_sub_title = None
     
     logger = logging.getLogger('quinnrose')
     APP = 'quinnrose'
@@ -111,7 +110,7 @@ class HomePage(BasePage, TemplateView):
 
 class About(BasePage, TemplateView):
     template_name = 'about.html'
-    page_sub_title = 'About'
+    page_sub_title = 'About Us'
 
     section = None
     

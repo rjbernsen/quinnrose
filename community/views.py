@@ -5,13 +5,14 @@ from django.template import RequestContext
 
 from quinnrose.views import BasePage
 from quinnrose.file_upload import handle_uploaded_file
+from quinnrose.config import CONFIG_CONTEXT
 from .menu import menu
 from .forms import BlogEntryForm, CommentsForm
 from .temp_data import blog_entries, blog_entries_dict, categories, latest_comments, tags
 
 class BaseCommunityPage(BasePage):
     
-#     star_count = 5
+    page_sub_title = '{} Community Blog'.format(CONFIG_CONTEXT['company_name'])
     
     def get_context_data(self, **kwargs):
         
@@ -30,7 +31,7 @@ class BaseCommunityPage(BasePage):
 
 class ListPage(BaseCommunityPage, TemplateView):
     template_name = 'list.html'
-    page_sub_title = None
+    page_sub_title = '{} Community Blog'.format(CONFIG_CONTEXT['company_name'])
     
 #     star_count = 5
     
@@ -44,7 +45,6 @@ class ListPage(BaseCommunityPage, TemplateView):
 
 class PostPage(BaseCommunityPage, FormView):
     template_name = 'post.html'
-    page_sub_title = None
     form_class = CommentsForm
     success_message = "Comment posted successfully"
     
@@ -63,7 +63,6 @@ class PostPage(BaseCommunityPage, FormView):
 
 class NewPostPage(BaseCommunityPage, FormView):
     template_name = 'new.html'
-    page_sub_title = None
     form_class = BlogEntryForm
     success_message = "Blog entry posted successfully"
     
