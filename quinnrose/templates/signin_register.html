@@ -56,7 +56,43 @@
 		<div class="col-sm-9">
 			{{ form.password_confirm }}
 			<div class="help-block with-errors"></div>
-		    {{ form.password.errors }}
+		    {{ form.password_confirm.errors }}
+		</div>
+	</div>
+	<div class="form-group custom-form-group-checkbox">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-9">
+			<table>
+				<tr>
+					<td>
+						{{ form.have_read_privacy_policy }}
+					</td>
+					<td class="custom-form-checkbox-label-cell">
+						<label class="control-label custom-form-checkbox-label" for="{{ form.have_read_privacy_policy.id_for_label }}"> {{ form.have_read_privacy_policy.label }}</label>
+					</td>
+				<tr>
+		    </table>
+			<div class="help-block with-errors"></div>
+		    {{ form.have_read_privacy_policy.errors }}
+		    <a class="btn btn-success" href="/terms" target="_new">Privacy Policy</a>
+		</div>
+	</div>
+	<div class="form-group custom-form-group-checkbox">
+		<div class="col-sm-3"></div>
+		<div class="col-sm-9">
+			<table>
+				<tr>
+					<td>
+						{{ form.accept_terms }}
+					</td>
+					<td class="custom-form-checkbox-label-cell">
+						<label class="control-label custom-form-checkbox-label" for="{{ form.accept_terms.id_for_label }}"> {{ form.accept_terms.label }}</label>
+					</td>
+				<tr>
+		    </table>
+			<div class="help-block with-errors"></div>
+		    {{ form.accept_terms.errors }}
+		    <a class="btn btn-success" href="/terms" target="_new">Terms and Conditions</a>
 		</div>
 	</div>
 

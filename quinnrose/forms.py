@@ -125,6 +125,24 @@ class SignInForm(forms.Form):
         ),
         required=True
     )
+    have_read_privacy_policy = forms.BooleanField(
+        label='I have read the Privacy Policy',
+        widget=forms.CheckboxInput(
+            attrs={
+                'class': 'form-control custom-form-checkbox',
+                'required': 'required',
+            }
+        )
+    )
+    accept_terms = forms.BooleanField(
+        label='I accept the Terms and Conditions',
+        widget=forms.CheckboxInput(
+            attrs={
+                'class': 'form-control custom-form-checkbox',
+                'required': 'required',
+            }
+        )
+    )
 
 class ContactForm(forms.Form):
 

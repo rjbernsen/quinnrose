@@ -28,6 +28,23 @@ select option {
 Modifications of Bootstrap styles
 --------------------------------------------------
 */
+.custom-form-group-checkbox {
+	margin-top: -6px;
+}
+.custom-form-checkbox {
+	width: 34px;
+}
+.custom-form-checkbox-label-cell {
+	padding-left: 10px;
+}
+.custom-form-checkbox-label {
+	margin-top: -4px;
+}
+@media (max-width:768px) { 
+	.custom-form-checkbox-label {
+		margin-top: 6px;
+	}
+}
 .custom-form {
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
