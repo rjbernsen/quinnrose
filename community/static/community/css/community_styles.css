@@ -1,5 +1,6 @@
 .tag-icon {
 	vertical-align: top;
+	padding-right: 4px;
 }
 .tag-list {
 	vertical-align: top;
@@ -24,4 +25,34 @@
     .group2 {
         text-align: right;
     }
+}
+@media (max-width: 991px) { /* tablets and down */
+	.tag {
+		padding: 10px;
+		line-height: 40px;
+		font-size: 1em;
+	}
+}
+.widget-header {
+	font-size: 1.3em;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 1px;
+}
+.widget-header.collapsed {
+	border-bottom: 0px;
+	margin-bottom: 0px;
+}
+.widget-header-chevron {
+	margin-top: 4px;
+	font-size: 1em;
+	color: #999;
+}
+.widget-list {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+}
+.tags-list {
+	padding-left: 10px;
+	padding-top: 8px;
 }

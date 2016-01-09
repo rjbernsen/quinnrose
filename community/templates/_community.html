@@ -24,51 +24,60 @@
 		        <button class="btn btn-primary btn-lg">Follow</button>
 		    </div>
 		 
-		    <!-- Other widgets -->
-			<div class="panel panel-default">
-			    <div class="panel-heading">
-			        <h4>Latest Posts</h4>
-			    </div>
-			    <ul class="list-group">
-			    	{% for entry in entries %}
-					<a id="help_topics" href="/community/post/{{ entry.id }}" class="list-group-item">{{ entry.title }}</a>
-					{% endfor %}
-			    </ul>
+		    <!-- Begin other widgets -->
+		    <!-- Latest Posts -->
+			<div class="panel-group" id="latest_posts">
+				<div class="panel panel-default">
+					<a class="list-group-item widget-header collapsed" data-toggle="collapse" data-parent="#latest_posts" href="#latest_posts_list">Latest Posts</span><span class="fa fa-chevron-down pull-right widget-header-chevron"></span></a>
+				    <div id="latest_posts_list" class="panel-collapse collapse widget-list">
+					    <ul class="list-group">
+					    	{% for entry in entries %}
+							<a href="/community/post/{{ entry.id }}" class="list-group-item">{{ entry.title }}</a>
+							{% endfor %}
+					    </ul>
+				    </div>
+				</div>
 			</div>
-			<div class="panel panel-default">
-			    <div class="panel-heading">
-			        <h4>Categories</h4>
-			    </div>
-			    <ul class="list-group">
-			    	{% for category in categories %}
-			        <a class="list-group-item" href="#">{{ category }}</a>
-			        {% endfor %}
-			    </ul>
+		    <!-- Categories -->
+			<div class="panel-group" id="categories">
+				<div class="panel panel-default">
+					<a class="list-group-item widget-header collapsed" data-toggle="collapse" data-parent="#categories" href="#categories_list">Categories</span><span class="fa fa-chevron-down pull-right widget-header-chevron"></span></a>
+				    <div id="categories_list" class="panel-collapse collapse widget-list">
+					    <ul class="list-group">
+					    	{% for category in categories %}
+							<a href="#" class="list-group-item">{{ category }}</a>
+							{% endfor %}
+					    </ul>
+				    </div>
+				</div>
 			</div>
-			 
-			 
-			<div class="panel panel-default">
-			    <div class="panel-heading">
-			        <h4>Recent Comments</h4>
-			    </div>
-			    <ul class="list-group">
-			    	{% for comment in comments %}
-			        <a class="list-group-item" href="/community/post/{{ comment.entry_id }}#comments">{{ comment.comment }} - <em>{{ comment.name }}</em></a>
-			        {% endfor %}
-			    </ul>
+		    <!-- Recent Comments -->
+			<div class="panel-group" id="recent_comments">
+				<div class="panel panel-default">
+					<a class="list-group-item widget-header collapsed" data-toggle="collapse" data-parent="#recent_comments" href="#recent_comments_list">Recent Comments</span><span class="fa fa-chevron-down pull-right widget-header-chevron"></span></a>
+				    <div id="recent_comments_list" class="panel-collapse collapse widget-list">
+					    <ul class="list-group">
+			    			{% for comment in comments %}
+							<a href="/community/post/{{ comment.entry_id }}#comments" class="list-group-item">{{ comment.comment }}</a>
+							{% endfor %}
+					    </ul>
+				    </div>
+				</div>
 			</div>
-			<div class="panel panel-default">
-			    <div class="panel-heading">
-			        <h4>Tags</h4>
-			    </div>
-			    <div class="panel-body">
-			        <ul class="list-inline">
-			        	{% for tag in tags %}
-			            <li><a class="label label-success" href="#">{{ tag }}</a></li>
-			            {% endfor %}
-			        </ul>
-			    </div>
+		    <!-- Tags -->
+			<div class="panel-group" id="tags">
+				<div class="panel panel-default">
+					<a class="list-group-item widget-header collapsed" data-toggle="collapse" data-parent="#tags" href="#tags_list">Tags</span><span class="fa fa-chevron-down pull-right widget-header-chevron"></span></a>
+				    <div id="tags_list" class="panel-collapse collapse widget-list">
+					    <ul class="list-inline tags-list">
+				        	{% for tag in tags %}
+				            <li><a class="label label-success tag" href="#">{{ tag }}</a></li>
+				            {% endfor %}
+					    </ul>
+				    </div>
+				</div>
 			</div>
+		    <!-- End other widgets -->
 	    </div>
 	</div>
 </div>
