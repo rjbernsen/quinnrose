@@ -19,6 +19,7 @@ class BlogEntry(object):
     video = ''
     
     DATE_FORMAT = '%B X%d, %Y X%I:%M %p'
+    SHORT_ARTICLE_WORD_LENGTH = 10
     
     def __init__(self,
         title,
@@ -52,7 +53,7 @@ class BlogEntry(object):
         return self.comments
     
     def get_short_article(self):
-        return ' '.join(self.article.split()[:10])
+        return ' '.join(self.article.split()[:self.SHORT_ARTICLE_WORD_LENGTH])
         
     def get_date(self):
         return self.entry_date.strftime(self.DATE_FORMAT).replace('X0','').replace('X','')

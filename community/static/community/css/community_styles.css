@@ -1,12 +1,13 @@
+.divider {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 .tag-icon {
 	vertical-align: top;
 	padding-right: 4px;
 }
 .tag-list {
 	vertical-align: top;
-}
-.header-divider {
-	margin-top: 10px;
 }
 .post-image {
 	margin: auto;
@@ -55,4 +56,9 @@
 .tags-list {
 	padding-left: 10px;
 	padding-top: 8px;
+}
+
+.continue-reading {
+	margin-top: 0px;
+	margin-bottom: 5px;
 }

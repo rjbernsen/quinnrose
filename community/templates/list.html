@@ -6,10 +6,14 @@
 {% for entry in entries %}
 {% include 'article.html' %}
 	<p class="text-right">
-		<a href="/community/post/{{ entry.id }}" class="text-right">continue reading...</a>
+		<ul class="pager continue-reading">
+			<li class="next">
+				<a href="/community/post/{{ entry.id }}" class="text-right">Continue reading <span class="glyphicon glyphicon-arrow-right"></span></a>
+			</li>
+		</ul>
 	</p>
 
-	<hr>
+	<hr class="divider">
 {% endfor %}
 
 <!-- pager -->
