@@ -72,14 +72,16 @@ class NewPostPage(BaseCommunityPage, FormView):
     
     def post(self, request, *args, **kwargs):
 
-        print("request.FILES['file'] = {}".format(request.FILES['file'].name))
-        print("request.FILES['file'] = {}".format(request.FILES['file'].size))
+        if 'file' in request.FILES:
+            print("request.FILES['file'] = {}".format(request.FILES['file'].name))
+            print("request.FILES['file'] = {}".format(request.FILES['file'].size))
         
         form = self.form_class(request.POST, request.FILES)
 
         if form.is_valid():
 #             form.save()
-            handle_uploaded_file(request.FILES['file'])
+            if 'file' in request.FILES:
+                handle_uploaded_file(request.FILES['file'])
             
             return render_to_response(
                 self.template_name,
@@ -89,6 +91,16 @@ class NewPostPage(BaseCommunityPage, FormView):
                 )
             )
         
+            return render_to_response(
+                self.template_name,
+                context_instance=RequestContext(
+                    request,
+                    self.get_context_data(form=self.form_class)
+                )
+            )
+
+        return self.get(request, args, kwargs)
+
     def get_context_data(self, **kwargs):
         
         context = super().get_context_data(**kwargs)

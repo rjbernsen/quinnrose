@@ -76,7 +76,6 @@ class BlogEntryForm(forms.Form):
         widget=forms.Select(
             attrs={
                 'class': 'form-control select-placeholder',
-                'required': 'required',
             }
         ),
         required=False
