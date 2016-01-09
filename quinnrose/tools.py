@@ -4,9 +4,10 @@ all applications.
 """
 class Menu(object):
     
-    def __init__(self, label=None):
+    def __init__(self, label=None, foreign_object=None):
         
         self.label = label
+        self.foreign_object = foreign_object
 
         self.left = True
 #         self.right = False

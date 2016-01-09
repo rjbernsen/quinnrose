@@ -1,4 +1,5 @@
 from quinnrose.tools import Menu, MenuItem
+from organization.temp_data import SOCIAL_LINKS
 
 # Main Menu Items
 # --------------------------------------
@@ -51,45 +52,46 @@ menu.addItem(item)
 dropdown_menu = Menu()
 dropdown_menu.label = 'Social'
 dropdown_menu.is_dropdown = True
-# dropdown_menu.right = False
-
-item = MenuItem(
-    label='Blog',
-    url='/organization/blog'
-)
-dropdown_menu.addItem(item)
-
-item = MenuItem(
-    label='Media',
-    url='/organization/media'
-)
-dropdown_menu.addItem(item)
-
-item = MenuItem(
-    label='Facebook',
-    url='/organization/facebook'
-)
-dropdown_menu.addItem(item)
-
-item = MenuItem(
-    label='Twitter',
-    url='/organization/twitter'
-)
-dropdown_menu.addItem(item)
-
-item = MenuItem(
-    label='Google+',
-    url='/organization/googleplus'
-)
-dropdown_menu.addItem(item)
-
-item = MenuItem(
-    label='YouTube',
-    url='/organization/youtube'
-)
-dropdown_menu.addItem(item)
-
+dropdown_menu.foreign_object = SOCIAL_LINKS
 menu.addItem(dropdown_menu)
+
+# item = MenuItem(
+#     label='Blog',
+#     url='/organization/blog'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='Media',
+#     url='/organization/media'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='Facebook',
+#     url='/organization/facebook'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='Twitter',
+#     url='/organization/twitter'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='Google+',
+#     url='/organization/googleplus'
+# )
+# dropdown_menu.addItem(item)
+# 
+# item = MenuItem(
+#     label='YouTube',
+#     url='/organization/youtube'
+# )
+# dropdown_menu.addItem(item)
+# 
+# menu.addItem(dropdown_menu)
 
 # Account Dropdown
 # --------------------------------------

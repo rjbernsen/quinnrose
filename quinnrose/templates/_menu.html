@@ -14,6 +14,18 @@
 
 				{% for item in menu.getItems %}
 					{% if item.is_dropdown %}
+						{% if item.foreign_object %}
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ item.label }}<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							{% for social_link in item.foreign_object.get_items %}
+							<li><a class="dropdown-option" href="{{ social_link.url }}"><img class="share-menu-img" src="{% static 'quinnrose/images/share_icons/' %}{{ social_link.image }}"> {{ social_link.label }}</a></li>
+							{% endfor %}
+						</ul>
+					</li>
+				</ul>
+						{% else %}
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ item.label }}<span class="caret"></span></a>
@@ -30,6 +42,7 @@
 						</ul>
 					</li>
 				</ul>
+						{% endif %}
 
 					{% else %}
 
