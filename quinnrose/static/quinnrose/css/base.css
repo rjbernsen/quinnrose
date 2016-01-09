@@ -705,21 +705,25 @@ Buttons
 --------------------------------------------------
 */
 /* Primary (Form Submit Standard) */
-.btn-primary {
+.btn-primary,
+.btn-primary:focus:hover {
   color: #fff;
   background-color: rgba(0, 0, 128, 1);
   border-color: rgba(0, 0, 128, 1);
+  outline: 0px;
 }
 .btn-primary:focus,
-.btn-primary.focus {
+.btn-primary:focus:hover {
   color: #fff;
   background-color: rgba(100, 127, 255,1);
   border-color: rgba(100, 127, 255,1);
+  outline: 0px;
 }
 .btn-primary:hover {
   color: rgba(0, 0, 128, 1);
   background-color: rgba(220, 229, 255,1);
   border-color: rgba(220, 229, 255,1);
+  outline: 0px;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -727,6 +731,7 @@ Buttons
   color: #fff;
   background-color: rgba(100, 127, 255,1);
   border-color: rgba(100, 127, 255,1);
+  outline: 0px;
 }
 .btn-primary:active:hover,
 .btn-primary.active:hover,
@@ -740,6 +745,7 @@ Buttons
   color: #fff;
   background-color: rgba(100, 127, 255,1);
   border-color: rgba(100, 127, 255,1);
+  outline: 0px;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -766,6 +772,7 @@ fieldset[disabled] .btn-primary:active,
 fieldset[disabled] .btn-primary.active {
   background-color: rgba(100, 127, 255,1);
   border-color: rgba(100, 127, 255,1); 
+  outline: 0px;
 }
 .btn-primary .badge {
   color: rgba(0, 0, 128, 1);
