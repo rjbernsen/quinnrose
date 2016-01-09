@@ -1,4 +1,3 @@
-
 function setCategoryLabel() {
 	var levelObj = $('#id_level');
 	levelObj.val(level);
@@ -16,44 +15,38 @@ function updateFrequencyPanel() {
 	var levelLabel = $('#id_level option[value="' + level + '"]').text();
 	var info_id = level + '_' + freq;
 	var cur_info = billing_info[info_id];
-//	alert(info_id);
-	
+	// alert(info_id);
+
 	if (info_id.length < 3) {
 		$('#plan-div').html('Select a level and a billing frequency...');
-	}
-	else
-	{
+	} else {
 		$('#plan-div').html(savedPlanDivHtml);
 		$('#plan-level').html(levelLabel);
 		$('#plan-price').html(cur_info['price']);
-		
+
 		if (cur_info['price'] == 'Free') {
 			$('#plan-label').html('');
-		}
-		else
-		{
+		} else {
 			$('#plan-label').html(cur_info['label']);
 		}
 		if (cur_info['label'] == 'yearly' && cur_info['savings'] != 'None') {
 			$('#plan-savings-text').html(savedPlanSavingsHtml);
 			$('#plan-savings').html(cur_info['savings']);
-		}
-		else
-		{
+		} else {
 			$('#plan-savings-text').html('');
 		}
 	}
 }
 
-$(document).ready( function() {
-	
+$(document).ready(function() {
+
 	savedPlanDivHtml = $('#plan-div').html();
 	savedPlanSavingsHtml = $('#plan-savings-text').html();
 
 	$('#id_billing_frequency').val('1');
 	setCategoryLabel();
 	updateFrequencyPanel();
-	
+
 	$('#id_level').change(function() {
 		updateFrequencyPanel();
 	});
@@ -61,4 +54,3 @@ $(document).ready( function() {
 		updateFrequencyPanel();
 	});
 });
-

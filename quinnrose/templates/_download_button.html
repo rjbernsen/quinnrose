@@ -3,7 +3,7 @@
 {% if not is_bare and has_pdf_download %}
 
 <span class="download-button">
-	<a id="" class="btn btn-success fileDownload" href="/get_pdf?from_url={{ request.build_absolute_uri|urlencode }}">Download</a>
+	<a id="download_button" class="btn btn-success fileDownload" href="/get_pdf?from_url={{ request.build_absolute_uri|urlencode }}">Download</a>
 </span>
 
 {% endif %}

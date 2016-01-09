@@ -413,7 +413,12 @@ a:hover {
 hr {
 	border-width: 2px;
 }
-
+.spinner-image {
+	display: block;
+	position: absolute;
+	z-index: 99999;
+	visibility: hidden;
+}
 /*
 --------------------------------------------------
 Media overrides
