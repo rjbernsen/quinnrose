@@ -67,6 +67,8 @@ function locationChanged(lat, lon) {
 	return new_lat != old_lat || new_lon != old_lon;
 }
 
-getLocation();
+$(document).ready(function(e) {
 
-// showAlert($.session.get('current_lat'));
+	getLocation();
+
+});
