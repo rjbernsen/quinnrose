@@ -129,7 +129,7 @@ class SignInForm(forms.Form):
         label='I have read the Privacy Policy',
         widget=forms.CheckboxInput(
             attrs={
-                'class': 'form-control custom-form-checkbox',
+                'class': 'form-control custom-form-checkbox custom-form-checkbox-round',
                 'required': 'required',
             }
         )
@@ -138,7 +138,7 @@ class SignInForm(forms.Form):
         label='I accept the Terms and Conditions',
         widget=forms.CheckboxInput(
             attrs={
-                'class': 'form-control custom-form-checkbox',
+                'class': 'form-control custom-form-checkbox custom-form-checkbox-round',
                 'required': 'required',
             }
         )
