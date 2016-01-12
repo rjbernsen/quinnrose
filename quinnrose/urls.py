@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from quinnrose.views import HomePage, ContactFormView, About, Help, SignInFormView, Subscriptions, Subscribe, Privacy, Terms, Error404
+from quinnrose.views import HomePage, ContactFormView, About, Search, Help, SignInFormView, Subscriptions, Subscribe, Privacy, Terms, Error404
 from quinnrose.ajax_handlers import session_handler, geonames_handler, pdf_handler
 
 admin.autodiscover()
@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^about/?(?P<section>.+)?$', About.as_view(), name='about'),
     url(r'^contact$', ContactFormView.as_view(), name='contact'),
     url(r'^signin/?(?P<subtype>.+)?$', SignInFormView.as_view(), name='signin'),
+    url(r'^search/?(?P<subtype>.+)?$', Search.as_view(), name='search'),
     url(r'^subscriptions/?(?P<subtype>.+)?$', Subscriptions.as_view(), name='subscriptions'),
     url(r'^subscribe/?(?P<subtype>.+)?$', Subscribe.as_view(), name='subscribe'),
     url(r'^help/?(?P<section>.+)/(?P<help_app>.+)?$', Help.as_view(), name='help'),

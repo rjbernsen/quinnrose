@@ -253,6 +253,46 @@ class SignInFormView(BasePage, FormView):
         
         return context
 
+# class Search(BasePage, FormView):
+class Search(BasePage, TemplateView):
+    template_name = 'search.html'
+    page_header = 'Search'
+    page_header_byline = 'Find what you need in our vast database...'
+
+#     form_class = SubscribeForm
+    subtype = None
+    
+    subtype_titles = {
+        'general': CONFIG_CONTEXT['company_name'],
+        'artists': 'Artists',
+        'organizations': 'Organizations',
+        'community': 'Community Blog'
+    }
+    
+    def post(self, request, *args, **kwargs):
+        pass
+
+    def get_context_data(self, **kwargs):
+ 
+        context = super().get_context_data(**kwargs)
+#         print(self.request.GET)
+        self.subtype = context.get('subtype') or 'general'
+        keywords = self.request.GET.get('keywords')
+        
+        context['subtype_title'] = self.subtype_titles[self.subtype]
+        context['keywords'] = keywords
+
+        return context
+    
+    def get_form_kwargs(self):
+#         print('self.kwargs = {}'.format(self.kwargs))
+        kwargs = super().get_form_kwargs()
+#         print('kwargs self.request.GET[subtype] = {}'.format(self.request.GET.get('subtype', 'shit')))
+#         kwargs['subtype'] = self.subtype
+        kwargs.update(self.kwargs)
+        
+        return kwargs
+
 class Subscriptions(BasePage, TemplateView):
     template_name = 'subscriptions.html'
     page_header = 'Subscriptions'

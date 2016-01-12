@@ -1,0 +1,19 @@
+{% extends '__base.html' %}
+{% load staticfiles %}
+
+{% block styles %}
+	{{ block.super }}
+	<link href="{% static 'quinnrose/css/search_styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block page_content %}
+
+<div class="container-fluid">
+
+	Scope: {{ subtype_title }}
+	<br>
+	Keywords: {{ keywords }}
+	
+</div>
+
+{% endblock %}
