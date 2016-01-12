@@ -465,6 +465,19 @@ hr {
 	visibility: hidden;
 }
 /*
+.float_center {
+	float: right;
+	
+	position: relative;
+	left: -50%;
+	text-align: left;
+}
+.float_center:first-child {
+	position: relative;
+	left: 50%;
+}
+*/
+/*
 --------------------------------------------------
 Media overrides
 --------------------------------------------------

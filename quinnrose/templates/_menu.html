@@ -62,6 +62,7 @@
 					</li>
 				</ul>
 
+				{% if not is_home_page %}
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
 						<a id="help-dropdown-link" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search navbar-search-icon"></span></a>
@@ -101,7 +102,8 @@
 						</ul>
 					</li>
 				</ul>
-
+				{% endif %}
+				
 			</ul>
 		</div>
 	</div>

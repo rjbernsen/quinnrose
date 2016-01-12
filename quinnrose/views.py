@@ -104,6 +104,7 @@ class HomePage(BasePage, TemplateView):
         
         context.update(
             {
+                'is_home_page': True,
 #                 'carousel_images': carousel_images,
                 'home_page_info': home_page_info,
 #                 'featurettes': featurettes,

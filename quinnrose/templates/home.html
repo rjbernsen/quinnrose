@@ -3,6 +3,7 @@
 
 {% block styles %}
 	{{ block.super }}
+	<link href="{% static 'quinnrose/css/forms.css' %}" rel="stylesheet">
 	<link href="{% static 'quinnrose/css/home_styles.css' %}" rel="stylesheet">
 {% endblock %}
 
@@ -15,6 +16,34 @@
                 <div class="carousel-inner">
                     <div class="item active">
                         <img class="carousel-img" src="{% static 'quinnrose/images/home_banner.jpg' %}">
+						<div class="container-fluid home-page-search">
+							<div class="row">
+								<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 home-page-search-field">
+									<form id="home_search_form" class="form-horizontal custom-form" role="form" action="/search" method="get">
+										<div class="form-group input-group">
+											<input class="form-control" type="text" id="keywords" name="keywords" placeholder="Search keywords..." required="required" />
+											<div class="input-group-btn">
+        										<button id="search_submit_button" type="button" class="btn btn-default home-page-search-button1" data-toggle="dropdown"><i class="fa fa-search"></i></button>
+        									</div>
+												<div class="dropup">
+	        										<button type="button" class="btn btn-default dropdown-toggle home-page-search-button2" data-toggle="dropdown"><i class="fa fa-sort-desc"></i></button>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="javascript:goSearch('artist');">Artists</a></li>
+														<li><a href="javascript:goSearch('organization');">Organizations</a></li>
+														<li><a href="javascript:goSearch('community');">Community Blog</a></li>
+														<li role="separator" class="divider"></li>
+														<li><a href="/search/advanced">Advanced search...</a></li>
+													</ul>
+												</div>
+											</div>
+{#											<span class="input-group-btn">#}
+{#												<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>#}
+{#								            </span>#}
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
                     </div>
                 </div>
             </div>
@@ -48,32 +77,6 @@
 		{% endfor %}
 	</div>
 	<!-- End home page info -->
-  
-  	<!-- Begin featurettes -->
-{#	{% for featurette in featurettes %}#}
-{#		{% cycle 0 1 as cycle_value silent %}#}
-{#	<hr>#}
-{#	<div class="row">#}
-{#		{% if cycle_value == 0 %}#}
-{#		<div class="col-md-7">#}
-{#		{% else %}#}
-{#		<div class="col-md-7 col-md-push-5">#}
-{#		{% endif %}#}
-{#			<h2 class="featurette-heading">{{ featurette.title }}<br>#}
-{#			<span class="text-muted">{{ featurette.sub_title }}</span></h2>#}
-{#			<p class="lead">{{ featurette.description }}</p>#}
-{#		</div>#}
-{#		{% if cycle_value == 0 %}#}
-{#		<div class="col-md-5">#}
-{#		{% else %}#}
-{#		<div class="col-md-5 col-md-pull-7">#}
-{#		{% endif %}#}
-{#			<img src="{% static 'images/' %}{{ featurette.image_file_name }}" class="img-responsive">#}
-{#		</div>#}
-{#	</div>#}
-{#	{% endfor %}#}
-	
-  <!-- End featurettes -->
 </div>
 <!-- End main content -->
 
@@ -84,4 +87,9 @@
     {% endfor %}
 </script>
 
+{% endblock %}
+
+{% block js %}
+{{ block.super }}
+<script src="{% static 'quinnrose/js/home.js' %}" type='text/javascript'></script>
 {% endblock %}
