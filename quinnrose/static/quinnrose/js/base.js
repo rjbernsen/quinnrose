@@ -19,9 +19,34 @@ $.ajaxSetup({
 });
 
 /*
- * --------------------------------------------------------- Popovers
- * ---------------------------------------------------------
- */
+---------------------------------------------------------
+Menu search form
+---------------------------------------------------------
+*/
+var menuSearchForm;
+
+function goMenuSearch() {
+
+	var subType = $('input:radio[name=search_what]:checked').val();
+	var action = menuSearchForm.attr('action') + '/' + subType;
+	menuSearchForm.attr('action', action);
+}
+
+$(document).ready(function(e) {
+
+	menuSearchForm = $('#search_form');
+	
+	menuSearchForm.submit(function() {
+		goMenuSearch()
+	});
+});
+
+
+/*
+---------------------------------------------------------
+Popovers
+---------------------------------------------------------
+*/
 var isIOS;
 var isAndroid;
 
