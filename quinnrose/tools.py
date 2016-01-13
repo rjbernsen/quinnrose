@@ -100,6 +100,50 @@ class Featurette(object):
         
         self.image_file_name = None
 
+class HomePageInfo(object):
+    
+    def __init__(self):
+        
+        self.items = []
+    
+    def add(self, item):
+        
+        self.items.append(item)
+        
+    def left(self):
+        
+        retval = []
+        
+        for item in self.items:
+            if not item.right:
+                retval.append(item)
+        
+        return retval
+    
+    def right(self):
+        
+        retval = []
+        
+        for item in self.items:
+            if item.right:
+                retval.append(item)
+        
+        return retval
+    
+    def __str__(self):
+        
+        retval = ''
+        
+        for item in self.items:
+            
+            if retval:
+                
+                retval += ', '
+            
+            retval += item.title
+             
+        return retval 
+
 class HomePageInfoItem(object):
     """
         Parameters:
@@ -129,17 +173,17 @@ class HomePageInfoItem(object):
                     with no title or link.
     """
     
-    link_root = '/info'
+#     link_root = '/info'
     
     def __init__(self):
         
         self.title = None
         self.description = None
         self.link = None
-        
-        self.icon = 'star'
-        self.button_text = 'Full story'
+        self.right = False
+#         self.icon = 'star'
+#         self.button_text = 'Full story'
 
-    def get_link_path(self):
-        return self.link_root + '/' + self.link
-    
+#     def get_link_path(self):
+#         return self.link_root + '/' + self.link
+        

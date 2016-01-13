@@ -9,75 +9,106 @@
 
 {% block page_content %}
 
+<!-- Begin main content -->
 <div class="container-fluid home-banner">
     <div class="row">
-        <div class="col-md-12">
-            <div class="carousel">
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <img class="carousel-img" src="{% static 'quinnrose/images/home_banner.jpg' %}">
-						<div class="container-fluid home-page-search">
-							<div class="row">
-								<div class="col-xs-12 col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3 home-page-search-field">
-									<form id="home_search_form" class="form-horizontal custom-form" role="form" action="/search" method="get">
-										<div class="form-group input-group">
-											<input class="form-control" type="text" id="keywords" name="keywords" placeholder="Search keywords..." required="required" />
-											<div class="input-group-btn">
-        										<button id="search_submit_button" type="button" class="btn btn-default home-page-search-button1" data-toggle="dropdown"><i class="fa fa-search"></i></button>
-        									</div>
-												<div class="dropup">
-	        										<button type="button" class="btn btn-default dropdown-toggle home-page-search-button2" data-toggle="dropdown"><i class="fa fa-sort-desc"></i></button>
-													<ul class="dropdown-menu dropdown-menu-right">
-														<li><a href="javascript:goSearch('artists');">Artists</a></li>
-														<li><a href="javascript:goSearch('organizations');">Organizations</a></li>
-														<li><a href="javascript:goSearch('community');">Community Blog</a></li>
-														<li role="separator" class="divider"></li>
-														<li><a href="/search/advanced">Advanced search...</a></li>
-													</ul>
-												</div>
-											</div>
-{#											<span class="input-group-btn">#}
-{#												<button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>#}
-{#								            </span>#}
-										</div>
-									</form>
-								</div>
+        <div class="col-md-6 col-md-push-3">
+			<div class="row text-center">
+				<div class="col-md-12">
+		        	<img class="center-block img-responsive home-page-banner-img" src="{% static 'quinnrose/images/home_banner2.jpg' %}">
+	            </div>
+	        </div>
+			<div class="row text-center">
+				<div class="col-md-12 home-page-byline">
+		        	<p class="home-page-byline">Connecting artists with the world...</p>
+	            </div>
+	        </div>
+			<div class="row text-center">
+				<div class="col-md-12 col-centered">
+					<form id="home_search_form" class="custom-form home-page-search-form" role="form" action="/search" method="get">
+						<div class="form-group input-group home-page-search-input">
+							<input class="form-control" type="text" id="keywords" name="keywords" placeholder="Search keywords..." required="required" />
+							<div class="input-group-btn">
+								<button id="search_submit_button" type="button" class="btn btn-default home-page-search-button1" data-toggle="dropdown"><i class="fa fa-search"></i></button>
+								<button type="button" class="btn btn-default dropdown-toggle home-page-search-button2" data-toggle="dropdown"><i class="fa fa-sort-desc"></i></button>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li><a href="javascript:goSearch('artists');">Artists</a></li>
+									<li><a href="javascript:goSearch('organizations');">Organizations</a></li>
+									<li><a href="javascript:goSearch('community');">Community Blog</a></li>
+									<li role="separator" class="divider"></li>
+									<li><a href="/search/advanced">Advanced search...</a></li>
+								</ul>
 							</div>
 						</div>
-                    </div>
-                </div>
-            </div>
+					</form>
+				</div>
+			</div>
 		</div>
+        <div class="col-md-3 col-md-pull-6">
+		  	<!-- Begin left info -->
+			<div class="row text-center">
+				{% for info_item in home_page_info.left %}
+				<div class="col-md-12">
+					<a href="{{ info_item.link }}">
+						<div class="fa fa-{{ info_item.icon }} fa-2x circles"></div>
+					</a>
+					<h2 class="info-header">
+						<a 	href="{{ info_item.link }}" class="info-link">{{ info_item.title }}</a>
+					</h2>
+					<p class="info-description">{{ info_item.description }}</p>
+		{#			<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>#}
+				</div>
+				{% endfor %}
+			</div>
+		  	<!-- End left info -->
+        </div>
+        <div class="col-md-3">
+		  	<!-- Begin right info -->
+			<div class="row text-center">
+				{% for info_item in home_page_info.right %}
+				<div class="col-md-12">
+					<a href="{{ info_item.link }}">
+						<i class="fa fa-{{ info_item.icon }} fa-2x circles"></i>
+					</a>
+					<h2 class="info-header">
+						<a href="{{ info_item.link }}" class="info-link">{{ info_item.title }}</a>
+					</h2>
+					<p class="info-description">{{ info_item.description }}</p>
+		{#			<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>#}
+				</div>
+				{% endfor %}
+			</div>
+		  	<!-- End right info -->
+        </div>
     </div>
 </div>
 
-<!-- Begin main content -->
-<div class="container">
-  	<!-- Begin home page info -->
-	<div class="row text-center">
-		{% for info_item in home_page_info %}
-		<div class="col-md-4">
-			<a href="{{ info_item.link }}">
-				<div class="fa fa-{{ info_item.icon }} fa-2x circles"></div>
-			</a>
-			<h2 class="info-header">
-				<a 	href="{{ info_item.link }}"
-					class="info-link"
-					data-toggle="popover"
-					data-trigger="hover focus"
-					data-placement="auto top"
-					data-html=true data-content="{{ info_item.description }}"
-				>
-				{{ info_item.title }}
-				</a>
-			</h2>
-			<p class="info-description">{{ info_item.description }}</p>
+{#<div class="container">#}
+{#  	<!-- Begin left info -->#}
+{#	<div class="row text-center">#}
+{#		{% for info_item in home_page_info %}#}
+{#		<div class="col-md-4">#}
+{#			<a href="{{ info_item.link }}">#}
+{#				<div class="fa fa-{{ info_item.icon }} fa-2x circles"></div>#}
+{#			</a>#}
+{#			<h2 class="info-header">#}
+{#				<a 	href="{{ info_item.link }}"#}
+{#					class="info-link"#}
+{#					data-toggle="popover"#}
+{#					data-trigger="hover focus"#}
+{#					data-placement="auto top"#}
+{#					data-html=true data-content="{{ info_item.description }}"#}
+{#				>#}
+{#				{{ info_item.title }}#}
+{#				</a>#}
+{#			</h2>#}
+{#			<p class="info-description">{{ info_item.description }}</p>#}
 {#			<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>#}
-		</div>
-		{% endfor %}
-	</div>
-	<!-- End home page info -->
-</div>
+{#		</div>#}
+{#		{% endfor %}#}
+{#	</div>#}
+{#	<!-- End home page info -->#}
+{#</div>#}
 <!-- End main content -->
 
 <script>
