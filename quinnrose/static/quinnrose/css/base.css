@@ -80,9 +80,12 @@ Header
 */
 .page-header {
 	text-align: center;
-	color: #fff; margin-top : 0px;
+	color: #fff;
+	text-shadow: 2px 2px 4px #000000;
+	margin-top : 0px;
 	padding-top: 20px;
-	margin-top: 0px; padding-top : 20px;
+	margin-top: 0px;
+	padding-top : 20px;
 	padding-bottom: 0px;
 	background: url("/static/quinnrose/images/page_header_background.jpg")
 		center center;

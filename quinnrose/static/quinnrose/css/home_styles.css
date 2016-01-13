@@ -6,6 +6,21 @@ Banner styles
 .home-banner {
 	margin-top: 20px;
 }
+.home-page-banner-img {
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+div.home-page-byline {
+	line-height: 200px;
+}
+p.home-page-byline {
+	display: inline-block;
+	font-size: 3em;
+	font-style: italic;
+	color: rgba(128, 0, 0, 1);
+	vertical-align: middle;
+	line-height: 60px;
+}
 
 /*
 --------------------------------------------------
@@ -22,6 +37,9 @@ Info styles
 	width: 2em;
 	height: 2em;
 }
+.circles:hover {
+	background-color: rgba(100, 127, 255,1);
+}
 .info-header {
 	margin-top: 20px;
 }
@@ -33,30 +51,30 @@ Info styles
 .info-link:hover {
 	color: rgba(100, 127, 255,1);
 }
-.info-description {
-	display: none;
-}
 
 /*
 --------------------------------------------------
 Search form
 --------------------------------------------------
 */
-div.home-page-search {
-	position: fixed;
-	bottom: -30px;
-	left: 51%;
-	transform: translate(-50%, -50%);
-	width: 100%;
+.home-page-search-form {
+	border: 0px;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
-div.home-page-search-field {
-	background-color: ;
+.home-page-search-input {
+	width: 90%;
+	margin: auto;
 }
 .home-page-search-button1 {
 	border-radius: 0px 0px 0px 0px;
 }
 .home-page-search-button2 {
 	border-radius: 0px 4px 4px 0px;
+}
+.col-centered {
+    width: 100%;
 }
 
 /*
@@ -66,19 +84,34 @@ Media overrides
 */
 @media (min-width:1201px) { 
 	.circles {
-		font-size: 4em;
+		font-size: 3em;
 	}
-	div.home-page-search {
-		width: 80%;
+	.info-description {
+		font-size: 1.3em;
+		/* display: initial; */
+	}
+	div.home-page-byline {
+		line-height: 200px;
+	}
+	p.home-page-byline {
+		font-size: 3em;
+		line-height: 60px;
 	}
 }
 @media (max-width:1200px) and (min-width: 993px) { 
 	.circles {
 		font-size: 3em;
 	}
-	div.home-page-search {
-		left: 51%;
-		width: 85%;
+	.info-description {
+		font-size: 1.3	em;
+		/* display: initial; */
+	}
+	div.home-page-byline {
+		line-height: 200px;
+	}
+	p.home-page-byline {
+		font-size: 3em;
+		line-height: 60px;
 	}
 }
 @media (max-width:992px) and (min-width: 769px) { 
@@ -94,11 +127,14 @@ Media overrides
 	}
 	.info-description {
 		font-size: 1.5em;
-		display: initial;
+		/* display: initial; */
 	}
-	div.home-page-search {
-		left: 52%;
-		width: 100%;
+	div.home-page-byline {
+		line-height: 180px;
+	}
+	p.home-page-byline {
+		font-size: 3em;
+		line-height: 55px;
 	}
 }
 @media (max-width:768px) and (min-width: 625px) { 
@@ -114,11 +150,14 @@ Media overrides
 	}
 	.info-description {
 		font-size: 1.3em;
-		display: initial;
+		/* display: initial; */
 	}
-	div.home-page-search {
-		left: 54%;
-		width: 60%;
+	div.home-page-byline {
+		line-height: 160px;
+	}
+	p.home-page-byline {
+		font-size: 2.6em;
+		line-height: 50px;
 	}
 }
 @media (max-width:624px) and (min-width: 481px) { 
@@ -134,11 +173,14 @@ Media overrides
 	}
 	.info-description {
 		font-size: 1.3em;
-		display: initial;
+		/* display: initial; */
 	}
-	div.home-page-search {
-		left: 54%;
-		width: 80%;
+	div.home-page-byline {
+		line-height: 140px;
+	}
+	p.home-page-byline {
+		font-size: 2.2em;
+		line-height: 45px;
 	}
 }
 @media (max-width:480px) and (min-width: 321px) { 
@@ -154,11 +196,14 @@ Media overrides
 	}
 	.info-description {
 		font-size: 1.1em;
-		display: initial;
+		/* display: initial; */
 	}
-	div.home-page-search {
-		left: 50%;
-		width: 90%;
+	div.home-page-byline {
+		line-height: 120px;
+	}
+	p.home-page-byline {
+		font-size: 2.2em;
+		line-height: 40px;
 	}
 }
 @media (max-width:320px) { 
@@ -174,11 +219,14 @@ Media overrides
 	}
 	.info-description {
 		font-size: 1em;
-		display: initial;
+		/* display: initial; */
 	}
-	div.home-page-search {
-		left: 50%;
-		width: 90%;
+	div.home-page-byline {
+		line-height: 100px;
+	}
+	p.home-page-byline {
+		font-size: 1.8em;
+		line-height: 35px;
 	}
 }
 
