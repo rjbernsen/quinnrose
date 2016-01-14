@@ -4,22 +4,21 @@ Banner styles
 --------------------------------------------------
 */
 .home-banner {
-	margin-top: 20px;
+	background-color: rgba(220, 229, 255, 1);
 }
 .home-page-banner-img {
-	border-radius: 20px;
-	margin-bottom: 20px;
+	margin-top: 20px;
 }
 div.home-page-byline {
-	line-height: 200px;
+	line-height: 120px;
 }
 p.home-page-byline {
 	display: inline-block;
-	font-size: 3em;
+	font-size: 2em;
 	font-style: italic;
 	color: rgba(128, 0, 0, 1);
 	vertical-align: middle;
-	line-height: 60px;
+	line-height: 1.2em;
 }
 
 /*
@@ -27,29 +26,31 @@ p.home-page-byline {
 Info styles
 --------------------------------------------------
 */
-.circles {
-	margin-top: 20px;
-	background-color: rgba(0, 0, 128, 1);
-	color: #fff;
-	border-radius: 50%;
-	font-size: 4em;
-	line-height: 2em;
-	width: 2em;
-	height: 2em;
-}
-.circles:hover {
-	background-color: rgba(100, 127, 255,1);
-}
-.info-header {
-	margin-top: 20px;
-}
 .info-link {
 	font-size: 1em;
-	display: initial;
 	color: rgba(0, 0, 128, 1);
 }
 .info-link:hover {
-	color: rgba(100, 127, 255,1);
+	background-color: rgba(0, 0, 128, 1);
+	text-decoration: none;
+}
+.circles {
+	display: block;
+	margin-top: 80px;
+	margin-bottom: 100px;
+	background-color: rgba(220, 229, 255, 1);
+	border-radius: 50%;
+	margin: auto;
+	font-size: 2em !important;
+	line-height: 1.6em;
+	width: 1.6em;
+	height: 1.6em;
+}
+.header-text {
+	margin-top: 10px;
+}
+.info-description {
+	font-size: 1.4em;
 }
 
 /*
@@ -57,6 +58,9 @@ Info styles
 Search form
 --------------------------------------------------
 */
+.home-page-search-form-div {
+	margin-bottom: 20px;
+}
 .home-page-search-form {
 	border: 0px;
 	-webkit-box-shadow: none;
@@ -73,8 +77,14 @@ Search form
 .home-page-search-button2 {
 	border-radius: 0px 4px 4px 0px;
 }
-.col-centered {
-    width: 100%;
+
+/*
+--------------------------------------------------
+Misc
+--------------------------------------------------
+*/
+.home-page-register-div {
+	margin-bottom: 20px;
 }
 
 /*
@@ -82,151 +92,122 @@ Search form
 Media overrides
 --------------------------------------------------
 */
-@media (min-width:1201px) { 
-	.circles {
-		font-size: 3em;
-	}
-	.info-description {
-		font-size: 1.3em;
-		/* display: initial; */
-	}
-	div.home-page-byline {
-		line-height: 200px;
-	}
-	p.home-page-byline {
-		font-size: 3em;
-		line-height: 60px;
-	}
-}
 @media (max-width:1200px) and (min-width: 993px) { 
 	.circles {
-		font-size: 3em;
+		font-size: 2em !important;
+	}
+	.header-text {
+		margin-top: 10px;
 	}
 	.info-description {
-		font-size: 1.3	em;
-		/* display: initial; */
+		font-size: 1.4	em;
 	}
 	div.home-page-byline {
-		line-height: 200px;
+		line-height: 118px;
 	}
 	p.home-page-byline {
-		font-size: 3em;
-		line-height: 60px;
+		font-size: 2em;
 	}
 }
 @media (max-width:992px) and (min-width: 769px) { 
-	.circles {
-		font-size: 3em;
-		margin-top: 20px;
-	}
-	.info-header {
-		margin-top: 18px;
-	}
 	.info-link {
 		font-size: 1em;
 	}
+	.circles {
+		font-size: 1.9em !important;
+	}
+	.header-text {
+		margin-top: 8px;
+	}
 	.info-description {
-		font-size: 1.5em;
-		/* display: initial; */
+		font-size: 1.4em;
 	}
 	div.home-page-byline {
-		line-height: 180px;
+		line-height: 116px;
 	}
 	p.home-page-byline {
-		font-size: 3em;
-		line-height: 55px;
+		font-size: 1.9em;
 	}
 }
 @media (max-width:768px) and (min-width: 625px) { 
-	.circles {
-		font-size: 2.6em;
-		margin-top: 18px;
-	}
-	.info-header {
-		margin-top: 16px;
-	}
 	.info-link {
 		font-size: .9em;
+	}
+	.circles {
+		font-size: 1.7em !important;
+	}
+	.header-text {
+		margin-top: 6px;
 	}
 	.info-description {
 		font-size: 1.3em;
 		/* display: initial; */
 	}
 	div.home-page-byline {
-		line-height: 160px;
+		line-height: 114px;
 	}
 	p.home-page-byline {
-		font-size: 2.6em;
-		line-height: 50px;
+		font-size: 1.8em;
 	}
 }
 @media (max-width:624px) and (min-width: 481px) { 
-	.circles {
-		font-size: 2.6em;
-		margin-top: 18px;
-	}
-	.info-header {
-		margin-top: 16px;
-	}
 	.info-link {
 		font-size: .9em;
 	}
+	.circles {
+		font-size: 1.5em !important;
+	}
+	.header-text {
+		margin-top: 4px;
+	}
 	.info-description {
-		font-size: 1.3em;
-		/* display: initial; */
+		font-size: 1.2em;
 	}
 	div.home-page-byline {
-		line-height: 140px;
+		line-height: 112px;
 	}
 	p.home-page-byline {
-		font-size: 2.2em;
-		line-height: 45px;
+		font-size: 1.7em;
 	}
 }
 @media (max-width:480px) and (min-width: 321px) { 
-	.circles {
-		font-size: 2.2em;
-		margin-top: 16px;
-	}
-	.info-header {
-		margin-top: 14px;
-	}
 	.info-link {
 		font-size: .8em;
 	}
+	.circles {
+		font-size: 1.3em !important;
+	}
+	.header-text {
+		margin-top: 2px;
+	}
 	.info-description {
 		font-size: 1.1em;
-		/* display: initial; */
 	}
 	div.home-page-byline {
-		line-height: 120px;
+		line-height: 110px;
 	}
 	p.home-page-byline {
-		font-size: 2.2em;
-		line-height: 40px;
+		font-size: 1.6em;
 	}
 }
 @media (max-width:320px) { 
-	.circles {
-		margin-top: 14px;
-		font-size: 1.8em;
-	}
-	.info-header {
-		margin-top: 12px;
-	}
 	.info-link {
 		font-size: .7em;
 	}
+	.circles {
+		font-size: 1.1em !important;
+	}
+	.header-text {
+		margin-top: 0px;
+	}
 	.info-description {
 		font-size: 1em;
-		/* display: initial; */
 	}
 	div.home-page-byline {
-		line-height: 100px;
+		line-height: 108px;
 	}
 	p.home-page-byline {
-		font-size: 1.8em;
-		line-height: 35px;
+		font-size: 1.5em;
 	}
 }
 

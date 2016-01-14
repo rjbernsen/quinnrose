@@ -12,10 +12,10 @@
 <!-- Begin main content -->
 <div class="container-fluid home-banner">
     <div class="row">
-        <div class="col-md-6 col-md-push-3">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 			<div class="row text-center">
 				<div class="col-md-12">
-		        	<img class="center-block img-responsive home-page-banner-img" src="{% static 'quinnrose/images/home_banner2.jpg' %}">
+		        	<img class="center-block img-responsive home-page-banner-img" src="{% static 'quinnrose/images/home_banner3.png' %}">
 	            </div>
 	        </div>
 			<div class="row text-center">
@@ -24,7 +24,7 @@
 	            </div>
 	        </div>
 			<div class="row text-center">
-				<div class="col-md-12 col-centered">
+				<div class="col-md-12 home-page-search-form-div">
 					<form id="home_search_form" class="custom-form home-page-search-form" role="form" action="/search" method="get">
 						<div class="form-group input-group home-page-search-input">
 							<input class="form-control" type="text" id="keywords" name="keywords" placeholder="Search keywords..." required="required" />
@@ -43,43 +43,38 @@
 					</form>
 				</div>
 			</div>
+			<div class="row text-center">
+				<div class="col-md-12 home-page-register-div">
+		        	<a class="btn btn-danger" href="/signin/register">Register for free...</a>
+	            </div>
+	        </div>
 		</div>
-        <div class="col-md-3 col-md-pull-6">
-		  	<!-- Begin left info -->
-			<div class="row text-center">
-				{% for info_item in home_page_info.left %}
-				<div class="col-md-12">
-					<a href="{{ info_item.link }}">
-						<div class="fa fa-{{ info_item.icon }} fa-2x circles"></div>
-					</a>
-					<h2 class="info-header">
-						<a 	href="{{ info_item.link }}" class="info-link">{{ info_item.title }}</a>
-					</h2>
-					<p class="info-description">{{ info_item.description }}</p>
-		{#			<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>#}
-				</div>
-				{% endfor %}
-			</div>
-		  	<!-- End left info -->
-        </div>
-        <div class="col-md-3">
-		  	<!-- Begin right info -->
-			<div class="row text-center">
-				{% for info_item in home_page_info.right %}
-				<div class="col-md-12">
-					<a href="{{ info_item.link }}">
-						<i class="fa fa-{{ info_item.icon }} fa-2x circles"></i>
-					</a>
-					<h2 class="info-header">
-						<a href="{{ info_item.link }}" class="info-link">{{ info_item.title }}</a>
-					</h2>
-					<p class="info-description">{{ info_item.description }}</p>
-		{#			<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>#}
-				</div>
-				{% endfor %}
-			</div>
-		  	<!-- End right info -->
-        </div>
+	</div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+		{% for info_item in home_page_info.left %}
+        <div class="col-md-3 col-sm-6 text-center">
+			<a class="info-link" href="{{ info_item.link }}">
+				<h2><i class="fa fa-{{ info_item.icon }} fa-2x circles"></i>
+					<div class="header-text">{{ info_item.title }}</div>
+				</h2>
+			</a>
+			<p class="info-description">{{ info_item.description }}</p>
+{#			<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>#}
+		</div>
+		{% endfor %}
+		{% for info_item in home_page_info.right %}
+        <div class="col-md-3 col-sm-6 text-center">
+			<a class="info-link" href="{{ info_item.link }}">
+				<h2><i class="fa fa-{{ info_item.icon }} fa-2x circles"></i>
+					<div class="header-text">{{ info_item.title }}</div>
+				</h2>
+			</a>
+			<p class="info-description">{{ info_item.description }}</p>
+{#			<p><a class="btn btn-default" href="{{ info_item.get_link_path }}" role="button">{{ info_item.button_text }} <span class="fa fa-location-arrow"></span></a></p>#}
+		</div>
+		{% endfor %}
     </div>
 </div>
 
