@@ -5,18 +5,6 @@ from quinnrose.tools import Menu, MenuItem
 menu = Menu()
 menu.right = True
 
-item = MenuItem(
-    label='About',
-    url='/about'
-)
-menu.addItem(item)
-
-item = MenuItem(
-    label='Contact',
-    url='/contact'
-)
-menu.addItem(item)
-
 # Sign in Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
@@ -65,43 +53,18 @@ dropdown_menu.addItem(item)
 menu.addItem(dropdown_menu)
 
 
-# # Subscription Dropdown
-# # --------------------------------------
-# dropdown_menu = Menu()
-# dropdown_menu.label = 'Subscription'
-# dropdown_menu.is_dropdown = True
-# # dropdown_menu.right = True
-# 
-# item = MenuItem(
-#     label='Artists',
-#     url='/subscriptions/artists'
-# )
-# dropdown_menu.addItem(item)
-# 
-# item = MenuItem(
-#     label='Organizations',
-#     url='/subscriptions/organizations'
-# )
-# dropdown_menu.addItem(item)
-# 
-# item = MenuItem(
-#     label='Samples (Temporary)'
-# )
-# dropdown_menu.addItem(item)
-# 
-# item = MenuItem(
-#     label='Shannon',
-#     url='/artist/1'
-# )
-# dropdown_menu.addItem(item)
-# 
-# item = MenuItem(
-#     label='PMT',
-#     url='/organization/pmt'
-# )
-# dropdown_menu.addItem(item)
-# 
-# menu.addItem(dropdown_menu)
+item = MenuItem(
+    label='About',
+    url='/about'
+)
+menu.addItem(item)
+
+item = MenuItem(
+    label='Contact',
+    url='/contact'
+)
+menu.addItem(item)
+
 
 # Help Dropdown
 # --------------------------------------
