@@ -22,6 +22,45 @@ $.ajaxSetup({
 
 /*
 ---------------------------------------------------------
+Tooltips
+---------------------------------------------------------
+*/
+var allTooltips;
+
+function setTooltips() {
+	allTooltips.each(function() {
+		$(this).tooltip();
+		$(this).click(function(e) {
+			$(this).tooltip('hide');
+		});
+	});
+}
+function destroyTooltips() {
+	allTooltips.each(function() {
+		$(this).tooltip('destroy');
+	});
+}
+function handleTooltips() {
+	var windowWidth = $(window).width();
+//	showAlert(windowWidth);
+	
+	if (windowWidth < 768) {
+		destroyTooltips();
+	} else {
+		setTooltips();
+	}
+}
+$(document).ready(function(e) {
+	allTooltips = $('[data-tooltip="true"]');
+	handleTooltips();
+
+	$(window).resize(function(e) {
+		handleTooltips();
+	});
+});
+
+/*
+---------------------------------------------------------
 Menu search form
 ---------------------------------------------------------
 */

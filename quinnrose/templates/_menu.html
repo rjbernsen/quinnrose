@@ -28,9 +28,16 @@
 						{% else %}
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
-						{% if item.label == 'Help' %}
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-question"></i>
-{#							<span class="caret"></span>#}
+						{% if item.icon %}
+						<a href="#"
+							class="dropdown-toggle tooltip-styles" 
+							data-toggle="dropdown"
+							role="button" 
+							data-tooltip="true"
+							data-placement="auto"
+							title="{{ item.label }}" 
+							aria-haspopup="true" 
+							aria-expanded="false"><i class="fa fa-{{ item.icon }} navbar-icon"></i> {{ item.label }}<span class="visible-xs-inline">{{ item.label }}</span>
 						</a>
 						{% else %}
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ item.label }}<span class="caret"></span></a>
@@ -52,8 +59,13 @@
 
 					{% else %}
 
-				{% if item.label == 'Contact' %}
-				<li><a id="{{ item.getId }}" href="{{ item.url }}"><i class="fa fa-envelope"></i></a></li>
+				{% if item.icon %}
+				<li><a id="{{ item.getId }}"
+					class="tooltip-styles" 
+					data-tooltip="true"
+					data-placement="auto"
+					title="{{ item.label }}" 
+					href="{{ item.url }}"><i class="fa fa-{{ item.icon }} navbar-icon"></i> {{ item.label }}<span class="visible-xs-inline">{{ item.label }}</span></a></li>
 				{% else %}
 				<li><a id="{{ item.getId }}" href="{{ item.url }}">{{ item.label }}</a></li>
 				{% endif %}
@@ -62,12 +74,21 @@
 
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-share-alt"></i>
-{#							<span class="caret"></span>#}
+						<a href="#" 
+							class="dropdown-toggle tooltip-styles" 
+							data-toggle="dropdown" 
+							role="button" 
+							data-tooltip="true"
+							data-placement="auto"
+							title="Share"
+							aria-haspopup="true"
+							aria-expanded="false"><i class="fa fa-share-alt-square navbar-icon"></i> Share<span class="visible-xs-inline">Share</span>
 						</a>
 						<ul class="dropdown-menu">
 							{% for item in shares.get_items %}
-							<li><a class="dropdown-option" href="{{ item.url }}"><img class="share-menu-img" src="{% static 'quinnrose/images/share_icons/' %}{{ item.image }}"> {{ item.label }}</a></li>
+							<li><a 
+								class="dropdown-option" 
+								href="{{ item.url }}"><img class="share-menu-img" src="{% static 'quinnrose/images/share_icons/' %}{{ item.image }}"> {{ item.label }}</a></li>
 							{% endfor %}
 						</ul>
 					</li>
@@ -76,7 +97,14 @@
 				{% if not is_home_page %}
 				<ul class="nav navbar-nav">
 					<li class="dropdown">
-						<a id="help-dropdown-link" href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-search navbar-search-icon"></span></a>
+						<a id="help-dropdown-link" 
+							href="#" 
+							class="dropdown-toggle tooltip-styles" 
+							data-toggle="dropdown"
+							data-tooltip="true"
+							data-placement="auto"
+							title="Search"
+							><span class="fa fa-search navbar-search-icon navbar-icon"></span> Search<span class="visible-xs-inline">Search</span></a>
 						<ul class="dropdown-menu navbar-search-option">
 							<li>
 								<div class="row">
