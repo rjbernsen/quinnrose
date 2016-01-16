@@ -81,13 +81,15 @@ Header
 */
 .page-header {
 	text-align: center;
-	color: rgba(0, 0, 128, 1);
+	color: #fff;
+	text-shadow: 2px 2px 4px #000000;
 	margin-top : 0px;
 	padding-top: 20px;
 	margin-top: 0px;
 	padding-top : 20px;
 	padding-bottom: 0px;
-	background-color: rgba(220, 229, 255, 1);
+	background: url("/static/quinnrose/images/page_header_background.jpg")
+		center center;
 }
 
 .page-header>h3 {
@@ -97,7 +99,7 @@ Header
 
 .page-header-byline {
 	text-align: right;
-	color: rgba(0, 0, 128, 1);
+	color: #fff;
 	font-style: italic;
 	margin-right: 10px;
 }

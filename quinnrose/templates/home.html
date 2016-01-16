@@ -9,45 +9,54 @@
 
 {% block page_content %}
 
-<!-- Begin main content -->
 <div class="container-fluid home-banner">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-			<div class="row text-center">
-				<div class="col-md-12">
-		        	<img class="center-block img-responsive home-page-banner-img" src="{% static 'quinnrose/images/home_banner3.png' %}">
-	            </div>
-	        </div>
-			<div class="row text-center">
-				<div class="col-md-12 home-page-byline">
-		        	<p class="home-page-byline">Connecting artists with the world...</p>
-	            </div>
-	        </div>
-			<div class="row text-center">
-				<div class="col-md-12 home-page-search-form-div">
-					<form id="home_search_form" class="custom-form home-page-search-form" role="form" action="/search" method="get">
-						<div class="form-group input-group home-page-search-input">
-							<input class="form-control" type="text" id="keywords" name="keywords" placeholder="Search keywords..." required="required" />
-							<div class="input-group-btn">
-								<button id="search_submit_button" type="button" class="btn btn-default home-page-search-button1" data-toggle="dropdown"><i class="fa fa-search"></i></button>
-								<button type="button" class="btn btn-default dropdown-toggle home-page-search-button2" data-toggle="dropdown"><i class="fa fa-sort-desc"></i></button>
-								<ul class="dropdown-menu dropdown-menu-right">
-									<li><a href="javascript:goSearch('artists');">Artists</a></li>
-									<li><a href="javascript:goSearch('organizations');">Organizations</a></li>
-									<li><a href="javascript:goSearch('community');">Community Blog</a></li>
-									<li role="separator" class="divider"></li>
-									<li><a href="/search/advanced">Advanced search...</a></li>
-								</ul>
+
+	<div class="carousel">
+		<div class="carousel-inner">
+			<div class="item active">
+				<div class="carousel-image"></div>
+				<div class="container-fluid">
+					<div class="carousel-caption home-banner">
+				        <div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+							<div class="row text-center">
+								<div class="col-md-12">
+						        	<img class="center-block img-responsive home-page-brand-img" src="{% static 'quinnrose/images/home_banner3.png' %}">
+					            </div>
+					        </div>
+							<div class="row text-center">
+								<div class="col-md-12 home-page-byline">
+						        	<p class="home-page-byline">Connecting artists with the world...</p>
+					            </div>
+					        </div>
+							<div class="row text-center">
+								<div class="col-md-12 home-page-search-form-div">
+									<form id="home_search_form" class="custom-form home-page-search-form" role="form" action="/search" method="get">
+										<div class="form-group input-group home-page-search-input">
+											<input class="form-control" type="text" id="keywords" name="keywords" placeholder="Search keywords..." required="required" />
+											<div class="input-group-btn">
+												<button id="search_submit_button" type="button" class="btn btn-default home-page-search-button1" data-toggle="dropdown"><i class="fa fa-search"></i></button>
+												<button type="button" class="btn btn-default dropdown-toggle home-page-search-button2" data-toggle="dropdown"><i class="fa fa-sort-desc"></i></button>
+												<ul class="dropdown-menu dropdown-menu-right">
+													<li><a href="javascript:goSearch('artists');">Artists</a></li>
+													<li><a href="javascript:goSearch('organizations');">Organizations</a></li>
+													<li><a href="javascript:goSearch('community');">Community Blog</a></li>
+													<li role="separator" class="divider"></li>
+													<li><a href="/search/advanced">Advanced search...</a></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</div>
 							</div>
+							<div class="row text-center">
+								<div class="col-md-12 home-page-register-div">
+						        	<a class="btn btn-danger" href="/signin/register">Register for free...</a>
+					            </div>
+					        </div>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
-			<div class="row text-center">
-				<div class="col-md-12 home-page-register-div">
-		        	<a class="btn btn-danger" href="/signin/register">Register for free...</a>
-	            </div>
-	        </div>
 		</div>
 	</div>
 </div>

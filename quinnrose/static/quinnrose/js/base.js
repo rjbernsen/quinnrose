@@ -1,5 +1,7 @@
-DEFAULT_ALERT_CLOSE_DELAY = 5000;
-DEFAULT_ALERT_TYPE = "info";
+var DEBUG = false;
+
+var DEFAULT_ALERT_CLOSE_DELAY = 5000;
+var DEFAULT_ALERT_TYPE = "info";
 
 /*
  * All jQuery AJAX posts require this!
@@ -73,6 +75,12 @@ var spinner = $('#spinner');
 
 $(document).ready(function() {
 
+	if (DEBUG) { 
+		$(window).resize(function() {
+			showAlert($(window).width() + ' x ' + $(window).height(), 2000);
+		});
+	}
+	
 	isIOS = /iPad|iPhone|iPod/.test(navigator.platform);
 	isAndroid = /(android)/i.test(navigator.userAgent);
 
