@@ -4,9 +4,10 @@ all applications.
 """
 class Menu(object):
     
-    def __init__(self, label=None, foreign_object=None):
+    def __init__(self, label=None, icon=None, foreign_object=None):
         
         self.label = label
+        self.icon = icon
         self.foreign_object = foreign_object
 
         self.left = True
@@ -52,9 +53,10 @@ class MenuItem(object):
                     The item will be rendered as a separator
                     with no title or link.
     """
-    def __init__(self, label=None, url=None, separator=False):
+    def __init__(self, label=None, icon=None, url=None, separator=False):
         
         self.label = label
+        self.icon = icon
         self.url = url
         self.separator = separator
         self.is_dropdown = False
@@ -63,42 +65,42 @@ class MenuItem(object):
         
         return "menu_{}".format(self.label.replace(' ','_').lower())
     
-class Featurette(object):
-    """
-        Parameters:
-        
-            label
-                The text that will appear on the menu.
-            
-            url
-                The relative path of the page url.
-            
-            separator
-                A flag indicating that there is to be a
-                separator rather than a meny item.
-            
-            Usage:
-                
-                MenuItem(label)
-                    The item will be rendered as text only
-                    with no link - e.g. a title.
-                
-                MenuItem(label, url)
-                    The item will be rendered as a standard
-                    url link.
-                
-                MenuItem(separator=True)
-                    The item will be rendered as a separator
-                    with no title or link.
-    """
-    
-    def __init__(self):
-        
-        self.title = None
-        self.sub_title = None
-        self.description = None
-        
-        self.image_file_name = None
+# class Featurette(object):
+#     """
+#         Parameters:
+#         
+#             label
+#                 The text that will appear on the menu.
+#             
+#             url
+#                 The relative path of the page url.
+#             
+#             separator
+#                 A flag indicating that there is to be a
+#                 separator rather than a meny item.
+#             
+#             Usage:
+#                 
+#                 MenuItem(label)
+#                     The item will be rendered as text only
+#                     with no link - e.g. a title.
+#                 
+#                 MenuItem(label, url)
+#                     The item will be rendered as a standard
+#                     url link.
+#                 
+#                 MenuItem(separator=True)
+#                     The item will be rendered as a separator
+#                     with no title or link.
+#     """
+#     
+#     def __init__(self):
+#         
+#         self.title = None
+#         self.sub_title = None
+#         self.description = None
+#         
+#         self.image_file_name = None
 
 class HomePageInfo(object):
     

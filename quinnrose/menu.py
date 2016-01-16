@@ -5,28 +5,7 @@ from quinnrose.tools import Menu, MenuItem
 menu = Menu()
 menu.right = True
 
-# Sign in Dropdown
-# --------------------------------------
-dropdown_menu = Menu()
-dropdown_menu.label = 'Sign in'
-dropdown_menu.is_dropdown = True
-# dropdown_menu.right = True
-
-item = MenuItem(
-    label='Sign in',
-    url='/signin'
-)
-dropdown_menu.addItem(item)
-
-item = MenuItem(
-    label='Register',
-    url='/signin/register'
-)
-dropdown_menu.addItem(item)
-
-menu.addItem(dropdown_menu)
-
-# Subscription Dropdown
+# Temporary Dropdown
 # --------------------------------------
 dropdown_menu = Menu()
 dropdown_menu.label = 'Temporary'
@@ -52,15 +31,38 @@ dropdown_menu.addItem(item)
 
 menu.addItem(dropdown_menu)
 
+# Sign in Dropdown
+# --------------------------------------
+dropdown_menu = Menu()
+dropdown_menu.label = 'Sign in'
+dropdown_menu.icon = 'sign-in'
+dropdown_menu.is_dropdown = True
+# dropdown_menu.right = True
+
+item = MenuItem(
+    label='Sign in',
+    url='/signin'
+)
+dropdown_menu.addItem(item)
+
+item = MenuItem(
+    label='Register',
+    url='/signin/register'
+)
+dropdown_menu.addItem(item)
+
+menu.addItem(dropdown_menu)
 
 item = MenuItem(
     label='About',
+    icon='info',
     url='/about'
 )
 menu.addItem(item)
 
 item = MenuItem(
     label='Contact',
+    icon='envelope',
     url='/contact'
 )
 menu.addItem(item)
@@ -70,6 +72,7 @@ menu.addItem(item)
 # --------------------------------------
 dropdown_menu = Menu()
 dropdown_menu.label = 'Help'
+dropdown_menu.icon = 'question'
 dropdown_menu.is_dropdown = True
 # dropdown_menu.right = True
 
